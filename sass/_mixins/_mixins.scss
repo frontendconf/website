@@ -1,16 +1,16 @@
 @mixin robotolight() {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
 
 @mixin robotoregular() {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
 }
 
 @mixin robotobold() {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
 }
 
 @mixin transition($transition) {
