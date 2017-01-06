@@ -1,0 +1,12 @@
+.test {
+	color: $green;
+	height: 90vh;
+
+	@include breakpoint($tablet) {
+		color: $blue;
+	}
+
+	@include breakpoint($desktop) {
+		color: $red;
+	}
+}
