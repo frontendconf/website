@@ -9,4 +9,8 @@
 	@include breakpoint($desktop) {
 		color: $red;
 	}
+
+	@include breakpoint($wide) {
+		color: violet;
+	}
 }
