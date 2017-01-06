@@ -1,0 +1,32 @@
+@mixin robotolight() {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+@mixin robotoregular() {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+@mixin robotobold() {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+@mixin transition($transition) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+	content: " ";
+	display: table;
+  }
+  &:after {
+	clear: both;
+  }
+}

@@ -15,5 +15,7 @@
 // output any styles themselves: Importing them multiple times to resolve
 // dependencies shouldn't be a problem.
 
+@import "_normalize/**/*";
 @import "_vars/**/*";
+@import "_mixins/**/*";
 @import "app/**/*";

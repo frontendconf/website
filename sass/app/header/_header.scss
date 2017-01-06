@@ -1,0 +1,72 @@
+.header {
+  @include robotobold;
+  @include clearfix();
+
+  &__left {
+	position: relative;
+
+	@include breakpoint($tablet) {
+	  float: left;
+	}
+  }
+
+  &__link-home {
+	text-decoration: none;
+  }
+
+  &__logo {
+	margin-top: 0.3rem;
+	width: 140px;
+	height: 37px;
+  }
+
+  &__hamburger {
+	background: none;
+	border: none;
+	position: absolute;
+	top: 0.875rem;
+	right: 0;
+	display: inline-block;
+	width: 30px;
+	height: 23px;
+	margin: 0;
+	padding: 0;
+
+	@include breakpoint($tablet) {
+	  display: none;
+	}
+  }
+
+  &__hamburger-bar {
+	top: 50%;
+	display: block;
+	margin-top: -2px;
+	background: $black;
+	width: 30px;
+	height: 4px;
+
+	&:before,
+	&:after {
+	  background: $black;
+	  content: "";
+	  display: block;
+	  position: absolute;
+	  width: 30px;
+	  height: 4px;
+	}
+
+	&:before {
+	  top: 0;
+	}
+
+	&:after {
+	  bottom: 0;
+	}
+  }
+
+  &__right {
+	@include breakpoint($tablet) {
+	  float: right;
+	}
+  }
+}
