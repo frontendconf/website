@@ -1,0 +1,13 @@
+.form {
+  &__label {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__input {
+    border: none;
+    height: 50px;
+    padding: 1rem;
+  }
+}

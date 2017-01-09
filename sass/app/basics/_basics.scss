@@ -35,4 +35,10 @@ p {
   text-transform: uppercase;
   padding: 1rem 2rem;
   display: inline-block;
+  border: none;
+  @include robotoregular();
+
+  &--dark {
+    background: $blue-dark;
+  }
 }

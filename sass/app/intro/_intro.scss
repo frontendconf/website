@@ -6,29 +6,41 @@
   position: relative;
 
   &__top-content {
-	padding-top: 2rem;
+    padding-top: 2rem;
   }
 
   &__title {
-	text-transform: uppercase;
-	line-height: 1;
+    text-transform: uppercase;
+    line-height: 1;
   }
 
   &__content {
-	letter-spacing: 0.05em;
-	font-size: 2rem;
-	text-transform: uppercase;
-	@include robotolight;
+    letter-spacing: 0.05em;
+    font-size: 2rem;
+    text-transform: uppercase;
+    @include robotolight;
   }
 
   &__bottom-content {
-	padding: 1.5rem 0;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background: rgba(0, 0, 0, 0.75);
-	line-height: 1;
-	@include robotobold;
+    padding: 1.5rem 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    line-height: 1;
+    @include robotobold;
+  }
+
+  &__bottom-left {
+    @include breakpoint($tablet) {
+      float: left;
+    }
+  }
+
+  &__bottom-right {
+    @include breakpoint($tablet) {
+      float: right;
+    }
   }
 }

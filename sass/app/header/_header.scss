@@ -1,7 +1,7 @@
 .header {
   background: $white;
   padding: 1rem 0;
-  @include robotobold;
+  @include robotobold();
   @include clearfix();
 
   &__left {
