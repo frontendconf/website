@@ -1,9 +1,10 @@
 body {
-  font-family: "Roboto", sans-serif;
+  @include opensansregular();
+  @include font-size($regular-font-size);
 }
 
 strong {
-  @include robotobold;
+  @include opensansbold();
 }
 
 h1,
@@ -12,12 +13,31 @@ h3,
 h4,
 h5,
 h6 {
-  @include robotobold;
+  @include opensanscondensedbold();
   margin: 0 0 0.5rem;
 }
 
 h1 {
-  font-size: 2.5rem;
+  text-transform: uppercase;
+  @include font-size($font-size-h1);
+}
+
+h2 {
+  text-transform: uppercase;
+  @include font-size($font-size-h2);
+
+  &:after {
+    content: " >";
+    @include opensanscondensedlight;
+  }
+}
+
+h3 {
+  @include font-size($font-size-h3);
+}
+
+h4 {
+  @include font-size($regular-font-size);
 }
 
 p {
@@ -28,17 +48,37 @@ p {
   }
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+  @include transition(color 0.4s ease-in-out);
+
+  &:focus,
+  &:hover {
+    color: $link-hover;
+  }
+}
+
 .btn {
   color: $white;
   text-decoration: none;
-  background: $blue-light;
+  background: $blue-dark;
   text-transform: uppercase;
   padding: 1rem 2rem;
   display: inline-block;
   border: none;
-  @include robotoregular();
+  @include transition(background 0.4s ease);
+  @include opensansbold();
 
-  &--dark {
-    background: $blue-dark;
+  &:hover {
+    cursor: pointer;
+    color: $white;
+    background: $link-hover;
   }
 }

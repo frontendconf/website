@@ -1,74 +1,115 @@
 .header {
   background: $white;
-  padding: 1rem 0;
-  @include robotobold;
+  padding-bottom: 1rem;
+  @include opensanscondensedbold();
   @include clearfix;
 
-  &__left {
-	position: relative;
+  @include breakpoint($tablet) {
+    display: block;
+    padding: 1rem 0;
+  }
 
-	@include breakpoint($tablet) {
-	  float: left;
-	}
+  &__left {
+    position: relative;
+    @include clearfix();
+
+    @include breakpoint($tablet) {
+      float: left;
+    }
   }
 
   &__link-home {
-	text-decoration: none;
+    text-decoration: none;
+    display: block;
+    float: left;
+  }
+
+  &__tickets {
+    margin-left: 3rem;
+    position: relative;
+    top: 0.5rem;
+    display: block;
+    padding: 0.75rem 1rem;
+    float: left;
+    background: $blue-dark;
+    color: $white;
+    @include transition(background 0.4s ease);
+
+    &:focus,
+    &:hover {
+      background: $link-hover;
+      color: $white;
+    }
+
+    @include breakpoint($tablet) {
+      display: none;
+    }
   }
 
   &__logo {
-	margin-top: 0.3rem;
-	width: 140px;
-	height: 37px;
+    margin-top: 1rem;
+    width: 80px;
+    height: 21px;
+
+    @include breakpoint($tablet) {
+      margin-top: 0.75rem;
+    }
+
+    @include breakpoint($desktop) {
+      width: 140px;
+      height: 37px;
+    }
   }
 
   &__hamburger {
-	background: none;
-	border: none;
-	position: absolute;
-	top: 0.875rem;
-	right: 0;
-	display: inline-block;
-	width: 30px;
-	height: 23px;
-	margin: 0;
-	padding: 0;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
 
-	@include breakpoint($tablet) {
-	  display: none;
-	}
+    @include breakpoint($tablet) {
+      display: none;
+    }
   }
 
   &__hamburger-bar {
-	top: 50%;
-	display: block;
-	margin-top: -2px;
-	background: $black;
-	width: 30px;
-	height: 4px;
+    top: 50%;
+    display: block;
+    background: $black;
+    width: 30px;
+    height: 4px;
 
-	&:before,
-	&:after {
-	  background: $black;
-	  content: "";
-	  display: block;
-	  position: absolute;
-	  width: 30px;
-	  height: 4px;
-	}
+    &:before,
+    &:after {
+      background: $black;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 30px;
+      height: 4px;
+    }
 
-	&:before {
-	  top: 0;
-	}
+    &:before {
+      top: 0;
+    }
 
-	&:after {
-	  bottom: 0;
-	}
+    &:after {
+      bottom: 0;
+    }
   }
 
   &__right {
-	@include breakpoint($tablet) {
-	  float: right;
-	}
+    display: none;
+
+    @include breakpoint($tablet) {
+      float: right;
+      display: block;
+    }
   }
 }

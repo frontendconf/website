@@ -1,17 +1,52 @@
-@mixin robotolight() {
+@mixin opensanscondensedlight() {
+  font-family: 'Open Sans Condensed', sans-serif;;
   font-weight: 300;
 }
 
-@mixin robotoregular() {
+@mixin opensanscondensedbold() {
+  font-family: 'Open Sans Condensed', sans-serif;;
+  font-weight: 600;
+}
+
+@mixin opensanslight() {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+@mixin opensansregular() {
+  font-family: 'Open Sans', sans-serif;
   font-weight: normal;
 }
 
-@mixin robotobold() {
-  font-weight: 600;
+@mixin opensansbold() {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 
 @mixin transition($transition) {
   transition: $transition;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+@mixin middle($position: absolute) {
+  position: $position;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  -o-filter: $filter;
+  -ms-filter: $filter;
+  filter: $filter;
 }
 
 @mixin clearfix() {
