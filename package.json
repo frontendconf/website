@@ -1,0 +1,41 @@
+{
+  "name": "frontendconf-contentful",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "url": "https://git.responsive.ch/responsive/frontendconf-contentful.git",
+    "type": "git"
+  },
+  "author": "Thomas Jaggi <thomas@responsive.ch>",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "6.9.1"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.clonedeep": "^4.5.0",
+    "next": "beta",
+    "node-cache": "^4.1.1",
+    "now-logs": "^0.0.7",
+    "path-match": "^1.2.4",
+    "restify": "^4.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "build": "next build",
+    "start": "node index.js",
+    "deploy": "now -e NODE_ENV=production -e API=https://frontendconf-api.responsive.ch && now alias",
+    "lint": "eslint ."
+  },
+  "now": {
+    "alias": "https://dev-contentful.frontendconf.ch"
+  }
+}
