@@ -44,7 +44,7 @@ p {
   margin: 0 0 1.5rem;
 
   &:last-of-type {
-	margin-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -81,4 +81,13 @@ a {
     color: $white;
     background: $link-hover;
   }
+}
+
+.blue-light-gradient-box {
+  @include diagonal-gradient(#00b8d4, #0091ea, #00b8d4, #0091ea);
+}
+
+.clearfix {
+  clear: both;
+  float: none;
 }

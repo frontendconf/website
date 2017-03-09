@@ -1,4 +1,63 @@
 .sponsors {
+
+  &-board{
+    &__sponsor {
+      display: block;
+      padding: 1.25rem;
+      margin-bottom: 1.38889%*6;
+      position: relative;
+    }
+    &__info {
+      @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+      display: block;
+      color: $white;
+      padding: 1.25rem;
+      margin-bottom: 1.38889%*6;
+      position: relative;
+
+
+      @include breakpoint($tablet) {
+        min-height: 8.25rem;
+      }
+
+      @include breakpoint($desktop) {
+        min-height: 7.25rem;
+      }
+
+      @include breakpoint($wide) {
+        min-height: 8.25rem;
+      }
+      &-become {
+        color: $white;
+        &:focus,
+        &:hover {
+          color: $white;
+        }
+      }
+      &:focus,
+      &:hover {
+        .sponsors__link {
+          color: $link-hover;
+        }
+      }
+    }
+    &__info-text {
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    &__info-title {
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      @include opensanscondensedbold;
+    }
+    &--all {
+      position: relative;
+    }
+  }
+
+
   &--bottom {
     background: $sponsor-background;
   }
