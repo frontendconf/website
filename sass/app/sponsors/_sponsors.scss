@@ -12,20 +12,23 @@
       display: block;
       color: $white;
       text-align: center;
-      padding: 2rem;
+      padding: 2.5rem;
       margin-bottom: 1.38889%*6;
       position: relative;
 
       @include breakpoint($tablet) {
         min-height: 8.25rem;
+        padding: 2rem 1.5rem;
       }
 
       @include breakpoint($desktop) {
-        min-height: 7.25rem;
+        min-height: 14.25rem;
+        padding: 3.5rem 2rem;
       }
 
       @include breakpoint($wide) {
-        min-height: 8.25rem;
+        min-height: 16.25rem;
+        padding: 4rem 2rem;
       }
       &-become {
         color: $white;
