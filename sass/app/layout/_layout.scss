@@ -58,6 +58,12 @@ $susy: (
     @include span(6 inside);
 }
 
+.col-xs-12 {
+  @include breakpoint($tablet-max) {
+    @include clearfix();
+  }
+}
+
 .col-6 {
   @include breakpoint($tablet) {
     @include span(6 inside);

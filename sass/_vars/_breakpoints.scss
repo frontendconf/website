@@ -14,3 +14,6 @@ $wide: 1200px;
 //Varia
 $mobile: max-width ($tablet - 200px);
 $tablet-only: ($tablet + 1px) ($desktop - 1px);
+
+//Max
+$tablet-max: max-width ($tablet - 1px);
