@@ -1,0 +1,17 @@
+
+.partners.section {
+  background: $footer-background;
+  color: $contributing;
+  [class*=col-] > .partners__link {
+    background: $white;
+    display: block;
+    padding: 0.75rem;
+    margin-bottom: 1.38889%*6;
+    position: relative;
+  }
+}
+
+.footer.section {
+  background: $footer-background;
+  color: $contributing;
+}
