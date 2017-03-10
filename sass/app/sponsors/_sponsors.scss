@@ -4,6 +4,9 @@
     &__sponsor {
       display: block;
       padding: 1.25rem;
+      .sponsors--bottom & {
+        padding: 0.75rem;
+      }
       margin-bottom: 1.38889%*6;
       position: relative;
     }

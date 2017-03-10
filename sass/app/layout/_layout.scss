@@ -118,14 +118,16 @@ $susy: (
 .col-1_5 {
   @include breakpoint($tablet) {
     @include span(1 of 5 inside);
-    @include gutter(12 inside);
+    @include gutters(12 inside);
+    margin-bottom: gutter(12);
   }
 }
 
 .col-1_8 {
   @include breakpoint($tablet) {
     @include span(1 of 8 inside);
-    @include gutter(12 inside);
+    @include gutters(12 inside);
+    margin-bottom: gutter(12)*2;
   }
 }
 
