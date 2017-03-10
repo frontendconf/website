@@ -54,6 +54,12 @@ $susy: (
   @include clearfix();
 }
 
+.col-xs-3 {
+    @include span(3 inside);
+}
+.col-xs-4 {
+    @include span(4 inside);
+}
 .col-xs-6 {
     @include span(6 inside);
 }
@@ -64,9 +70,10 @@ $susy: (
   }
 }
 
-.col-6 {
+//normal ratios "x of 12"
+.col-2 {
   @include breakpoint($tablet) {
-    @include span(6 inside);
+    @include span(2 inside);
   }
 }
 
@@ -79,6 +86,12 @@ $susy: (
 .col-4 {
   @include breakpoint($tablet) {
     @include span(4 inside);
+  }
+}
+
+.col-6 {
+  @include breakpoint($tablet) {
+    @include span(6 inside);
   }
 }
 
@@ -99,6 +112,23 @@ $susy: (
     @include span(12 inside);
   }
 }
+
+//unusual ratios
+
+.col-1_5 {
+  @include breakpoint($tablet) {
+    @include span(1 of 5 inside);
+    @include gutter(12 inside);
+  }
+}
+
+.col-1_8 {
+  @include breakpoint($tablet) {
+    @include span(1 of 8 inside);
+    @include gutter(12 inside);
+  }
+}
+
 
 .section {
   padding: 2rem 0;
