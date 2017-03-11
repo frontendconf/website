@@ -70,6 +70,7 @@
   }
 
   &__title {
+    text-transform: uppercase;
     &--diamond {
       color: $diamond;
     }
