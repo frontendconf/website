@@ -2,6 +2,14 @@
 .partners.section {
   background: $footer-background;
   color: $contributing;
+
+  @media (min-width: 768px) {
+    padding: 1.75rem 0;
+  }
+  .partners__title {
+    text-transform: uppercase;
+  }
+
   [class*=col-] > .partners__link {
     background: $white;
     display: block;
@@ -12,6 +20,39 @@
 }
 
 .footer.section {
+  @include font-size($small-font-size);
   background: $footer-background;
   color: $contributing;
+
+  @media (min-width: 768px) {
+    padding: 1.75rem 0;
+  }
+
+  a:not(.btn) {
+    color: $contributing;
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+  .navigation_list {
+    @extend .ul-nostyle;
+    columns: 2;
+    li {
+      line-height: 2rem;
+      margin: 0 0 0 4rem;
+      a {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .newsletter {
+  }
+  .social{
+    li {
+      margin: 0 0.5rem 0 0;
+    }
+  }
+
 }
