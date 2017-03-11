@@ -58,11 +58,18 @@ a {
   color: $link;
   text-decoration: none;
   @include transition(color 0.4s ease-in-out);
+  img {
+    @include transition(opacity 0.4s ease-in-out);
+  }
 
   &:focus,
   &:hover {
     color: $link-hover;
+    img[class*=__logo] {
+      opacity: .7;
+    }
   }
+
 }
 
 .btn {
@@ -76,7 +83,7 @@ a {
   }
   display: inline-block;
   border: none;
-  @include transition(background-color 0.4s ease);
+  @include transition(background 0.4s ease);
   @include opensansbold();
 
   &.fix-size {
