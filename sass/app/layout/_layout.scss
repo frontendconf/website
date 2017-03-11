@@ -122,6 +122,13 @@ $susy: (
     margin-bottom: gutter(12);
   }
 }
+.col-2_5 {
+  @include breakpoint($tablet) {
+    @include span(2 of 5 inside);
+    @include gutters(12 inside);
+    margin-bottom: gutter(12);
+  }
+}
 
 .col-1_8 {
   @include breakpoint($tablet) {
@@ -130,7 +137,6 @@ $susy: (
     margin-bottom: gutter(12)*2;
   }
 }
-
 
 .section {
   padding: 2rem 0;
@@ -152,6 +158,13 @@ $susy: (
 
     @include breakpoint($tablet) {
       padding: 0 0 3.75rem;
+    }
+  }
+  &--small {
+    padding: 1rem 0;
+
+    @include breakpoint($tablet) {
+      padding: 2rem 0;
     }
   }
 }
