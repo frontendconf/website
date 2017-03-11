@@ -68,21 +68,76 @@ a {
 .btn {
   color: $white;
   text-decoration: none;
-  background: $blue-dark;
+  @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $red-light-gradient1, $red-light-gradient2);
   text-transform: uppercase;
   padding: 1rem 2rem;
+  &.small {
+    padding: 0.5rem 0.5rem;
+  }
   display: inline-block;
   border: none;
-  @include transition(background 0.4s ease);
+  @include transition(background-color 0.4s ease);
   @include opensansbold();
+
+  &.fix-size {
+    width: 100%;
+    display: block;
+    margin-bottom: 0.01rem;
+  }
+
 
   &:hover {
     cursor: pointer;
     color: $white;
-    background: $link-hover;
   }
 }
 
-.blue-light-gradient-box {
-  @include diagonal-gradient(#00b8d4, #0091ea, #00b8d4, #0091ea);
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+
+
+.ul-nostyle{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul[class*=list] {
+  @extend .ul-nostyle;
+  li {
+    margin: 0 0 0.75rem 0;
+  }
+}
+ul.list-inline li {
+  display: inline-block;
+  margin: 0 1.5rem 0 0;
+  &:first-child {
+    margin-left: 0
+  }
+  &:last-child {
+    margin-right: 0
+  }
+}
+
+.margin-top-large {
+  margin-top: 2rem;
+}
+.margin-top-normal {
+  margin-top: 1rem;
+}
+.margin-top-small {
+  margin-top: 0.5rem;
+}
+.margin-bottom-large {
+  margin-bottom: 2rem;
+}
+.margin-bottom-normal {
+  margin-bottom: 1rem;
+}
+.margin-bottom-small {
+  margin-bottom: 0.5rem;
 }
