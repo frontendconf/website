@@ -1,0 +1,30 @@
+.venue {
+  background: $venue-background;
+  color: $white;
+
+  &__image,
+  &__inner {
+    display: table-cell;
+
+    @include breakpoint($tablet) {
+      width: 50%;
+    }
+  }
+
+  &__image {
+    background: url("../images/venue.jpg") no-repeat center center;
+    background-size: cover;
+  }
+
+  &__inner {
+    @include breakpoint($tablet) {
+      padding: 5rem;
+    }
+  }
+
+  &__content {
+    @include breakpoint($tablet) {
+      //max-width: 435px;
+    }
+  }
+}

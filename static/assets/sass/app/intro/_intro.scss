@@ -1,0 +1,63 @@
+.intro {
+  background: url("../images/intro.jpg") no-repeat;
+  background-size: cover;
+  height: calc(100vh - 5rem);
+  color: $white;
+  position: relative;
+
+  &--blurred {
+    height: 60vh;
+    background: -moz-linear-gradient(14.33% 166.4% 40deg, rgba(0, 167, 247, 1) 0%, rgba(0, 182, 223, 1) 61.78%, rgba(0, 188, 214, 1) 100%);
+    background: -webkit-linear-gradient(40deg, rgba(0, 167, 247, 1) 0%, rgba(0, 182, 223, 1) 61.78%, rgba(0, 188, 214, 1) 100%);
+    background: -webkit-gradient(linear, 14.33% 166.4%, 85.67% -66.4%, color-stop(0, rgba(0, 167, 247, 1)), color-stop(0.6178, rgba(0, 182, 223, 1)), color-stop(1, rgba(0, 188, 214, 1)));
+    background: -o-linear-gradient(40deg, rgba(0, 167, 247, 1) 0%, rgba(0, 182, 223, 1) 61.78%, rgba(0, 188, 214, 1) 100%);
+    background: -ms-linear-gradient(40deg, rgba(0, 167, 247, 1) 0%, rgba(0, 182, 223, 1) 61.78%, rgba(0, 188, 214, 1) 100%);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#00A7F7', endColorstr='#00BCD6' ,GradientType=0)";
+    background: linear-gradient(50deg, rgba(0, 167, 247, 1) 0%, rgba(0, 182, 223, 1) 61.78%, rgba(0, 188, 214, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00A7F7', endColorstr='#00BCD6', GradientType=1);
+  }
+
+  &__top-content {
+    padding-top: 2rem;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  &__content {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    @include font-size($font-size-h2);
+    @include opensanscondensedlight();
+
+    &--regular {
+      letter-spacing: inherit;
+      text-transform: inherit;
+      @include font-size($font-size-h3);
+    }
+  }
+
+  &__bottom-content {
+    padding: 1.5rem 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    line-height: 1;
+  }
+
+  &__bottom-left {
+    @include breakpoint($tablet) {
+      float: left;
+    }
+  }
+
+  &__bottom-right {
+    @include breakpoint($tablet) {
+      float: right;
+    }
+  }
+}
