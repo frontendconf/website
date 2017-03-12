@@ -19,7 +19,8 @@ const Layout = ({ children, title = 'Frontend Conf', menu }) => {
 Layout.propTypes = {
   title: React.PropTypes.string,
   children: React.PropTypes.array,
-  menu: React.PropTypes.array
+  menu: React.PropTypes.array,
+  query: React.PropTypes.object
 }
 
 export default Layout
