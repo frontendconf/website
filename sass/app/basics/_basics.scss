@@ -26,7 +26,7 @@ h2 {
   text-transform: uppercase;
   @include font-size($font-size-h2);
 
-  &:after {
+  &:not(.intro__title):after {
     content: " >";
     @include opensanscondensedlight;
   }
