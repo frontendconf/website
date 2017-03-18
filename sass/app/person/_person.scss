@@ -26,6 +26,10 @@
     opacity: 0.7;
     @include font-size($regular-font-size);
     font-weight: normal;
+    color: $link;
+    a:hover & {
+      color: $link;
+    }
   }
 }
 
@@ -51,6 +55,5 @@
     text-transform: uppercase;
     @include opensanscondensedbold();
     @include middle();
-
   }
 }
