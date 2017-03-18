@@ -1,7 +1,12 @@
 .intro {
-  background: url("../images/intro.jpg") no-repeat;
+  background: url("../images/intro.jpg") no-repeat; //TODO replace with another image
   background-size: cover;
-  height: calc(100vh - 5rem);
+  height: calc(30rem);
+
+  &--bg-100 {
+    background: url("../images/intro.jpg") no-repeat;
+    height: calc(100vh - 5rem);
+  }
   color: $white;
   position: relative;
 
