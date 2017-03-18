@@ -3,9 +3,6 @@
   background: $footer-background;
   color: $contributing;
 
-  @media (min-width: 768px) {
-    padding: 1.75rem 0;
-  }
   .partners__title {
     text-transform: uppercase;
   }
@@ -23,10 +20,6 @@
   @include font-size($small-font-size);
   background: $footer-background;
   color: $contributing;
-
-  @media (min-width: 768px) {
-    padding: 1.75rem 0;
-  }
 
   a:not(.btn) {
     color: $contributing;
@@ -55,4 +48,10 @@
     }
   }
 
+}
+
+.partners.section + .footer.section {
+  @media (min-width: 768px) {
+    padding-top: 1rem;
+  }
 }
