@@ -168,3 +168,29 @@ $susy: (
     }
   }
 }
+
+.eq-height {
+  @include breakpoint($tablet) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+
+	& > [class*='col-'] {
+		background-clip: content-box;
+      @include breakpoint($tablet) {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column; // FF 47-
+			-webkit-flex-direction: row; // iOS safari
+			-ms-flex-direction: column; // IE11
+		}
+	}
+
+	&:before,
+	&:after {
+      @include breakpoint($tablet) {
+			content: normal; // IE doesn't support `initial`
+		}
+	}
+}
