@@ -2,7 +2,8 @@ $white: #fff;
 $black: #000;
 $red: red;
 $blue-light: #00b9db;
-$blue-dark: #37474f;
+$blue-dark: #36474f;
+$blue-darker: #263238;
 
 $news-background: #77909d;
 $venue-background: $blue-light;
@@ -24,4 +25,4 @@ $blue-light-gradient2: #0091ea;
 $red-light-gradient1: #c51162;
 $red-light-gradient2: #d50000;
 
-$footer-background: #263238;
+$footer-background: $blue-darker;

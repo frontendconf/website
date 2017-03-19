@@ -16,13 +16,13 @@ $susy: (
                 rem: true
         ),
         debug: (
-                //image: show-columns,
+          //image: show-columns,
                 color: rgba($red, 0.1),
-                //output: background,
-                //toggle: top right,
-                //output: overlay,
-                //image: show-columns,
-                //color: rgba($red, 0.1),
+          //output: background,
+          //toggle: top right,
+          //output: overlay,
+          //image: show-columns,
+          //color: rgba($red, 0.1),
           //image: show,
           //toggle: top right,
         ),
@@ -55,13 +55,13 @@ $susy: (
 }
 
 .col-xs-3 {
-    @include span(3 inside);
+  @include span(3 inside);
 }
 .col-xs-4 {
-    @include span(4 inside);
+  @include span(4 inside);
 }
 .col-xs-6 {
-    @include span(6 inside);
+  @include span(6 inside);
 }
 
 .col-xs-12 {
@@ -171,26 +171,26 @@ $susy: (
 
 .eq-height {
   @include breakpoint($tablet) {
-		display: flex;
-		flex-wrap: wrap;
-	}
+    display: flex;
+    flex-wrap: wrap;
+  }
 
 
-	& > [class*='col-'] {
-		background-clip: content-box;
-      @include breakpoint($tablet) {
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: column; // FF 47-
-			-webkit-flex-direction: row; // iOS safari
-			-ms-flex-direction: column; // IE11
-		}
-	}
+  & > [class*='col-'] {
+    background-clip: content-box;
+    @include breakpoint($tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column; // FF 47-
+      -webkit-flex-direction: row; // iOS safari
+      -ms-flex-direction: column; // IE11
+    }
+  }
 
-	&:before,
-	&:after {
-      @include breakpoint($tablet) {
-			content: normal; // IE doesn't support `initial`
-		}
-	}
+  &:before,
+  &:after {
+    @include breakpoint($tablet) {
+      content: normal; // IE doesn't support `initial`
+    }
+  }
 }

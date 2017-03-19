@@ -70,7 +70,10 @@
   }
 
   &__title {
-    text-transform: uppercase;
+    .home & {
+      text-transform: uppercase;
+    }
+
     &--diamond {
       color: $diamond;
     }
@@ -90,5 +93,23 @@
     &--contributing {
       color: $contributing;
     }
+  }
+
+  &__name {
+    color: $blue-dark;
+  }
+  &__description {
+
+  }
+  &__website {
+    @extend .margin-top-normal;
+    .sponsors__link {
+      padding-right: 2rem;
+    }
+  }
+  &__line {
+    border-top: 1px solid $silver;
+    @extend .margin-top-normal;
+    @extend .padding-top-normal;
   }
 }

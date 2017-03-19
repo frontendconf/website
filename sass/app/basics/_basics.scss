@@ -1,6 +1,7 @@
 body {
   @include opensansregular();
   @include font-size($regular-font-size);
+  color: $blue-darker;
 }
 
 strong {
@@ -18,17 +19,30 @@ h6 {
 }
 
 h1 {
-  text-transform: uppercase;
   @include font-size($font-size-h1);
+  &.intro__title{
+    @include font-size($font-size-h2);
+  }
+  .home & {
+    text-transform: uppercase;
+    @include font-size($font-size-h1);
+    .intro__title{
+      @include font-size($font-size-h1);
+    }
+  }
 }
 
 h2 {
-  text-transform: uppercase;
   @include font-size($font-size-h2);
 
-  &:not(.intro__title):after {
-    content: " >";
-    @include opensanscondensedlight;
+  .home & {
+    text-transform: uppercase;
+    @include font-size($font-size-h2);
+
+    &:not(.intro__title):after {
+      content: " >";
+      @include opensanscondensedlight;
+    }
   }
 }
 
@@ -130,6 +144,7 @@ ul.list-inline li {
   }
 }
 
+// generic margins
 .margin-top-large {
   margin-top: 2rem;
 }
@@ -147,4 +162,24 @@ ul.list-inline li {
 }
 .margin-bottom-small {
   margin-bottom: 0.5rem;
+}
+
+// generic paddings
+.padding-top-large {
+  padding-top: 2rem;
+}
+.padding-top-normal {
+  padding-top: 1rem;
+}
+.padding-top-small {
+  padding-top: 0.5rem;
+}
+.padding-bottom-large {
+  padding-bottom: 2rem;
+}
+.padding-bottom-normal {
+  padding-bottom: 1rem;
+}
+.padding-bottom-small {
+  padding-bottom: 0.5rem;
 }
