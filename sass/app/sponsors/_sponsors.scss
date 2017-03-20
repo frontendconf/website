@@ -94,22 +94,26 @@
       color: $contributing;
     }
   }
+  &__sponsor {
+    @include font-size($middle-font-size);
 
-  &__name {
-    color: $blue-dark;
-  }
-  &__description {
-
-  }
-  &__website {
-    @extend .margin-top-normal;
-    .sponsors__link {
-      padding-right: 2rem;
+    &-name {
+      color: $blue-dark;
     }
-  }
-  &__line {
-    border-top: 1px solid $silver;
-    @extend .margin-top-normal;
-    @extend .padding-top-normal;
+    &-description {
+    }
+    &-website {
+      @extend .margin-top-normal;
+      a {
+        color: $link-bright;
+        padding-right: 2rem;
+      }
+    }
+    &-line {
+      border-top: 1px solid $silver;
+      @extend .margin-top-normal;
+      @extend .padding-top-normal;
+    }
+    &-link {}
   }
 }

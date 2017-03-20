@@ -6,17 +6,24 @@ $breakpoints: (
 );
 
 $small-font-size: (
-  null: (0.875rem, 1.15),
+  null: (0.875rem, 1.35),
   sm: 0.875rem,
   md: 0.875rem,
   lg: 0.875rem
 );
 
+$middle-font-size: (
+  null: (0.9rem, 1.35),
+  sm: 0.9rem,
+  md: 0.9rem,
+  lg: 1.0rem
+);
+
 $regular-font-size: (
-  null: (0.9375rem, 1.15),
+  null: (0.9375rem, 1.35),
   sm: 0.9375rem,
   md: 0.9375rem,
-  lg: 1.0rem
+  lg: 1.1875rem
 );
 
 $font-size-h1: (
@@ -37,5 +44,5 @@ $font-size-h3: (
   null: (1rem, 1.35),
   sm: 1.125rem,
   md: 1.125rem,
-  lg: 1.8rem
+  lg: 1.6rem
 );
