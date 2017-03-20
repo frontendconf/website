@@ -175,7 +175,6 @@ $susy: (
     flex-wrap: wrap;
   }
 
-
   & > [class*='col-'] {
     background-clip: content-box;
     @include breakpoint($tablet) {
@@ -184,6 +183,10 @@ $susy: (
       flex-direction: column; // FF 47-
       -webkit-flex-direction: row; // iOS safari
       -ms-flex-direction: column; // IE11
+      float: none;
+      & > * {
+        width: 100%;
+      }
     }
   }
 
