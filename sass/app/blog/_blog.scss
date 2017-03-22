@@ -4,10 +4,13 @@
     &-title {
 
     }
-    &-info-date,
-    &-info-tag
-    {
-      @include gutter();
+    &-info {
+      @extend .margin-bottom-small;
+      &-date,
+      &-tag
+      {
+        @include gutter();
+      }
     }
     &-image {
       @include span(4 of 8 inside);
