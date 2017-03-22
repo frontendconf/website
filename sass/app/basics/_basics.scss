@@ -76,6 +76,7 @@ a {
   color: $link;
   text-decoration: none;
   @include transition(color 0.4s ease-in-out);
+  @include transition(background-color 0.4s ease-in-out);
   img {
     @include transition(opacity 0.4s ease-in-out);
   }
@@ -123,7 +124,9 @@ a {
 .right {
   text-align: right;
 }
-
+.justify {
+  text-align: justify;
+}
 
 .ul-nostyle{
   list-style: none;
