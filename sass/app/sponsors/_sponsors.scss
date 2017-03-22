@@ -25,12 +25,12 @@
       }
 
       @include breakpoint($desktop) {
-        min-height: 14.25rem;
+        min-height: 12.25rem;
         padding: 3.5rem 2rem;
       }
 
       @include breakpoint($wide) {
-        min-height: 16.25rem;
+        min-height: 14.25rem;
         padding: 4rem 2rem;
       }
       &-become {
