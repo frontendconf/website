@@ -1,0 +1,26 @@
+.blog {
+
+  &__article {
+    &-title {
+
+    }
+    &-info-date,
+    &-info-tag
+    {
+      @include gutter();
+    }
+    &-image {
+      @include span(4 of 8 inside);
+      padding-left: 0;
+      padding-right: gutter(12);
+    }
+    &-text {
+
+    }
+    &-image + &-text {
+      @include span(4 of 8 inside);
+      padding-left: gutter(12);
+      padding-right: 0;
+    }
+  }
+}
