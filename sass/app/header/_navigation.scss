@@ -63,3 +63,7 @@
   }
 }
 
+// temporary to simulate the active status, to remove and use navigation__link--active class
+.blog .navigation__link-blog { color: $link-active; }
+.sponsors .navigation__link-sponsors { color: $link-active; }
+.speakers .navigation__link-speakers { color: $link-active; }
