@@ -57,3 +57,61 @@
     @include middle();
   }
 }
+
+.speaker {
+  &__profile {
+    background: $silver-light;
+    @include clearfix();
+    [class*=col-] {
+      &:first-child{
+        padding-left: 0;
+      }
+    }
+
+    &-text {
+      padding-top: gutter();
+      padding-bottom: gutter();
+    }
+    &-website {
+      @extend .margin-top-normal;
+      a {
+        padding-right: 2rem;
+        color: $link-bright;
+        &:hover {
+          color: $link-hover;
+        }
+      }
+    }
+  }
+}
+
+.other_speakers {
+  &_line {
+    border-top: 1px solid $silver;
+    @extend .margin-top-normal;
+    @extend .padding-top-normal;
+  }
+
+  .person {
+    margin-bottom: gutter(2);
+
+    &__image {
+      @include span (1 of 3 inside);
+      padding: 0;
+    }
+
+    &__caption {
+      @include span (2 of 3 inside);
+    }
+
+    &__title,
+    &__name {
+      @include font-size($regular-font-size);
+    }
+
+    &__job-title,
+    &__more {
+      display: none;
+    }
+  }
+}

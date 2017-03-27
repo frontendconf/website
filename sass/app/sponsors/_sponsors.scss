@@ -105,14 +105,12 @@
     &-website {
       @extend .margin-top-normal;
       a {
-        color: $link-bright;
         padding-right: 2rem;
+        color: $link-bright;
       }
     }
     &-line {
-      border-top: 1px solid $silver;
-      @extend .margin-top-normal;
-      @extend .padding-top-normal;
+      @extend .separator-line;
     }
     &-link {}
   }

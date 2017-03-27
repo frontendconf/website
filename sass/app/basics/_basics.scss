@@ -127,6 +127,9 @@ a {
 .justify {
   text-align: justify;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 
 .ul-nostyle{
   list-style: none;
@@ -189,4 +192,10 @@ ul.list-inline li {
 }
 .padding-bottom-small {
   padding-bottom: 0.5rem;
+}
+
+.separator-line {
+    border-top: 1px solid $silver-light;
+    @extend .margin-top-normal;
+    @extend .padding-top-normal;
 }
