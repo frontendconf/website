@@ -11,8 +11,7 @@
 
   }
 
-  &__image,
-  &__image img {
+  &__image {
     @include filter(grayscale(100%));
     @include transition(filter 0.4s ease);
   }
