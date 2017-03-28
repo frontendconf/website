@@ -28,3 +28,12 @@
     }
   }
 }
+
+.accomodation {
+  @include font-size($middle-font-size);
+  @extend .margin-top-large;
+  &__caption {
+    @extend .margin-top-normal;
+    display: block;
+  }
+}
