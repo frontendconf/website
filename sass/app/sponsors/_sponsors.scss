@@ -43,15 +43,23 @@
       &:focus,
       &:hover {
         .sponsors__link {
-          color: $link-hover;
+					position: relative;
         }
       }
     }
     &__info-text {
+			@include opensanslight;
       display: block;
       margin-bottom: 1.5rem;
+
+			a {
+				color: $white;
+				@include opensansbold;
+			}
     }
     &__info-title {
+			color: $white;
+			font-size: 1.4rem;
       text-transform: uppercase;
       display: block;
       margin-bottom: 0.5rem;

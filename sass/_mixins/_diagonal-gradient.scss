@@ -1,43 +1,41 @@
 // Creates a background that appears to be split diagonally through the middle by two colors.
 
-// THIS REPLACES COMPASS'S BUILT IN GRADIENT INCLUDE 
+// THIS REPLACES COMPASS'S BUILT IN GRADIENT INCLUDE
 // COMPASS IS NOT FULLY CROSS-BROWSER
 // This is built off of the format from http://www.colorzilla.com/gradient-editor/
 
 @mixin diagonal-gradient($color1, $color2, $color1-hover, $color2-hover){
-  ///* Old browsers - Fallback to flat color */
-  background: $color1;
-  ///* FF3.6+ */
-  background: -moz-linear-gradient(45deg, $color1 0%, $color1 50%,  $color2 100%);
-  ///* Chrome,Safari4+ */
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$color1), color-stop(50%,$color1), color-stop(51%,$color2), color-stop(100%,$color2));
-  ///* Chrome10+,Safari5.1+ */
-  background: -webkit-linear-gradient(45deg, $color1 0%,$color1 50%,$color2 100%);
-  ///* Opera 11.10+ */
-  background: -o-linear-gradient(45deg, $color1 0%,$color1 50%,$color2 100%);
-  ///* IE10+ */
-  background: -ms-linear-gradient(45deg, $color1 0%,$color1 50%,$color2 100%);
-  ///* W3C */
+	position: relative;
+	display: inline-block;
+  z-index: 100;
+	background: $color1;
   background: linear-gradient(45deg, $color1 0%,$color1 50%,$color2 100%);
-  ///* IE6-9 fallback on horizontal gradient */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1', endColorstr='$color2',GradientType=1 );
+	transition: all .5s;
 
-  &:hover, &:active{
-    ///* Old browsers - Fallback to flat color */
-    background: $color1-hover;
-    ///* FF3.6+ */
-    background: -moz-linear-gradient(45deg, $color1-hover 0%, $color1-hover 50%,  $color2-hover 100%);
-    ///* Chrome,Safari4+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$color1-hover), color-stop(50%,$color1-hover), color-stop(51%,$color2-hover), color-stop(100%,$color2-hover));
-    ///* Chrome10+,Safari5.1+ */
-    background: -webkit-linear-gradient(45deg, $color1-hover 0%,$color1-hover 50%,$color2-hover 100%);
-    ///* Opera 11.10+ */
-    background: -o-linear-gradient(45deg, $color1-hover 0%,$color1-hover 50%,$color2-hover 100%);
-    ///* IE10+ */
-    background: -ms-linear-gradient(45deg, $color1-hover 0%,$color1-hover 50%,$color2-hover 100%);
-    ///* W3C */
+	&:before {
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 0;
+    z-index: -100;
+		background: $color1-hover;
     background: linear-gradient(45deg, $color1-hover 0%,$color1-hover 50%,$color2-hover 100%);
-    ///* IE6-9 fallback on horizontal gradient */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color1-hover', endColorstr='$color2-hover',GradientType=1 );
+		transition: all .5s;
   }
+
+	&:hover, &:active, &:focus {
+		color: $white;
+
+    &:before {
+      opacity: 1;
+			width: 100%;
+    }
+  }
+}
+
+@mixin hover {
+	@include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $red-light-gradient1, $red-light-gradient2);
 }

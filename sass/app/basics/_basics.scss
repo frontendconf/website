@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url('../fonts/social/MonoSocialIconsFont-1.10.eot');
+    src: url('../fonts/social/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/social/MonoSocialIconsFont-1.10.woff') format('woff'),
+         url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+         url('../fonts/social/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src: url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
   @include opensansregular();
   @include font-size($regular-font-size);
@@ -34,20 +46,27 @@ h1 {
 
 h2 {
   @include font-size($font-size-h2);
+	margin-top: 2rem;
 
   .home & {
     text-transform: uppercase;
     @include font-size($font-size-h2);
 
     &:not(.intro__title):after {
-      content: " >";
-      @include opensanscondensedlight;
+			font-size: 50px;
+			line-height: 1rem;
+      content: " \0203A";
+      @include opensanscondensedregular;
     }
   }
 }
 
 h3 {
   @include font-size($font-size-h3);
+}
+
+section:not(.intro) h3 {
+	margin-top: 2rem;
 }
 
 h4 {
@@ -60,6 +79,10 @@ p {
   &:last-of-type {
     margin-bottom: 0;
   }
+}
+
+section:not(.intro) p {
+	line-height: 1.5em;
 }
 
 aside {
@@ -92,18 +115,32 @@ a {
 }
 
 .btn {
+	@include opensanscondensedbold;
+	line-height: 1rem;
   color: $white;
   text-decoration: none;
-  @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $red-light-gradient1, $red-light-gradient2);
   text-transform: uppercase;
   padding: 1rem 2rem;
-  &.small {
-    padding: 0.5rem 0.5rem;
-  }
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
   display: inline-block;
   border: none;
-  @include transition(background 0.4s ease);
-  @include opensansbold();
+
+	&.small {
+		padding: 0.5rem 0.5rem;
+	}
+
+	@include breakpoint($tablet) {
+		width: auto;
+		margin-bottom: 0;
+	}
+
+	&+ .btn {
+		@include breakpoint($tablet) {
+			margin-left: 10px;
+		}
+	}
 
   &.fix-size {
     width: 100%;
@@ -116,6 +153,10 @@ a {
     cursor: pointer;
     color: $white;
   }
+}
+
+.btn, .navigation__link--tickets, .speakers__link, .job-board__job {
+	@include hover;
 }
 
 .center {
@@ -137,7 +178,7 @@ a {
   padding: 0;
 }
 
-ul[class*=list] {
+section ul[class*=list] {
   @extend .ul-nostyle;
   li {
     margin: 0 0 0.75rem 0;
@@ -156,7 +197,7 @@ ul.list-inline li {
 
 // generic margins
 .margin-top-large {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .margin-top-normal {
   margin-top: 1rem;

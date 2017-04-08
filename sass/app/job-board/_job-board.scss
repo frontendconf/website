@@ -9,12 +9,6 @@
     margin-bottom: 1.38889%*6;
     position: relative;
 
-    &:focus,
-    &:hover {
-      background: $link-hover;
-      color: $white;
-    }
-
     @include breakpoint($tablet) {
       min-height: 8.25rem;
     }

@@ -29,6 +29,7 @@
   }
 
   .navigation_list {
+		@include opensanslight;
     @extend .ul-nostyle;
     columns: 2;
     li {
@@ -40,11 +41,36 @@
     }
   }
 
+	.list {
+		list-style: none;
+
+		li {
+			margin-bottom: .5rem;
+		}
+	}
+
+	.list-inline {
+		@include opensanslight;
+	}
+
   .newsletter {
   }
-  .social{
+  .social {
+		$social-size: 40px;
+
     li {
-      margin: 0 0.5rem 0 0;
+			width: $social-size;
+			height: $social-size;
+			padding: 0;
+      margin: 0 0 .5rem .15rem;
+
+			a {
+				width: $social-size;
+				height: $social-size;
+				font-size: $social-size;
+				line-height: $social-size;
+				padding: 0;
+			}
     }
   }
 

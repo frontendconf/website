@@ -52,12 +52,12 @@
     height: 21px;
 
     @include breakpoint($tablet) {
-      margin-top: 0.75rem;
+      margin-top: .25rem;
     }
 
     @include breakpoint($desktop) {
       width: 140px;
-      height: 37px;
+      height: 40px;
     }
   }
 

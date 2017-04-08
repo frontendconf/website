@@ -35,14 +35,6 @@
       display: inline-block;
     }
 
-    &:focus {
-      color: $black;
-    }
-
-    &:hover {
-      color: $link-hover;
-    }
-
     &--active {
       color: $link-active;
     }
@@ -51,13 +43,6 @@
       @include breakpoint($tablet) {
         background: $blue-dark;
         color: $white;
-        @include transition(background 0.4s ease);
-      }
-
-      &:focus,
-      &:hover {
-        color: $white;
-        background: $link-hover;
       }
     }
   }
