@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Link from 'next/link'
+import config from '../config'
 
 class Header extends Component {
   render () {
@@ -7,15 +9,13 @@ class Header extends Component {
         <div className="grid__inner">
           <div className="col-12">
             <div className="header__left">
-              <a href="/" className="header__link-home">
-                <img className="header__logo" src={process.env.CDN + '/assets/images/fec-logo.svg'} alt="Logo" />
-              </a>
+              <Link href="/">
+                <a className="header__link-home">
+                  <img className="header__logo" src={config.CDN + '/assets/images/fec-logo.svg'} alt="Logo" />
+                </a>
+              </Link>
 
-              <a href="/" className="header__tickets">
-                Tickets
-              </a>
-
-              <button className="header__hamburger">
+              <button type="button" className="header__hamburger">
                 <span className="header__hamburger-bar"></span>
               </button>
             </div>
@@ -24,10 +24,14 @@ class Header extends Component {
               <nav className="navigation">
                 <ul className="navigation__list">
                   {this.props.menu.map((item, i) => {
+                    const href = '/?page=' + item.slug
+
                     return <li className="navigation__element" key={i}>
-                      <a href={item.slug} className={item.isActive ? 'navigation__link navigation__link--active' : 'navigation__link'}>
-                        {item.title}
-                      </a>
+                      <Link href={href} as={item.slug}>
+                        <a className={item.isActive ? 'navigation__link navigation__link--active' : 'navigation__link'}>
+                          {item.title}
+                        </a>
+                      </Link>
                     </li>
                   })}
                 </ul>

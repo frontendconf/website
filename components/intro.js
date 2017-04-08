@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Newsletter from './newsletter'
 
 class Intro extends Component {
   formatDate (date) {
@@ -25,7 +26,7 @@ class Intro extends Component {
                   <br />
                   {startDate[1]} {startDate[0]} - {endDate[1]} {endDate[0]} {endDate[2]}
                   <br />
-                  {this.props.location}
+                  {/*this.props.location*/}
                 </p>
               </div>
             </div>
@@ -38,20 +39,15 @@ class Intro extends Component {
           <div className="grid__inner">
             <div className="col-12">
               <div className="intro__bottom-left">
-                <a href="javascript:void(0);" className="btn">
-                  Call for papers
-                </a>
-                <a href="javascript:void(0);" className="btn">
-                  Become a sponsor
-                </a>
+                {this.props.teasers.map((teaser, i) => {
+                  return <a href={teaser.fields.link.fields.slug} className="btn" key={i}>
+                    {teaser.fields.link.fields.title}
+                  </a>
+                })}
               </div>
 
               <div className="intro__bottom-right">
-                <form className="form" action="/">
-                  <label className="form__label form__label--hidden" htmlFor="email">E-Mail</label>
-                  <input className="form__input" id="email" type="email" placeholder="NEWSLETTER" />
-                  <button className="btn btn--dark">Sign up</button>
-                </form>
+                <Newsletter />
               </div>
             </div>
           </div>
@@ -66,7 +62,8 @@ Intro.propTypes = {
   subtitle: React.PropTypes.string,
   startDate: React.PropTypes.string,
   endDate: React.PropTypes.string,
-  location: React.PropTypes.string
+  location: React.PropTypes.object,
+  teasers: React.PropTypes.array
 }
 
 export default Intro

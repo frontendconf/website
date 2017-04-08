@@ -12,10 +12,11 @@
     "node": "6.9.1"
   },
   "dependencies": {
+    "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash.clonedeep": "^4.5.0",
+    "lru-cache": "^4.0.2",
     "next": "beta",
-    "node-cache": "^4.1.1",
     "now-logs": "^0.0.7",
     "path-match": "^1.2.4",
     "restify": "^4.3.0"
@@ -25,14 +26,12 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^6.8.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "nodemon": "^1.11.0"
+    "eslint-plugin-standard": "^2.0.1"
   },
   "scripts": {
-    "dev": "nodemon",
     "build": "next build",
     "start": "node index.js",
-    "deploy": "now -e NODE_ENV=production -e API=https://frontendconf-api.responsive.ch && now alias",
+    "deploy": "now -e NODE_ENV=production -e API=https://frontendconf-contentful-api-dzpasryugh.now.sh && now alias",
     "lint": "eslint ."
   },
   "now": {

@@ -10,18 +10,29 @@ export default (Component) => {
     static async getInitialProps ({ query }) {
       return API.getEntries().then((items) => {
         const config = items.filter(filterByType, 'config')
-        const pages = items.filter(filterByType, 'pages')
-        const menu = items.filter(filterByType, 'menu').map((item) => {
-          const page = item.fields.page
-          const slug = page ? page.fields.slug : '#'
+        const pages = items.filter(filterByType, 'page')
+        const currentPage = pages.find((item) => {
+          const slug = item.fields.slug
+
+          return query.page && query.page === slug || !query.page && slug === '/'
+        })
+        const menu = config.length ? config[0].fields.menu.map((item) => {
+          const slug = item.fields.slug
 
           return {
             title: item.fields.title,
             slug: slug,
             isActive: query.page === slug
           }
-        })
-        const intro = config.length ? config[0].fields : null
+        }) : null
+        const intro = config.length ? {
+          title: config[0].fields.title,
+          subtitle: config[0].fields.subtitle,
+          startDate: config[0].fields.startDate,
+          endDate: config[0].fields.endDate,
+          location: config[0].fields.location,
+          teasers: config[0].fields.teasers
+        } : null
         const teasers = items.filter(filterByType, 'news').map((item) => {
           const slug = '/news/' + item.sys.id
           const date = new Date(item.fields.date).toLocaleDateString('en', {
@@ -58,19 +69,27 @@ export default (Component) => {
             photo: photo
           }
         })
+        const footer = config.length ? {
+          buttons: [],
+          links: [],
+          social: [],
+          legal: []
+        } : null
         const venue = {}
         const jobs = []
 
         return {
           menu: menu,
           pages: pages,
+          currentPage: currentPage,
           intro: intro,
           query: query,
           teasers: teasers,
           hosts: hosts,
           speakers: speakers,
           venue: venue,
-          jobs: jobs
+          jobs: jobs,
+          footer: footer
         }
       })
     }

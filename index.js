@@ -1,56 +1,88 @@
-const { createServer } = require('http')
-const { parse } = require('url')
+const express = require('express')
 const next = require('next')
-const pathMatch = require('path-match')
-const nowLogs = require('now-logs')
+const LRUCache = require('lru-cache')
 
-nowLogs('frontendconf')
-
-const app = next({ dev: (process.env.NODE_ENV !== 'production') })
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dir: '.', dev })
 const handle = app.getRequestHandler()
-const route = pathMatch()
-const pageMatch = route('/:page')
-const newsMatch = route('/news/:id')
-const hostMatch = route('/hosts/:id')
-const speakerMatch = route('/speakers/:id')
-const port = process.env.PORT || 3000
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    const { pathname } = parse(req.url)
-    const pageParams = pageMatch(pathname)
-    const newsParams = newsMatch(pathname)
-    const hostParams = hostMatch(pathname)
-    const speakerParams = speakerMatch(pathname)
+const ssrCache = new LRUCache({
+  max: 100,
+  maxAge: 1000 * 60 * 60 // 1 hour
+})
 
-    if (pageParams) {
-      app.render(req, res, '/index', pageParams)
+app.prepare()
+.then(() => {
+  const server = express()
 
-      return
+  // Reset cache when using ?emptyCache
+  server.get('*', (req, res, next) => {
+    if (req.query.emptyCache !== undefined) {
+      // console.log('CACHE RESET')
+
+      ssrCache.reset()
     }
 
-    if (newsParams) {
-      app.render(req, res, '/news', newsParams)
+    next()
+  })
 
-      return
+  server.get('/:page', (req, res, next) => {
+    const queryParams = { page: req.params.page }
+
+    if (queryParams.page === '__webpack_hmr') {
+      return next()
     }
 
-    if (hostParams) {
-      app.render(req, res, '/host', hostParams)
+    renderAndCache(req, res, '/', queryParams)
+  })
 
-      return
-    }
+  server.get('/:category/:slug', (req, res) => {
+    console.log(req.params)
+    const queryParams = { id: req.params.id }
 
-    if (speakerParams) {
-      app.render(req, res, '/speaker', speakerParams)
+    renderAndCache(req, res, '/blog', queryParams)
+  })
 
-      return
-    }
+  server.get('*', (req, res) => {
+    return handle(req, res)
+  })
 
-    handle(req, res)
-  }).listen(port, (err) => {
+  server.listen(3000, (err) => {
     if (err) throw err
 
-    console.log('> Ready on http://localhost:' + port)
+    console.log('> Ready on http://localhost:3000')
   })
 })
+
+function getCacheKey (req) {
+  return `${req.url}`
+}
+
+function renderAndCache (req, res, pagePath, queryParams) {
+  const key = getCacheKey(req)
+  const skipCache = (req.query.skipCache === undefined) || dev
+
+  if (ssrCache.has(key)) {
+    // console.log(`CACHE HIT: ${key}`)
+
+    if (!skipCache) {
+      return res.send(ssrCache.get(key))
+    } else {
+      // console.log('CACHE SKIPPED')
+    }
+  }
+
+  app.renderToHTML(req, res, pagePath, queryParams)
+    .then((html) => {
+      // console.log(`CACHE MISS: ${key}`)
+
+      if (!skipCache) {
+        ssrCache.set(key, html)
+      }
+
+      res.send(html)
+    })
+    .catch((err) => {
+      app.renderError(err, req, res, pagePath, queryParams)
+    })
+}
