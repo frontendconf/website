@@ -16,3 +16,11 @@ yarn run deploy
 now domains add -e dev-contentful.frontendconf.ch
 now alias
 ```
+
+# Show logs of deployed app
+
+```
+yarn add -g now-logs
+now-logs frontendconf
+```
+
