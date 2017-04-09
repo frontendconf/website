@@ -1,6 +1,9 @@
 const express = require('express')
 const next = require('next')
 const LRUCache = require('lru-cache')
+const nowLogs = require('now-logs')
+
+nowLogs('frontendconf')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dir: '.', dev })
@@ -24,6 +27,10 @@ app.prepare()
     }
 
     next()
+  })
+
+  server.get('/', (req, res, next) => {
+    renderAndCache(req, res, '/', req.params)
   })
 
   server.get('/:page/:detail?', (req, res, next) => {
@@ -51,7 +58,7 @@ function getCacheKey (req) {
 
 function renderAndCache (req, res, pagePath, queryParams) {
   const key = getCacheKey(req)
-  const skipCache = (req.query.skipCache === undefined) || dev
+  const skipCache = (req.query.skipCache !== undefined) || dev
 
   if (ssrCache.has(key)) {
     // console.log(`CACHE HIT: ${key}`)
