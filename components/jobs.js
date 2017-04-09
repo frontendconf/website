@@ -24,7 +24,7 @@ class Jobs extends Component {
             </div>
           })}
           <div className="col-4">
-            <a className="job-board__job job-board__job--all" href="javascript:void(0)">
+            <a className="job-board__job job-board__job--all" href="https://freshjobs.ch" target="_blank">
               <span className="job-board__job-title job-board__job-title--all">
                 All jobs
               </span>
@@ -33,7 +33,7 @@ class Jobs extends Component {
           <div className="col-12">
             <div className="job-board__freshjobs-container">
               <span>Powered by our friends from </span>
-              <a className="job-board__freshjobs-link" href="javascript:void(0)">
+              <a className="job-board__freshjobs-link" href="https://freshjobs.ch" target="_blank">
                 <svg className="job-board__freshjobs-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370.5 103.77">
                   <path className="cls-1"
                       d="M22.9,33.86c0,3.6-2.7,6.8-8.1,6.8-6.1,0-12.4-7.4-12.4-16.4,0-11.2,7.5-21.6,21.8-21.6A74.47,74.47,0,0,1,40,4.26c25.2,4.5,32.8,5.2,42.5,5.3a6.61,6.61,0,0,1,1.2,3.8c0,6.3-6.1,10.5-13.6,10.5A51.17,51.17,0,0,1,57,22.06a94.92,94.92,0,0,0-3.4,14.7,38,38,0,0,0,4.3.5,36.15,36.15,0,0,0,10.5-1.5,5.74,5.74,0,0,1,1.8,3.9c0,6.6-5,9.8-11.8,9.8a40.56,40.56,0,0,1-6.8-.9c-.3,1.7-2.5,10.6-2.8,12-4,17.8-12.9,30.8-27.1,30.8-10,0-15.3-5.6-15.3-14.3,0-7.5,4.7-15.9,28.4-31.7a7.32,7.32,0,0,1-2.7-5.5,4.83,4.83,0,0,1,2.7-4.4,8.61,8.61,0,0,1,3.5-.8,55.75,55.75,0,0,1,6.5-15.6c-10.6-3.4-17.8-4.5-23.2-4.5s-7.9,2.6-7.9,7.3C13.7,25.86,16,29.86,22.9,33.86Zm-3.8,41.8c0,4.1,1.5,5.6,3.7,5.6,3.7,0,7.6-8.2,10.7-25.3C22,66.66,19.1,72,19.1,75.66Z"/>

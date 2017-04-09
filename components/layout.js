@@ -5,8 +5,8 @@ import Header from './header'
 import Footer from './footer'
 import config from '../config'
 
-const Layout = ({ children, title = 'Frontend Conf', menu, currentPage, footer }) => {
-  const bodyClass = currentPage ? currentPage.fields.bodyClass : null
+const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer }) => {
+  const bodyClass = currentPage ? currentPage.bodyClass : null
 
   return <div className={bodyClass}>
     <Head>
@@ -15,7 +15,7 @@ const Layout = ({ children, title = 'Frontend Conf', menu, currentPage, footer }
       <link href={config.CDN + '/assets/css/default.css'} rel="stylesheet" />
     </Head>
 
-    <Header menu={menu} />
+    <Header {...header} />
 
     {children}
 
@@ -24,10 +24,9 @@ const Layout = ({ children, title = 'Frontend Conf', menu, currentPage, footer }
 }
 
 Layout.propTypes = {
+  children: PropTypes.node,
   title: PropTypes.string,
-  children: PropTypes.array,
-  menu: PropTypes.array,
-  query: PropTypes.object,
+  header: PropTypes.object,
   currentPage: PropTypes.object,
   footer: PropTypes.object
 }

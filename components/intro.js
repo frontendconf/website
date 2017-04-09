@@ -43,7 +43,10 @@ class Intro extends Component {
             <div className="col-12">
               <div className="intro__bottom-left">
                 {this.props.ctas.map((cta, i) => {
-                  return <InternalLink {...cta} classes="btn" key={i} />
+                  return <span key={i}>
+                    <InternalLink {...cta} classes="btn" />
+                    &nbsp;
+                  </span>
                 })}
               </div>
 

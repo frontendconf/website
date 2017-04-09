@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import InternalLink from './link'
+
 class Hosts extends Component {
   render () {
     return <section className="hosts section">
@@ -12,24 +14,22 @@ class Hosts extends Component {
             </h2>
           </div>
           {this.props.hosts.map((item, i) => {
-            const photo = item.photo ? <a className="person__image-container" href={item.slug}>
-              <img className="person__image" src={item.photo} alt={item.name} />
-            </a> : null
-
             return <div className="col-6" key={i}>
               <div className="person">
-                {photo}
+                <InternalLink {...item} classes="person__image-container">
+                  <img className="person__image" src={item.photo + '?w=530&h=300&fit=fill'} alt={item.name} />
+                </InternalLink>
 
                 <div className="person__caption">
                   <h3 className="person__title">
-                    <a href={item.slug} className="person__link">
+                    <InternalLink {...item} classes="person__link">
                       <span className="person__name">
                         {item.name}
                       </span>
                       <span className="person__job-title">
                         {item.description}
                       </span>
-                    </a>
+                    </InternalLink>
                   </h3>
                 </div>
               </div>

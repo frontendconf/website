@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import InternalLink from './link'
+
 class Speakers extends Component {
   render () {
     return <section className="speakers section--bottom">
@@ -12,36 +14,34 @@ class Speakers extends Component {
             </h2>
           </div>
           {this.props.speakers.map((item, i) => {
-            const photo = item.photo ? <a className="person__image-container" href={item.slug}>
-              <img className="person__image" src={item.photo} alt={item.name} />
-            </a> : null
-
             return <div className="col-xs-6 col-3" key={i}>
               <div className="person">
-                {photo}
+                <InternalLink {...item} classes="person__image-container">
+                  <img className="person__image" src={item.photo + '?w=250&h=250&fit=fill'} alt={item.name} />
+                </InternalLink>
 
                 <div className="person__caption">
                   <h3 className="person__title">
-                    <a href={item.slug} className="person__link">
+                    <InternalLink {...item} classes="person__link">
                       <span className="person__name">
                         {item.name}
                       </span>
                       <span className="person__job-title">
                         {item.description}
                       </span>
-                    </a>
+                    </InternalLink>
                   </h3>
                 </div>
               </div>
             </div>
           })}
-          <div className="col-xs-6 col-3">
-            <a href="/speakers" className="speakers__link">
+          {this.props.moreSpeakers ? <div className="col-xs-6 col-3">
+            <InternalLink slug="speakers" classes="speakers__link">
               <span className="speakers__link-text">
                 All speakers
               </span>
-            </a>
-          </div>
+            </InternalLink>
+          </div> : null}
         </div>
       </div>
     </section>
@@ -49,7 +49,8 @@ class Speakers extends Component {
 }
 
 Speakers.propTypes = {
-  speakers: PropTypes.array
+  speakers: PropTypes.array,
+  moreSpeakers: PropTypes.bool
 }
 
 export default Speakers

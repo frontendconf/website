@@ -10,34 +10,11 @@ class Venue extends Component {
           <div className="venue__content">
             <div className="venue__head">
               <h2>
-                Venue
+                {this.props.title}
               </h2>
             </div>
             <div className="venue__venue">
-              <div className="venue__sub-title-container">
-                <h3>
-                  Alte Papierfabrik, Zurich
-                </h3>
-              </div>
-              <div className="venue__text">
-                <p>
-                  Etiam at risus et justo dignissim congue  lorem Etiam at risus et justo. The event takes place in the Alte Papierfabrik congue lorem Etiam at risus.
-                  Learn more
-                </p>
-              </div>
-            </div>
-            <div className="venue__zurich">
-              <div className="venue__sub-title-container">
-                <h3>
-                  Visit Zurich
-                </h3>
-              </div>
-              <div className="venue__text">
-                <p>
-                  Etiam at risus et justo dignissim congue  lorem Etiam at risus et justo. The event takes place in the Alte Papierfabrik congue lorem Etiam at risus.
-                  Learn more
-                </p>
-              </div>
+              <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
             </div>
           </div>
         </div>
@@ -49,7 +26,9 @@ class Venue extends Component {
 }
 
 Venue.propTypes = {
-  // speakers: PropTypes.array
+  title: PropTypes.string,
+  body: PropTypes.string,
+  photo: PropTypes.object
 }
 
 export default Venue

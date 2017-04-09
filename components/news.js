@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-class Teasers extends Component {
+import InternalLink from './link'
+
+class News extends Component {
+  formatDate (date) {
+    return new Date(date).toLocaleDateString('en', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    })
+  }
   render () {
     return <section className="news section">
       <div className="grid">
@@ -10,14 +19,14 @@ class Teasers extends Component {
             <h2>News</h2>
           </div>
           {this.props.teasers.map((item, i) => {
+            const date = this.formatDate(item.date)
+
             return <div className="col-4" key={i}>
               <h3 className="news__title">
-                <a className="news__link" href={item.slug}>
-                  {item.title}
-                </a>
+                <InternalLink {...item} classes="news__link" />
               </h3>
               <time className="news__date">
-                {item.date}
+                {date}
               </time>
             </div>
           })}
@@ -27,8 +36,8 @@ class Teasers extends Component {
   }
 }
 
-Teasers.propTypes = {
+News.propTypes = {
   teasers: PropTypes.array
 }
 
-export default Teasers
+export default News
