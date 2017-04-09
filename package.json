@@ -33,7 +33,7 @@
   "scripts": {
     "build": "next build",
     "start": "node server.js",
-    "deploy": "now -e NODE_ENV=production -e API=https://frontendconf-contentful-api-dzpasryugh.now.sh && now alias",
+    "deploy": "now -e NODE_ENV=production -e API=https://frontendconf-contentful-api-lwatxctave.now.sh && now alias",
     "lint": "eslint ."
   },
   "now": {
