@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import Data from '../components/data'
 import Intro from '../components/intro'
@@ -50,15 +51,15 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-  currentPage: React.PropTypes.object,
-  intro: React.PropTypes.object,
-  query: React.PropTypes.object,
-  teasers: React.PropTypes.array,
-  hosts: React.PropTypes.array,
-  speakers: React.PropTypes.array,
-  venue: React.PropTypes.object,
-  jobs: React.PropTypes.array,
-  sponsors: React.PropTypes.array
+  currentPage: PropTypes.object,
+  intro: PropTypes.object,
+  query: PropTypes.object,
+  teasers: PropTypes.array,
+  hosts: PropTypes.array,
+  speakers: PropTypes.array,
+  venue: PropTypes.object,
+  jobs: PropTypes.array,
+  sponsors: PropTypes.array
 }
 
 export default Data(Index)

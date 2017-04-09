@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import PropTypes from 'prop-types'
 import Header from './header'
 import Footer from './footer'
 import config from '../config'
@@ -23,12 +24,12 @@ const Layout = ({ children, title = 'Frontend Conf', menu, currentPage, footer }
 }
 
 Layout.propTypes = {
-  title: React.PropTypes.string,
-  children: React.PropTypes.array,
-  menu: React.PropTypes.array,
-  query: React.PropTypes.object,
-  currentPage: React.PropTypes.object,
-  footer: React.PropTypes.object
+  title: PropTypes.string,
+  children: PropTypes.array,
+  menu: PropTypes.array,
+  query: PropTypes.object,
+  currentPage: PropTypes.object,
+  footer: PropTypes.object
 }
 
 export default Layout

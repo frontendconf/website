@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Newsletter from './newsletter'
 
 class Intro extends Component {
@@ -58,12 +59,12 @@ class Intro extends Component {
 }
 
 Intro.propTypes = {
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  startDate: React.PropTypes.string,
-  endDate: React.PropTypes.string,
-  location: React.PropTypes.object,
-  teasers: React.PropTypes.array
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+  location: PropTypes.object,
+  teasers: PropTypes.array
 }
 
 export default Intro

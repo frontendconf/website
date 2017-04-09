@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Newsletter from './newsletter'
 
 class Footer extends Component {
@@ -64,10 +65,10 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  buttons: React.PropTypes.array,
-  links: React.PropTypes.array,
-  social: React.PropTypes.array,
-  legal: React.PropTypes.array
+  buttons: PropTypes.array,
+  links: PropTypes.array,
+  social: PropTypes.array,
+  legal: PropTypes.array
 }
 
 export default Footer

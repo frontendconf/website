@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import config from '../config'
 
@@ -45,7 +46,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  menu: React.PropTypes.array
+  menu: PropTypes.array
 }
 
 export default Header

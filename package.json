@@ -16,9 +16,12 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash.clonedeep": "^4.5.0",
     "lru-cache": "^4.0.2",
-    "next": "beta",
+    "next": "^2.1.0",
     "now-logs": "^0.0.7",
     "path-match": "^1.2.4",
+    "prop-types": "^15.5.4",
+    "react": "^15.5.3",
+    "react-dom": "^15.5.3",
     "restify": "^4.3.0"
   },
   "devDependencies": {

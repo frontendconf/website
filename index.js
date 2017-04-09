@@ -36,9 +36,12 @@ app.prepare()
     renderAndCache(req, res, '/', queryParams)
   })
 
-  server.get('/:category/:slug', (req, res) => {
-    console.log(req.params)
-    const queryParams = { id: req.params.id }
+  server.get('/:category/:slug', (req, res, next) => {
+    const queryParams = { category: req.params.category, slug: req.params.slug }
+
+    if (queryParams.category === '_next') {
+      return next()
+    }
 
     renderAndCache(req, res, '/blog', queryParams)
   })

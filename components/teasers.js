@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Teasers extends Component {
   render () {
@@ -27,7 +28,7 @@ class Teasers extends Component {
 }
 
 Teasers.propTypes = {
-  teasers: React.PropTypes.array
+  teasers: PropTypes.array
 }
 
 export default Teasers

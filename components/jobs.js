@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Jobs extends Component {
   render () {
@@ -61,7 +62,7 @@ class Jobs extends Component {
 }
 
 Jobs.propTypes = {
-  jobs: React.PropTypes.array
+  jobs: PropTypes.array
 }
 
 export default Jobs

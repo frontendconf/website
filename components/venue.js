@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Venue extends Component {
   render () {
@@ -48,7 +49,7 @@ class Venue extends Component {
 }
 
 Venue.propTypes = {
-  // speakers: React.PropTypes.array
+  // speakers: PropTypes.array
 }
 
 export default Venue

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Hosts extends Component {
   render () {
@@ -41,7 +42,7 @@ class Hosts extends Component {
 }
 
 Hosts.propTypes = {
-  hosts: React.PropTypes.array
+  hosts: PropTypes.array
 }
 
 export default Hosts
