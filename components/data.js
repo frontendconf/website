@@ -65,7 +65,7 @@ export default (Component) => {
         const currentPageType = query.detail ? query.page : 'page'
         const currentPage = currentItem ? currentItem.fields : null
 
-        if (currentPage.photo) {
+        if (currentPage && currentPage.photo) {
           currentPage.photo = currentPage.photo.fields.file.url
         }
 
