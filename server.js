@@ -26,24 +26,12 @@ app.prepare()
     next()
   })
 
-  server.get('/:page', (req, res, next) => {
-    const queryParams = { page: req.params.page }
-
-    if (queryParams.page === '__webpack_hmr') {
+  server.get('/:page/:detail?', (req, res, next) => {
+    if (['favicon.ico', '_webpack', '__webpack_hmr', '_next'].includes(req.params.page)) {
       return next()
     }
 
-    renderAndCache(req, res, '/', queryParams)
-  })
-
-  server.get('/:category/:slug', (req, res, next) => {
-    const queryParams = { category: req.params.category, slug: req.params.slug }
-
-    if (queryParams.category === '_next') {
-      return next()
-    }
-
-    renderAndCache(req, res, '/blog', queryParams)
+    renderAndCache(req, res, '/', req.params)
   })
 
   server.get('*', (req, res) => {
