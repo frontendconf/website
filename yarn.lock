@@ -721,9 +721,9 @@ babel-plugin-transform-react-jsx@^6.23.0:
     babel-plugin-syntax-jsx "^6.8.0"
     babel-runtime "^6.22.0"
 
-babel-plugin-transform-react-remove-prop-types@0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.3.2.tgz#6da8d834c6d7ad8ab02f956509790cfaa01ffe19"
+babel-plugin-transform-react-remove-prop-types@0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.3.3.tgz#d09f48b9a9503a69c1ced39b3825c2f45d29333c"
 
 babel-plugin-transform-regenerator@^6.24.1:
   version "6.24.1"
@@ -2855,9 +2855,9 @@ negotiator@0.6.1, negotiator@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-next@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/next/-/next-2.1.0.tgz#7a94c7666f87064274d546c1f2574f01015e5023"
+next@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/next/-/next-2.1.1.tgz#d23f18e3cdda2ce110bd2a449ad013e855e59f83"
   dependencies:
     ansi-html "0.0.7"
     babel-core "6.24.0"
@@ -2869,7 +2869,7 @@ next@2.1.0:
     babel-plugin-transform-es2015-modules-commonjs "6.24.0"
     babel-plugin-transform-object-rest-spread "6.22.0"
     babel-plugin-transform-react-jsx-source "6.22.0"
-    babel-plugin-transform-react-remove-prop-types "0.3.2"
+    babel-plugin-transform-react-remove-prop-types "0.3.3"
     babel-plugin-transform-runtime "6.22.0"
     babel-preset-latest "6.24.0"
     babel-preset-react "6.23.0"
