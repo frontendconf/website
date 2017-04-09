@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+
 import config from '../config'
+import Menu from './menu'
 
 class Header extends Component {
   render () {
@@ -22,21 +24,7 @@ class Header extends Component {
             </div>
 
             <div className="header__right">
-              <nav className="navigation">
-                <ul className="navigation__list">
-                  {this.props.menu.map((item, i) => {
-                    const href = '/?page=' + item.slug
-
-                    return <li className="navigation__element" key={i}>
-                      <Link href={href} as={item.slug}>
-                        <a className={item.isActive ? 'navigation__link navigation__link--active' : 'navigation__link'}>
-                          {item.title}
-                        </a>
-                      </Link>
-                    </li>
-                  })}
-                </ul>
-              </nav>
+              <Menu items={this.props.menu} />
             </div>
           </div>
         </div>

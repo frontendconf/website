@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
+import InternalLink from './link'
 import Newsletter from './newsletter'
 
 class Footer extends Component {
@@ -9,22 +11,18 @@ class Footer extends Component {
         <div className="grid__inner">
           <div className="col-xs-6 col-1_5">
             <ul className="list">
-              {this.props.buttons.map((page, i) => {
-                return <li>
-                  <a href={page.fields.slug} className="btn fix-size small center" key={i}>
-                    {page.fields.title}
-                  </a>
+              {this.props.ctas.map((cta, i) => {
+                return <li key={i}>
+                  <InternalLink {...cta} classes="btn fix-size small center" />
                 </li>
               })}
             </ul>
           </div>
           <div className="col-xs-6 col-2_5">
             <ul className="navigation_list">
-              {this.props.links.map((page, i) => {
-                return <li>
-                  <a href={page.fields.slug} className="" key={i}>
-                    {page.fields.title}
-                  </a>
+              {this.props.menu.map((item, i) => {
+                return <li key={i}>
+                  <InternalLink {...item} />
                 </li>
               })}
             </ul>
@@ -35,10 +33,10 @@ class Footer extends Component {
             </div>
             <div className="social">
               <ul className="list-inline">
-                {this.props.social.map((item, i) => {
-                  return <li>
-                    <a href={item.fields.url} className="btn fix-size small center" key={i}>
-                      {item.fields.shortcode}
+                {this.props.socialMedia.map((item, i) => {
+                  return <li key={i}>
+                    <a href={item.url} className="btn fix-size small center" title={item.alt} target="_blank">
+                      {item.title}
                     </a>
                   </li>
                 })}
@@ -49,11 +47,9 @@ class Footer extends Component {
             <ul className="list-inline">
               <li>2011-2017 Frontend Conference Zürich</li>
 
-              {this.props.legal.map((page, i) => {
-                return <li>
-                  <a href={page.fields.slug} className="" key={i}>
-                    {page.fields.title}
-                  </a>
+              {this.props.menuMeta.map((item, i) => {
+                return <li key={i}>
+                  <InternalLink {...item} />
                 </li>
               })}
             </ul>
@@ -65,10 +61,10 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-  buttons: PropTypes.array,
-  links: PropTypes.array,
-  social: PropTypes.array,
-  legal: PropTypes.array
+  ctas: PropTypes.array,
+  menu: PropTypes.array,
+  socialMedia: PropTypes.array,
+  menuMeta: PropTypes.array
 }
 
 export default Footer

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
+import InternalLink from './link'
 import Newsletter from './newsletter'
 
 class Intro extends Component {
@@ -27,7 +29,7 @@ class Intro extends Component {
                   <br />
                   {startDate[1]} {startDate[0]} - {endDate[1]} {endDate[0]} {endDate[2]}
                   <br />
-                  {/*this.props.location*/}
+                  {this.props.location}
                 </p>
               </div>
             </div>
@@ -40,10 +42,8 @@ class Intro extends Component {
           <div className="grid__inner">
             <div className="col-12">
               <div className="intro__bottom-left">
-                {this.props.teasers.map((teaser, i) => {
-                  return <a href={teaser.fields.link.fields.slug} className="btn" key={i}>
-                    {teaser.fields.link.fields.title}
-                  </a>
+                {this.props.ctas.map((cta, i) => {
+                  return <InternalLink {...cta} classes="btn" key={i} />
                 })}
               </div>
 
@@ -63,8 +63,8 @@ Intro.propTypes = {
   subtitle: PropTypes.string,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  location: PropTypes.object,
-  teasers: PropTypes.array
+  location: PropTypes.string,
+  ctas: PropTypes.array
 }
 
 export default Intro

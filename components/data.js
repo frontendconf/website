@@ -31,7 +31,14 @@ export default (Component) => {
           startDate: config[0].fields.startDate,
           endDate: config[0].fields.endDate,
           location: config[0].fields.location,
-          teasers: config[0].fields.teasers
+          ctas: (config[0].fields.introCtas || []).map((item) => {
+            const title = item.fields.cta || item.fields.title
+
+            return {
+              title: title,
+              slug: item.fields.slug
+            }
+          })
         } : null
         const teasers = items.filter(filterByType, 'news').map((item) => {
           const slug = '/news/' + item.sys.id
@@ -70,10 +77,33 @@ export default (Component) => {
           }
         })
         const footer = config.length ? {
-          buttons: [],
-          links: [],
-          social: [],
-          legal: []
+          ctas: (config[0].fields.footerCtas || []).map((item) => {
+            const title = item.fields.cta || item.fields.title
+
+            return {
+              title: title,
+              slug: item.fields.slug
+            }
+          }),
+          menu: (config[0].fields.footerMenu || []).map((item) => {
+            return {
+              title: item.fields.title,
+              slug: item.fields.slug
+            }
+          }),
+          socialMedia: (config[0].fields.footerSocialMedia || []).map((item) => {
+            return {
+              title: item.fields.shortcode,
+              alt: item.fields.title,
+              url: item.fields.link
+            }
+          }),
+          menuMeta: (config[0].fields.footerMenuMeta || []).map((item) => {
+            return {
+              title: item.fields.title,
+              slug: item.fields.slug
+            }
+          })
         } : null
         const venue = {}
         const jobs = []
