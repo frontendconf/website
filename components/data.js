@@ -131,7 +131,40 @@ export default (Component) => {
 
         const jobs = currentPage && currentPage.showJobs ? [] : null
 
-        const sponsors = currentPage && currentPage.showSponsors ? [] : null
+        const sponsors = currentPage && currentPage.showSponsors ? items.filter(filterByType, 'sponsorCategory').map((item) => {
+          const teaser = item.fields.teaser ? items.filter(filterByType, 'teaser').find((teaser) => {
+            return teaser.sys.id === item.fields.teaser.sys.id
+          }).fields : null
+
+          return {
+            title: item.fields.title,
+            color: item.fields.color,
+            level: item.fields.level,
+            items: [],
+            id: item.sys.id,
+            cssClass: item.fields.cssClass,
+            cssClassItems: item.fields.cssClassItems,
+            teaser,
+            cssClassTeaser: item.fields.cssClassTeaser
+          }
+        }).sort((a, b) => b.level - a.level) : null
+
+        if (sponsors) {
+          items.filter(filterByType, 'sponsor').forEach((item) => {
+            const category = sponsors.find((category) => category.id === item.fields.category.sys.id)
+            const logo = item.fields.logo ? item.fields.logo.fields.file.url : null
+
+            if (!category) {
+              return
+            }
+
+            category.items.push({
+              title: item.fields.title,
+              link: item.fields.link,
+              logo
+            })
+          })
+        }
 
         return {
           header: header,

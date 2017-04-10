@@ -9,6 +9,7 @@ import Speakers from '../components/speakers'
 import Speaker from '../components/speaker'
 import Venue from '../components/venue'
 import Jobs from '../components/jobs'
+import Sponsors from '../components/sponsors'
 
 class Index extends Component {
 
@@ -37,13 +38,14 @@ class Index extends Component {
           </div>
         </section> : null
     }
+
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
     const news = this.props.news ? <News teasers={this.props.news} /> : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
     const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} /> : null
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
     const jobs = this.props.jobs ? <Jobs jobs={this.props.jobs} /> : null
-    // const sponsors = this.props.currentPage && this.props.currentPage.showSponsors ? <sponsors sponsors={this.props.sponsors} /> : null
+    const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
 
     return <Layout {...this.props}>
       {lead}
@@ -53,7 +55,7 @@ class Index extends Component {
       {speakers}
       {venue}
       {jobs}
-      {/*sponsors*/}
+      {sponsors}
     </Layout>
   }
 }
