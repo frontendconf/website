@@ -32,9 +32,9 @@
   },
   "scripts": {
     "build": "next build",
-    "start": "API=https://frontendconf-contentful-api-lwatxctave.now.sh node server.js",
-    "dev": "node server.js",
-    "deploy": "now -e NODE_ENV=production -e API=https://frontendconf-contentful-api-lwatxctave.now.sh && now alias",
+    "start": "node server.js",
+    "dev": "API=https://localhost:3001 node server.js",
+    "deploy": "now -e NODE_ENV=production && now alias",
     "lint": "eslint ."
   },
   "now": {
