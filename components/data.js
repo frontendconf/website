@@ -25,7 +25,7 @@ export default (Component) => {
             const isActive = isActiveItem(item.fields.slug, query)
 
             return {
-              title: item.fields.title,
+              title: item.fields.menu || item.fields.title,
               slug: item.fields.slug,
               isActive: isActive
             }
@@ -69,20 +69,23 @@ export default (Component) => {
           currentPage.photo = currentPage.photo.fields.file.url
         }
 
-        const intro = currentPage && currentPage.showIntro ? {
-          title: config.title,
-          subtitle: config.subtitle,
-          startDate: config.startDate,
-          endDate: config.endDate,
-          location: config.location,
-          ctas: config.introCtas.map((item) => {
+        if (currentPage && currentPage.bodyClass === 'home') {
+          currentPage.isHome = true
+        }
+
+        const lead = currentPage ? {
+          title: currentPage.title,
+          body: currentPage.lead ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />') : null,
+          ctas: currentPage.leadCtas ? currentPage.leadCtas.map((item) => {
             const title = item.fields.cta || item.fields.title
 
             return {
               title: title,
               slug: item.fields.slug
             }
-          })
+          }) : [],
+          newsletter: currentPage.isHome,
+          modifiers: currentPage.isHome ? ['bg-100'] : []
         } : null
 
         const news = currentPage && currentPage.showNews ? items.filter(filterByType, 'news').map((item) => {
@@ -133,7 +136,7 @@ export default (Component) => {
           currentPage: currentPage,
           currentPageType: currentPageType,
 
-          intro: intro,
+          lead: lead,
           news: news,
           hosts: hosts,
           speakers: speakers,

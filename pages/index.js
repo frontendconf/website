@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Layout from '../components/layout'
 import Data from '../components/data'
-import Intro from '../components/intro'
+import Lead from '../components/lead'
 import News from '../components/news'
 import Hosts from '../components/hosts'
 import Speakers from '../components/speakers'
@@ -37,7 +37,7 @@ class Index extends Component {
           </div>
         </section> : null
     }
-    const intro = this.props.intro ? <Intro {...this.props.intro} /> : null
+    const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
     const news = this.props.news ? <News teasers={this.props.news} /> : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
     const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} /> : null
@@ -46,7 +46,7 @@ class Index extends Component {
     // const sponsors = this.props.currentPage && this.props.currentPage.showSponsors ? <sponsors sponsors={this.props.sponsors} /> : null
 
     return <Layout {...this.props}>
-      {intro}
+      {lead}
       {body}
       {news}
       {hosts}
@@ -61,7 +61,7 @@ class Index extends Component {
 Index.propTypes = {
   currentPage: PropTypes.object,
   currentPageType: PropTypes.string,
-  intro: PropTypes.object,
+  lead: PropTypes.object,
   news: PropTypes.array,
   hosts: PropTypes.array,
   speakers: PropTypes.array,
