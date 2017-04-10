@@ -17,7 +17,7 @@ class Sponsors extends Component {
           {this.props.sponsors.map((category, i) => {
             const teaser = category.teaser ? <div className={category.cssClassTeaser}>
               <div className="sponsors-board__info">
-                <InternalLink {...category.teaser} classes="sponsors-board__info-become">
+                <InternalLink {...category.teaser.link.fields} classes="sponsors-board__info-become">
                   <div dangerouslySetInnerHTML={{ __html: category.teaser.body }} />
                 </InternalLink>
               </div>
