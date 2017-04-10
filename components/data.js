@@ -20,16 +20,20 @@ export default (Component) => {
         })
 
         // Exposed data
-        const header = {
-          menu: config.menu.map((item) => {
-            const isActive = isActiveItem(item.fields.slug, query)
+        const menu = config.menu.map((item) => {
+          const isActive = isActiveItem(item.fields.slug, query)
 
-            return {
-              title: item.fields.menu || item.fields.title,
-              slug: item.fields.slug,
-              isActive: isActive
-            }
-          })
+          return {
+            title: item.fields.menu || item.fields.title,
+            slug: item.fields.slug,
+            isActive: isActive,
+            menuButton: item.fields.menuButton
+          }
+        })
+
+        const header = {
+          menu: menu,
+          menuButtons: menu.filter((item) => item.menuButton)
         }
 
         const footer = {

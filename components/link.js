@@ -3,11 +3,34 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 class InternalLink extends Component {
-  render () {
-    const href = '/?page=' + (this.props.slug || (this.props.page + (this.props.detail ? '&detail=' + this.props.detail : null)))
-    const slug = '/' + (this.props.slug || (this.props.page + (this.props.detail ? '/' + this.props.detail : null)))
+  getLinkConfig () {
+    let href = this.props.href
+    let slug = this.props.href
 
-    return <Link href={href} as={slug}>
+    // TODO: Simplify
+    if (!this.props.href) {
+      href = '/?page='
+      slug = '/'
+
+      if (this.props.slug) {
+        href += this.props.slug
+        slug += this.props.slug
+      } else {
+        href += this.props.page + (this.props.detail ? '&detail=' + this.props.detail : null)
+        href += this.props.page + (this.props.detail ? '/' + this.props.detail : null)
+      }
+    }
+
+    return {
+      slug,
+      href
+    }
+  }
+
+  render () {
+    const linkConfig = this.getLinkConfig()
+
+    return <Link href={linkConfig.href} as={linkConfig.slug}>
       <a className={this.props.classes}>
         {this.props.children || this.props.title}
       </a>
@@ -17,6 +40,7 @@ class InternalLink extends Component {
 
 InternalLink.propTypes = {
   title: PropTypes.string,
+  href: PropTypes.string,
   slug: PropTypes.string,
   page: PropTypes.string,
   detail: PropTypes.string,

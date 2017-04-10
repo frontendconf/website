@@ -39,10 +39,7 @@ class Lead extends Component {
             <div className="col-12">
               <div className="intro__bottom-left">
                 {this.props.ctas.map((cta, i) => {
-                  return <span key={i}>
-                    <InternalLink {...cta} classes="btn" />
-                    &nbsp;
-                  </span>
+                  return <InternalLink {...cta} classes="btn" />
                 })}
               </div>
 
