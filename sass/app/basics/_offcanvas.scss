@@ -1,0 +1,61 @@
+$large: layout(12);
+
+.container {
+  @include container($large);
+}
+
+.main { @include span(full at 1 isolate); }
+.right {
+  @include span(3 at 100% isolate);
+  margin-right: -200%;
+}
+
+
+.show-right {
+  &:checked {
+    ~ .main { @include pull(3); }
+    ~ .right { @include push(1); }
+  }
+}
+
+@media (min-width: 768px) {
+  .main { @include span(full at 1 isolate); }
+  .right { @include push(0); }
+
+  .show-right {
+    &:checked {
+      ~ .main { @include span(full at 1 isolate); }
+      ~ .right { @include push(0); }
+    }
+  }
+
+  [for="right"] { display: none; }
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+.toggle {
+  cursor: pointer;
+  color: blue;
+  &:hover, &:focus, &:active {
+    color: red;
+  }
+}
+[for] {
+  position: relative;
+  z-index: 10;
+  padding: 0 1em;
+}
+
+[for="left"] { float: left; }
+[for="right"] { float: right; }
+
+.left, .main, .right {
+  @include transition(all 300ms);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  height: 12em;
+}

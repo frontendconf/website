@@ -81,27 +81,8 @@
   &__hamburger-bar {
     top: 50%;
     display: block;
-    background: $black;
     width: 30px;
-    height: 4px;
-
-    &:before,
-    &:after {
-      background: $black;
-      content: "";
-      display: block;
-      position: absolute;
-      width: 30px;
-      height: 4px;
-    }
-
-    &:before {
-      top: 0;
-    }
-
-    &:after {
-      bottom: 0;
-    }
+    height: auto;
   }
 
   &__right {
