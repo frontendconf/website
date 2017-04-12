@@ -5,25 +5,35 @@
     <!-- partial -->
 </head>
 <body class="speakersPage">
-    <header class="header">
-        <!-- partial:partials/_header.html -->
-        <!-- partial -->
-    </header>
-    <section class="intro">
-        <!-- partial:partials/_intro_all.html -->
-        <!-- partial -->
-    </section>
-    <section class="speakers section">
-        <!-- partial:partials/_speakers_all.html -->
-        <!-- partial -->
-    </section>
-    <section class="hosts section">
-        <!-- partial:partials/_hosts.html -->
-        <!-- partial -->
-    </section>
-    <footer class="footer section">
-        <!-- partial:partials/_footer.html -->
-        <!-- partial -->
-    </footer>
+    <div class="container">
+        <input type="checkbox" id="right" class="toggle-input show-right" />
+
+        <header class="header">
+            <!-- partial:partials/_header.html -->
+            <!-- partial -->
+        </header>
+        <div class="offcanvasMain">
+            <section class="intro">
+                <!-- partial:partials/_intro_all.html -->
+                <!-- partial -->
+            </section>
+            <section class="speakers section">
+                <!-- partial:partials/_speakers_all.html -->
+                <!-- partial -->
+            </section>
+            <section class="hosts section">
+                <!-- partial:partials/_hosts.html -->
+                <!-- partial -->
+            </section>
+            <footer class="footer section">
+                <!-- partial:partials/_footer.html -->
+                <!-- partial -->
+            </footer>
+        </div>
+        <div class="offcanvasRight" id="offcanvasRight">
+            <!-- partial:partials/_navigation_offcanvas.html -->
+            <!-- partial -->
+        </div>
+    </div>
 </body>
 </html>
