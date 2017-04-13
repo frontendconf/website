@@ -17,7 +17,7 @@ class Header extends Component {
               </InternalLink>
 
               {this.props.menuButtons.map((item, i) => {
-                return <InternalLink {...item} classes="header__tickets" />
+                return <InternalLink {...item} classes="header__tickets" key={i} />
               })}
 
               <button type="button" className="header__hamburger">

@@ -5,8 +5,14 @@ function filterByType (item) {
   return item.sys.contentType.sys.id === this
 }
 
-function isActiveItem (slug, query) {
-  return query.page && query.page === slug || query.detail && query.detail === slug || !query.page && slug === '/'
+function isActiveItem (slug, query, isMenu) {
+  if (query.page && query.detail && !isMenu) {
+    return query.detail === slug
+  } else if (query.page) {
+    return query.page === slug
+  } else if (slug === '/') {
+    return slug === '/'
+  }
 }
 
 export default (Component) => {
@@ -21,7 +27,7 @@ export default (Component) => {
 
         // Exposed data
         const menu = config.menu.map((item) => {
-          const isActive = isActiveItem(item.fields.slug, query)
+          const isActive = isActiveItem(item.fields.slug, query, true)
 
           return {
             title: item.fields.menu || item.fields.title,
@@ -78,7 +84,7 @@ export default (Component) => {
         }
 
         const lead = currentPage ? {
-          title: currentPage.title,
+          title: query.detail ? (menu.find((item) => item.isActive) || {}).title : currentPage.title,
           body: currentPage.lead ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />') : null,
           ctas: currentPage.leadCtas ? currentPage.leadCtas.map((item) => {
             const title = item.fields.cta || item.fields.title
@@ -86,6 +92,17 @@ export default (Component) => {
             return {
               title: title,
               slug: item.fields.slug
+            }
+          }) : [],
+          menu: query.detail && query.page !== 'news' ? items.filter(filterByType, currentItem.sys.contentType.sys.id).map((item) => {
+            const title = item.fields.name || item.fields.title
+            const isActive = isActiveItem(item.fields.slug, query)
+
+            return {
+              title,
+              page: query.page,
+              detail: item.fields.slug,
+              isActive
             }
           }) : [],
           newsletter: currentPage.isHome,
@@ -119,6 +136,18 @@ export default (Component) => {
           return {
             name: item.fields.name,
             page: 'speakers',
+            detail: item.fields.slug,
+            description: item.fields.description,
+            photo: photo
+          }
+        }) : null
+
+        const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
+          const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
+
+          return {
+            name: item.fields.title,
+            page: 'workshops',
             detail: item.fields.slug,
             description: item.fields.description,
             photo: photo
@@ -177,6 +206,7 @@ export default (Component) => {
           news: news,
           hosts: hosts,
           speakers: speakers,
+          workshops: workshops,
           venue: venue,
           jobs: jobs,
           sponsors: sponsors

@@ -7,6 +7,8 @@ import News from '../components/news'
 import Hosts from '../components/hosts'
 import Speakers from '../components/speakers'
 import Speaker from '../components/speaker'
+import Workshops from '../components/workshops'
+import Workshop from '../components/workshop'
 import Venue from '../components/venue'
 import Jobs from '../components/jobs'
 import Sponsors from '../components/sponsors'
@@ -27,6 +29,9 @@ class Index extends Component {
       case 'speakers':
         body = <Speaker {...this.props.currentPage} />
         break
+      case 'workshops':
+        body = <Workshop {...this.props.currentPage} />
+        break
       default:
         body = this.props.currentPage && this.props.currentPage.body ? <section className="content section">
           <div className="grid">
@@ -43,6 +48,7 @@ class Index extends Component {
     const news = this.props.news ? <News teasers={this.props.news} /> : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
     const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} /> : null
+    const workshops = this.props.workshops ? <Workshops workshops={this.props.workshops} /> : null
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
     const jobs = this.props.jobs ? <Jobs jobs={this.props.jobs} /> : null
     const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
@@ -53,6 +59,7 @@ class Index extends Component {
       {news}
       {hosts}
       {speakers}
+      {workshops}
       {venue}
       {jobs}
       {sponsors}
@@ -67,6 +74,7 @@ Index.propTypes = {
   news: PropTypes.array,
   hosts: PropTypes.array,
   speakers: PropTypes.array,
+  workshops: PropTypes.array,
   venue: PropTypes.object,
   jobs: PropTypes.array,
   sponsors: PropTypes.array

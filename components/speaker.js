@@ -35,6 +35,7 @@ class Speaker extends Component {
 
 Speaker.propTypes = {
   name: PropTypes.string,
+  title: PropTypes.string,
   biography: PropTypes.string,
   photo: PropTypes.string,
   twitter: PropTypes.string
