@@ -33,6 +33,14 @@
       opacity: 1;
 			width: 100%;
     }
+
+    // Skip button animations on touch devices to prevent having to double-tap
+    @media (pointer: coarse) {
+      &:before {
+        opacity: 0;
+        width: 0;
+      }
+    }
   }
 }
 
