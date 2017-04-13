@@ -16,13 +16,6 @@ yarn run start
 yarn run deploy
 ```
 
-# Set up alias
-
-```bash
-now domains add -e dev-contentful.frontendconf.ch
-now alias
-```
-
 # Show logs of deployed app
 
 ```bash
