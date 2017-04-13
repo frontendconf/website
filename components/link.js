@@ -17,7 +17,7 @@ class InternalLink extends Component {
         slug += this.props.slug
       } else {
         href += this.props.page + (this.props.detail ? '&detail=' + this.props.detail : null)
-        href += this.props.page + (this.props.detail ? '/' + this.props.detail : null)
+        slug += this.props.page + (this.props.detail ? '/' + this.props.detail : null)
       }
     }
 
