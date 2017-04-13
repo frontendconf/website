@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import config from '../config'
 import Header from './header'
 import Footer from './footer'
-import config from '../config'
+import Menu from './menu'
 
 const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer }) => {
   const bodyClass = currentPage ? currentPage.bodyClass : null
@@ -16,11 +18,19 @@ const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
+    <input type="checkbox" id="right" className="toggle-input show-right" />
     <Header {...header} />
 
-    {children}
+    <div className="offcanvasMain">
+      {children}
 
-    <Footer {...footer} />
+      <Footer {...footer} />
+    </div>
+
+    <div className="offcanvasRight">
+      <Menu items={header.menu} />
+    </div>
+
   </div>
 }
 

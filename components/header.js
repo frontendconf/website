@@ -20,9 +20,9 @@ class Header extends Component {
                 return <InternalLink {...item} classes="header__tickets" key={i} />
               })}
 
-              <button type="button" className="header__hamburger">
-                <span className="header__hamburger-bar"></span>
-              </button>
+              <label htmlFor="right" className="toggle header__hamburger">
+                <img className="header__hamburger-bar" src={config.CDN + '/assets/images/menu.svg'} alt="Menu" />
+              </label>
             </div>
 
             <div className="header__right">

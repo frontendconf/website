@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 
 class Workshop extends Component {
   render () {
-    const twitter = this.props.twitter ? <a href={'https://twitter.com/' + this.props.twitter}>{'@' + this.props.twitter}</a> : null
-
     return <section className="workshop section">
       <div className="grid">
         <div className="grid__inner">
@@ -28,11 +26,7 @@ class Workshop extends Component {
 Workshop.propTypes = {
   title: PropTypes.string,
   lead: PropTypes.string,
-  body: PropTypes.string,
-  name: PropTypes.string,
-  biography: PropTypes.string,
-  photo: PropTypes.string,
-  twitter: PropTypes.string
+  body: PropTypes.string
 }
 
 export default Workshop

@@ -21,6 +21,10 @@ class Index extends Component {
   //   })
   // }
 
+  componentDidMount () {
+    console.log('yay')
+  }
+
   render () {
     let body
 
