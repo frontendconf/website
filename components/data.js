@@ -18,7 +18,10 @@ function isActiveItem (slug, query, isMenu) {
 export default (Component) => {
   class Data extends React.Component {
     static async getInitialProps ({ query }) {
-      return API.getEntries().then((items) => {
+      const cachedResponse = (typeof window !== 'undefined' && window.__NEXT_DATA__ && window.__NEXT_DATA__.props && window.__NEXT_DATA__.props._raw) ? window.__NEXT_DATA__.props._raw : null
+      const getData = cachedResponse ? Promise.resolve(cachedResponse) : API.getEntries()
+
+      return getData.then((items) => {
         const configs = items.filter(filterByType, 'config')
         const config = configs.length ? configs[0].fields : {}
         const currentItem = items.find((item) => {
@@ -212,7 +215,8 @@ export default (Component) => {
           jobs,
           sponsors,
           scripts,
-          styles
+          styles,
+          _raw: items
         }
       })
     }

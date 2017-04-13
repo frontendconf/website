@@ -1,4 +1,4 @@
 module.exports = {
-  API: process.env.API || 'https://frontendconf-contentful-api-lwatxctave.now.sh',
-  CDN: process.env.CDN || 'https://frontendconf-prototype-jtbfnfjjah.now.sh'
+  API: process.env.API || 'https://api.frontendconf.ch',
+  CDN: process.env.CDN || 'https://static.frontendconf.ch'
 }
