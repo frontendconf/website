@@ -35,9 +35,7 @@ class Footer extends Component {
               <ul className="list-inline">
                 {this.props.socialMedia.map((item, i) => {
                   return <li key={i}>
-                    <a href={item.url} className="btn fix-size small center" title={item.alt} target="_blank">
-                      {item.title}
-                    </a>
+                    <a href={item.url} className="btn fix-size small center socialicon" title={item.alt} target="_blank" dangerouslySetInnerHTML={{ __html: item.iconCharacter }} />
                   </li>
                 })}
               </ul>

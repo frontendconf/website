@@ -16,6 +16,7 @@ const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer
       <title>{title}</title>
       <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:300,400,400i,700" rel="stylesheet" />
       <link href={config.CDN + '/assets/css/default.css'} rel="stylesheet" />
+      <link rel="shortcut icon" href={config.CDN + '/assets/images/favicon.png'} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 

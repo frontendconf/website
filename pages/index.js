@@ -15,11 +15,40 @@ import Sponsors from '../components/sponsors'
 
 class Index extends Component {
 
-  // componentWillMount () {
-  //   this.setState({
-  //     items: this.props.products
-  //   })
-  // }
+  insertScripts (scripts, checkInsertion) {
+    scripts.forEach((src) => {
+      if (checkInsertion && document.querySelectorAll('[src="' + src + '"]').length) return
+
+      const script = document.createElement('script')
+      script.src = src
+      document.head.appendChild(script)
+
+      console.log(src)
+    })
+  }
+
+  insertStyles (styles, checkInsertion) {
+    styles.forEach((src) => {
+      if (checkInsertion && document.querySelectorAll('[href="' + src + '"]').length) return
+
+      const sheet = document.createElement('link')
+      sheet.href = src
+      sheet.rel = 'stylesheet'
+      document.head.appendChild(sheet)
+
+      console.log(src)
+    })
+  }
+
+  componentDidMount () {
+    this.insertScripts(this.props.scripts)
+    this.insertStyles(this.props.styles)
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.insertScripts(newProps.scripts)
+    this.insertStyles(newProps.styles, true)
+  }
 
   render () {
     let body
@@ -77,7 +106,9 @@ Index.propTypes = {
   workshops: PropTypes.array,
   venue: PropTypes.object,
   jobs: PropTypes.array,
-  sponsors: PropTypes.array
+  sponsors: PropTypes.array,
+  scripts: PropTypes.array,
+  styles: PropTypes.array
 }
 
 export default Data(Index)

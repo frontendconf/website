@@ -59,7 +59,7 @@ export default (Component) => {
           }),
           socialMedia: config.footerSocialMedia.map((item) => {
             return {
-              title: item.fields.shortcode,
+              iconCharacter: item.fields.iconCharacter,
               alt: item.fields.title,
               url: item.fields.link
             }
@@ -195,21 +195,24 @@ export default (Component) => {
           })
         }
 
+        const scripts = currentPage && currentPage.config && currentPage.config.scripts ? currentPage.config.scripts : []
+        const styles = currentPage && currentPage.config && currentPage.config.styles ? currentPage.config.styles : []
+
         return {
-          header: header,
-          footer: footer,
-
-          currentPage: currentPage,
-          currentPageType: currentPageType,
-
-          lead: lead,
-          news: news,
-          hosts: hosts,
-          speakers: speakers,
-          workshops: workshops,
-          venue: venue,
-          jobs: jobs,
-          sponsors: sponsors
+          header,
+          footer,
+          currentPage,
+          currentPageType,
+          lead,
+          news,
+          hosts,
+          speakers,
+          workshops,
+          venue,
+          jobs,
+          sponsors,
+          scripts,
+          styles
         }
       })
     }
