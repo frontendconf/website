@@ -6,6 +6,7 @@ import config from '../config'
 import Header from './header'
 import Footer from './footer'
 import Menu from './menu'
+import MenuToggle from './menuToggle'
 
 const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer }) => {
   const bodyClass = currentPage ? currentPage.bodyClass : null
@@ -18,8 +19,8 @@ const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
-    <input type="checkbox" id="right" className="toggle-input show-right" />
     <Header {...header} />
+    <MenuToggle checked={false} />
 
     <div className="offcanvasMain">
       {children}
@@ -30,7 +31,6 @@ const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer
     <div className="offcanvasRight">
       <Menu items={header.menu} />
     </div>
-
   </div>
 }
 
