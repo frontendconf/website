@@ -14,6 +14,7 @@ body {
   @include opensansregular();
   @include font-size($regular-font-size);
   color: $blue-darker;
+	overflow-x: hidden;
 }
 
 strong {

@@ -11,7 +11,8 @@ $large: layout(12);
   @include span(full at 1 isolate);
 }
 .offcanvasRight {
-  @include span(3 at 100% isolate);
+  @include span(4 at 100% isolate);
+	padding: 20px 40px;
   margin-right: -200%;
   background: $diamond;
   min-height: 100vh;
@@ -24,11 +25,11 @@ $large: layout(12);
 .show-right {
   &:checked {
     ~ .offcanvasMain { @include pull(3); }
-    ~ .offcanvasRight { @include push(1); }
+    ~ .offcanvasRight { @include push(.75); }
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: $tablet) {
   .show-right {
     &:checked {
       ~ .offcanvasMain {
@@ -60,4 +61,3 @@ $large: layout(12);
 
 [for="left"] { float: left; }
 [for="right"] { float: right; }
-

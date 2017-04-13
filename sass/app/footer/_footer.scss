@@ -35,6 +35,11 @@
     li {
       line-height: 2rem;
       margin: 0 0 0 4rem;
+
+			@include breakpoint($tablet-max) {
+				margin-left: 0;
+			}
+
       a {
         text-transform: uppercase;
       }
@@ -43,6 +48,10 @@
 
 	.list {
 		list-style: none;
+
+		@include breakpoint($tablet-max) {
+			padding-left: 0;
+		}
 
 		li {
 			margin-bottom: .5rem;
@@ -77,7 +86,29 @@
 }
 
 .partners.section + .footer.section {
-  @media (min-width: 768px) {
+  @media (min-width: $tablet) {
     padding-top: 1rem;
   }
+}
+
+.footer {
+	.btn {
+		@include breakpoint($tablet-max) {
+			padding: 1rem 2rem;
+			height: 48px;
+		}
+	}
+
+	.col-xs-6 {
+		@include breakpoint($tablet-max) {
+			width: 100%;
+		}
+	}
+
+	.form__input {
+		@include breakpoint($tablet-max) {
+			width: 100%;
+			margin: 20px 0 10px 0;
+		}
+	}
 }
