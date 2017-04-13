@@ -40,6 +40,7 @@
 		@include breakpoint($tablet-max) {
 			float: right;
 			margin-right: 60px;
+			margin-left: 0;
 		}
 
     &:focus,
