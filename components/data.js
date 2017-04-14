@@ -119,7 +119,7 @@ export default (Component) => {
             detail: item.fields.slug,
             date: item.fields.date
           }
-        }) : null
+        }).sort((a, b) => new Date(b.date) - new Date(a.date)) : null
 
         const hosts = currentPage && currentPage.showSpeakers ? items.filter(filterByType, 'host').map((item) => {
           const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
@@ -160,6 +160,10 @@ export default (Component) => {
         const venue = currentPage && currentPage.showVenue && config.venueTeaser ? items.find((item) => {
           return item.sys.id === config.venueTeaser.sys.id
         }).fields : null
+
+        if (venue.link && venue.link.fields) {
+          venue.link = venue.link.fields.slug
+        }
 
         const jobs = currentPage && currentPage.showJobs ? [] : null
 

@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import InternalLink from './link'
+
 class Venue extends Component {
   render () {
+    const title = this.props.link ? <InternalLink slug={this.props.link} title={this.props.title} /> : this.props.title
+
     return <section className="venue">
       <div className="venue__container">
         <div className="venue__image"></div>
         <div className="venue__inner">
           <div className="venue__content">
             <div className="venue__head">
-              <h2>
-                {this.props.title}
-              </h2>
+              <h2>{title}</h2>
             </div>
             <div className="venue__venue">
               <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
@@ -28,7 +30,8 @@ class Venue extends Component {
 Venue.propTypes = {
   title: PropTypes.string,
   body: PropTypes.string,
-  photo: PropTypes.object
+  photo: PropTypes.object,
+  link: PropTypes.string
 }
 
 export default Venue
