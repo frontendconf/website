@@ -135,6 +135,11 @@ export default (Component) => {
           modifiers: currentPage.isHome ? ['bg-100'] : []
         } : null
 
+        // Fallback
+        if (!lead.title && currentItem.sys.contentType.sys.id === 'host') {
+          lead.title = 'Hosts'
+        }
+
         const news = currentPage && currentPage.showNews ? items.filter(filterByType, 'news').map((item) => {
           return {
             title: item.fields.title,
