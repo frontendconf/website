@@ -76,7 +76,7 @@ export default (Component) => {
         }
 
         const currentPageType = query.detail ? query.page : 'page'
-        const currentPage = currentItem ? currentItem.fields : null
+        const currentPage = currentItem ? Object.assign({}, currentItem.fields) : null
 
         if (currentPage && currentPage.photo) {
           currentPage.photo = currentPage.photo.fields.file.url
