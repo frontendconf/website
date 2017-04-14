@@ -12,6 +12,7 @@ import Workshop from '../components/workshop'
 import Venue from '../components/venue'
 import Jobs from '../components/jobs'
 import Sponsors from '../components/sponsors'
+import Team from '../components/team'
 
 class Index extends Component {
 
@@ -81,6 +82,7 @@ class Index extends Component {
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
+    const team = this.props.team ? <Team team={this.props.team} /> : null
 
     return <Layout {...this.props}>
       {lead}
@@ -89,6 +91,7 @@ class Index extends Component {
       {hosts}
       {speakers}
       {workshops}
+      {team}
       {venue}
       {jobs}
       {sponsors}
@@ -107,6 +110,7 @@ Index.propTypes = {
   venue: PropTypes.object,
   jobs: PropTypes.object,
   sponsors: PropTypes.array,
+  team: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array
 }

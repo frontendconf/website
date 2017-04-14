@@ -130,9 +130,10 @@ export default (Component) => {
             page: 'hosts',
             detail: item.fields.slug,
             description: item.fields.description,
-            photo: photo
+            photo: photo,
+            order: item.fields.order
           }
-        }) : null
+        }).sort((a, b) => a.order - b.order) : null
 
         const speakers = currentPage && currentPage.showSpeakers ? items.filter(filterByType, 'speaker').map((item) => {
           const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
@@ -142,9 +143,10 @@ export default (Component) => {
             page: 'speakers',
             detail: item.fields.slug,
             description: item.fields.description,
-            photo: photo
+            photo: photo,
+            order: item.fields.order
           }
-        }) : null
+        }).sort((a, b) => a.order - b.order) : null
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
@@ -154,9 +156,10 @@ export default (Component) => {
             page: 'workshops',
             detail: item.fields.slug,
             description: item.fields.description,
-            photo: photo
+            photo: photo,
+            order: item.fields.order
           }
-        }) : null
+        }).sort((a, b) => a.order - b.order) : null
 
         const venue = currentPage && currentPage.showVenue && config.venueTeaser ? items.find((item) => item.sys.id === config.venueTeaser.sys.id).fields : null
 
@@ -170,7 +173,7 @@ export default (Component) => {
           page: jobsPageOriginal && !currentPage.showJobsDetailed ? Object.assign({}, jobsPageOriginal.fields) : null
         } : null
 
-        const sponsors = currentPage && (currentPage.showSponsors || currentPage.showSponsorsDetailed) ? items.filter(filterByType, 'sponsorCategory').map((item) => {
+        let sponsors = currentPage && (currentPage.showSponsors || currentPage.showSponsorsDetailed) ? items.filter(filterByType, 'sponsorCategory').map((item) => {
           const teaser = item.fields.teaser && !currentPage.showSponsorsDetailed ? items.filter(filterByType, 'teaser').find((teaser) => {
             return teaser.sys.id === item.fields.teaser.sys.id
           }).fields : null
@@ -203,10 +206,29 @@ export default (Component) => {
               twitter: item.fields.twitter,
               body: item.fields.body,
               logo,
-              isDetailed: currentPage.showSponsorsDetailed
+              isDetailed: currentPage.showSponsorsDetailed,
+              order: item.fields.order
             })
           })
+
+          sponsors = sponsors.map((item) => {
+            item.items = item.items.sort((a, b) => a.order - b.order)
+
+            return item
+          })
         }
+
+        const team = currentPage && currentPage.showTeam ? items.filter(filterByType, 'team').map((item) => {
+          const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
+
+          return {
+            name: item.fields.name,
+            description: item.fields.description,
+            twitter: item.fields.twitter,
+            photo: photo,
+            order: item.fields.order
+          }
+        }).sort((a, b) => a.order - b.order) : null
 
         const scripts = currentPage && currentPage.config && currentPage.config.scripts ? currentPage.config.scripts : []
         const styles = currentPage && currentPage.config && currentPage.config.styles ? currentPage.config.styles : []
@@ -224,6 +246,7 @@ export default (Component) => {
           venue,
           jobs,
           sponsors,
+          team,
           scripts,
           styles,
           _raw: items
