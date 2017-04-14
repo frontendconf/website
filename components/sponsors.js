@@ -23,8 +23,8 @@ class Sponsors extends Component {
               </div>
             </div> : null
 
-            return <div style={{width: '100%'}} key={i}>
-              <div className="col-12">
+            return <div className={'sponsors-board__wrapper sponsors-board__wrapper--' + category.cssClass} key={i}>
+              <div className="col-12 sponsors-board__wrapper">
                 <h3 className={'sponsors__title sponsors__title--' + category.cssClass}>
                   {category.title}
                 </h3>
@@ -39,7 +39,7 @@ class Sponsors extends Component {
                   {item.link}
                 </a> : null
 
-                return item.isDetailed ? <div style={{width: '100%'}} key={i}>
+                return item.isDetailed ? <div className={'sponsors-board__wrapper sponsors-board__wrapper--detailed sponsors-board__wrapper--' + category.cssClass} key={i}>
                   <div className="col-12">
                     <div className="sponsors__sponsor-line"></div>
                   </div>
@@ -59,7 +59,7 @@ class Sponsors extends Component {
                       </p>
                     </div>
                   </div>
-                </div> : <div className={category.cssClassItems} key={i}>
+                </div> : <div className={'sponsors-board__column ' + category.cssClassItems} key={i}>
                   <a href={item.link} className="sponsors-board__sponsor sponsors__link" target="_blank">
                     <img className="sponsors__logo" src={item.logo} alt={item.title} />
                   </a>

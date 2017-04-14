@@ -19,7 +19,7 @@ class SponsorshipCategories extends Component {
               / <span>{category.availability}</span>
             </span> : null
 
-            return <div className="col-4 col-xs-6" key={i}>
+            return <div className="col-4" key={i}>
               {icon}
 
               <h3 className="sponsors__title">
