@@ -39,6 +39,6 @@
     "lint": "eslint ."
   },
   "now": {
-    "alias": "https://dev-contentful.frontendconf.ch"
+    "alias": "https://dev.frontendconf.ch"
   }
 }
