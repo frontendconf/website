@@ -48,7 +48,7 @@ export default (Component) => {
 
         const footer = {
           ctas: config.footerCtas.map((item) => {
-            const title = item.fields.cta || item.fields.title
+            const title = item.fields.ctaText || item.fields.title
 
             return {
               title: title,
@@ -101,7 +101,7 @@ export default (Component) => {
 
         if (currentPage && currentPage.cta) {
           const cta = {
-            title: currentPage.cta.fields.cta || currentPage.cta.fields.title,
+            title: currentPage.cta.fields.ctaText || currentPage.cta.fields.title,
             slug: currentPage.cta.fields.slug
           }
 
@@ -112,7 +112,7 @@ export default (Component) => {
           title: query.detail ? (menu.find((item) => item.isActive) || {}).title : currentPage.title,
           body: currentPage.lead ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />') : null,
           ctas: currentPage.leadCtas ? currentPage.leadCtas.map((item) => {
-            const title = item.fields.cta || item.fields.title
+            const title = item.fields.ctaText || item.fields.title
 
             return {
               title: title,
@@ -218,6 +218,19 @@ export default (Component) => {
           }
         }).sort((a, b) => a.level - b.level) : null
 
+        let sponsorshipCategories = currentPage && currentPage.showSponsorshipCategories ? items.filter(filterByType, 'sponsorCategory').map((item) => {
+          const icon = item.fields.icon ? (item.fields.icon.fields.file.url + '?w=250&h=150&fit=pad') : null
+
+          return {
+            title: item.fields.title,
+            price: item.fields.price,
+            level: item.fields.level,
+            availability: item.fields.availability,
+            body: item.fields.body,
+            icon
+          }
+        }).sort((a, b) => a.level - b.level) : null
+
         if (sponsors) {
           items.filter(filterByType, 'sponsor').forEach((item) => {
             const category = sponsors.find((category) => category.id === item.fields.category.sys.id)
@@ -273,6 +286,7 @@ export default (Component) => {
           venue,
           jobs,
           sponsors,
+          sponsorshipCategories,
           team,
           scripts,
           styles,
