@@ -3,7 +3,15 @@ import PropTypes from 'prop-types'
 
 class Speaker extends Component {
   render () {
-    const twitter = this.props.twitter ? <a href={'https://twitter.com/' + this.props.twitter}>{'@' + this.props.twitter}</a> : null
+    const twitter = this.props.twitter ? <span>
+      <a href={'https://twitter.com/' + this.props.twitter}>{'@' + this.props.twitter}</a><br />
+    </span> : null
+    const website = this.props.website ? <span>
+      <a href={this.props.website}>{this.props.website}</a><br />
+    </span> : null
+    const linkedin = this.props.linkedin ? <span>
+      <a href={this.props.linkedin}>{this.props.linkedin}</a><br />
+    </span> : null
 
     return <section className="speaker section">
       <div className="grid">
@@ -19,10 +27,12 @@ class Speaker extends Component {
               </div>
 
               <div className="col-8 speaker__profile-text">
-                <div dangerouslySetInnerHTML={{ __html: this.props.biography }} />
+                <div dangerouslySetInnerHTML={{ __html: this.props.bio }} />
 
                 <p className="speaker__profile-website">
                   {twitter}
+                  {website}
+                  {linkedin}
                 </p>
               </div>
             </div>
@@ -37,8 +47,11 @@ Speaker.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   biography: PropTypes.string,
+  bio: PropTypes.string,
   photo: PropTypes.string,
-  twitter: PropTypes.string
+  twitter: PropTypes.string,
+  website: PropTypes.string,
+  linkedin: PropTypes.string
 }
 
 export default Speaker
