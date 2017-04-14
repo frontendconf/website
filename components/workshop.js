@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Person from './person'
+import InternalLink from './link'
 
 class Workshop extends Component {
   render () {
+    const cta = this.props.cta ? <InternalLink {...this.props.cta} classes="btn" /> : null
+
     return <section className="workshop section">
       <div className="grid">
         <div className="grid__inner">
@@ -22,6 +25,8 @@ class Workshop extends Component {
 
           <div className="col-4">
             <Person {...this.props.teacher} />
+
+            {cta}
           </div>
         </div>
       </div>
@@ -33,7 +38,8 @@ Workshop.propTypes = {
   title: PropTypes.string,
   lead: PropTypes.string,
   body: PropTypes.string,
-  teacher: PropTypes.object
+  teacher: PropTypes.object,
+  cta: PropTypes.object
 }
 
 export default Workshop

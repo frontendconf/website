@@ -99,6 +99,15 @@ export default (Component) => {
           currentPage.teacher = teacher
         }
 
+        if (currentPage && currentPage.cta) {
+          const cta = {
+            title: currentPage.cta.fields.cta || currentPage.cta.fields.title,
+            slug: currentPage.cta.fields.slug
+          }
+
+          currentPage.cta = cta
+        }
+
         const lead = currentPage ? {
           title: query.detail ? (menu.find((item) => item.isActive) || {}).title : currentPage.title,
           body: currentPage.lead ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />') : null,
