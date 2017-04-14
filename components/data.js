@@ -176,7 +176,6 @@ export default (Component) => {
             title: item.fields.title,
             color: item.fields.color,
             level: item.fields.level,
-            body: item.fields.body,
             items: [],
             id: item.sys.id,
             cssClass: item.fields.cssClass,
@@ -199,6 +198,7 @@ export default (Component) => {
               title: item.fields.title,
               link: item.fields.link,
               twitter: item.fields.twitter,
+              body: item.fields.body,
               logo,
               isDetailed: currentPage.showSponsorsDetailed
             })
