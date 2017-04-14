@@ -8,7 +8,7 @@ class Menu extends Component {
     return <nav className="navigation">
       <ul className="navigation__list">
         {this.props.items.map((item, i) => {
-          const classes = item.isActive ? 'navigation__link navigation__link--active' : 'navigation__link'
+          const classes = (item.isActive ? 'navigation__link navigation__link--active ' : 'navigation__link ') + item.classes
 
           return <li className="navigation__element" key={i}>
             <InternalLink {...item} classes={classes} />

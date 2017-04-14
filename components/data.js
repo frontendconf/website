@@ -36,6 +36,7 @@ export default (Component) => {
             title: item.fields.menu || item.fields.title,
             slug: item.fields.slug,
             isActive: isActive,
+            classes: item.fields.menuClass,
             menuButton: item.fields.menuButton
           }
         })
