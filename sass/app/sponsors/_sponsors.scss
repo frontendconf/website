@@ -1,12 +1,31 @@
 .sponsors {
 
-  &-board{
+  &-board {
+
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    &__column {
+      align-self: center;
+    }
+
     &__sponsor {
       display: block;
       padding: 1.25rem;
       .sponsors--bottom & {
         padding: 0.75rem;
       }
+      @media (min-width: $tablet) {
+        .sponsors-board__wrapper--platinum &,
+        .sponsors-board__wrapper--gold &,
+        .sponsors-board__wrapper--silver &,
+        .sponsors-board__wrapper--contributing & {
+          padding-left: 0;
+          padding-right: 0;
+        }
+	    }
       margin-bottom: 1.38889%*6;
       position: relative;
     }
