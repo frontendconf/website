@@ -1,4 +1,6 @@
 .person {
+  margin-bottom: 2rem;
+
   &__image-container {
     display: block;
 
@@ -9,6 +11,10 @@
       }
     }
 
+  }
+
+  section:not(.intro) &__title { // TODO: Fix "architecture"
+  	margin-top: 1rem;
   }
 
   &__image {
