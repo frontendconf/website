@@ -11,14 +11,6 @@
     @include breakpoint($tablet) {
       display: inline-block;
     }
-
-    &--tickets {
-      display: none;
-
-      @include breakpoint($tablet) {
-        display: inline-block;
-      }
-    }
   }
 
   &__link {
@@ -43,7 +35,10 @@
     }
 
     &--tickets {
+      display: none;
+
       @include breakpoint($tablet) {
+        display: inline-block;
         background: $blue-dark;
         color: $white;
       }

@@ -2,11 +2,24 @@
 
   &-board {
 
+    // React renders some additional wrapper elements
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
+      &--detailed {
+        @media (max-width: $tablet) {
+          display: block;
+        }
+      }
+      & + & {
+      	margin-top: 2rem;
+      }
+      & & {
+      	margin-top: 0;
+      }
     }
+
     &__column {
       align-self: center;
     }
@@ -17,15 +30,15 @@
       .sponsors--bottom & {
         padding: 0.75rem;
       }
-      @media (min-width: $tablet) {
+      @media (max-width: 480px), (min-width: $tablet) {
         .sponsors-board__wrapper--platinum &,
         .sponsors-board__wrapper--gold &,
         .sponsors-board__wrapper--silver &,
         .sponsors-board__wrapper--contributing & {
-          padding-left: 0;
-          padding-right: 0;
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
         }
-	    }
+      }
       margin-bottom: 1.38889%*6;
       position: relative;
     }
@@ -140,5 +153,9 @@
       @extend .separator-line;
     }
     &-link {}
+  }
+
+  &__logo {
+  	width: 100%;
   }
 }
