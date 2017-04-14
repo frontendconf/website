@@ -179,7 +179,7 @@ export default (Component) => {
             teaser,
             cssClassTeaser: item.fields.cssClassTeaser
           }
-        }).sort((a, b) => b.level - a.level) : null
+        }).sort((a, b) => a.level - b.level) : null
 
         if (sponsors) {
           items.filter(filterByType, 'sponsor').forEach((item) => {
