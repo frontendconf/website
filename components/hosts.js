@@ -7,7 +7,7 @@ class Hosts extends Component {
   render () {
     return <section className="hosts section">
       <div className="grid">
-        <div className="grid__inner">
+        <div className="grid__inner eq-height">
           <div className="col-12">
             <h2>
               Hosts
