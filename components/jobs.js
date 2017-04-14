@@ -1,7 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import API from '../lib/api'
 
 class Jobs extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      jobs: []
+    }
+  }
+
+  componentDidMount () {
+    API.getFreshjobsEntries().then((items) => {
+      this.setState({
+        jobs: items
+      })
+    })
+  }
+
   render () {
     return <section className="job-board section">
       <div className="grid">
@@ -11,14 +28,14 @@ class Jobs extends Component {
               Jobs
             </h2>
           </div>
-          {this.props.jobs.map((item, i) => {
-            return <div className="col-4">
-              <a className="job-board__job" href={item.url}>
+          {this.state.jobs.map((item, i) => {
+            return <div className="col-4" key={i}>
+              <a className="job-board__job" href={item.link} target="_blank">
                 <span className="job-board__job-title">
-                  {item.name}
+                  {item.title}
                 </span>
                 <span className="job-board__company">
-                  {item.description}
+                  {item.company}
                 </span>
               </a>
             </div>

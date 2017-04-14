@@ -19,7 +19,7 @@ export default (Component) => {
   class Data extends React.Component {
     static async getInitialProps ({ query }) {
       const cachedResponse = (typeof window !== 'undefined' && window.__NEXT_DATA__ && window.__NEXT_DATA__.props && window.__NEXT_DATA__.props._raw) ? window.__NEXT_DATA__.props._raw : null
-      const getData = cachedResponse ? Promise.resolve(cachedResponse) : API.getEntries()
+      const getData = cachedResponse ? Promise.resolve(cachedResponse) : API.getContentfulEntries()
 
       return getData.then((items) => {
         const configs = items.filter(filterByType, 'config')
