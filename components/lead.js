@@ -28,7 +28,13 @@ class Lead extends Component {
       <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
     </div>
 
-    const footer = this.props.ctas.length ? <div className="col-12">
+    const teaser = this.props.teaser ? <div className="col-12">
+      <span className="intro__teaser">
+        <div dangerouslySetInnerHTML={{ __html: this.props.teaser.body }} />
+      </span>
+    </div> : null
+
+    const footerContent = this.props.ctas.length ? <div className="col-12">
       <div className="intro__bottom-left">
         {this.props.ctas.map((cta, i) => {
           return <InternalLink {...cta} classes="btn" key={i} />
@@ -38,16 +44,15 @@ class Lead extends Component {
       <div className="intro__bottom-right">
         {this.props.newsletter ? <Newsletter /> : null}
       </div>
-    </div> : <div className="col-12">
-      <span className="intro__teaser">
-        <ul>
-          <li><strong>2</strong> Days</li>
-          <li><strong>2</strong> Tracks</li>
-          <li><strong>20+</strong> Presentations</li>
-          <li><strong>400</strong> ATTENDEES</li>
-        </ul>
-      </span>
-    </div>
+    </div> : teaser
+
+    const footer = footerContent ? <div className="intro__bottom-content">
+      <div className="grid">
+        <div className="grid__inner">
+          {footerContent}
+        </div>
+      </div>
+    </div> : null
 
     return <section className={classes}>
         <div className="intro__top-content">
@@ -63,13 +68,7 @@ class Lead extends Component {
         </div>
       </div>
 
-      <div className="intro__bottom-content">
-        <div className="grid">
-          <div className="grid__inner">
-            {footer}
-          </div>
-        </div>
-      </div>
+      {footer}
     </section>
   }
 }
@@ -80,6 +79,7 @@ Lead.propTypes = {
   menu: PropTypes.array,
   ctas: PropTypes.array,
   newsletter: PropTypes.bool,
+  teaser: PropTypes.object,
   modifiers: PropTypes.array
 }
 

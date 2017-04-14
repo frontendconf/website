@@ -1,34 +1,52 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import shuffle from 'array-shuffle'
 import API from '../lib/api'
+
+import InternalLink from './link'
 
 class Jobs extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      jobs: []
+      items: []
     }
   }
 
   componentDidMount () {
     API.getFreshjobsEntries().then((items) => {
+      let results = shuffle(items)
+
+      if (!this.props.isDetailed) {
+        results = results.slice(0, 5)
+      }
+
       this.setState({
-        jobs: items
+        items: results
       })
     })
   }
 
   render () {
+    const title = this.props.isDetailed ? null : <div className="col-12">
+      <h2>Jobs</h2>
+    </div>
+
+    const showAll = this.props.page ? <div className="col-4">
+      <InternalLink slug={this.props.page.slug} classes="job-board__job job-board__job--all">
+        <span className="job-board__job-title job-board__job-title--all">
+          All jobs
+        </span>
+      </InternalLink>
+    </div> : null
+
     return <section className="job-board section">
       <div className="grid">
         <div className="grid__inner">
-          <div className="col-12">
-            <h2>
-              Jobs
-            </h2>
-          </div>
-          {this.state.jobs.map((item, i) => {
+          {title}
+
+          {this.state.items.map((item, i) => {
             return <div className="col-4" key={i}>
               <a className="job-board__job" href={item.link} target="_blank">
                 <span className="job-board__job-title">
@@ -40,13 +58,9 @@ class Jobs extends Component {
               </a>
             </div>
           })}
-          <div className="col-4">
-            <a className="job-board__job job-board__job--all" href="https://freshjobs.ch" target="_blank">
-              <span className="job-board__job-title job-board__job-title--all">
-                All jobs
-              </span>
-            </a>
-          </div>
+
+          {showAll}
+
           <div className="col-12">
             <div className="job-board__freshjobs-container">
               <span>Powered by our friends from </span>
@@ -79,7 +93,8 @@ class Jobs extends Component {
 }
 
 Jobs.propTypes = {
-  jobs: PropTypes.array
+  isDetailed: PropTypes.bool,
+  page: PropTypes.object
 }
 
 export default Jobs

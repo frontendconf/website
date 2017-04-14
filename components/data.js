@@ -97,6 +97,7 @@ export default (Component) => {
               slug: item.fields.slug
             }
           }) : [],
+          teaser: currentPage.leadTeaser ? items.find((item) => item.sys.id === currentPage.leadTeaser.sys.id).fields : null,
           menu: query.detail && query.page !== 'news' ? items.filter(filterByType, currentItem.sys.contentType.sys.id).map((item) => {
             const title = item.fields.name || item.fields.title
             const isActive = isActiveItem(item.fields.slug, query)
@@ -157,15 +158,17 @@ export default (Component) => {
           }
         }) : null
 
-        const venue = currentPage && currentPage.showVenue && config.venueTeaser ? items.find((item) => {
-          return item.sys.id === config.venueTeaser.sys.id
-        }).fields : null
+        const venue = currentPage && currentPage.showVenue && config.venueTeaser ? items.find((item) => item.sys.id === config.venueTeaser.sys.id).fields : null
 
         if (venue && venue.link && venue.link.fields) {
           venue.link = venue.link.fields.slug
         }
 
-        const jobs = currentPage && currentPage.showJobs ? [] : null
+        const jobsPageOriginal = items.filter(filterByType, 'page').find((item) => item.fields.showJobsDetailed)
+        const jobs = currentPage && (currentPage.showJobs || currentPage.showJobsDetailed) ? {
+          isDetailed: currentPage.showJobsDetailed,
+          page: jobsPageOriginal && !currentPage.showJobsDetailed ? Object.assign({}, jobsPageOriginal.fields) : null
+        } : null
 
         const sponsors = currentPage && (currentPage.showSponsors || currentPage.showSponsorsDetailed) ? items.filter(filterByType, 'sponsorCategory').map((item) => {
           const teaser = item.fields.teaser && !currentPage.showSponsorsDetailed ? items.filter(filterByType, 'teaser').find((teaser) => {

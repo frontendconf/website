@@ -79,7 +79,7 @@ class Index extends Component {
     const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} /> : null
     const workshops = this.props.workshops ? <Workshops workshops={this.props.workshops} /> : null
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
-    const jobs = this.props.jobs ? <Jobs jobs={this.props.jobs} /> : null
+    const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
 
     return <Layout {...this.props}>
@@ -105,7 +105,7 @@ Index.propTypes = {
   speakers: PropTypes.array,
   workshops: PropTypes.array,
   venue: PropTypes.object,
-  jobs: PropTypes.array,
+  jobs: PropTypes.object,
   sponsors: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array
