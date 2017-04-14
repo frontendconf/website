@@ -87,6 +87,18 @@ export default (Component) => {
           currentPage.isHome = true
         }
 
+        if (currentPage && currentPage.teacher) {
+          const teacher = {
+            name: currentPage.teacher.fields.name,
+            detail: currentPage.teacher.fields.slug,
+            description: currentPage.teacher.fields.description,
+            page: 'speakers',
+            photo: currentPage.teacher.fields.photo ? (currentPage.teacher.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
+          }
+
+          currentPage.teacher = teacher
+        }
+
         const lead = currentPage ? {
           title: query.detail ? (menu.find((item) => item.isActive) || {}).title : currentPage.title,
           body: currentPage.lead ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />') : null,
@@ -124,7 +136,7 @@ export default (Component) => {
         }).sort((a, b) => new Date(b.date) - new Date(a.date)) : null
 
         const hosts = currentPage && currentPage.showSpeakers ? items.filter(filterByType, 'host').map((item) => {
-          const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
+          const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
 
           return {
             name: item.fields.name,
@@ -137,7 +149,7 @@ export default (Component) => {
         }).sort((a, b) => a.order - b.order) : null
 
         const speakers = currentPage && currentPage.showSpeakers ? items.filter(filterByType, 'speaker').map((item) => {
-          const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
+          const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=250&h=250&fit=fill') : null
 
           return {
             name: item.fields.name,
@@ -150,7 +162,7 @@ export default (Component) => {
         }).sort((a, b) => a.order - b.order) : null
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
-          const photo = item.fields.photo ? item.fields.photo.fields.file.url : null
+          const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
 
           return {
             name: item.fields.title,

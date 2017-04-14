@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Person from './person'
+
 class Workshop extends Component {
   render () {
     return <section className="workshop section">
       <div className="grid">
         <div className="grid__inner">
-          <div className="col-12">
+          <div className="col-8">
             <h1>
               {this.props.title}
             </h1>
@@ -17,6 +19,10 @@ class Workshop extends Component {
 
             <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
           </div>
+
+          <div className="col-4">
+            <Person {...this.props.teacher} />
+          </div>
         </div>
       </div>
     </section>
@@ -26,7 +32,8 @@ class Workshop extends Component {
 Workshop.propTypes = {
   title: PropTypes.string,
   lead: PropTypes.string,
-  body: PropTypes.string
+  body: PropTypes.string,
+  teacher: PropTypes.object
 }
 
 export default Workshop
