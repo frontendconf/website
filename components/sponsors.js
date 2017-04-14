@@ -23,7 +23,7 @@ class Sponsors extends Component {
               </div>
             </div> : null
 
-            return <div key={i}>
+            return <div style={{width: '100%'}} key={i}>
               <div className="col-12">
                 <h3 className={'sponsors__title sponsors__title--' + category.cssClass}>
                   {category.title}
@@ -31,7 +31,35 @@ class Sponsors extends Component {
               </div>
 
               {category.items.map((item, i) => {
-                return <div className={category.cssClassItems} key={i}>
+                const twitter = item.twitter ? <a href={'https://twitter.com/' + item.twitter}>
+                  {'@' + item.twitter}
+                </a> : null
+
+                const link = item.link ? <a href={item.link} className="sponsors__link">
+                  {item.link}
+                </a> : null
+
+                return item.isDetailed ? <div style={{width: '100%'}} key={i}>
+                  <div className="col-12">
+                    <div className="sponsors__sponsor-line"></div>
+                  </div>
+                  <div className="col-4">
+                    <a href={item.link} className="sponsors__sponsor-link">
+                      <img className="sponsors__logo" src={item.logo} alt={item.title} />
+                    </a>
+                  </div>
+                  <div className="col-8">
+                    <div className="sponsors__sponsor">
+                      <h3 className="sponsors__sponsor-name">{item.title}</h3>
+                      <p className="sponsors__sponsor-description" dangerouslySetInnerHTML={{ __html: item.body }}>
+                      </p>
+                      <p className="sponsors__sponsor-website">
+                        {twitter}
+                        {link}
+                      </p>
+                    </div>
+                  </div>
+                </div> : <div className={category.cssClassItems} key={i}>
                   <a href={item.link} className="sponsors-board__sponsor sponsors__link" target="_blank">
                     <img className="sponsors__logo" src={item.logo} alt={item.title} />
                   </a>

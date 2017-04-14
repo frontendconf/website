@@ -161,14 +161,14 @@ export default (Component) => {
           return item.sys.id === config.venueTeaser.sys.id
         }).fields : null
 
-        if (venue.link && venue.link.fields) {
+        if (venue && venue.link && venue.link.fields) {
           venue.link = venue.link.fields.slug
         }
 
         const jobs = currentPage && currentPage.showJobs ? [] : null
 
-        const sponsors = currentPage && currentPage.showSponsors ? items.filter(filterByType, 'sponsorCategory').map((item) => {
-          const teaser = item.fields.teaser ? items.filter(filterByType, 'teaser').find((teaser) => {
+        const sponsors = currentPage && (currentPage.showSponsors || currentPage.showSponsorsDetailed) ? items.filter(filterByType, 'sponsorCategory').map((item) => {
+          const teaser = item.fields.teaser && !currentPage.showSponsorsDetailed ? items.filter(filterByType, 'teaser').find((teaser) => {
             return teaser.sys.id === item.fields.teaser.sys.id
           }).fields : null
 
@@ -176,6 +176,7 @@ export default (Component) => {
             title: item.fields.title,
             color: item.fields.color,
             level: item.fields.level,
+            body: item.fields.body,
             items: [],
             id: item.sys.id,
             cssClass: item.fields.cssClass,
@@ -197,7 +198,9 @@ export default (Component) => {
             category.items.push({
               title: item.fields.title,
               link: item.fields.link,
-              logo
+              twitter: item.fields.twitter,
+              logo,
+              isDetailed: currentPage.showSponsorsDetailed
             })
           })
         }
