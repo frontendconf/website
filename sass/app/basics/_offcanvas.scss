@@ -9,11 +9,13 @@ $large: layout(12);
 }
 .offcanvasMain {
   @include span(full at 1 isolate);
+	background: $white;
 }
 .offcanvasRight {
-  @include span(4 at 100% isolate);
+  // @include span(4 at 100% isolate);
+	width: 80%;
 	padding: 20px 40px;
-  margin-right: -200%;
+  margin-left: 20%;
   background: $diamond;
   min-height: 100vh;
   a {
@@ -24,8 +26,25 @@ $large: layout(12);
 
 .show-right {
   &:checked {
-    ~ .offcanvasMain { @include pull(3); }
-    ~ .offcanvasRight { @include push(.75); }
+		~ .header, ~ .offcanvasMain, ~ .offcanvasRight {
+			position: fixed;
+		}
+
+		~ .header {
+			z-index: 99;
+			width: 100%;
+		}
+
+		~ .offcanvasMain {
+			z-index: 98;
+		}
+
+		~ .offcanvasMain, ~ .offcanvasRight {
+			top: 60px;
+		}
+
+    ~ .offcanvasMain { margin-left: -80%; }
+    ~ .offcanvasRight { margin-left: 20%; }
   }
 }
 

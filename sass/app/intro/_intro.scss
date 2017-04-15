@@ -126,6 +126,10 @@
 
 		@include breakpoint($desktop) {
 			columns: 4;
+
+			&__threeonly {
+				columns: 3;
+			}
 		}
 
 		a {

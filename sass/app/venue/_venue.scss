@@ -1,13 +1,36 @@
 .venue {
+	padding: 30px 15px;
   background: $venue-background;
   color: $white;
+
+	@include breakpoint($tablet) {
+		padding: 0;
+		min-height: 420px;
+	}
+
+	@include breakpoint($desktop) {
+		min-height: 480px;
+	}
+
+	&__container {
+		@include breakpoint($tablet) {
+			height: 420px;
+		}
+
+		@include breakpoint($desktop) {
+			display: table;
+			height: 480px;
+		}
+	}
 
   &__image,
   &__inner {
     display: table-cell;
+		height: 100%;
 
     @include breakpoint($tablet) {
       width: 50%;
+			height: 480px;
     }
   }
 
@@ -27,6 +50,14 @@
       //max-width: 435px;
     }
   }
+
+	h2 {
+		margin-top: 0;
+
+		a {
+			color: $white;
+		}
+	}
 }
 
 .accomodation {

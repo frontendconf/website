@@ -54,10 +54,18 @@ h2 {
     @include font-size($font-size-h2);
 
     &:not(.intro__title):after {
-			font-size: 50px;
+			font-size: 26px;
 			line-height: 1rem;
       content: " \0203A";
       @include opensanscondensedregular;
+
+			@include breakpoint($tablet) {
+				font-size: 40px;
+			}
+
+			@include breakpoint($desktop) {
+				font-size: 50px;
+			}
     }
   }
 }
@@ -97,7 +105,7 @@ img {
 }
 
 a {
-  color: $link;
+  color: $link-bright;
   text-decoration: none;
   @include transition(color 0.4s ease-in-out);
   @include transition(background-color 0.4s ease-in-out);
