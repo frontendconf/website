@@ -18,7 +18,7 @@ class Lead extends Component {
     // const endDate = this.formatDate(this.props.endDate)
     const classes = 'intro ' + this.props.modifiers.map((modifier) => 'intro--' + modifier).join(' ')
 
-    const body = this.props.menu.length ? <ul className="list">
+    const body = this.props.menu.length ? <ul className="list list__threeonly">
       {this.props.menu.map((item, i) => {
         return <li key={i}>
           <InternalLink {...item} classes={item.isActive ? 'active' : null} />
