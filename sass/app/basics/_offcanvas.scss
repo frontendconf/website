@@ -4,64 +4,56 @@ $large: layout(12);
   @include container($large);
 }
 
-.offcanvasMain, .offcanvasRight {
-  @include transition(all 300ms);
-}
 .offcanvasMain {
   @include span(full at 1 isolate);
 	background: $white;
 }
-.offcanvasRight {
-  // @include span(4 at 100% isolate);
-	width: 80%;
-	padding: 20px 40px;
-  margin-left: 20%;
-  background: $diamond;
-  min-height: 100vh;
-  a {
-    color: $white;
-  }
-}
 
+@media (max-width: $tablet) {
 
-.show-right {
-  &:checked {
-		~ .header, ~ .offcanvasMain, ~ .offcanvasRight {
-			position: fixed;
-		}
+	.offcanvasMain, .offcanvasRight {
+	  @include transition(all 300ms);
+	}
 
-		~ .header {
-			z-index: 99;
-			width: 100%;
-		}
+	.offcanvasRight {
+	  // @include span(4 at 100% isolate);
+		width: 80%;
+		padding: 20px 40px;
+	  margin-left: 20%;
+	  background: $diamond;
+	  min-height: 100vh;
+	  a {
+	    color: $white;
+	  }
+	}
 
-		~ .offcanvasMain {
-			z-index: 98;
-		}
+	.show-right {
+	  &:checked {
+			~ .header, ~ .offcanvasMain, ~ .offcanvasRight {
+				position: fixed;
+			}
 
-		~ .offcanvasMain, ~ .offcanvasRight {
-			top: 60px;
-		}
+			~ .header {
+				z-index: 99;
+				width: 100%;
+			}
 
-    ~ .offcanvasMain { margin-left: -80%; }
-    ~ .offcanvasRight { margin-left: 20%; }
-  }
+			~ .offcanvasMain {
+				z-index: 98;
+			}
+
+			~ .offcanvasMain, ~ .offcanvasRight {
+				top: 60px;
+			}
+
+	    ~ .offcanvasMain { margin-left: -80%; }
+	    ~ .offcanvasRight { margin-left: 20%; }
+	  }
+	}
 }
 
 @media (min-width: $tablet) {
-  .show-right {
-    &:checked {
-      ~ .offcanvasMain {
-        @include span(full at 1 isolate);
-      }
-      ~ .offcanvasRight {
-        @include span(3 at 100% isolate);
-        margin-right: -200%;
-      }
-    }
-  }
-
-  [for="right"] { display: none; }
+  [for="right"], .offcanvasRight { display: none; }
 }
 
 .toggle-input {
