@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import ReactGA from 'react-ga'
+import config from '../config'
+
 import Layout from '../components/layout'
 import Data from '../components/data'
 import Lead from '../components/lead'
@@ -17,6 +20,21 @@ import Team from '../components/team'
 
 class Index extends Component {
 
+  constructor (props) {
+    super(props)
+
+    if (process.browser) {
+      ReactGA.initialize(config.GA)
+    }
+  }
+
+  sendLocationToGA () {
+    const page = window.location.pathname
+
+    ReactGA.set({ page })
+    ReactGA.pageview(page)
+  }
+
   insertScripts (scripts, checkInsertion) {
     scripts.forEach((src) => {
       if (checkInsertion && document.querySelectorAll('[src="' + src + '"]').length) return
@@ -24,8 +42,6 @@ class Index extends Component {
       const script = document.createElement('script')
       script.src = src
       document.head.appendChild(script)
-
-      console.log(src)
     })
   }
 
@@ -37,19 +53,21 @@ class Index extends Component {
       sheet.href = src
       sheet.rel = 'stylesheet'
       document.head.appendChild(sheet)
-
-      console.log(src)
     })
   }
 
   componentDidMount () {
     this.insertScripts(this.props.scripts)
     this.insertStyles(this.props.styles)
+
+    this.sendLocationToGA()
   }
 
   componentWillReceiveProps (newProps) {
     this.insertScripts(newProps.scripts)
     this.insertStyles(newProps.styles, true)
+
+    this.sendLocationToGA()
   }
 
   render () {
