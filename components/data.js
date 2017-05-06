@@ -57,7 +57,7 @@ export default (Component) => {
         }
 
         const footer = {
-          ctas: config.footerCtas.map((item) => {
+          ctas: config.footerCtas.filter((item) => item.fields).map((item) => {
             const title = item.fields.ctaText || item.fields.title
 
             return {
