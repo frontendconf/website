@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import Error from 'next/error'
 import API from '../lib/api'
 
 function filterByType (item) {
@@ -17,7 +19,7 @@ function isActiveItem (slug, query, isMenu) {
 
 export default (Component) => {
   class Data extends React.Component {
-    static async getInitialProps ({ query }) {
+    static async getInitialProps ({ query, res }) {
       const cachedResponse = (typeof window !== 'undefined' && window.__NEXT_DATA__ && window.__NEXT_DATA__.props && window.__NEXT_DATA__.props._raw) ? window.__NEXT_DATA__.props._raw : null
       const getData = cachedResponse ? Promise.resolve(cachedResponse) : API.getContentfulEntries()
 
@@ -27,6 +29,14 @@ export default (Component) => {
         const currentItem = items.find((item) => {
           return isActiveItem(item.fields.slug, query)
         })
+
+        if (!currentItem && res) {
+          res.statusCode = 404
+
+          return {
+            statusCode: 404
+          }
+        }
 
         // Exposed data
         const menu = config.menu.map((item) => {
@@ -296,8 +306,16 @@ export default (Component) => {
     }
 
     render () {
+      if (this.props.statusCode) {
+        return <Error statusCode={this.props.statusCode} />
+      }
+
       return <Component {...this.props} />
     }
+  }
+
+  Data.propTypes = {
+    statusCode: PropTypes.number
   }
 
   return Data
