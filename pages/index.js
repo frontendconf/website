@@ -108,8 +108,8 @@ class Index extends Component {
       {lead}
       {body}
       {news}
-      {speakers}
       {hosts}
+      {speakers}
       {workshops}
       {team}
       {venue}
