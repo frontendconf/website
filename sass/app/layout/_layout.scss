@@ -59,6 +59,7 @@ $susy: (
 }
 .col-xs-4 {
   @include span(4 inside);
+  margin-bottom: gutter(12)*2;
 }
 .col-xs-6 {
   @include span(6 inside);

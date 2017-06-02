@@ -3,16 +3,23 @@
   background: $footer-background;
   color: $contributing;
 
-  .partners__title {
+  .partners__title,
+  .sponsors__title {
     text-transform: uppercase;
   }
 
-  [class*=col-] > .partners__link {
+  [class*=col-] > .partners__link,
+  [class*=col-] > .sponsors__link {
     background: $white;
     display: block;
     padding: 0.75rem;
-    margin-bottom: 1.38889%*6;
     position: relative;
+  }
+
+  &:last-child {
+    @include breakpoint($tablet) {
+      margin-bottom: -2rem;
+    }
   }
 }
 
