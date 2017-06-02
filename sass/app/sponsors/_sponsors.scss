@@ -152,7 +152,12 @@
     &-line {
       @extend .separator-line;
     }
-    &-link {}
+    &-link {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
   }
 
   &__logo {
