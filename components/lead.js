@@ -16,8 +16,6 @@ class Lead extends Component {
   render () {
     // const startDate = this.formatDate(this.props.startDate)
     // const endDate = this.formatDate(this.props.endDate)
-    const classes = 'intro ' + this.props.modifiers.map((modifier) => 'intro--' + modifier).join(' ')
-    const contentClasses = 'intro__content ' + this.props.contentModifiers.map((modifier) => 'intro__content--' + modifier).join(' ')
 
     const body = this.props.menu.length ? <ul className="list list__threeonly">
       {this.props.menu.map((item, i) => {
@@ -25,7 +23,7 @@ class Lead extends Component {
           <InternalLink {...item} classes={item.isActive ? 'active' : null} />
         </li>
       })}
-    </ul> : <div className={contentClasses}>
+    </ul> : <div className={this.props.isHome ? 'intro__content' : 'intro__content--light'}>
       <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
     </div>
 
@@ -43,7 +41,7 @@ class Lead extends Component {
       </div>
 
       <div className="intro__bottom-right">
-        {this.props.newsletter ? <Newsletter /> : null}
+        {this.props.isHome ? <Newsletter /> : null}
       </div>
     </div> : teaser
 
@@ -55,14 +53,14 @@ class Lead extends Component {
       </div>
     </div> : null
 
-    return <section className={classes}>
+    return <section className={this.props.isHome ? 'intro bg-100' : 'intro'}>
         <div className="intro__top-content">
         <div className="grid">
           <div className="grid__inner">
             <div className="col-12">
               <h1 className="intro__title">{this.props.title}</h1>
             </div>
-            <div className={this.props.contentWrapperClasses.join(' ')}>
+            <div className={this.props.isHome ? 'col-12' : 'col-8 margin-top-large'}>
               {body}
             </div>
           </div>
@@ -79,11 +77,8 @@ Lead.propTypes = {
   body: PropTypes.string,
   menu: PropTypes.array,
   ctas: PropTypes.array,
-  newsletter: PropTypes.bool,
   teaser: PropTypes.object,
-  modifiers: PropTypes.array,
-  contentModifiers: PropTypes.array,
-  contentWrapperClasses: PropTypes.array
+  isHome: PropTypes.bool
 }
 
 export default Lead

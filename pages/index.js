@@ -96,8 +96,8 @@ class Index extends Component {
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
     const news = this.props.news ? <News teasers={this.props.news} /> : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
-    const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} /> : null
-    const workshops = this.props.workshops ? <Workshops workshops={this.props.workshops} /> : null
+    const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} isHome={this.props.currentPage && this.props.currentPage.isHome} /> : null
+    const workshops = this.props.workshops ? <Workshops workshops={this.props.workshops} isHome={this.props.currentPage && this.props.currentPage.isHome} /> : null
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
@@ -108,8 +108,8 @@ class Index extends Component {
       {lead}
       {body}
       {news}
-      {hosts}
-      {speakers}
+      {this.props.currentPage && this.props.currentPage.isHome ? hosts : speakers}
+      {this.props.currentPage && this.props.currentPage.isHome ? speakers : hosts}
       {workshops}
       {team}
       {venue}
