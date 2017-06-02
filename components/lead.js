@@ -17,6 +17,7 @@ class Lead extends Component {
     // const startDate = this.formatDate(this.props.startDate)
     // const endDate = this.formatDate(this.props.endDate)
     const classes = 'intro ' + this.props.modifiers.map((modifier) => 'intro--' + modifier).join(' ')
+    const contentClasses = 'intro__content ' + this.props.contentModifiers.map((modifier) => 'intro__content--' + modifier).join(' ')
 
     const body = this.props.menu.length ? <ul className="list list__threeonly">
       {this.props.menu.map((item, i) => {
@@ -24,7 +25,7 @@ class Lead extends Component {
           <InternalLink {...item} classes={item.isActive ? 'active' : null} />
         </li>
       })}
-    </ul> : <div className="intro__content">
+    </ul> : <div className={contentClasses}>
       <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
     </div>
 
@@ -61,7 +62,7 @@ class Lead extends Component {
             <div className="col-12">
               <h1 className="intro__title">{this.props.title}</h1>
             </div>
-            <div className="col-12 margin-top-large">
+            <div className={this.props.contentWrapperClasses.join(' ')}>
               {body}
             </div>
           </div>
@@ -80,7 +81,9 @@ Lead.propTypes = {
   ctas: PropTypes.array,
   newsletter: PropTypes.bool,
   teaser: PropTypes.object,
-  modifiers: PropTypes.array
+  modifiers: PropTypes.array,
+  contentModifiers: PropTypes.array,
+  contentWrapperClasses: PropTypes.array
 }
 
 export default Lead

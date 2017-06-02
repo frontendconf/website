@@ -142,7 +142,9 @@ export default (Component) => {
             }
           }) : [],
           newsletter: currentPage.isHome,
-          modifiers: currentPage.isHome ? ['bg-100'] : []
+          modifiers: currentPage.isHome ? ['bg-100'] : [],
+          contentModifiers: currentPage.isHome ? [] : ['light'],
+          contentWrapperClasses: currentPage.isHome ? ['col-12'] : ['col-8', 'margin-top-large']
         } : null
 
         // Fallback
