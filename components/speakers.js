@@ -6,14 +6,16 @@ import InternalLink from './link'
 
 class Speakers extends Component {
   render () {
-    return <section className="speakers section--bottom">
+    return <section className="speakers section">
       <div className="grid">
         <div className="grid__inner eq-height">
-          <div className="col-12">
-            <h2>
-              Speakers
-            </h2>
-          </div>
+          {/*
+            <div className="col-12">
+              <h2>
+                Speakers
+              </h2>
+            </div>
+          */}
           {this.props.speakers.map((item, i) => {
             return <div className="col-xs-6 col-3" key={i}>
               <Person {...item} />
