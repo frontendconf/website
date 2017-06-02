@@ -140,7 +140,8 @@ export default (Component) => {
               detail: item.fields.slug,
               isActive
             }
-          }) : []
+          }) : [],
+          isHome: currentPage.isHome
         } : null
 
         // Fallback

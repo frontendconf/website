@@ -53,7 +53,7 @@ class Lead extends Component {
       </div>
     </div> : null
 
-    return <section className={this.props.isHome ? 'intro bg-100' : 'intro'}>
+    return <section className={this.props.isHome ? 'intro intro--bg-100' : 'intro'}>
         <div className="intro__top-content">
         <div className="grid">
           <div className="grid__inner">
