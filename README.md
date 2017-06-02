@@ -1,25 +1,32 @@
 # Develop
 
-Install dependencies using `yarn` (or `npm i`).
+Install dependencies using `npm i`
 
 Start application:
 ```bash
-yarn run dev
+npm run dev
 
 # Alternative (using the deployed API instead of a local one)
-yarn run start
+npm run start
 ```
 
 # Deploy
 
 ```bash
-yarn run deploy
+# Dev
+npm run deploy-dev
+
+# Prod
+npm run deploy
 ```
 
 # Show logs of deployed app
 
 ```bash
-yarn add -g now-logs
-now-logs frontendconf
+ # Dev
+npm run logs-dev
+
+ # Prod
+npm run logs
 ```
 
