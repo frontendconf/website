@@ -2,7 +2,9 @@
 
   &__article {
     &-title {
-
+      &-link {
+        color: inherit;
+      }
     }
     &-info {
       @extend .margin-bottom-small;
@@ -25,6 +27,7 @@
       padding-left: gutter(12);
       padding-right: 0;
     }
+
     &-more {
       color: $link-active;
     }
