@@ -1,42 +1,45 @@
 .venue {
-	padding: 30px 15px;
+  padding: 30px 15px;
   background: $venue-background;
   color: $white;
 
-	@include breakpoint($tablet) {
-		padding: 0;
-		min-height: 420px;
-	}
+  @include breakpoint($tablet) {
+    padding: 0;
+  }
 
-	@include breakpoint($desktop) {
-		min-height: 480px;
-	}
+  @include breakpoint($desktop) {
+  }
 
-	&__container {
-		@include breakpoint($tablet) {
-			height: 420px;
-		}
+  &__container {
+    @include breakpoint($tablet) {
+      min-height: 420px;
+    }
 
-		@include breakpoint($desktop) {
-			display: table;
-			height: 480px;
-		}
-	}
+    @include breakpoint($desktop) {
+      display: table;
+      min-height: 480px;
+    }
+  }
 
   &__image,
   &__inner {
     display: table-cell;
-		height: 100%;
+    height: 100%;
+    vertical-align: middle;
 
     @include breakpoint($tablet) {
       width: 50%;
-			height: 480px;
     }
   }
 
   &__image {
     background: url("../images/venue.jpg") no-repeat center center;
     background-size: cover;
+    @include breakpoint($tablet-max) {
+      display: block;
+      height: 480px;
+      margin: -30px -15px 15px -15px
+    }
   }
 
   &__inner {
@@ -51,13 +54,13 @@
     }
   }
 
-	h2 {
-		margin-top: 0;
+  h2 {
+    margin-top: 0;
 
-		a {
-			color: $white;
-		}
-	}
+    a {
+      color: $white;
+    }
+  }
 }
 
 .accomodation {
