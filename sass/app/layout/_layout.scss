@@ -109,9 +109,7 @@ $susy: (
 }
 
 .col-12 {
-  @include breakpoint($tablet) {
     @include span(12 inside);
-  }
 }
 
 //unusual ratios
@@ -171,25 +169,23 @@ $susy: (
 }
 
 .eq-height {
-  @include breakpoint($tablet) {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > [class*='col-']:not(.col-12) {
+    background-clip: content-box;
+
     display: flex;
     flex-wrap: wrap;
-  }
-
-  & > [class*='col-'] {
-    background-clip: content-box;
-    @include breakpoint($tablet) {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column; // FF 47-
-      -webkit-flex-direction: row; // iOS safari
-      -ms-flex-direction: column; // IE11
-      float: none;
-      & > * {
-        width: 100%;
-      }
+    flex-direction: column; // FF 47-
+    -webkit-flex-direction: row; // iOS safari
+    -ms-flex-direction: column; // IE11
+    float: none;
+    & > * {
+      width: 100%;
     }
   }
+
 
   &:before,
   &:after {
