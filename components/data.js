@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Error from 'next/error'
-import API from '../lib/api'
+import contentful from '../lib/contentful'
 
 function filterByType (item) {
   return item.sys.contentType.sys.id === this
@@ -21,7 +21,7 @@ export default (Component) => {
   class Data extends React.Component {
     static async getInitialProps ({ query, res }) {
       const cachedResponse = (typeof window !== 'undefined' && window.__NEXT_DATA__ && window.__NEXT_DATA__.props && window.__NEXT_DATA__.props._raw) ? window.__NEXT_DATA__.props._raw : null
-      const getData = cachedResponse ? Promise.resolve(cachedResponse) : API.getContentfulEntries()
+      const getData = cachedResponse ? Promise.resolve(cachedResponse) : contentful.getEntries()
 
       return getData.then((items) => {
         const configs = items.filter(filterByType, 'config')
@@ -198,7 +198,7 @@ export default (Component) => {
           }
         }).sort((a, b) => a.order - b.order) : null
 
-        const venue = currentPage && currentPage.showVenue && config.venueTeaser ? items.find((item) => item.sys.id === config.venueTeaser.sys.id).fields : null
+        const venue = currentPage && currentPage.showVenue && config.venueTeaser ? Object.assign({}, items.find((item) => item.sys.id === config.venueTeaser.sys.id).fields) : null
 
         if (venue && venue.link && venue.link.fields) {
           venue.link = venue.link.fields.slug

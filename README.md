@@ -4,10 +4,7 @@ Install dependencies using `yarn` (or `npm i`).
 
 Start application:
 ```bash
-yarn run dev
-
-# Alternative (using the deployed API instead of a local one)
-yarn run start
+yarn start
 ```
 
 # Deploy

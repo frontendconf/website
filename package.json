@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "array-shuffle": "^1.0.1",
+    "contentful": "^3.7.1",
     "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash.clonedeep": "^4.5.0",
     "lru-cache": "^4.0.2",
+    "marked": "^0.3.6",
     "next": "^2.1.0",
     "now-logs": "^0.0.7",
     "path-match": "^1.2.4",
@@ -35,7 +37,6 @@
   "scripts": {
     "build": "next build",
     "start": "node server.js",
-    "dev": "API=http://localhost:3001 node server.js",
     "deploy": "now -e NODE_ENV=production && now alias",
     "lint": "eslint ."
   },

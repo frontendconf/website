@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import shuffle from 'array-shuffle'
-import API from '../lib/api'
+import freshjobs from '../lib/freshjobs'
 
 import InternalLink from './link'
 
@@ -15,7 +15,7 @@ class Jobs extends Component {
   }
 
   componentDidMount () {
-    API.getFreshjobsEntries().then((items) => {
+    freshjobs.getEntries().then((items) => {
       let results = shuffle(items)
 
       if (!this.props.isDetailed) {
