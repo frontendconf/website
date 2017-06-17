@@ -1,6 +1,6 @@
 module.exports = {
   CDN: process.env.CDN || 'https://static.frontendconf.ch',
-  ASSET_VERSION: '?v2',
+  ASSET_VERSION: '?v3',
   GA: 'UA-24147044-1',
   CONTENTFUL_SPACE: 'j8md9ikrag2j',
   // Read-only access and therefore not sensitive

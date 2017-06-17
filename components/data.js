@@ -141,8 +141,7 @@ export default (Component) => {
               isActive
             }
           }) : [],
-          newsletter: currentPage.isHome,
-          modifiers: currentPage.isHome ? ['bg-100'] : []
+          isHome: currentPage.isHome
         } : null
 
         // Fallback

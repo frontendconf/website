@@ -8,7 +8,7 @@
   "author": "Thomas Jaggi <thomas@responsive.ch>",
   "license": "UNLICENSED",
   "engines": {
-    "node": "6.9.1"
+    "node": "8.0.0"
   },
   "dependencies": {
     "array-shuffle": "^1.0.1",
@@ -19,7 +19,6 @@
     "lru-cache": "^4.0.2",
     "marked": "^0.3.6",
     "next": "^2.1.0",
-    "now-logs": "^0.0.7",
     "path-match": "^1.2.4",
     "prop-types": "^15.5.4",
     "react": "^15.5.3",
@@ -32,15 +31,16 @@
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^6.8.0",
-    "eslint-plugin-standard": "^2.0.1"
+    "eslint-plugin-standard": "^2.0.1",
+    "now": "^6.2.5"
   },
   "scripts": {
     "build": "next build",
     "start": "node server.js",
-    "deploy": "now -e NODE_ENV=production && now alias",
+    "deploy": "now alias `now -e NODE_ENV=production` www.frontendconf.ch",
+    "deploy-dev": "now alias `now -e NODE_ENV=production` dev.frontendconf.ch",
+    "logs": "now logs www.frontendconf.ch",
+    "logs-dev": "now logs dev.frontendconf.ch",
     "lint": "eslint ."
-  },
-  "now": {
-    "alias": "https://dev.frontendconf.ch"
   }
 }

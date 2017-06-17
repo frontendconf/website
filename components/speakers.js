@@ -6,14 +6,14 @@ import InternalLink from './link'
 
 class Speakers extends Component {
   render () {
-    return <section className="speakers section--bottom">
+    return <section className={this.props.isHome ? 'speakers section--bottom' : 'speakers section'}>
       <div className="grid">
         <div className="grid__inner eq-height">
-          <div className="col-12">
+          {this.props.isHome ? <div className="col-12">
             <h2>
               Speakers
             </h2>
-          </div>
+          </div> : null}
           {this.props.speakers.map((item, i) => {
             return <div className="col-xs-6 col-3" key={i}>
               <Person {...item} />
@@ -34,7 +34,8 @@ class Speakers extends Component {
 
 Speakers.propTypes = {
   speakers: PropTypes.array,
-  moreSpeakers: PropTypes.bool
+  moreSpeakers: PropTypes.bool,
+  isHome: PropTypes.bool
 }
 
 export default Speakers
