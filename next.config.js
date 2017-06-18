@@ -51,12 +51,11 @@ module.exports = {
     })
 
     // Env variables
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env.API': JSON.stringify(process.env.API),
-        'process.env.CDN': JSON.stringify(process.env.CDN)
-      })
-    )
+    // config.plugins.push(
+    //   new webpack.DefinePlugin({
+    //     'process.env.API': JSON.stringify(process.env.API)
+    //   })
+    // )
 
     return config
   }

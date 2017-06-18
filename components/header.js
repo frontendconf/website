@@ -13,7 +13,7 @@ class Header extends Component {
           <div className="col-12">
             <div className="header__left">
               <InternalLink href="/" classes="header__link-home">
-                <img className="header__logo" src={config.CDN + '/assets/images/fec-logo.svg' + config.ASSET_VERSION} alt="Logo" />
+                <img className="header__logo" src={'/static/images/fec-logo.svg' + config.ASSET_VERSION} alt="Logo" />
               </InternalLink>
 
               {this.props.menuButtons.map((item, i) => {
@@ -21,7 +21,7 @@ class Header extends Component {
               })}
 
               <label htmlFor="right" className="toggle header__hamburger">
-                <img className="header__hamburger-bar" src={config.CDN + '/assets/images/menu.svg' + config.ASSET_VERSION} alt="Menu" />
+                <img className="header__hamburger-bar" src={'/static/images/menu.svg' + config.ASSET_VERSION} alt="Menu" />
               </label>
             </div>
 
