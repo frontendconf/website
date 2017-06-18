@@ -15,6 +15,9 @@ app.prepare()
 .then(() => {
   const server = express()
 
+  // Static files
+  server.use('/static', express.static('static'))
+
   // Reset cache when using ?emptyCache
   server.get('*', (req, res, next) => {
     if (req.query.emptyCache !== undefined) {
