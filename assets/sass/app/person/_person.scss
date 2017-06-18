@@ -1,0 +1,123 @@
+.person {
+  margin-bottom: 2rem;
+
+  &__image-container {
+    display: block;
+
+    &:focus,
+    &:hover {
+      .person__image {
+        @include filter(none);
+      }
+    }
+
+  }
+
+  section:not(.intro) &__title { // TODO: Fix "architecture"
+  	margin-top: 1rem;
+  }
+
+  &__image {
+    @include filter(grayscale(100%));
+    @include transition(filter 0.4s ease);
+  }
+
+  &__name {
+    display: block;
+    text-transform: uppercase;
+  }
+
+  &__job-title {
+    display: block;
+    opacity: 0.7;
+    @include font-size($regular-font-size);
+    font-weight: normal;
+    color: $link;
+    a:hover & {
+      color: $link;
+    }
+  }
+}
+
+.speakers {
+  &__link {
+    display: block;
+    background: #cfd8dc;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    height: 0;
+    padding: 50%;
+    // @include transition(background 0.4s ease);
+
+    &:focus,
+    &:hover {
+      // background: $link-hover;
+      color: $white;
+    }
+  }
+
+  &__link-text {
+    text-transform: uppercase;
+    @include opensanscondensedbold();
+    @include middle();
+  }
+}
+
+.speaker {
+  &__profile {
+    background: $silver-light;
+    @include clearfix();
+    [class*=col-] {
+      &:first-child{
+        padding-left: 0;
+      }
+    }
+
+    &-text {
+      padding-top: gutter();
+      padding-bottom: gutter();
+    }
+    &-website {
+      @extend .margin-top-normal;
+      a {
+        padding-right: 2rem;
+        color: $link-bright;
+        &:hover {
+          color: $link-hover;
+        }
+      }
+    }
+  }
+}
+
+.other_speakers {
+  &_line {
+    border-top: 1px solid $silver;
+    @extend .margin-top-normal;
+    @extend .padding-top-normal;
+  }
+
+  .person {
+    margin-bottom: gutter(2);
+
+    &__image {
+      @include span (1 of 3 inside);
+      padding: 0;
+    }
+
+    &__caption {
+      @include span (2 of 3 inside);
+    }
+
+    &__title,
+    &__name {
+      @include font-size($regular-font-size);
+    }
+
+    &__job-title,
+    &__more {
+      display: none;
+    }
+  }
+}

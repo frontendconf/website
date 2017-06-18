@@ -1,0 +1,74 @@
+@mixin opensanscondensedlight() {
+  font-family: 'Open Sans Condensed', 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin opensanscondensedregular() {
+  font-family: 'Open Sans Condensed', 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+	letter-spacing: .1rem;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin opensanscondensedbold() {
+  font-family: 'Open Sans Condensed', 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin opensanslight() {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin opensansregular() {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin opensansbold() {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin transition($transition) {
+  transition: $transition;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+@mixin middle($position: absolute) {
+  position: $position;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  -o-filter: $filter;
+  -ms-filter: $filter;
+  filter: $filter;
+}
+
+@mixin clearfix() {
+  clear: both;
+  &:before,
+  &:after {
+	content: " ";
+	display: table;
+  }
+  &:after {
+	clear: both;
+  }
+}

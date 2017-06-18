@@ -1,0 +1,251 @@
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url('../fonts/social/MonoSocialIconsFont-1.10.eot');
+    src: url('../fonts/social/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/social/MonoSocialIconsFont-1.10.woff') format('woff'),
+         url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+         url('../fonts/social/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src: url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  @include opensansregular();
+  @include font-size($regular-font-size);
+  color: $blue-darker;
+	overflow-x: hidden;
+}
+
+strong {
+  @include opensansbold();
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include opensanscondensedbold();
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  @include font-size($font-size-h1);
+  &.intro__title{
+    @include font-size($font-size-h2);
+  }
+  .home & {
+    text-transform: uppercase;
+    @include font-size($font-size-h1);
+    .intro__title{
+      @include font-size($font-size-h1);
+    }
+  }
+}
+
+h2 {
+  @include font-size($font-size-h2);
+	margin-top: 2rem;
+
+  .home & {
+    text-transform: uppercase;
+    @include font-size($font-size-h2);
+
+    &:not(.intro__title):after {
+			font-size: 26px;
+			line-height: 1rem;
+      content: " \0203A";
+      @include opensanscondensedregular;
+
+			@include breakpoint($tablet) {
+				font-size: 40px;
+			}
+
+			@include breakpoint($desktop) {
+				font-size: 50px;
+			}
+    }
+  }
+}
+
+h3 {
+  @include font-size($font-size-h3);
+}
+
+section:not(.intro) h3 {
+	margin-top: 2rem;
+}
+
+h4 {
+  @include font-size($regular-font-size);
+}
+
+p {
+  margin: 0 0 1.5rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+section:not(.intro) p {
+	line-height: 1.5em;
+}
+
+aside {
+  @include font-size($middle-font-size);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: $link-bright;
+  text-decoration: none;
+  @include transition(color 0.4s ease-in-out);
+  @include transition(background-color 0.4s ease-in-out);
+  img {
+    @include transition(opacity 0.4s ease-in-out);
+  }
+
+  &:focus,
+  &:hover {
+    color: $link-hover;
+    img[class*=__logo] {
+      opacity: .7;
+    }
+  }
+
+}
+
+.btn {
+	@include opensanscondensedbold;
+	line-height: 1rem;
+  color: $white;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+  display: inline-block;
+  border: none;
+
+	&.small {
+		padding: 0.5rem 0.5rem;
+	}
+
+	@include breakpoint($tablet) {
+		width: auto;
+		margin-bottom: 0;
+	}
+
+	&+ .btn {
+		@include breakpoint($tablet) {
+			margin-left: 10px;
+		}
+	}
+
+  &.fix-size {
+    width: 100%;
+    display: block;
+    margin-bottom: 0.01rem;
+  }
+
+
+  &:hover {
+    cursor: pointer;
+    color: $white;
+  }
+}
+
+.btn, .navigation__link--tickets, .speakers__link, .job-board__job {
+	@include hover;
+}
+
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.justify {
+  text-align: justify;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.ul-nostyle{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+section ul[class*=list] {
+  @extend .ul-nostyle;
+  li {
+    margin: 0 0 0.75rem 0;
+  }
+}
+ul.list-inline li {
+  display: inline-block;
+  margin: 0 1.5rem 0 0;
+  &:first-child {
+    margin-left: 0
+  }
+  &:last-child {
+    margin-right: 0
+  }
+}
+
+// generic margins
+.margin-top-large {
+  margin-top: 1rem;
+}
+.margin-top-normal {
+  margin-top: 1rem;
+}
+.margin-top-small {
+  margin-top: 0.5rem;
+}
+.margin-bottom-large {
+  margin-bottom: 2rem;
+}
+.margin-bottom-normal {
+  margin-bottom: 1rem;
+}
+.margin-bottom-small {
+  margin-bottom: 0.5rem;
+}
+
+// generic paddings
+.padding-top-large {
+  padding-top: 2rem;
+}
+.padding-top-normal {
+  padding-top: 1rem;
+}
+.padding-top-small {
+  padding-top: 0.5rem;
+}
+.padding-bottom-large {
+  padding-bottom: 2rem;
+}
+.padding-bottom-normal {
+  padding-bottom: 1rem;
+}
+.padding-bottom-small {
+  padding-bottom: 0.5rem;
+}
+
+.separator-line {
+    border-top: 1px solid $silver-light;
+    @extend .margin-top-normal;
+    @extend .padding-top-normal;
+}

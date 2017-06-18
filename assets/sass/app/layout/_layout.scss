@@ -1,0 +1,196 @@
+// BORDER BOX
+// =============================================================================
+@include border-box-sizing;
+
+// CONFIGURE SUSY 2 GLOBAL DEFAULTS
+// =============================================================================
+
+$susy: (
+        columns: 12,
+        gutters: 20px/40px,
+        column-width: 40px,
+        container: 1280px,
+        gutter-position: split,
+        global-box-sizing: border-box,
+        use-custom: (
+                rem: true
+        ),
+        debug: (
+          //image: show-columns,
+                color: rgba($red, 0.1),
+          //output: background,
+          //toggle: top right,
+          //output: overlay,
+          //image: show-columns,
+          //color: rgba($red, 0.1),
+          //image: show,
+          //toggle: top right,
+        ),
+);
+
+// GENERAL BREAKPOINTS
+// =============================================================================
+
+.grid {
+  @include container($susy);
+  padding: 0 15px;
+
+  @include breakpoint($mobile) {
+    @include container(4);
+  }
+
+  @include breakpoint($tablet) {
+    padding: 0 40px;
+    @include container(8);
+  }
+
+  @include breakpoint($wide) {
+    @include container($wide);
+  }
+
+}
+
+.grid__inner {
+  @include clearfix();
+}
+
+.col-xs-3 {
+  @include span(3 inside);
+}
+.col-xs-4 {
+  @include span(4 inside);
+  margin-bottom: gutter(12)*2;
+}
+.col-xs-6 {
+  @include span(6 inside);
+}
+
+.col-xs-12 {
+  @include breakpoint($tablet-max) {
+    @include clearfix();
+  }
+}
+
+//normal ratios "x of 12"
+.col-2 {
+  @include breakpoint($tablet) {
+    @include span(2 inside);
+  }
+}
+
+.col-3 {
+  @include breakpoint($tablet) {
+    @include span(3 inside);
+  }
+}
+
+.col-4 {
+  @include breakpoint($tablet) {
+    @include span(4 inside);
+  }
+}
+
+.col-6 {
+  @include breakpoint($tablet) {
+    @include span(6 inside);
+  }
+}
+
+.col-8 {
+  @include breakpoint($tablet) {
+    @include span(8 inside);
+  }
+}
+
+.col-9 {
+  @include breakpoint($tablet) {
+    @include span(9 inside);
+  }
+}
+
+.col-12 {
+    @include span(12 inside);
+}
+
+//unusual ratios
+
+.col-1_5 {
+  @include breakpoint($tablet) {
+    @include span(1 of 5 inside);
+    @include gutters(12 inside);
+    margin-bottom: gutter(12);
+  }
+}
+.col-2_5 {
+  @include breakpoint($tablet) {
+    @include span(2 of 5 inside);
+    @include gutters(12 inside);
+    margin-bottom: gutter(12);
+  }
+}
+
+.col-1_8 {
+  @include breakpoint($tablet) {
+    @include span(1 of 8 inside);
+    @include gutters(12 inside);
+    margin-bottom: gutter(12)*2;
+  }
+}
+
+.section {
+  padding: 2rem 0;
+
+  @include breakpoint($tablet) {
+    padding: 3.75rem 0;
+  }
+
+  &--top {
+    padding: 2rem 0 0;
+
+    @include breakpoint($tablet) {
+      padding: 3.75rem 0 0;
+    }
+  }
+
+  &--bottom {
+    padding: 0 0 2rem;
+
+    @include breakpoint($tablet) {
+      padding: 0 0 3.75rem;
+    }
+  }
+  &--small {
+    padding: 1rem 0;
+
+    @include breakpoint($tablet) {
+      padding: 2rem 0;
+    }
+  }
+}
+
+.eq-height {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > [class*='col-']:not(.col-12) {
+    background-clip: content-box;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; // FF 47-
+    -webkit-flex-direction: row; // iOS safari
+    -ms-flex-direction: column; // IE11
+    float: none;
+    & > * {
+      width: 100%;
+    }
+  }
+
+
+  &:before,
+  &:after {
+    @include breakpoint($tablet) {
+      content: normal; // IE doesn't support `initial`
+    }
+  }
+}

@@ -1,0 +1,49 @@
+// Creates a background that appears to be split diagonally through the middle by two colors.
+
+// THIS REPLACES COMPASS'S BUILT IN GRADIENT INCLUDE
+// COMPASS IS NOT FULLY CROSS-BROWSER
+// This is built off of the format from http://www.colorzilla.com/gradient-editor/
+
+@mixin diagonal-gradient($color1, $color2, $color1-hover, $color2-hover){
+	position: relative;
+	display: inline-block;
+  z-index: 100;
+	background: $color1;
+  background: linear-gradient(45deg, $color1 0%,$color1 50%,$color2 100%);
+	transition: all .5s;
+
+	&:before {
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 0;
+    z-index: -100;
+		background: $color1-hover;
+    background: linear-gradient(45deg, $color1-hover 0%,$color1-hover 50%,$color2-hover 100%);
+		transition: all .5s;
+  }
+
+	&:hover, &:active, &:focus {
+		color: $white;
+
+    &:before {
+      opacity: 1;
+			width: 100%;
+    }
+
+    // Skip button animations on touch devices to prevent having to double-tap
+    @media (pointer: coarse) {
+      &:before {
+        opacity: 0;
+        width: 0;
+      }
+    }
+  }
+}
+
+@mixin hover {
+	@include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $red-light-gradient1, $red-light-gradient2);
+}

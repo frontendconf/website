@@ -1,0 +1,17 @@
+.socialicon, a.socialicon:before {
+    font-family: 'Mono Social Icons Font';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+		font-weight: normal;
+}
+
+// a.socialicon:before {
+//     content: attr(title);
+//     margin-right: 0.3em;
+//     font-size: 130%;
+// }
+
+a.socialicon {
+  color: white;
+  text-decoration: none;
+}

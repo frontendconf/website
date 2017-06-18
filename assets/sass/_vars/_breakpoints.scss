@@ -1,0 +1,19 @@
+// BREAKPOINT VARIABLES
+// =============================================================================
+
+//Bottom up
+$tablet: 800px;
+$desktop: 1025px;
+$wide: 1200px;
+
+//Top down
+// $small: max-width 480px;
+// $tablet: max-width ($desktop-up - 1px);
+// $desktop: max-width ($wide - 1px);
+
+//Varia
+$mobile: max-width ($tablet - 200px);
+$tablet-only: ($tablet + 1px) ($desktop - 1px);
+
+//Max
+$tablet-max: max-width ($tablet - 1px);

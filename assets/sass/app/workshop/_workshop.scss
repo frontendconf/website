@@ -1,0 +1,65 @@
+.workshop {
+  margin-bottom: 2rem;
+
+  &__image-container {
+    display: block;
+
+    &:focus,
+    &:hover {
+      .workshop__image {
+        @include filter(none);
+      }
+    }
+
+  }
+
+  section:not(.intro) &__description { // TODO: Fix "architecture"
+  	margin-top: 1rem;
+  }
+
+  &__image {
+    @include filter(grayscale(100%));
+    @include transition(filter 0.4s ease);
+  }
+
+  &__title {
+    display: block;
+    text-transform: uppercase;
+  }
+
+  &__author, &__date {
+    display: block;
+    opacity: 0.7;
+    @include font-size($regular-font-size);
+    font-weight: normal;
+    color: $link;
+    a:hover & {
+      color: $link;
+    }
+  }
+}
+
+.workshops {
+  &__link {
+    display: block;
+    background: #cfd8dc;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    height: 0;
+    padding: 50%;
+    // @include transition(background 0.4s ease);
+
+    &:focus,
+    &:hover {
+      // background: $link-hover;
+      color: $white;
+    }
+  }
+
+  &__link-text {
+    text-transform: uppercase;
+    @include opensanscondensedbold();
+    @include middle();
+  }
+}

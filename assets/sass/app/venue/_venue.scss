@@ -1,0 +1,73 @@
+.venue {
+  padding: 30px 15px;
+  background: $venue-background;
+  color: $white;
+
+  @include breakpoint($tablet) {
+    padding: 0;
+  }
+
+  @include breakpoint($desktop) {
+  }
+
+  &__container {
+    @include breakpoint($tablet) {
+      min-height: 420px;
+    }
+
+    @include breakpoint($desktop) {
+      display: table;
+      min-height: 480px;
+    }
+  }
+
+  &__image,
+  &__inner {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+
+    @include breakpoint($tablet) {
+      width: 50%;
+    }
+  }
+
+  &__image {
+    background: url("../images/venue.jpg") no-repeat center center;
+    background-size: cover;
+    @include breakpoint($tablet-max) {
+      display: block;
+      height: 480px;
+      margin: -30px -15px 15px -15px
+    }
+  }
+
+  &__inner {
+    @include breakpoint($tablet) {
+      padding: 5rem;
+    }
+  }
+
+  &__content {
+    @include breakpoint($tablet) {
+      //max-width: 435px;
+    }
+  }
+
+  h2 {
+    margin-top: 0;
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+.accomodation {
+  @include font-size($middle-font-size);
+  @extend .margin-top-large;
+  &__caption {
+    @extend .margin-top-normal;
+    display: block;
+  }
+}
