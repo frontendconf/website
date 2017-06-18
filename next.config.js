@@ -1,5 +1,9 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
+
+const dev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   webpack: (config) => {
@@ -20,14 +24,20 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.scss$/,
+      exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
           {
-            loader: 'css-loader',
+            loader: 'postcss-loader',
             options: {
-              url: false,
-              minimize: true,
+              plugins: [
+                autoprefixer({
+                  browsers: ['last 10 versions', 'ie 10']
+                })
+              ].concat(dev ? [] : [
+                cssnano()
+              ]),
               sourceMap: true
             }
           }, {
