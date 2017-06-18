@@ -8,7 +8,7 @@ module.exports = {
     // Handle Sass
     config.entry = () => {
       return entryFactory().then((entry) => {
-        entry['main.css'] = './static/css/main.scss'
+        entry['default.css'] = './static/sass/default.scss'
 
         return entry
       })
@@ -26,6 +26,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              url: false,
               minimize: true,
               sourceMap: true
             }
