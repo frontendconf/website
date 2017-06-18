@@ -1,4 +1,4 @@
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
@@ -19,8 +19,19 @@ module.exports = {
     }
 
     config.plugins.push(
-      new ExtractTextPlugin('../static/css/[name]')
+      new ExtractTextPlugin('static/css/default.css')
+      // The following config does not work properly when running 'next build'
+      // (targeting a directory outside does not seem to work at all and [name] refers to "common")
+      // new ExtractTextPlugin('../static/css/[name]')
     )
+
+    // config.plugins.push(
+    //   function () {
+    //     this.plugin('done', function (stats) {
+    //       require('fs').writeFileSync('./stats.json', JSON.stringify(stats.toJson(), null, '\t'))
+    //     })
+    //   }
+    // )
 
     config.module.rules.push({
       test: /\.scss$/,
