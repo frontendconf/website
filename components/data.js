@@ -262,6 +262,7 @@ export default (Component) => {
 
           sponsors = sponsors.map((item) => {
             item.items = item.items.sort((a, b) => a.order - b.order)
+            item.isDetailed = currentPage.showSponsorsDetailed
 
             return item
           })

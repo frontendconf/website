@@ -25,7 +25,7 @@ class Sponsors extends Component {
           </div>
         </div> : null
 
-        let sectionClasses = (() => {
+        let sectionClasses = category.isDetailed ? 'sponsors section' : (() => {
           switch (i) {
             case 0:
               return 'sponsors section'
@@ -38,7 +38,7 @@ class Sponsors extends Component {
           }
         })()
 
-        return <div className={sectionClasses}>
+        return <div className={sectionClasses} key={i}>
           {title}
 
           <div className="grid">
