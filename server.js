@@ -16,8 +16,8 @@ app.prepare()
   const server = express()
 
   // Static files
-  server.use('/static', express.static('static'))
   server.use('/static', express.static('.next/static')) // See issue with ExtractTextPlugin in next.config.js
+  server.use('/static', express.static('static'))
 
   // Reset cache when using ?emptyCache
   server.get('*', (req, res, next) => {
