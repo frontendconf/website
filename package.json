@@ -45,11 +45,19 @@
   },
   "scripts": {
     "build": "next build",
+    "predeploy": "PREDEPLOY=true next build && (if [ -f .next/static/css/default.css ]; then mv .next/static/css/default.css static/css/; fi)",
     "start": "node server.js",
-    "deploy": "now alias `now -e NODE_ENV=production` www.frontendconf.ch",
-    "deploy-dev": "now alias `now -e NODE_ENV=production` dev.frontendconf.ch",
+    "deploy": "npm run predeploy && now alias `now -e NODE_ENV=production` www.frontendconf.ch",
+    "deploy-dev": "npm run predeploy && now alias `now -e NODE_ENV=production` dev.frontendconf.ch",
     "logs": "now logs www.frontendconf.ch",
     "logs-dev": "now logs dev.frontendconf.ch",
     "lint": "eslint ."
+  },
+  "now": {
+    "files": [
+      "*",
+      "!node_modules",
+      "!.next"
+    ]
   }
 }
