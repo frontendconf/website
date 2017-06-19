@@ -52,12 +52,5 @@
     "logs": "now logs www.frontendconf.ch",
     "logs-dev": "now logs dev.frontendconf.ch",
     "lint": "eslint ."
-  },
-  "now": {
-    "files": [
-      "*",
-      "!node_modules",
-      "!.next"
-    ]
   }
 }
