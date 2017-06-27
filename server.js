@@ -34,6 +34,14 @@ app.prepare()
     renderAndCache(req, res, '/', req.params)
   })
 
+  server.get('/brief', (req, res) => {
+    return res.redirect('https://docs.google.com/document/d/15hy6A502poF19V5pH1A9qAQoeKFWU69DPhloYGkDSM4/edit')
+  })
+
+  server.get('/deadlines', (req, res) => {
+    return res.redirect('https://trello.com/b/jA5Uxk5L/fec17-informationen-deadlines-für-sponsoren-und-partner')
+  })
+
   server.get('/:page/:detail?', (req, res, next) => {
     if (['favicon.ico', '_webpack', '__webpack_hmr', '_next'].includes(req.params.page)) {
       return next()
