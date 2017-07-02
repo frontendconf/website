@@ -10,7 +10,7 @@ class Team extends Component {
         <div className="grid__inner eq-height">
           <div className="col-12">
             <h2>
-              Team
+              Board members
             </h2>
           </div>
           {this.props.team.map((item, i) => {

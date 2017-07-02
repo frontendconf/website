@@ -11,7 +11,7 @@ class Speakers extends Component {
         <div className="grid__inner eq-height">
           {this.props.isHome ? <div className="col-12">
             <h2>
-              Speakers
+              <InternalLink slug="speakers">Speakers</InternalLink>
             </h2>
           </div> : null}
           {this.props.speakers.map((item, i) => {

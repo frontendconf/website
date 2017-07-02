@@ -5,7 +5,7 @@ import InternalLink from './link'
 
 class News extends Component {
   formatDate (date) {
-    return new Date(date).toLocaleDateString('en', {
+    return new Date(date).toLocaleDateString('de', {
       day: '2-digit',
       month: 'long',
       year: 'numeric'

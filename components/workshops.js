@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import InternalLink from './link'
 import Person from './person'
 
 class Workshops extends Component {

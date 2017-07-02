@@ -11,7 +11,7 @@ class Sponsors extends Component {
           <div className="grid__inner">
             <div className="col-12">
               <h2>
-                Sponsors
+                <InternalLink slug="sponsors">Sponsors</InternalLink>
               </h2>
             </div>
           </div>

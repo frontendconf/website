@@ -1,0 +1,30 @@
+.sponsorship {
+  .person__image {
+    width: 250px !important;
+    height: 150px;
+    filter: none;
+    margin-top: 30px;
+  }
+
+  // Select Diamonds according to design hack
+  @include breakpoint($tablet) {
+    .col-4:nth-of-type(2) {
+      display: block;
+      width: 100%;
+      margin-bottom: 50px;
+
+      .person__image, > h3, > p, > div {
+        float: left;
+        display: block;
+      }
+
+      .person__image {
+        margin-right: 30px;
+      }
+
+      > h3, > p, > div {
+        width: calc(100% - 300px);
+      }
+    }
+  }
+}

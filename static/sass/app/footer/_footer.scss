@@ -54,10 +54,7 @@
 
 	.list {
 		list-style: none;
-
-		@include breakpoint($tablet-max) {
-			padding-left: 0;
-		}
+    padding-left: 0;
 
 		li {
 			margin-bottom: .5rem;

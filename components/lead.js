@@ -17,7 +17,7 @@ class Lead extends Component {
     // const startDate = this.formatDate(this.props.startDate)
     // const endDate = this.formatDate(this.props.endDate)
 
-    const body = this.props.menu.length ? <ul className="list list__threeonly">
+    const body = this.props.menu.length ? <ul className="list">
       {this.props.menu.map((item, i) => {
         return <li key={i}>
           <InternalLink {...item} classes={item.isActive ? 'active' : null} />
@@ -60,7 +60,7 @@ class Lead extends Component {
             <div className="col-12">
               <h1 className="intro__title">{this.props.title}</h1>
             </div>
-            <div className={this.props.isHome ? 'col-12' : 'col-8 margin-top-large'}>
+            <div className={this.props.isHome ? 'col-12' : 'col-12 margin-top-large'}>
               {body}
             </div>
           </div>
@@ -82,4 +82,3 @@ Lead.propTypes = {
 }
 
 export default Lead
-

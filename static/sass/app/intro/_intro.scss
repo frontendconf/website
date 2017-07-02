@@ -1,14 +1,23 @@
 .intro {
   background: url("../images/intro/intro-all.jpg") no-repeat center center; //TODO replace with another image
   background-size: cover;
-  min-height: calc(26rem);
-	padding-bottom: 150px;
+  max-height: 26rem;
+  padding-bottom: 130px;
+
+  @include breakpoint($desktop) {
+    min-height: 26rem;
+  }
 
   &--bg-100 {
     background: url("../images/intro/intro.jpg") no-repeat center center;
 		background-size: cover;
     height: calc(100vh - 25rem);
-		min-height: 500px;
+		min-height: 400px;
+    max-height: 500px;
+
+    @include breakpoint($desktop) {
+      max-height: 850px;
+    }
   }
   color: $white;
   position: relative;

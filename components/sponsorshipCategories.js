@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class SponsorshipCategories extends Component {
   render () {
-    return <section className="sponsors section">
+    return <section className="sponsors sponsorship section">
       <div className="grid">
         <div className="grid__inner eq-height">
           <div className="col-12">
