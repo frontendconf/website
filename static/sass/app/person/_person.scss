@@ -41,6 +41,10 @@
 	&__company {
 		@include font-size($regular-font-size);
 	}
+
+	&__workshop {
+		display: block;
+	}
 }
 
 .speakers {

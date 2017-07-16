@@ -21,12 +21,17 @@ class Person extends Component {
       </a>
 		</span> : null
 
+		const workshopGiver = this.props.workshopGiver ? <span className="person__workshop">
+      with {this.props.workshopGiver}
+		</span> : null
+
     let content = <div>
       <span className="person__name">
         {this.props.name}
       </span>
       <span className="person__job-title">
-        {this.props.description}
+				{workshopGiver}
+      	{this.props.description}
       </span>
     </div>
 
@@ -57,7 +62,8 @@ Person.propTypes = {
   detail: PropTypes.string,
   twitter: PropTypes.string,
 	company: PropTypes.string,
-	companyLink: PropTypes.string
+	companyLink: PropTypes.string,
+	workshopGiver: PropTypes.string
 }
 
 export default Person

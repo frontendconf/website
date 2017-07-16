@@ -191,7 +191,8 @@ export default (Component) => {
             name: item.fields.title,
             page: 'workshops',
             detail: item.fields.slug,
-            description: item.fields.description,
+						workshopGiver: item.fields.teacher.fields.name,
+            description: item.fields.lead,
             photo: photo,
             order: item.fields.order
           }
