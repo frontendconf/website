@@ -46,7 +46,9 @@ class Speaker extends Component {
 					</div>
 				</div>
 				<div className="grid__inner">
-					<h3 className="speakers__subtitle">More Speakers</h3>
+					<div className="col-12">
+						<h3 className="speakers__subtitle">More Speakers</h3>
+					</div>
 				</div>
       </div>
     </section>
