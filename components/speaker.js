@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Talk from './talk'
+
 class Speaker extends Component {
   render () {
     const twitter = this.props.twitter ? <span>
@@ -12,6 +14,7 @@ class Speaker extends Component {
     const linkedin = this.props.linkedin ? <span>
       <a href={this.props.linkedin} target="_blank">{this.props.linkedin}</a><br />
     </span> : null
+		const talk = this.props.talk ? <Talk {...this.props.talk} /> : null
 
     return <section className="speaker section">
       <div className="grid">
@@ -40,10 +43,13 @@ class Speaker extends Component {
             </div>
           </div>
         </div>
-				<div class="grid__inner">
+				<div className="grid__inner">
 					<div className="col-8 margin-top-large speaker__profile-text">
 						<div dangerouslySetInnerHTML={{ __html: this.props.bio }} />
 					</div>
+				</div>
+				<div className="margin-top-large" id="talk">
+					{talk}
 				</div>
 				<div className="grid__inner">
 					<div className="col-12">
@@ -63,7 +69,8 @@ Speaker.propTypes = {
   photo: PropTypes.string,
   twitter: PropTypes.string,
   website: PropTypes.string,
-  linkedin: PropTypes.string
+  linkedin: PropTypes.string,
+  talk: PropTypes.object
 }
 
 export default Speaker
