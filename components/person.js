@@ -10,10 +10,16 @@ class Person extends Component {
     </InternalLink> : <img className="person__image" src={this.props.photo} alt={this.props.name} />
 
     const twitter = this.props.twitter ? <p>
-      <a href={'https://twitter.com/' + this.props.twitter}>
+      <a href={'https://twitter.com/' + this.props.twitter} target="_blank">
         {'@' + this.props.twitter}
       </a>
     </p> : null
+
+		const company = this.props.company ? <span className="person__company">
+      <a href={this.props.companyLink} target="_blank">
+			  {this.props.company}
+      </a>
+		</span> : null
 
     let content = <div>
       <span className="person__name">
@@ -36,6 +42,7 @@ class Person extends Component {
       <div className="person__caption">
         <h3 className="person__title">
           {content}
+					{company}
           {twitter}
         </h3>
       </div>
@@ -48,7 +55,9 @@ Person.propTypes = {
   photo: PropTypes.string,
   description: PropTypes.string,
   detail: PropTypes.string,
-  twitter: PropTypes.string
+  twitter: PropTypes.string,
+	company: PropTypes.string,
+	companyLink: PropTypes.string
 }
 
 export default Person

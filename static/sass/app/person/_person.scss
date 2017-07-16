@@ -37,6 +37,10 @@
       color: $link;
     }
   }
+
+	&__company {
+		@include font-size($regular-font-size);
+	}
 }
 
 .speakers {

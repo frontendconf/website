@@ -276,6 +276,8 @@ export default (Component) => {
             description: item.fields.description,
             twitter: item.fields.twitter,
             photo: photo,
+						company: item.fields.company,
+						companyLink: item.fields.companyLink,
             order: item.fields.order
           }
         }).sort((a, b) => a.order - b.order) : null
