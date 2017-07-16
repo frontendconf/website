@@ -70,9 +70,23 @@
     @include opensanscondensedbold();
     @include middle();
   }
+
+	&__subtitle {
+		text-transform: uppercase;
+		padding-top: 4rem;
+		border-top: 1px solid #e3e8eb;
+
+		@include breakpoint($tablet) {
+			margin-bottom: -3.75rem;
+		}
+	}
 }
 
 .speaker {
+	h1 {
+		margin-bottom: 2rem;
+	}
+
   &__profile {
     background: $silver-light;
     @include clearfix();
@@ -97,6 +111,35 @@
       }
     }
   }
+
+	// Speaker subpage change layout of other speakers
+	+ .speakers {
+		.person {
+			&__title {
+				font-size: 1.3rem;
+				line-height: 1.2;
+				margin-top: 0;
+			}
+
+			&__job-title {
+				font-size: 1rem;
+			}
+
+			&__caption {
+				display: inline-block;
+				overflow-y: hidden;
+				width: calc(100% - 60px - 1rem);
+			}
+
+			&__image-container {
+				float: left;
+				position: relative;
+				top: 6px;
+				width: 60px;
+				padding-right: 1rem;
+			}
+		}
+	}
 }
 
 .other_speakers {

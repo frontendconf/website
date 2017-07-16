@@ -171,7 +171,7 @@ export default (Component) => {
           }
         }).sort((a, b) => a.order - b.order) : null
 
-        const speakers = currentPage && currentPage.showSpeakers ? items.filter(filterByType, 'speaker').map((item) => {
+        const speakers = (currentPage && currentPage.showSpeakers) || (currentPage && currentPageType === 'speakers') ? items.filter(filterByType, 'speaker').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=250&h=250&fit=fill') : null
 
           return {

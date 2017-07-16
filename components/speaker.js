@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 class Speaker extends Component {
   render () {
     const twitter = this.props.twitter ? <span>
-      <a href={'https://twitter.com/' + this.props.twitter}>{'@' + this.props.twitter}</a><br />
+      <a href={'https://twitter.com/' + this.props.twitter} target="_blank">{'@' + this.props.twitter}</a><br />
     </span> : null
     const website = this.props.website ? <span>
-      <a href={this.props.website}>{this.props.website}</a><br />
+      <a href={this.props.website} target="_blank">{this.props.website}</a><br />
     </span> : null
     const linkedin = this.props.linkedin ? <span>
-      <a href={this.props.linkedin}>{this.props.linkedin}</a><br />
+      <a href={this.props.linkedin} target="_blank">{this.props.linkedin}</a><br />
     </span> : null
 
     return <section className="speaker section">
@@ -22,12 +22,14 @@ class Speaker extends Component {
             </h1>
 
             <div className="speaker__profile">
-              <div className="col-4 speaker__profile-image">
+              <div className="col-3 speaker__profile-image">
                 <img className="person__image" src={this.props.photo + '?w=350&h=350&fit=fill'} alt={this.props.name} />
               </div>
 
-              <div className="col-8 speaker__profile-text">
-                <div dangerouslySetInnerHTML={{ __html: this.props.bio }} />
+              <div className="col-9 speaker__profile-text">
+                <p className="speaker__profile-website">
+									{this.props.description}
+								</p>
 
                 <p className="speaker__profile-website">
                   {twitter}
@@ -38,6 +40,14 @@ class Speaker extends Component {
             </div>
           </div>
         </div>
+				<div class="grid__inner">
+					<div className="col-8 margin-top-large speaker__profile-text">
+						<div dangerouslySetInnerHTML={{ __html: this.props.bio }} />
+					</div>
+				</div>
+				<div className="grid__inner">
+					<h3 className="speakers__subtitle">More Speakers</h3>
+				</div>
       </div>
     </section>
   }
