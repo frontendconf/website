@@ -21,14 +21,11 @@ npm run deploy
 *NOTE*: We probably have to create a team on zeit.co first to be able to set domain aliases. For now, this is most probably tied to Thomas' account.
 
 ```bash
-# Point dev.frontendconf.ch to latest deployment
-npm run alias-dev
+# Point dev.frontendconf.ch to latest deployment (use `now ls` to find DEPLOYMENT_ID)
+npm run alias frontendconf-contentful-DEPLOYMENT_ID.now.sh dev.frontendconf.ch
 
-# Point www.frontendconf.ch to latest deployment
-npm run alias
-
-# Point any of the above subdomains to any deployment (assumes `now` is installed globally, use `now ls` to find DEPLOYMENT_ID)
-now alias frontendconf-contentful-DEPLOYMENT_ID.now.sh SUBDOMAIN.frontendconf.ch
+# Point www.frontendconf.ch to latest deployment (use `now ls` to find DEPLOYMENT_ID)
+npm run alias frontendconf-contentful-DEPLOYMENT_ID.now.sh www.frontendconf.ch
 ```
 
 # Show logs of deployed app
