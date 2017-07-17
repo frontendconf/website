@@ -9,7 +9,7 @@ class Person extends Component {
       <img className="person__image" src={this.props.photo} alt={this.props.name} />
     </InternalLink> : <img className="person__image" src={this.props.photo} alt={this.props.name} />
 
-    const twitter = this.props.twitter ? <p>
+    const twitter = this.props.twitter ? <p className="person__twitter">
       <a href={'https://twitter.com/' + this.props.twitter} target="_blank">
         {'@' + this.props.twitter}
       </a>

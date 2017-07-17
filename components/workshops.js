@@ -9,11 +9,11 @@ class Workshops extends Component {
     return <section className="workshops section">
       <div className="grid">
         <div className="grid__inner eq-height">
-          <div className="col-12">
+          {this.props.isHome ? <div className="col-12">
             <h2>
-              Workshops
+              <InternalLink slug="workshops">Workshops</InternalLink>
             </h2>
-          </div>
+          </div> : null}
           {this.props.workshops.map((item, i) => {
             return <div className="col-6" key={i}>
               <Person {...item} />

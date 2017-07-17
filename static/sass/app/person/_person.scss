@@ -38,9 +38,20 @@
     }
   }
 
-	&__company {
-		@include font-size($regular-font-size);
+	&__company,
+  &__twitter
+  {
+		font-size: 1.1rem;
 	}
+
+  &__company a {
+    font-weight: 600;
+    color: $link;
+
+    &:hover {
+      color: $link-hover;
+    }
+  }
 
 	&__workshop {
 		display: block;
@@ -114,6 +125,22 @@
 
 	// Speaker subpage change layout of other speakers
 	+ .speakers {
+    .col-xs-6 {
+      width: 100%;
+
+      @include breakpoint(min-width 600px) {
+        width: 50%;
+      }
+
+      @include breakpoint($tablet) {
+        width: 33%;
+      }
+
+      @include breakpoint($desktop) {
+        width: 25%;
+      }
+    }
+
 		.person {
 			&__title {
 				font-size: 1.3rem;
