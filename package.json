@@ -48,8 +48,7 @@
     "predeploy": "PREDEPLOY=true next build && (if [ -f .next/static/css/default.css ]; then mv .next/static/css/default.css static/css/; fi)",
     "start": "node server.js",
     "deploy": "now -e NODE_ENV=production",
-    "alias-dev": "now alias dev.frontendconf.ch",
-    "alias": "now alias www.frontendconf.ch",
+    "alias": "now alias set",
     "logs": "now logs www.frontendconf.ch",
     "logs-dev": "now logs dev.frontendconf.ch",
     "lint": "eslint ."
