@@ -10,3 +10,50 @@
 		margin-bottom: 1.5rem;
 	}
 }
+
+.schedule {
+	vertical-align: top;
+	clear: both;
+	padding: 16px 0;
+	border-bottom: 1px solid #e3e8eb;
+
+	&__time {
+		vertical-align: top;
+		display: inline-block;
+		padding-right: 20px;
+		margin: 0;
+	}
+
+	&__from, &__to {
+		display: block;
+		font-weight: bold;
+		line-height: 1;
+	}
+
+	&__to {
+		color: #77909d;
+	}
+
+	&__details {
+		vertical-align: top;
+		display: inline-block;
+	}
+
+	&__title {
+		font-size: 1.6rem;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	&__abstract {
+		display: none;
+	}
+
+	&__folium .schedule__title {
+		color: $blue-light-gradient2;
+	}
+
+	&__papiersaal .schedule__title {
+		color: $red;
+	}
+}

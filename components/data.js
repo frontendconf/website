@@ -184,6 +184,24 @@ export default (Component) => {
           }
         }).sort((a, b) => a.order - b.order) : null
 
+				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
+          return {
+            title: item.fields.title,
+            page: 'speakers',
+            abstract: item.fields.abstract,
+            from: item.fields.from,
+						to: item.fields.to,
+						time: new Date(item.fields.from).toLocaleTimeString('de', {
+							hour: '2-digit',
+							minute: '2-digit'
+				    }).split(':'),
+            room: item.fields.room
+          }
+				}).sort((a, b) => a.time - b.time) : null
+
+        // }).sort((a, b) => new Date(...a.from.split('/').reverse()) - new Date(...b.from.split('/').reverse())) : null
+
+
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
 
@@ -298,6 +316,7 @@ export default (Component) => {
           workshops,
           venue,
           jobs,
+					schedule,
           sponsors,
           sponsorshipCategories,
           team,
