@@ -17,8 +17,6 @@ class ScheduleItem extends Component {
 		const desc = this.props.speaker ? this.props.title : this.props.description
 		const photo = this.props.speaker ? (this.props.speaker.fields.photo.fields.file.url + '?w=60&h=60&fit=fill') : null
 
-		{console.log(this)}
-
     return <div className={ `col-xs-12 col-6 schedule__item schedule__${room}` }>
 			<div className="schedule__time">
 				<span className="schedule__from">{startDate} –</span>

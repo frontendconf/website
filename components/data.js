@@ -182,6 +182,7 @@ export default (Component) => {
             photo: photo,
             order: item.fields.order
           }
+
         }).sort((a, b) => a.order - b.order) : null
 
 				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
