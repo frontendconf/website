@@ -12,10 +12,53 @@
 }
 
 .schedule {
-	vertical-align: top;
-	clear: both;
-	padding: 16px 0;
-	border-bottom: 1px solid #e3e8eb;
+	$border-color: #e3e8eb;
+
+	&__legends {
+		float: right;
+	}
+
+	&__legend {
+		text-transform: uppercase;
+		padding-left: 20px;
+
+		@include breakpoint($tablet) {
+			display: inline-block;
+		}
+
+	}
+
+	&__items {
+		clear: both;
+		padding: 16px 0;
+		border-bottom: 1px solid $border-color;
+	}
+
+	&__item {
+		vertical-align: top;
+
+		& + & {
+			.schedule__title {
+				padding-top: 20px;
+				margin-top: 20px;
+				border-top: 1px solid $border-color;
+
+				@include breakpoint($desktop) {
+					padding-top: 0;
+					margin-top: 0;
+					border-top: 0 none;
+				}
+			}
+
+			.schedule__time {
+				opacity: 0;
+			}
+		}
+	}
+
+	&__talk {
+		margin-bottom: 10px;
+	}
 
 	&__time {
 		vertical-align: top;
@@ -37,6 +80,12 @@
 	&__details {
 		vertical-align: top;
 		display: inline-block;
+		width: calc(100% - 84px);
+	}
+
+	&__photo {
+		float: left;
+		padding-right: 10px;
 	}
 
 	&__title {
@@ -46,14 +95,23 @@
 	}
 
 	&__abstract {
+		font-size: .9rem;
 		display: none;
+
+		@include breakpoint($tablet) {
+			display: block;
+		}
 	}
 
-	&__folium .schedule__title {
-		color: $blue-light-gradient2;
+	&__folium {
+		.schedule__title, &.schedule__legend {
+			color: $blue-light-gradient2;
+		}
 	}
 
-	&__papiersaal .schedule__title {
-		color: $red;
+	&__papiersaal {
+		.schedule__title, &.schedule__legend {
+			color: $red;
+		}
 	}
 }

@@ -191,13 +191,19 @@ export default (Component) => {
             abstract: item.fields.abstract,
             from: item.fields.from,
 						to: item.fields.to,
-						time: new Date(item.fields.from).toLocaleTimeString('de', {
+						day: new Date(item.fields.from).toLocaleDateString('de', {
+							day: '2-digit',
+				      month: '2-digit'
+				    }).split('/').join(''),
+						room: item.fields.room,
+						speaker: item.fields.speaker,
+						description: item.fields.shortDescription,
+						sortTime: parseInt(new Date(item.fields.from).toLocaleTimeString('de', {
 							hour: '2-digit',
 							minute: '2-digit'
-				    }).split(':'),
-            room: item.fields.room
+				    }).split(':'))
           }
-				}).sort((a, b) => a.time - b.time) : null
+				}) : null
 
         // }).sort((a, b) => new Date(...a.from.split('/').reverse()) - new Date(...b.from.split('/').reverse())) : null
 
