@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import InternalLink from './link'
+
 class ScheduleItem extends Component {
 	time (date) {
     return new Date(date).toLocaleTimeString('de', {
@@ -13,7 +15,7 @@ class ScheduleItem extends Component {
 		const startDate = this.time(this.props.from)
 		const endDate = this.time(this.props.to)
 		const room = this.props.room.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
-		const title = this.props.speaker ? this.props.speaker.fields.name : this.props.title
+		const title = this.props.speaker ? <InternalLink slug={'speakers/' + this.props.speaker.fields.slug}>{this.props.speaker.fields.name}</InternalLink> : this.props.title
 		const desc = this.props.speaker ? this.props.title : this.props.description
 		const photo = this.props.speaker ? (this.props.speaker.fields.photo.fields.file.url + '?w=60&h=60&fit=fill') : null
 
@@ -40,6 +42,7 @@ ScheduleItem.propTypes = {
 	to: PropTypes.string,
 	room: PropTypes.string,
 	description: PropTypes.string,
+	slug: PropTypes.string,
 	speaker: PropTypes.object
 }
 

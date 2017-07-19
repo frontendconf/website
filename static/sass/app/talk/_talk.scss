@@ -58,6 +58,7 @@
 
 	&__talk {
 		margin-bottom: 10px;
+		overflow-y: hidden;
 	}
 
 	&__time {
@@ -104,13 +105,19 @@
 	}
 
 	&__folium {
-		.schedule__title, &.schedule__legend {
+		.schedule__title,
+		.schedule__title a,
+		&.schedule__legend
+		{
 			color: $blue-light-gradient2;
 		}
 	}
 
 	&__papiersaal {
-		.schedule__title, &.schedule__legend {
+		.schedule__title,
+		.schedule__title a,
+		&.schedule__legend
+		{
 			color: $red;
 		}
 	}
