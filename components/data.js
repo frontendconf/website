@@ -197,7 +197,7 @@ export default (Component) => {
             name: item.fields.title,
             page: 'workshops',
             detail: item.fields.slug,
-						workshopGiver: item.fields.teacher.fields.name,
+            workshopGiver: item.fields.teacher.fields.name,
             description: item.fields.lead,
             photo: photo,
             order: item.fields.order
@@ -283,8 +283,8 @@ export default (Component) => {
             description: item.fields.description,
             twitter: item.fields.twitter,
             photo: photo,
-						company: item.fields.company,
-						companyLink: item.fields.companyLink,
+            company: item.fields.company,
+            companyLink: item.fields.companyLink,
             order: item.fields.order
           }
         }).sort((a, b) => a.order - b.order) : null
