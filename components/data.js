@@ -17,6 +17,24 @@ function isActiveItem (slug, query, isMenu) {
   }
 }
 
+function getLeadMenu (items, type, query) {
+  return items.filter(filterByType, type).map((item) => {
+    const isActive = isActiveItem(item.fields.slug, query)
+    let title = item.fields.name || item.fields.title
+
+    if (type === 'host') {
+      title += ' (Host)'
+    }
+
+    return {
+      title,
+      page: type + 's',
+      detail: item.fields.slug,
+      isActive
+    }
+  })
+}
+
 export default (Component) => {
   class Data extends React.Component {
     static async getInitialProps ({ query, res }) {
@@ -136,23 +154,23 @@ export default (Component) => {
             }
           }) : [],
           teaser: currentPage.leadTeaser ? items.find((item) => item.sys.id === currentPage.leadTeaser.sys.id).fields : null,
-          menu: query.detail && query.page !== 'news' ? items.filter(filterByType, currentItem.sys.contentType.sys.id).map((item) => {
-            const title = item.fields.name || item.fields.title
-            const isActive = isActiveItem(item.fields.slug, query)
-
-            return {
-              title,
-              page: query.page,
-              detail: item.fields.slug,
-              isActive
-            }
-          }) : [],
+          menu: query.detail && query.page !== 'news' ? getLeadMenu(items, currentItem.sys.contentType.sys.id, query) : [],
           isHome: currentPage.isHome
         } : null
 
         // Fallback
-        if (!lead.title && currentItem.sys.contentType.sys.id === 'host') {
-          lead.title = 'Hosts'
+        if (!lead.title && ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1) {
+          lead.title = 'Speakers'
+        }
+
+        // Merge speakers and hosts
+        switch (currentItem.sys.contentType.sys.id) {
+          case 'host':
+            lead.menu = getLeadMenu(items, 'speaker', query).concat(lead.menu)
+            break
+          case 'speaker':
+            lead.menu = lead.menu.concat(getLeadMenu(items, 'host', query))
+            break
         }
 
         const news = currentPage && currentPage.showNews ? items.filter(filterByType, 'news').map((item) => {
