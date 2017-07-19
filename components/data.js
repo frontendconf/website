@@ -89,6 +89,12 @@ export default (Component) => {
         const currentPageType = query.detail ? query.page : 'page'
         const currentPage = currentItem ? Object.assign({}, currentItem.fields) : null
 
+        if (currentPageType === 'speakers') {
+          currentPage.talk = items.filter(filterByType, 'talk').find((talk) => {
+            return talk.fields.speaker && currentItem.sys.id === talk.fields.speaker.sys.id
+          })
+        }
+
         if (currentPage && currentPage.photo) {
           currentPage.photo = currentPage.photo.fields.file.url
         }
