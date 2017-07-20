@@ -212,26 +212,24 @@ export default (Component) => {
 				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
           return {
             title: item.fields.title,
-            page: 'speakers',
+            page: 'schedule',
             abstract: item.fields.abstract,
             from: item.fields.from,
 						to: item.fields.to,
 						day: new Date(item.fields.from).toLocaleDateString('de', {
 							day: '2-digit',
 				      month: '2-digit'
-				    }).split('/').join(''),
+				    }).split('-').join(''),
 						room: item.fields.room,
 						speaker: item.fields.speaker,
 						description: item.fields.shortDescription,
-						sortTime: parseInt(new Date(item.fields.from).toLocaleTimeString('de', {
+						sortTime: new Date(item.fields.from).toLocaleTimeString('de', {
 							hour: '2-digit',
 							minute: '2-digit'
-				    }).split(':'))
+				    }).split(':').join(''),
+            sortRoom: item.fields.room.charCodeAt(0)
           }
-				}) : null
-
-        // }).sort((a, b) => new Date(...a.from.split('/').reverse()) - new Date(...b.from.split('/').reverse())) : null
-
+				}).sort((a, b) => a.sortRoom - b.sortRoom) : null
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
