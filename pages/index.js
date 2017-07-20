@@ -17,6 +17,7 @@ import Jobs from '../components/jobs'
 import Sponsors from '../components/sponsors'
 import SponsorshipCategories from '../components/sponsorshipCategories'
 import Team from '../components/team'
+import Schedule from '../components/schedule'
 
 class Index extends Component {
 
@@ -81,6 +82,8 @@ class Index extends Component {
       case 'workshops':
         body = <Workshop {...this.props.currentPage} />
         break
+			case 'schedule':
+				body = <Schedule {...this.props.currentPage} />
       default:
         body = this.props.currentPage && this.props.currentPage.body ? <section className="content section">
           <div className="grid">
@@ -103,6 +106,7 @@ class Index extends Component {
     const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
     const sponsorshipCategories = this.props.sponsorshipCategories ? <SponsorshipCategories categories={this.props.sponsorshipCategories} /> : null
     const team = this.props.team ? <Team team={this.props.team} /> : null
+    const schedule = this.props.schedule ? <Schedule schedule={this.props.schedule} /> : null
 
     return <Layout {...this.props}>
       {lead}
@@ -114,6 +118,7 @@ class Index extends Component {
       {team}
       {venue}
       {jobs}
+			{schedule}
       {sponsorshipCategories}
       {sponsors}
     </Layout>
@@ -133,6 +138,7 @@ Index.propTypes = {
   sponsors: PropTypes.array,
   sponsorshipCategories: PropTypes.array,
   team: PropTypes.array,
+	schedule: PropTypes.arry,
   scripts: PropTypes.array,
   styles: PropTypes.array
 }

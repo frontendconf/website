@@ -195,7 +195,7 @@ export default (Component) => {
           }
         }).sort((a, b) => a.order - b.order) : null
 
-        const speakers = (currentPage && currentPage.showSpeakers) || (currentPage && currentPageType === 'speakers') ? items.filter(filterByType, 'speaker').map((item) => {
+        const speakers = (currentPage && currentPage.showSpeakers) || (currentPage && currentPageType === 'speakers') || (currentPage && currentPageType === 'hosts') ? items.filter(filterByType, 'speaker').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=250&h=250&fit=fill') : null
 
           return {
@@ -206,7 +206,32 @@ export default (Component) => {
             photo: photo,
             order: item.fields.order
           }
+
         }).sort((a, b) => a.order - b.order) : null
+
+				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
+          return {
+            title: item.fields.title,
+            page: 'speakers',
+            abstract: item.fields.abstract,
+            from: item.fields.from,
+						to: item.fields.to,
+						day: new Date(item.fields.from).toLocaleDateString('de', {
+							day: '2-digit',
+				      month: '2-digit'
+				    }).split('/').join(''),
+						room: item.fields.room,
+						speaker: item.fields.speaker,
+						description: item.fields.shortDescription,
+						sortTime: parseInt(new Date(item.fields.from).toLocaleTimeString('de', {
+							hour: '2-digit',
+							minute: '2-digit'
+				    }).split(':'))
+          }
+				}) : null
+
+        // }).sort((a, b) => new Date(...a.from.split('/').reverse()) - new Date(...b.from.split('/').reverse())) : null
+
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
@@ -322,6 +347,7 @@ export default (Component) => {
           workshops,
           venue,
           jobs,
+					schedule,
           sponsors,
           sponsorshipCategories,
           team,
