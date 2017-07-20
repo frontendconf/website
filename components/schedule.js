@@ -9,9 +9,9 @@ class Schedule extends Component {
     return <section className={this.props.isHome ? 'schedule section--bottom' : 'schedule section'}>
       <div className="grid">
 				<div className="schedule__legends">
-					<div className="schedule__legend">FL0 <strong>R&uuml;sterei</strong></div>
-					<div className="schedule__legend schedule__folium">FL1 <strong>Folium</strong></div>
-					<div className="schedule__legend schedule__papiersaal">FL2 <strong>Papiersaal</strong></div>
+					<div className="schedule__legend schedule__rusterei">FL 0 <strong>R&uuml;sterei</strong></div>
+					<div className="schedule__legend schedule__folium">FL 1 <strong>Folium</strong></div>
+					<div className="schedule__legend schedule__papiersaal">FL 2 <strong>Papiersaal</strong></div>
 				</div>
         <div className="grid__inner eq-height">
 					<h2>Thursday, 31 Aug</h2>

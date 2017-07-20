@@ -19,8 +19,14 @@
       max-height: 850px;
     }
   }
+
   color: $white;
   position: relative;
+
+
+  &--schedule {
+    padding-bottom: 200px;
+  }
 
   &--blurred {
     height: 60vh;
