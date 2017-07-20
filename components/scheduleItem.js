@@ -4,16 +4,7 @@ import PropTypes from 'prop-types'
 import InternalLink from './link'
 
 class ScheduleItem extends Component {
-	time (date) {
-    return new Date(date).toLocaleTimeString('de', {
-			hour: '2-digit',
-			minute: '2-digit'
-    })
-  }
-
   render () {
-		const startDate = this.time(this.props.from)
-		const endDate = this.time(this.props.to)
 		const room = this.props.room.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
 		const title = this.props.speaker ? <InternalLink slug={'speakers/' + this.props.speaker.fields.slug}>{this.props.speaker.fields.name}</InternalLink> : this.props.title
 		const desc = this.props.speaker ? this.props.title : this.props.description
@@ -21,8 +12,8 @@ class ScheduleItem extends Component {
 
     return <div className={ `col-xs-12 col-6 schedule__item schedule__${room}` }>
 			<div className="schedule__time">
-				<span className="schedule__from">{startDate} –</span>
-				<span className="schedule__to">{endDate}</span>
+				<span className="schedule__from">{this.props.fromTime} –</span>
+				<span className="schedule__to">{this.props.toTime}</span>
 			</div>
 			<div className="schedule__details">
 				<img className="schedule__photo" src={photo} />
@@ -38,8 +29,9 @@ ScheduleItem.propTypes = {
   title: PropTypes.string,
 	shortDescription: PropTypes.string,
   abstract: PropTypes.string,
-	from: PropTypes.string,
-	to: PropTypes.string,
+	date: PropTypes.string,
+	fromTime: PropTypes.string,
+	toTime: PropTypes.string,
 	room: PropTypes.string,
 	description: PropTypes.string,
 	slug: PropTypes.string,
