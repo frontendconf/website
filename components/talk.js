@@ -6,22 +6,19 @@ class Talk extends Component {
     return new Date(date).toLocaleDateString('de', {
       day: '2-digit',
       month: 'long',
-      year: 'numeric',
-			hour: '2-digit',
-			minute: '2-digit'
+      year: 'numeric'
     })
   }
 
   render () {
-		const startDate = this.formatDate(this.props.fields.from)
-		const endDate = this.formatDate(this.props.fields.to)
+  	const date = this.formatDate(this.props.fields.date)
 
     return <div className="talk">
 			<div className="grid__inner">
 				<div className="col-8">
 					<p className="talk__at">Talk at FEC17</p>
 		      <h2 className="talk__title">{this.props.fields.title}</h2>
-					<h4 className="talk__room">{startDate} – {endDate}, {this.props.fields.room}</h4>
+					<h4 className="talk__room">{date} {this.props.fields.fromTime} – {this.props.fields.toTime}, {this.props.fields.room}</h4>
 		      <p className="talk__abstract">{this.props.fields.abstract}</p>
 				</div>
 			</div>
@@ -32,8 +29,9 @@ class Talk extends Component {
 Talk.propTypes = {
   title: PropTypes.string,
   abstract: PropTypes.string,
-	from: PropTypes.string,
-	to: PropTypes.string
+  date: PropTypes.string,
+	fromTime: PropTypes.string,
+	toTime: PropTypes.string
 }
 
 export default Talk
