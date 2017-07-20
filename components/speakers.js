@@ -17,6 +17,7 @@ class Speakers extends Component {
           {this.props.speakers.map((item, i) => {
             return <div className="col-xs-6 col-3" key={i}>
               <Person {...item} />
+              {item.talk ? item.talk.fields.title : null}
             </div>
           })}
           {this.props.moreSpeakers ? <div className="col-xs-6 col-3">

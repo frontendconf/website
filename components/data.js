@@ -17,6 +17,24 @@ function isActiveItem (slug, query, isMenu) {
   }
 }
 
+function getLeadMenu (items, type, query) {
+  return items.filter(filterByType, type).map((item) => {
+    const isActive = isActiveItem(item.fields.slug, query)
+    let title = item.fields.name || item.fields.title
+
+    if (type === 'host') {
+      title += ' (Host)'
+    }
+
+    return {
+      title,
+      page: type + 's',
+      detail: item.fields.slug,
+      isActive
+    }
+  })
+}
+
 export default (Component) => {
   class Data extends React.Component {
     static async getInitialProps ({ query, res }) {
@@ -89,6 +107,12 @@ export default (Component) => {
         const currentPageType = query.detail ? query.page : 'page'
         const currentPage = currentItem ? Object.assign({}, currentItem.fields) : null
 
+        if (currentPageType === 'speakers') {
+          currentPage.talk = items.filter(filterByType, 'talk').find((talk) => {
+            return talk.fields.speaker && currentItem.sys.id === talk.fields.speaker.sys.id
+          })
+        }
+
         if (currentPage && currentPage.photo) {
           currentPage.photo = currentPage.photo.fields.file.url
         }
@@ -130,23 +154,23 @@ export default (Component) => {
             }
           }) : [],
           teaser: currentPage.leadTeaser ? items.find((item) => item.sys.id === currentPage.leadTeaser.sys.id).fields : null,
-          menu: query.detail && query.page !== 'news' ? items.filter(filterByType, currentItem.sys.contentType.sys.id).map((item) => {
-            const title = item.fields.name || item.fields.title
-            const isActive = isActiveItem(item.fields.slug, query)
-
-            return {
-              title,
-              page: query.page,
-              detail: item.fields.slug,
-              isActive
-            }
-          }) : [],
+          menu: query.detail && query.page !== 'news' ? getLeadMenu(items, currentItem.sys.contentType.sys.id, query) : [],
           isHome: currentPage.isHome
         } : null
 
         // Fallback
-        if (!lead.title && currentItem.sys.contentType.sys.id === 'host') {
-          lead.title = 'Hosts'
+        if (!lead.title && ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1) {
+          lead.title = 'Speakers'
+        }
+
+        // Merge speakers and hosts
+        switch (currentItem.sys.contentType.sys.id) {
+          case 'host':
+            lead.menu = getLeadMenu(items, 'speaker', query).concat(lead.menu)
+            break
+          case 'speaker':
+            lead.menu = lead.menu.concat(getLeadMenu(items, 'host', query))
+            break
         }
 
         const news = currentPage && currentPage.showNews ? items.filter(filterByType, 'news').map((item) => {
@@ -171,7 +195,7 @@ export default (Component) => {
           }
         }).sort((a, b) => a.order - b.order) : null
 
-        const speakers = (currentPage && currentPage.showSpeakers) || (currentPage && currentPageType === 'speakers') ? items.filter(filterByType, 'speaker').map((item) => {
+        const speakers = (currentPage && currentPage.showSpeakers) || (currentPage && currentPageType === 'speakers') || (currentPage && currentPageType === 'hosts') ? items.filter(filterByType, 'speaker').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=250&h=250&fit=fill') : null
 
           return {
@@ -182,7 +206,30 @@ export default (Component) => {
             photo: photo,
             order: item.fields.order
           }
+
         }).sort((a, b) => a.order - b.order) : null
+
+				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
+          return {
+            title: item.fields.title,
+            page: 'schedule',
+            abstract: item.fields.abstract,
+            from: item.fields.from,
+						to: item.fields.to,
+						day: new Date(item.fields.from).toLocaleDateString('de', {
+							day: '2-digit',
+				      month: '2-digit'
+				    }).split('-').join(''),
+						room: item.fields.room,
+						speaker: item.fields.speaker,
+						description: item.fields.shortDescription,
+						sortTime: new Date(item.fields.from).toLocaleTimeString('de', {
+							hour: '2-digit',
+							minute: '2-digit'
+				    }).split(':').join(''),
+            sortRoom: item.fields.room.charCodeAt(0)
+          }
+				}).sort((a, b) => a.sortRoom - b.sortRoom) : null
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
@@ -191,7 +238,7 @@ export default (Component) => {
             name: item.fields.title,
             page: 'workshops',
             detail: item.fields.slug,
-						workshopGiver: item.fields.teacher.fields.name,
+            workshopGiver: item.fields.teacher.fields.name,
             description: item.fields.lead,
             photo: photo,
             order: item.fields.order
@@ -277,8 +324,8 @@ export default (Component) => {
             description: item.fields.description,
             twitter: item.fields.twitter,
             photo: photo,
-						company: item.fields.company,
-						companyLink: item.fields.companyLink,
+            company: item.fields.company,
+            companyLink: item.fields.companyLink,
             order: item.fields.order
           }
         }).sort((a, b) => a.order - b.order) : null
@@ -298,6 +345,7 @@ export default (Component) => {
           workshops,
           venue,
           jobs,
+					schedule,
           sponsors,
           sponsorshipCategories,
           team,
