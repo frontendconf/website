@@ -5,13 +5,6 @@ import ScheduleItem from './scheduleItem'
 import InternalLink from './link'
 
 class Schedule extends Component {
-	day (date) {
-    return new Date(date).toLocaleDateString('de', {
-			day: 'numeric',
-			month: 'numeric'
-    })
-  }
-
   render () {
     return <section className={this.props.isHome ? 'schedule section--bottom' : 'schedule section'}>
       <div className="grid">
@@ -23,52 +16,52 @@ class Schedule extends Component {
         <div className="grid__inner eq-height">
 					<h2>Thursday, 31 Aug</h2>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '8'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '0930'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '9'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1030'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '10'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1100'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '11'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1200'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '12'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1300'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '13'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1400'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '14'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1500'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '15'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1600'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '16'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1630'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '17'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1730'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
@@ -77,52 +70,52 @@ class Schedule extends Component {
         <div className="grid__inner eq-height">
 					<h2>Friday, 1 Sep</h2>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '8'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1000'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '9'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1030'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '10'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1130'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '11'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1230'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '12'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1300'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '13'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1400'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '14'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1500'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '15'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1600'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '16'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1630'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '17'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1730'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
