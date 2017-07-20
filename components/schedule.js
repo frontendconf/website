@@ -16,12 +16,17 @@ class Schedule extends Component {
         <div className="grid__inner eq-height">
 					<h2>Thursday, 31 Aug</h2>
 					<div className="col-12 schedule__items">
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '0830'; }).map((item, i) => {
+							return <ScheduleItem {...item} />
+						})}
+					</div>
+					<div className="col-12 schedule__items">
 						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '0930'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1030'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1000'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
@@ -51,7 +56,7 @@ class Schedule extends Component {
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1600'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0831' && day.sortTime == '1530'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
@@ -70,7 +75,12 @@ class Schedule extends Component {
         <div className="grid__inner eq-height">
 					<h2>Friday, 1 Sep</h2>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1000'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '0900'; }).map((item, i) => {
+							return <ScheduleItem {...item} />
+						})}
+					</div>
+					<div className="col-12 schedule__items">
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '0930'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
@@ -85,7 +95,7 @@ class Schedule extends Component {
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1230'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1200'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
@@ -105,7 +115,7 @@ class Schedule extends Component {
 						})}
 					</div>
 					<div className="col-12 schedule__items">
-						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1600'; }).map((item, i) => {
+						{this.props.schedule.filter(function (day) { return day.day === '0901' && day.sortTime == '1530'; }).map((item, i) => {
 							return <ScheduleItem {...item} />
 						})}
 					</div>
