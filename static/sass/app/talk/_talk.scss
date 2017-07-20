@@ -38,12 +38,12 @@
 		vertical-align: top;
 
 		& + & {
-			.schedule__title {
-				padding-top: 20px;
-				margin-top: 20px;
+			.schedule__details {
+				padding-top: 10px;
+				margin-top: 10px;
 				border-top: 1px solid $border-color;
 
-				@include breakpoint($desktop) {
+				@include breakpoint($tablet) {
 					padding-top: 0;
 					margin-top: 0;
 					border-top: 0 none;
@@ -104,6 +104,15 @@
 		}
 	}
 
+	&__rusterei {
+		.schedule__title,
+		.schedule__title a,
+		&.schedule__legend
+		{
+			color: $blue-dark;
+		}
+	}
+
 	&__folium {
 		.schedule__title,
 		.schedule__title a,
@@ -118,7 +127,7 @@
 		.schedule__title a,
 		&.schedule__legend
 		{
-			color: $red;
+			color: $red-light-gradient2;
 		}
 	}
 }
