@@ -216,17 +216,16 @@ export default (Component) => {
             abstract: item.fields.abstract,
             from: item.fields.from,
 						to: item.fields.to,
-						day: new Date(item.fields.from).toLocaleDateString('de', {
+						day: new Date(item.fields.date).toLocaleDateString('de', {
 							day: '2-digit',
 				      month: '2-digit'
 				    }).split('-').join(''),
+            fromTime: item.fields.fromTime,
+            toTime: item.fields.toTime,
 						room: item.fields.room,
 						speaker: item.fields.speaker,
 						description: item.fields.shortDescription,
-						sortTime: new Date(item.fields.from).toLocaleTimeString('de', {
-							hour: '2-digit',
-							minute: '2-digit'
-				    }).split(':').join(''),
+						sortTime: item.fields.fromTime.split(':').join(''),
             sortRoom: item.fields.room.charCodeAt(0)
           }
 				}).sort((a, b) => a.sortRoom - b.sortRoom) : null
