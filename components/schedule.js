@@ -15,7 +15,7 @@ class Schedule extends Component {
         </div>
 
         {this.props.schedule.map((item, i) => {
-          return <div className="grid__inner eq-height">
+          return <div className="grid__inner eq-height" key={i}>
             <h2>{item.day}</h2>
 
             {item.slots.map((slot, ii) => {

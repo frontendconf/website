@@ -160,7 +160,7 @@ export default (Component) => {
         } : null
 
         // Fallback
-        if (!lead.title && ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1) {
+        if (!(lead && lead.title) && ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1) {
           lead.title = 'Speakers'
         }
 

@@ -6,7 +6,7 @@ import InternalLink from './link'
 class ScheduleItem extends Component {
   render () {
     const room = this.props.room.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    const title = this.props.speaker ? <InternalLink slug={'speakers/' + this.props.speaker.fields.slug}>{this.props.speaker.fields.name}</InternalLink> : this.props.title
+    const title = this.props.speaker ? <InternalLink page="speakers" detail={this.props.speaker.fields.slug}>{this.props.speaker.fields.name}</InternalLink> : this.props.title
     const desc = this.props.speaker ? this.props.title : this.props.description
     const photo = this.props.speaker ? (this.props.speaker.fields.photo.fields.file.url + '?w=60&h=60&fit=fill') : null
 
