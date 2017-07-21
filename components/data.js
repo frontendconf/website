@@ -206,29 +206,28 @@ export default (Component) => {
             photo: photo,
             order: item.fields.order
           }
-
         }).sort((a, b) => a.order - b.order) : null
 
-				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
+        const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
           return {
             title: item.fields.title,
             page: 'schedule',
             abstract: item.fields.abstract,
             from: item.fields.from,
-						to: item.fields.to,
-						day: new Date(item.fields.date).toLocaleDateString('de', {
-							day: '2-digit',
-				      month: '2-digit'
-				    }).split('-').join(''),
+            to: item.fields.to,
+            day: new Date(item.fields.date).toLocaleDateString('de', {
+              day: '2-digit',
+              month: '2-digit'
+            }).split('-').join(''),
             fromTime: item.fields.fromTime,
             toTime: item.fields.toTime,
-						room: item.fields.room,
-						speaker: item.fields.speaker,
-						description: item.fields.shortDescription,
-						sortTime: item.fields.fromTime.split(':').join(''),
+            room: item.fields.room,
+            speaker: item.fields.speaker,
+            description: item.fields.shortDescription,
+            sortTime: item.fields.fromTime.split(':').join(''),
             sortRoom: item.fields.room.charCodeAt(0)
           }
-				}).sort((a, b) => a.sortRoom - b.sortRoom) : null
+        }).sort((a, b) => a.sortRoom - b.sortRoom) : null
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
@@ -344,7 +343,7 @@ export default (Component) => {
           workshops,
           venue,
           jobs,
-					schedule,
+          schedule,
           sponsors,
           sponsorshipCategories,
           team,
