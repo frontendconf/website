@@ -5,18 +5,7 @@ import InternalLink from './link'
 import Newsletter from './newsletter'
 
 class Lead extends Component {
-  // formatDate (date) {
-  //   return new Date(date).toLocaleString('en-US', {
-  //     month: 'short',
-  //     day: 'numeric',
-  //     year: 'numeric'
-  //   }).split(' ').map((part) => part.replace(',', ''))
-  // }
-
   render () {
-    // const startDate = this.formatDate(this.props.startDate)
-    // const endDate = this.formatDate(this.props.endDate)
-
     const body = this.props.menu.length ? <ul className="list">
       {this.props.menu.map((item, i) => {
         return <li key={i}>

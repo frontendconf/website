@@ -108,9 +108,9 @@ export default (Component) => {
         const currentPage = currentItem ? Object.assign({}, currentItem.fields) : null
 
         if (currentPageType === 'speakers') {
-          currentPage.talk = items.filter(filterByType, 'talk').find((talk) => {
+          currentPage.talk = (items.filter(filterByType, 'talk').find((talk) => {
             return talk.fields.speaker && currentItem.sys.id === talk.fields.speaker.sys.id
-          })
+          }) || {}).fields
         }
 
         if (currentPage && currentPage.photo) {
@@ -215,10 +215,7 @@ export default (Component) => {
             abstract: item.fields.abstract,
             from: item.fields.from,
             to: item.fields.to,
-            day: new Date(item.fields.date).toLocaleDateString('de', {
-              day: '2-digit',
-              month: '2-digit'
-            }).split('-').join(''),
+            day: item.fields.date,
             fromTime: item.fields.fromTime,
             toTime: item.fields.toTime,
             room: item.fields.room,
