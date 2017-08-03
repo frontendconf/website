@@ -43,7 +43,7 @@ app.prepare()
   })
 
   server.get('/app', (req, res) => {
-    return res.redirect('http://onelink.to/ghsec8')
+    return res.redirect('http://onelink.to/wq2y43')
   })
 
   server.get('/:page/:detail?', (req, res, next) => {
