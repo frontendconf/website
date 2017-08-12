@@ -1,7 +1,6 @@
 .intro {
   background: url("../images/intro/intro-all.jpg") no-repeat center center; //TODO replace with another image
   background-size: cover;
-  max-height: 26rem;
   padding-bottom: 130px;
 
   @include breakpoint($desktop) {
