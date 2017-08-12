@@ -3,6 +3,9 @@ const next = require('next')
 const LRUCache = require('lru-cache')
 
 const dev = process.env.NODE_ENV !== 'production'
+
+console.log('Is dev environment:', dev);
+
 const app = next({ dir: '.', dev })
 const handle = app.getRequestHandler()
 
@@ -70,7 +73,7 @@ app.prepare().then(() => {
 
     console.log('> Ready on http://localhost:3000')
   })
-})
+}).catch(console.log)
 
 function getCacheKey (req) {
   return `${req.url}`
