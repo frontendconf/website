@@ -11,8 +11,8 @@ class ScheduleItem extends Component {
       .replace(/[\u0300-\u036f]/g, '')
     const title = this.props.speaker
       ? <InternalLink page='speakers' detail={this.props.speaker.fields.slug}>
-          {this.props.speaker.fields.name}
-        </InternalLink>
+        {this.props.speaker.fields.name}
+      </InternalLink>
       : this.props.title
     const desc = this.props.speaker ? this.props.title : this.props.description
     const photo = this.props.speaker

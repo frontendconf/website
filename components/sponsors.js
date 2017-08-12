@@ -11,29 +11,29 @@ class Sponsors extends Component {
           const title =
             i === 0
               ? <div className='grid'>
-                  <div className='grid__inner'>
-                    <div className='col-12'>
-                      <h2>
-                        <InternalLink slug='sponsors'>Sponsors</InternalLink>
-                      </h2>
-                    </div>
+                <div className='grid__inner'>
+                  <div className='col-12'>
+                    <h2>
+                      <InternalLink slug='sponsors'>Sponsors</InternalLink>
+                    </h2>
                   </div>
                 </div>
+              </div>
               : null
 
           const teaser = category.teaser
             ? <div className={category.cssClassTeaser}>
-                <div className='sponsors-board__info'>
-                  <InternalLink
-                    {...category.teaser.link.fields}
-                    classes='sponsors-board__info-become'
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{ __html: category.teaser.body }}
-                    />
-                  </InternalLink>
-                </div>
+              <div className='sponsors-board__info'>
+                <InternalLink
+                  {...category.teaser.link.fields}
+                  classes='sponsors-board__info-become'
+                >
+                  <div
+                    dangerouslySetInnerHTML={{ __html: category.teaser.body }}
+                  />
+                </InternalLink>
               </div>
+            </div>
             : null
 
           let sectionClasses = category.isDetailed
@@ -78,67 +78,31 @@ class Sponsors extends Component {
                     {category.items.map((item, i) => {
                       const twitter = item.twitter
                         ? <a href={'https://twitter.com/' + item.twitter}>
-                            {'@' + item.twitter}
-                          </a>
+                          {'@' + item.twitter}
+                        </a>
                         : null
 
                       const link = item.link
                         ? <a href={item.link} className='sponsors__link'>
-                            {item.link}
-                          </a>
+                          {item.link}
+                        </a>
                         : null
 
                       return item.isDetailed
                         ? <div
-                            className={
-                              'sponsors-board__wrapper sponsors-board__wrapper--detailed sponsors-board__wrapper--' +
+                          className={
+                            'sponsors-board__wrapper sponsors-board__wrapper--detailed sponsors-board__wrapper--' +
                               category.cssClass
-                            }
-                            key={i}
-                          >
-                            <div className='col-12'>
-                              <div className='sponsors__sponsor-line' />
-                            </div>
-                            <div className='col-4'>
-                              <a
-                                href={item.link}
-                                className='sponsors__sponsor-link'
-                              >
-                                <img
-                                  className='sponsors__logo'
-                                  src={item.logo}
-                                  alt={item.title}
-                                />
-                              </a>
-                            </div>
-                            <div className='col-8'>
-                              <div className='sponsors__sponsor'>
-                                <h3 className='sponsors__sponsor-name'>
-                                  {item.title}
-                                </h3>
-                                <p
-                                  className='sponsors__sponsor-description'
-                                  dangerouslySetInnerHTML={{
-                                    __html: item.body
-                                  }}
-                                />
-                                <p className='sponsors__sponsor-website'>
-                                  {twitter}
-                                  {link}
-                                </p>
-                              </div>
-                            </div>
+                          }
+                          key={i}
+                        >
+                          <div className='col-12'>
+                            <div className='sponsors__sponsor-line' />
                           </div>
-                        : <div
-                            className={
-                              'sponsors-board__column ' + category.cssClassItems
-                            }
-                            key={i}
-                          >
+                          <div className='col-4'>
                             <a
                               href={item.link}
-                              className='sponsors-board__sponsor sponsors__link'
-                              target='_blank'
+                              className='sponsors__sponsor-link'
                             >
                               <img
                                 className='sponsors__logo'
@@ -147,6 +111,42 @@ class Sponsors extends Component {
                               />
                             </a>
                           </div>
+                          <div className='col-8'>
+                            <div className='sponsors__sponsor'>
+                              <h3 className='sponsors__sponsor-name'>
+                                {item.title}
+                              </h3>
+                              <p
+                                className='sponsors__sponsor-description'
+                                dangerouslySetInnerHTML={{
+                                  __html: item.body
+                                }}
+                              />
+                              <p className='sponsors__sponsor-website'>
+                                {twitter}
+                                {link}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        : <div
+                          className={
+                            'sponsors-board__column ' + category.cssClassItems
+                          }
+                          key={i}
+                        >
+                          <a
+                            href={item.link}
+                            className='sponsors-board__sponsor sponsors__link'
+                            target='_blank'
+                          >
+                            <img
+                              className='sponsors__logo'
+                              src={item.logo}
+                              alt={item.title}
+                            />
+                          </a>
+                        </div>
                     })}
 
                     {teaser}

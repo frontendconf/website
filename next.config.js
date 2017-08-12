@@ -16,9 +16,7 @@ module.exports = {
       })
     }
 
-    config.plugins.push(
-      new ExtractTextPlugin('static/css/default.css')
-    )
+    config.plugins.push(new ExtractTextPlugin('static/css/default.css'))
 
     config.module.rules.push({
       test: /\.scss$/,

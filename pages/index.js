@@ -99,18 +99,18 @@ class Index extends Component {
         body =
           this.props.currentPage && this.props.currentPage.body
             ? <section className='content section'>
-                <div className='grid'>
-                  <div className='grid__inner'>
-                    <div className='col-12'>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: this.props.currentPage.body
-                        }}
-                      />
-                    </div>
+              <div className='grid'>
+                <div className='grid__inner'>
+                  <div className='col-12'>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: this.props.currentPage.body
+                      }}
+                    />
                   </div>
                 </div>
-              </section>
+              </div>
+            </section>
             : null
     }
 
@@ -119,15 +119,15 @@ class Index extends Component {
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
     const speakers = this.props.speakers
       ? <Speakers
-          speakers={this.props.speakers}
-          isHome={this.props.currentPage && this.props.currentPage.isHome}
-        />
+        speakers={this.props.speakers}
+        isHome={this.props.currentPage && this.props.currentPage.isHome}
+      />
       : null
     const workshops = this.props.workshops
       ? <Workshops
-          workshops={this.props.workshops}
-          isHome={this.props.currentPage && this.props.currentPage.isHome}
-        />
+        workshops={this.props.workshops}
+        isHome={this.props.currentPage && this.props.currentPage.isHome}
+      />
       : null
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
@@ -145,7 +145,10 @@ class Index extends Component {
       ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} />
       : null
     const restaurants = this.props.restaurants
-      ? <Tourism items={this.props.restaurants} lead={this.props.leadRestaurants} />
+      ? <Tourism
+        items={this.props.restaurants}
+        lead={this.props.leadRestaurants}
+      />
       : null
 
     return (
@@ -187,7 +190,9 @@ Index.propTypes = {
   sponsorshipCategories: PropTypes.array,
   team: PropTypes.array,
   schedule: PropTypes.array,
+  leadHotels: PropTypes.string,
   hotels: PropTypes.array,
+  leadRestaurants: PropTypes.string,
   restaurants: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array

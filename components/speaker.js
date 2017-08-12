@@ -7,27 +7,27 @@ class Speaker extends Component {
   render () {
     const twitter = this.props.twitter
       ? <span>
-          <a href={'https://twitter.com/' + this.props.twitter} target='_blank'>
-            {'@' + this.props.twitter}
-          </a>
-          <br />
-        </span>
+        <a href={'https://twitter.com/' + this.props.twitter} target='_blank'>
+          {'@' + this.props.twitter}
+        </a>
+        <br />
+      </span>
       : null
     const website = this.props.website
       ? <span>
-          <a href={this.props.website} target='_blank'>
-            {this.props.website}
-          </a>
-          <br />
-        </span>
+        <a href={this.props.website} target='_blank'>
+          {this.props.website}
+        </a>
+        <br />
+      </span>
       : null
     const linkedin = this.props.linkedin
       ? <span>
-          <a href={this.props.linkedin} target='_blank'>
-            {this.props.linkedin}
-          </a>
-          <br />
-        </span>
+        <a href={this.props.linkedin} target='_blank'>
+          {this.props.linkedin}
+        </a>
+        <br />
+      </span>
       : null
     const talk = this.props.talk ? <Talk {...this.props.talk} /> : null
 

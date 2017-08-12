@@ -2,14 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import Person from './person'
-import InternalLink from './link'
 
 class Tourism extends Component {
   render () {
     return (
-      <section
-        className='hotels section'
-      >
+      <section className='hotels section'>
         <div className='grid'>
           <div className='grid__inner eq-height'>
             <div className='col-12'>

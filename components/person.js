@@ -7,38 +7,38 @@ class Person extends Component {
   render () {
     const photo = this.props.detail
       ? <InternalLink {...this.props} classes='person__image-container'>
-          <img
-            className='person__image'
-            src={this.props.photo}
-            alt={this.props.name}
-          />
-        </InternalLink>
-      : <img
+        <img
           className='person__image'
           src={this.props.photo}
           alt={this.props.name}
         />
+      </InternalLink>
+      : <img
+        className='person__image'
+        src={this.props.photo}
+        alt={this.props.name}
+      />
 
     const twitter = this.props.twitter
       ? <p className='person__twitter'>
-          <a href={'https://twitter.com/' + this.props.twitter} target='_blank'>
-            {'@' + this.props.twitter}
-          </a>
-        </p>
+        <a href={'https://twitter.com/' + this.props.twitter} target='_blank'>
+          {'@' + this.props.twitter}
+        </a>
+      </p>
       : null
 
     const company = this.props.company
       ? <span className='person__company'>
-          <a href={this.props.companyLink} target='_blank'>
-            {this.props.company}
-          </a>
-        </span>
+        <a href={this.props.companyLink} target='_blank'>
+          {this.props.company}
+        </a>
+      </span>
       : null
 
     const workshopGiver = this.props.workshopGiver
       ? <span className='person__workshop'>
           with {this.props.workshopGiver}
-        </span>
+      </span>
       : null
 
     let content = (

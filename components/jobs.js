@@ -32,20 +32,20 @@ class Jobs extends Component {
     const title = this.props.isDetailed
       ? null
       : <div className='col-12'>
-          <h2>Jobs</h2>
-        </div>
+        <h2>Jobs</h2>
+      </div>
 
     const showAll = this.props.page
       ? <div className='col-4'>
-          <InternalLink
-            slug={this.props.page.slug}
-            classes='job-board__job job-board__job--all'
-          >
-            <span className='job-board__job-title job-board__job-title--all'>
+        <InternalLink
+          slug={this.props.page.slug}
+          classes='job-board__job job-board__job--all'
+        >
+          <span className='job-board__job-title job-board__job-title--all'>
               All jobs
-            </span>
-          </InternalLink>
-        </div>
+          </span>
+        </InternalLink>
+      </div>
       : null
 
     return (
@@ -61,6 +61,7 @@ class Jobs extends Component {
                     className='job-board__job'
                     href={item.link}
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <span className='job-board__job-title'>
                       {item.title}
@@ -82,6 +83,7 @@ class Jobs extends Component {
                   className='job-board__freshjobs-link'
                   href='https://freshjobs.ch'
                   target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <svg
                     className='job-board__freshjobs-logo'

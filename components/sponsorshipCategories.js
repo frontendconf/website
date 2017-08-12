@@ -14,16 +14,16 @@ class SponsorshipCategories extends Component {
             {this.props.categories.map((category, i) => {
               const icon = category.icon
                 ? <img
-                    className='person__image'
-                    src={category.icon}
-                    alt={category.title}
-                  />
+                  className='person__image'
+                  src={category.icon}
+                  alt={category.title}
+                />
                 : null
 
               const availability = category.availability
                 ? <span>
                     / <span>{category.availability}</span>
-                  </span>
+                </span>
                 : null
 
               return (

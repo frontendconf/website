@@ -8,55 +8,55 @@ class Lead extends Component {
   render () {
     const body = this.props.menu.length
       ? <ul className='list'>
-          {this.props.menu.map((item, i) => {
-            return (
-              <li key={i}>
-                <InternalLink
-                  {...item}
-                  classes={item.isActive ? 'active' : null}
-                />
-              </li>
-            )
-          })}
-        </ul>
+        {this.props.menu.map((item, i) => {
+          return (
+            <li key={i}>
+              <InternalLink
+                {...item}
+                classes={item.isActive ? 'active' : null}
+              />
+            </li>
+          )
+        })}
+      </ul>
       : <div
-          className={
-            this.props.isHome ? 'intro__content' : 'intro__content--light'
-          }
-        >
-          <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
-        </div>
+        className={
+          this.props.isHome ? 'intro__content' : 'intro__content--light'
+        }
+      >
+        <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+      </div>
 
     const teaser = this.props.teaser
       ? <div className='col-12'>
-          <span className='intro__teaser'>
-            <div dangerouslySetInnerHTML={{ __html: this.props.teaser.body }} />
-          </span>
-        </div>
+        <span className='intro__teaser'>
+          <div dangerouslySetInnerHTML={{ __html: this.props.teaser.body }} />
+        </span>
+      </div>
       : null
 
     const footerContent = this.props.ctas.length
       ? <div className='col-12'>
-          <div className='intro__bottom-left'>
-            {this.props.ctas.map((cta, i) => {
-              return <InternalLink {...cta} classes='btn' key={i} />
-            })}
-          </div>
-
-          <div className='intro__bottom-right'>
-            {this.props.isHome ? <Newsletter /> : null}
-          </div>
+        <div className='intro__bottom-left'>
+          {this.props.ctas.map((cta, i) => {
+            return <InternalLink {...cta} classes='btn' key={i} />
+          })}
         </div>
+
+        <div className='intro__bottom-right'>
+          {this.props.isHome ? <Newsletter /> : null}
+        </div>
+      </div>
       : teaser
 
     const footer = footerContent
       ? <div className='intro__bottom-content'>
-          <div className='grid'>
-            <div className='grid__inner'>
-              {footerContent}
-            </div>
+        <div className='grid'>
+          <div className='grid__inner'>
+            {footerContent}
           </div>
         </div>
+      </div>
       : null
 
     const type = this.props.title ? this.props.title.toLowerCase() : null

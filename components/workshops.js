@@ -12,10 +12,10 @@ class Workshops extends Component {
           <div className='grid__inner eq-height'>
             {this.props.isHome
               ? <div className='col-12'>
-                  <h2>
-                    <InternalLink slug='workshops'>Workshops</InternalLink>
-                  </h2>
-                </div>
+                <h2>
+                  <InternalLink slug='workshops'>Workshops</InternalLink>
+                </h2>
+              </div>
               : null}
             {this.props.workshops.map((item, i) => {
               return (
