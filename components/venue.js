@@ -5,25 +5,30 @@ import InternalLink from './link'
 
 class Venue extends Component {
   render () {
-    const title = this.props.link ? <InternalLink slug={this.props.link} title={this.props.title} /> : this.props.title
+    const title = this.props.link
+      ? <InternalLink slug={this.props.link} title={this.props.title} />
+      : this.props.title
 
-    return <section className="venue">
-      <div className="venue__container">
-        <div className="venue__image"></div>
-        <div className="venue__inner">
-          <div className="venue__content">
-            <div className="venue__head">
-              <h2>{title}</h2>
-            </div>
-            <div className="venue__venue">
-              <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+    return (
+      <section className='venue'>
+        <div className='venue__container'>
+          <div className='venue__image' />
+          <div className='venue__inner'>
+            <div className='venue__content'>
+              <div className='venue__head'>
+                <h2>
+                  {title}
+                </h2>
+              </div>
+              <div className='venue__venue'>
+                <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="venue__col-6">
-      </div>
-    </section>
+        <div className='venue__col-6' />
+      </section>
+    )
   }
 }
 

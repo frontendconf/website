@@ -1,7 +1,5 @@
 .sponsors {
-
   &-board {
-
     // React renders some additional wrapper elements
     &__wrapper {
       display: flex;
@@ -13,10 +11,10 @@
         }
       }
       & + & {
-      	margin-top: 2rem;
+        margin-top: 2rem;
       }
       & & {
-      	margin-top: 0;
+        margin-top: 0;
       }
     }
 
@@ -65,23 +63,23 @@
       &:focus,
       &:hover {
         .sponsors__link {
-					position: relative;
+          position: relative;
         }
       }
     }
     &__info-text {
-			@include opensanslight;
+      @include opensanslight;
       display: block;
       margin-bottom: 1.5rem;
 
-			a {
-				color: $white;
-				@include opensansbold;
-			}
+      a {
+        color: $white;
+        @include opensansbold;
+      }
     }
     &__info-title {
-			color: $white;
-			font-size: 1.4rem;
+      color: $white;
+      font-size: 1.4rem;
       text-transform: uppercase;
       display: block;
       margin-bottom: 0.5rem;

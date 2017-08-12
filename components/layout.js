@@ -8,31 +8,50 @@ import Footer from './footer'
 import Menu from './menu'
 import MenuToggle from './menuToggle'
 
-const Layout = ({ children, title = 'Frontend Conf', header, currentPage, footer }) => {
+const Layout = ({
+  children,
+  title = 'Frontend Conf',
+  header,
+  currentPage,
+  footer
+}) => {
   const bodyClass = currentPage ? currentPage.bodyClass : null
 
-  return <div className={bodyClass}>
-    <Head>
-      <title>{title}</title>
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:300,400,400i,700" rel="stylesheet" />
-      <link href={'/static/css/default.css' + config.ASSET_VERSION} rel="stylesheet" />
-      <link rel="shortcut icon" href={'/static/images/favicon.png' + config.ASSET_VERSION} />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </Head>
+  return (
+    <div className={bodyClass}>
+      <Head>
+        <title>
+          {title}
+        </title>
+        <link
+          href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:300,400,400i,700'
+          rel='stylesheet'
+        />
+        <link
+          href={'/static/css/default.css' + config.ASSET_VERSION}
+          rel='stylesheet'
+        />
+        <link
+          rel='shortcut icon'
+          href={'/static/images/favicon.png' + config.ASSET_VERSION}
+        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
 
-    <Header {...header} />
-    <MenuToggle checked={false} />
+      <Header {...header} />
+      <MenuToggle checked={false} />
 
-    <div className="offcanvasMain">
-      {children}
+      <div className='offcanvasMain'>
+        {children}
 
-      <Footer {...footer} />
+        <Footer {...footer} />
+      </div>
+
+      <div className='offcanvasRight'>
+        <Menu items={header.menu} />
+      </div>
     </div>
-
-    <div className="offcanvasRight">
-      <Menu items={header.menu} />
-    </div>
-  </div>
+  )
 }
 
 Layout.propTypes = {

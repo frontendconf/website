@@ -6,26 +6,14 @@
 // =============================================================================
 
 $susy: (
-        columns: 12,
-        gutters: 20px/40px,
-        column-width: 40px,
-        container: 1280px,
-        gutter-position: split,
-        global-box-sizing: border-box,
-        use-custom: (
-                rem: true
-        ),
-        debug: (
-          //image: show-columns,
-                color: rgba($red, 0.1),
-          //output: background,
-          //toggle: top right,
-          //output: overlay,
-          //image: show-columns,
-          //color: rgba($red, 0.1),
-          //image: show,
-          //toggle: top right,
-        ),
+  columns: 12,
+  gutters: 20px/40px,
+  column-width: 40px,
+  container: 1280px,
+  gutter-position: split,
+  global-box-sizing: border-box,
+  use-custom: (rem: true),
+  debug: (color: rgba($red, 0.1))
 );
 
 // GENERAL BREAKPOINTS
@@ -47,7 +35,6 @@ $susy: (
   @include breakpoint($wide) {
     @include container($wide);
   }
-
 }
 
 .grid__inner {
@@ -109,7 +96,7 @@ $susy: (
 }
 
 .col-12 {
-    @include span(12 inside);
+  @include span(12 inside);
 }
 
 //unusual ratios
@@ -185,7 +172,6 @@ $susy: (
       width: 100%;
     }
   }
-
 
   &:before,
   &:after {

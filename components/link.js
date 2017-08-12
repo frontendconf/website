@@ -16,8 +16,11 @@ class InternalLink extends Component {
         href += this.props.slug
         slug += this.props.slug
       } else {
-        href += this.props.page + (this.props.detail ? '&detail=' + this.props.detail : null)
-        slug += this.props.page + (this.props.detail ? '/' + this.props.detail : null)
+        href +=
+          this.props.page +
+          (this.props.detail ? '&detail=' + this.props.detail : null)
+        slug +=
+          this.props.page + (this.props.detail ? '/' + this.props.detail : null)
       }
     }
 
@@ -30,11 +33,13 @@ class InternalLink extends Component {
   render () {
     const linkConfig = this.getLinkConfig()
 
-    return <Link href={linkConfig.href} as={linkConfig.slug}>
-      <a className={this.props.classes}>
-        {this.props.children || this.props.title}
-      </a>
-    </Link>
+    return (
+      <Link href={linkConfig.href} as={linkConfig.slug}>
+        <a className={this.props.classes}>
+          {this.props.children || this.props.title}
+        </a>
+      </Link>
+    )
   }
 }
 
@@ -49,4 +54,3 @@ InternalLink.propTypes = {
 }
 
 export default InternalLink
-

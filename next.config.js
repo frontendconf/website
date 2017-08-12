@@ -7,13 +7,13 @@ const dev = process.env.NODE_ENV !== 'production'
 const predeploy = process.env.PREDEPLOY === 'true'
 
 module.exports = {
-  webpack: (config) => {
+  webpack: config => {
     // Handle Sass
     if (dev || predeploy) {
       const entryFactory = config.entry
 
       config.entry = () => {
-        return entryFactory().then((entry) => {
+        return entryFactory().then(entry => {
           entry['default.css'] = './static/sass/default.scss'
 
           return entry
@@ -40,12 +40,11 @@ module.exports = {
                   autoprefixer({
                     browsers: ['last 10 versions', 'ie 10']
                   })
-                ].concat(dev ? [] : [
-                  cssnano()
-                ]),
+                ].concat(dev ? [] : [cssnano()]),
                 sourceMap: true
               }
-            }, {
+            },
+            {
               loader: 'sass-loader',
               options: {
                 sourceMap: true

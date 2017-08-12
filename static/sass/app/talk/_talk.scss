@@ -1,133 +1,130 @@
 .talk {
-	padding-top: 3.75rem;
-	padding-bottom: 3.75rem;
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
 
-	&__title {
-		margin-top: 0;
-	}
+  &__title {
+    margin-top: 0;
+  }
 
-	&__room {
-		margin-bottom: 1.5rem;
-	}
+  &__room {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .schedule {
-	$border-color: #e3e8eb;
+  $border-color: #e3e8eb;
 
-	&__legends {
-		float: right;
-	}
+  &__legends {
+    float: right;
+  }
 
-	&__legend {
-		text-transform: uppercase;
-		padding-left: 20px;
+  &__legend {
+    text-transform: uppercase;
+    padding-left: 20px;
 
-		@include breakpoint($tablet) {
-			display: inline-block;
-		}
+    @include breakpoint($tablet) {
+      display: inline-block;
+    }
+  }
 
-	}
+  &__items {
+    clear: both;
+    padding: 16px 0;
+    border-bottom: 1px solid $border-color;
+  }
 
-	&__items {
-		clear: both;
-		padding: 16px 0;
-		border-bottom: 1px solid $border-color;
-	}
+  &__item {
+    vertical-align: top;
 
-	&__item {
-		vertical-align: top;
+    & + & {
+      .schedule__details {
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid $border-color;
 
-		& + & {
-			.schedule__details {
-				padding-top: 10px;
-				margin-top: 10px;
-				border-top: 1px solid $border-color;
+        @include breakpoint($tablet) {
+          padding-top: 0;
+          margin-top: 0;
+          border-top: 0 none;
+        }
+      }
 
-				@include breakpoint($tablet) {
-					padding-top: 0;
-					margin-top: 0;
-					border-top: 0 none;
-				}
-			}
+      .schedule__time {
+        opacity: 0;
+      }
+    }
+  }
 
-			.schedule__time {
-				opacity: 0;
-			}
-		}
-	}
+  &__talk {
+    margin-bottom: 10px;
+    overflow-y: hidden;
+  }
 
-	&__talk {
-		margin-bottom: 10px;
-		overflow-y: hidden;
-	}
+  &__time {
+    vertical-align: top;
+    display: inline-block;
+    padding-right: 20px;
+    margin: 0;
+  }
 
-	&__time {
-		vertical-align: top;
-		display: inline-block;
-		padding-right: 20px;
-		margin: 0;
-	}
+  &__from,
+  &__to {
+    display: block;
+    font-weight: bold;
+    line-height: 1;
+  }
 
-	&__from, &__to {
-		display: block;
-		font-weight: bold;
-		line-height: 1;
-	}
+  &__to {
+    color: #77909d;
+  }
 
-	&__to {
-		color: #77909d;
-	}
+  &__details {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(100% - 84px);
+  }
 
-	&__details {
-		vertical-align: top;
-		display: inline-block;
-		width: calc(100% - 84px);
-	}
+  &__photo {
+    float: left;
+    padding-right: 10px;
+  }
 
-	&__photo {
-		float: left;
-		padding-right: 10px;
-	}
+  &__title {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
 
-	&__title {
-		font-size: 1.6rem;
-		text-transform: uppercase;
-		margin: 0;
-	}
+  &__abstract {
+    font-size: .9rem;
+    display: none;
 
-	&__abstract {
-		font-size: .9rem;
-		display: none;
+    @include breakpoint($tablet) {
+      display: block;
+    }
+  }
 
-		@include breakpoint($tablet) {
-			display: block;
-		}
-	}
+  &__rusterei {
+    .schedule__title,
+    .schedule__title a,
+    &.schedule__legend {
+      color: $blue-dark;
+    }
+  }
 
-	&__rusterei {
-		.schedule__title,
-		.schedule__title a,
-		&.schedule__legend
-		{
-			color: $blue-dark;
-		}
-	}
+  &__folium {
+    .schedule__title,
+    .schedule__title a,
+    &.schedule__legend {
+      color: $blue-light-gradient2;
+    }
+  }
 
-	&__folium {
-		.schedule__title,
-		.schedule__title a,
-		&.schedule__legend
-		{
-			color: $blue-light-gradient2;
-		}
-	}
-
-	&__papiersaal {
-		.schedule__title,
-		.schedule__title a,
-		&.schedule__legend
-		{
-			color: $red-light-gradient2;
-		}
-	}
+  &__papiersaal {
+    .schedule__title,
+    .schedule__title a,
+    &.schedule__legend {
+      color: $red-light-gradient2;
+    }
+  }
 }

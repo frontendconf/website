@@ -11,8 +11,7 @@ const ssrCache = new LRUCache({
   maxAge: 1000 * 60 * 60 // 1 hour
 })
 
-app.prepare()
-.then(() => {
+app.prepare().then(() => {
   const server = express()
 
   // Static files
@@ -35,11 +34,15 @@ app.prepare()
   })
 
   server.get('/brief', (req, res) => {
-    return res.redirect('https://docs.google.com/document/d/15hy6A502poF19V5pH1A9qAQoeKFWU69DPhloYGkDSM4/edit')
+    return res.redirect(
+      'https://docs.google.com/document/d/15hy6A502poF19V5pH1A9qAQoeKFWU69DPhloYGkDSM4/edit'
+    )
   })
 
   server.get('/deadlines', (req, res) => {
-    return res.redirect('https://trello.com/b/jA5Uxk5L/fec17-informationen-deadlines-für-sponsoren-und-partner')
+    return res.redirect(
+      'https://trello.com/b/jA5Uxk5L/fec17-informationen-deadlines-für-sponsoren-und-partner'
+    )
   })
 
   server.get('/app', (req, res) => {
@@ -47,7 +50,11 @@ app.prepare()
   })
 
   server.get('/:page/:detail?', (req, res, next) => {
-    if (['favicon.ico', '_webpack', '__webpack_hmr', '_next'].includes(req.params.page)) {
+    if (
+      ['favicon.ico', '_webpack', '__webpack_hmr', '_next'].includes(
+        req.params.page
+      )
+    ) {
       return next()
     }
 
@@ -58,7 +65,7 @@ app.prepare()
     return handle(req, res)
   })
 
-  server.listen(3000, (err) => {
+  server.listen(3000, err => {
     if (err) throw err
 
     console.log('> Ready on http://localhost:3000')
@@ -71,7 +78,7 @@ function getCacheKey (req) {
 
 function renderAndCache (req, res, pagePath, queryParams) {
   const key = getCacheKey(req)
-  const skipCache = (req.query.skipCache !== undefined) || dev
+  const skipCache = req.query.skipCache !== undefined || dev
 
   if (ssrCache.has(key)) {
     // console.log(`CACHE HIT: ${key}`)
@@ -83,8 +90,9 @@ function renderAndCache (req, res, pagePath, queryParams) {
     }
   }
 
-  app.renderToHTML(req, res, pagePath, queryParams)
-    .then((html) => {
+  app
+    .renderToHTML(req, res, pagePath, queryParams)
+    .then(html => {
       // console.log(`CACHE MISS: ${key}`)
 
       if (!skipCache) {
@@ -93,7 +101,7 @@ function renderAndCache (req, res, pagePath, queryParams) {
 
       res.send(html)
     })
-    .catch((err) => {
+    .catch(err => {
       app.renderError(err, req, res, pagePath, queryParams)
     })
 }

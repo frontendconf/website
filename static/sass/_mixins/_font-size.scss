@@ -2,8 +2,7 @@
   @each $fs-breakpoint, $fs-font-size in $fs-map {
     @if $fs-breakpoint == null {
       @include make-font-size($fs-font-size);
-    }
-    @else {
+    } @else {
       // If $fs-font-size is a key that exists in
       // $fs-breakpoints, use the value
       @if map-has-key($fs-breakpoints, $fs-breakpoint) {
@@ -22,8 +21,7 @@
     @if (length($fs-font-size) > 1) {
       line-height: nth($fs-font-size, 2);
     }
-  }
-  @else {
+  } @else {
     font-size: $fs-font-size;
   }
 }

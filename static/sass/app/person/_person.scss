@@ -10,11 +10,11 @@
         @include filter(none);
       }
     }
-
   }
 
-  section:not(.intro) &__title { // TODO: Fix "architecture"
-  	margin-top: 1rem;
+  section:not(.intro) &__title {
+    // TODO: Fix "architecture"
+    margin-top: 1rem;
   }
 
   &__image {
@@ -38,11 +38,10 @@
     }
   }
 
-	&__company,
-  &__twitter
-  {
-		font-size: 1.1rem;
-	}
+  &__company,
+  &__twitter {
+    font-size: 1.1rem;
+  }
 
   &__company a {
     font-weight: 600;
@@ -53,9 +52,9 @@
     }
   }
 
-	&__workshop {
-		display: block;
-	}
+  &__workshop {
+    display: block;
+  }
 }
 
 .speakers {
@@ -82,27 +81,27 @@
     @include middle();
   }
 
-	&__subtitle {
-		text-transform: uppercase;
-		padding-top: 4rem;
-		border-top: 1px solid #e3e8eb;
+  &__subtitle {
+    text-transform: uppercase;
+    padding-top: 4rem;
+    border-top: 1px solid #e3e8eb;
 
-		@include breakpoint($tablet) {
-			margin-bottom: -3.75rem;
-		}
-	}
+    @include breakpoint($tablet) {
+      margin-bottom: -3.75rem;
+    }
+  }
 }
 
 .speaker {
-	h1 {
-		margin-bottom: 2rem;
-	}
+  h1 {
+    margin-bottom: 2rem;
+  }
 
   &__profile {
     background: $silver-light;
     @include clearfix();
     [class*=col-] {
-      &:first-child{
+      &:first-child {
         padding-left: 0;
       }
     }
@@ -123,8 +122,8 @@
     }
   }
 
-	// Speaker subpage change layout of other speakers
-	+ .speakers {
+  // Speaker subpage change layout of other speakers
+  + .speakers {
     .col-xs-6 {
       width: 100%;
 
@@ -141,32 +140,32 @@
       }
     }
 
-		.person {
-			&__title {
-				font-size: 1.3rem;
-				line-height: 1.2;
-				margin-top: 0;
-			}
+    .person {
+      &__title {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        margin-top: 0;
+      }
 
-			&__job-title {
-				font-size: 1rem;
-			}
+      &__job-title {
+        font-size: 1rem;
+      }
 
-			&__caption {
-				display: inline-block;
-				overflow-y: hidden;
-				width: calc(100% - 60px - 1rem);
-			}
+      &__caption {
+        display: inline-block;
+        overflow-y: hidden;
+        width: calc(100% - 60px - 1rem);
+      }
 
-			&__image-container {
-				float: left;
-				position: relative;
-				top: 6px;
-				width: 60px;
-				padding-right: 1rem;
-			}
-		}
-	}
+      &__image-container {
+        float: left;
+        position: relative;
+        top: 6px;
+        width: 60px;
+        padding-right: 1rem;
+      }
+    }
+  }
 }
 
 .other_speakers {

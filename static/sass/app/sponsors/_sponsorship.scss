@@ -13,7 +13,10 @@
       width: 100%;
       margin-bottom: 50px;
 
-      .person__image, > h3, > p, > div {
+      .person__image,
+      > h3,
+      > p,
+      > div {
         float: left;
         display: block;
       }
@@ -22,7 +25,9 @@
         margin-right: 30px;
       }
 
-      > h3, > p, > div {
+      > h3,
+      > p,
+      > div {
         width: calc(100% - 300px);
       }
     }
