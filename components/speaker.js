@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import LazyLoad from 'react-lazyload'
 
 import Talk from './talk'
 
@@ -42,11 +43,13 @@ class Speaker extends Component {
 
               <div className='speaker__profile'>
                 <div className='col-3 speaker__profile-image'>
-                  <img
-                    className='person__image'
-                    src={this.props.photo + '?w=350&h=350&fit=fill'}
-                    alt={this.props.name}
-                  />
+                  <LazyLoad offset="200">
+                    <img
+                      className='person__image'
+                      src={this.props.photo + '?w=350&h=350&fit=fill'}
+                      alt={this.props.name}
+                    />
+                  </LazyLoad>
                 </div>
 
                 <div className='col-9 speaker__profile-text'>

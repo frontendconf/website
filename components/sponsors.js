@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import LazyLoad from 'react-lazyload'
 
 import InternalLink from './link'
 
@@ -104,11 +105,13 @@ class Sponsors extends Component {
                               href={item.link}
                               className='sponsors__sponsor-link'
                             >
-                              <img
-                                className='sponsors__logo'
-                                src={item.logo}
-                                alt={item.title}
-                              />
+                              <LazyLoad offset="200">
+                                <img
+                                  className='sponsors__logo'
+                                  src={item.logo}
+                                  alt={item.title}
+                                />
+                              </LazyLoad>
                             </a>
                           </div>
                           <div className='col-8'>
@@ -140,11 +143,13 @@ class Sponsors extends Component {
                             className='sponsors-board__sponsor sponsors__link'
                             target='_blank'
                           >
-                            <img
-                              className='sponsors__logo'
-                              src={item.logo}
-                              alt={item.title}
-                            />
+                            <LazyLoad offset="200">
+                              <img
+                                className='sponsors__logo'
+                                src={item.logo}
+                                alt={item.title}
+                              />
+                            </LazyLoad>
                           </a>
                         </div>
                     })}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import LazyLoad from 'react-lazyload'
 
 import InternalLink from './link'
 
@@ -30,7 +31,9 @@ class ScheduleItem extends Component {
           </span>
         </div>
         <div className='schedule__details'>
-          <img className='schedule__photo' src={photo} />
+          <LazyLoad offset="200">
+            <img className='schedule__photo' src={photo} />
+          </LazyLoad>
           <h2 className='schedule__title'>
             {title}
           </h2>

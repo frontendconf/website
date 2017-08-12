@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import LazyLoad from 'react-lazyload'
 
 import InternalLink from './link'
 
 class Person extends Component {
   render () {
-    const photo = this.props.detail
+    const photo = <LazyLoad offset="200">{this.props.detail
       ? <InternalLink {...this.props} classes='person__image-container'>
         <img
           className='person__image'
@@ -18,6 +19,7 @@ class Person extends Component {
         src={this.props.photo}
         alt={this.props.name}
       />
+    }</LazyLoad>
 
     const twitter = this.props.twitter
       ? <p className='person__twitter'>

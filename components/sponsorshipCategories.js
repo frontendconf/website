@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import LazyLoad from 'react-lazyload'
 
 class SponsorshipCategories extends Component {
   render () {
@@ -13,11 +14,13 @@ class SponsorshipCategories extends Component {
 
             {this.props.categories.map((category, i) => {
               const icon = category.icon
-                ? <img
-                  className='person__image'
-                  src={category.icon}
-                  alt={category.title}
-                />
+                ? <LazyLoad offset="200">
+                  <img
+                    className='person__image'
+                    src={category.icon}
+                    alt={category.title}
+                  />
+                </LazyLoad>
                 : null
 
               const availability = category.availability
