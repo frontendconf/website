@@ -3028,6 +3028,11 @@
       "resolved": "https://registry.npmjs.org/ignore/-/ignore-3.3.3.tgz",
       "dev": true
     },
+    "immutability-helper": {
+      "version": "2.3.1",
+      "from": "immutability-helper@>=2.1.2 <3.0.0",
+      "resolved": "https://registry.npmjs.org/immutability-helper/-/immutability-helper-2.3.1.tgz"
+    },
     "import-lazy": {
       "version": "2.1.0",
       "from": "import-lazy@>=2.1.0 <3.0.0",
@@ -7190,6 +7195,33 @@
         }
       }
     },
+    "preact": {
+      "version": "8.2.1",
+      "from": "preact@latest",
+      "resolved": "https://registry.npmjs.org/preact/-/preact-8.2.1.tgz"
+    },
+    "preact-compat": {
+      "version": "3.17.0",
+      "from": "preact-compat@latest",
+      "resolved": "https://registry.npmjs.org/preact-compat/-/preact-compat-3.17.0.tgz"
+    },
+    "preact-render-to-string": {
+      "version": "3.6.3",
+      "from": "preact-render-to-string@>=3.6.0 <4.0.0",
+      "resolved": "https://registry.npmjs.org/preact-render-to-string/-/preact-render-to-string-3.6.3.tgz",
+      "dependencies": {
+        "pretty-format": {
+          "version": "3.8.0",
+          "from": "pretty-format@>=3.5.1 <4.0.0",
+          "resolved": "https://registry.npmjs.org/pretty-format/-/pretty-format-3.8.0.tgz"
+        }
+      }
+    },
+    "preact-transition-group": {
+      "version": "1.1.1",
+      "from": "preact-transition-group@>=1.1.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/preact-transition-group/-/preact-transition-group-1.1.1.tgz"
+    },
     "prelude-ls": {
       "version": "1.1.2",
       "from": "prelude-ls@>=1.1.2 <1.2.0",
@@ -8464,6 +8496,11 @@
       "version": "1.0.4",
       "from": "stackframe@>=1.0.3 <2.0.0",
       "resolved": "https://registry.npmjs.org/stackframe/-/stackframe-1.0.4.tgz"
+    },
+    "standalone-react-addons-pure-render-mixin": {
+      "version": "0.1.1",
+      "from": "standalone-react-addons-pure-render-mixin@>=0.1.1 <0.2.0",
+      "resolved": "https://registry.npmjs.org/standalone-react-addons-pure-render-mixin/-/standalone-react-addons-pure-render-mixin-0.1.1.tgz"
     },
     "statuses": {
       "version": "1.3.1",
