@@ -162,28 +162,28 @@ export default Component => {
 
         const lead = currentPage
           ? {
-            title: query.detail
+              title: query.detail
                 ? (menu.find(item => item.isActive) || {}).title
                 : currentPage.title,
-            body: currentPage.lead
+              body: currentPage.lead
                 ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />')
                 : null,
-            ctas: currentPage.leadCtas
+              ctas: currentPage.leadCtas
                 ? currentPage.leadCtas.map(item => {
-                  const title = item.fields.ctaText || item.fields.title
+                    const title = item.fields.ctaText || item.fields.title
 
-                  return {
-                    title: title,
-                    slug: item.fields.slug
-                  }
-                })
+                    return {
+                      title: title,
+                      slug: item.fields.slug
+                    }
+                  })
                 : [],
-            teaser: currentPage.leadTeaser
+              teaser: currentPage.leadTeaser
                 ? items.find(
                     item => item.sys.id === currentPage.leadTeaser.sys.id
                   ).fields
                 : null,
-            menu:
+              menu:
                 query.detail && query.page !== 'news'
                   ? getLeadMenu(
                       items,
@@ -191,8 +191,8 @@ export default Component => {
                       query
                     )
                   : [],
-            isHome: currentPage.isHome
-          }
+              isHome: currentPage.isHome
+            }
           : null
 
         // Fallback
@@ -274,10 +274,12 @@ export default Component => {
                 .sort((a, b) => a.order - b.order)
             : null
 
-        // Set up schedule
-        let schedule = {}
+        let schedule = null
 
+        // Set up schedule
         if (currentPage && currentPage.showSchedule) {
+          schedule = {}
+
           items.filter(filterByType, 'talk').forEach(item => {
             let talk = {
               title: item.fields.title,
@@ -318,27 +320,29 @@ export default Component => {
             // Add talk to slot
             schedule[sortDay].slots[talk.sortTime].talks.push(talk)
           })
+
+          // Sort schedule by day and transform to array
+          schedule = Object.keys(schedule)
+            .sort((a, b) => new Date(a).getTime() - new Date(a).getTime())
+            .map(day => schedule[day])
+            .map(day => {
+              // Sort slots by time and transform array
+              day.slots = Object.keys(day.slots)
+                .sort((a, b) => parseInt(a, 10) - parseInt(b, 10))
+                .map(slot => {
+                  slot = day.slots[slot]
+
+                  // Sort talks
+                  slot.talks = slot.talks.sort(
+                    (a, b) => a.sortRoom - b.sortRoom
+                  )
+
+                  return slot
+                })
+
+              return day
+            })
         }
-
-        // Sort schedule by day and transform to array
-        schedule = Object.keys(schedule)
-          .sort((a, b) => new Date(a).getTime() - new Date(a).getTime())
-          .map(day => schedule[day])
-          .map(day => {
-            // Sort slots by time and transform array
-            day.slots = Object.keys(day.slots)
-              .sort((a, b) => parseInt(a, 10) - parseInt(b, 10))
-              .map(slot => {
-                slot = day.slots[slot]
-
-                // Sort talks
-                slot.talks = slot.talks.sort((a, b) => a.sortRoom - b.sortRoom)
-
-                return slot
-              })
-
-            return day
-          })
 
         const workshops =
           currentPage && currentPage.showWorkshops
@@ -382,12 +386,12 @@ export default Component => {
         const jobs =
           currentPage && (currentPage.showJobs || currentPage.showJobsDetailed)
             ? {
-              isDetailed: currentPage.showJobsDetailed,
-              page:
+                isDetailed: currentPage.showJobsDetailed,
+                page:
                   jobsPageOriginal && !currentPage.showJobsDetailed
                     ? Object.assign({}, jobsPageOriginal.fields)
                     : null
-            }
+              }
             : null
 
         let sponsors =
@@ -399,8 +403,8 @@ export default Component => {
                   const teaser =
                     item.fields.teaser && !currentPage.showSponsorsDetailed
                       ? items.filter(filterByType, 'teaser').find(teaser => {
-                        return teaser.sys.id === item.fields.teaser.sys.id
-                      }).fields
+                          return teaser.sys.id === item.fields.teaser.sys.id
+                        }).fields
                       : null
 
                   return {
@@ -477,7 +481,8 @@ export default Component => {
                 .filter(filterByType, 'team')
                 .map(item => {
                   const photo = item.fields.photo
-                    ? item.fields.photo.fields.file.url
+                    ? item.fields.photo.fields.file.url +
+                      '?w=250&h=250&fit=fill'
                     : null
 
                   return {
@@ -488,6 +493,48 @@ export default Component => {
                     company: item.fields.company,
                     companyLink: item.fields.companyLink,
                     order: item.fields.order
+                  }
+                })
+                .sort((a, b) => a.order - b.order)
+            : null
+
+        const leadHotels = config.leadHotels
+        const hotels =
+          currentPage && currentPage.showHotels
+            ? items
+                .filter(filterByType, 'hotel')
+                .map(item => {
+                  const photo = item.fields.photo
+                    ? item.fields.photo.fields.file.url +
+                      '?w=250&h=250&fit=fill'
+                    : null
+
+                  return {
+                    name: item.fields.name,
+                    description: item.fields.description,
+                    photo: photo,
+                    link: item.fields.link
+                  }
+                })
+                .sort((a, b) => a.order - b.order)
+            : null
+
+        const leadRestaurants = config.leadRestaurants
+        const restaurants =
+          currentPage && currentPage.showRestaurants
+            ? items
+                .filter(filterByType, 'restaurant')
+                .map(item => {
+                  const photo = item.fields.photo
+                    ? item.fields.photo.fields.file.url +
+                      '?w=250&h=250&fit=fill'
+                    : null
+
+                  return {
+                    name: item.fields.name,
+                    description: item.fields.description,
+                    photo: photo,
+                    link: item.fields.link
                   }
                 })
                 .sort((a, b) => a.order - b.order)
@@ -518,6 +565,10 @@ export default Component => {
           sponsors,
           sponsorshipCategories,
           team,
+          hotels,
+          leadHotels,
+          restaurants,
+          leadRestaurants,
           scripts,
           styles,
           _raw: items

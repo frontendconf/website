@@ -18,6 +18,7 @@ import Sponsors from '../components/sponsors'
 import SponsorshipCategories from '../components/sponsorshipCategories'
 import Team from '../components/team'
 import Schedule from '../components/schedule'
+import Tourism from '../components/tourism'
 
 class Index extends Component {
   constructor (props) {
@@ -140,6 +141,12 @@ class Index extends Component {
     const schedule = this.props.schedule
       ? <Schedule schedule={this.props.schedule} />
       : null
+    const hotels = this.props.hotels
+      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} />
+      : null
+    const restaurants = this.props.restaurants
+      ? <Tourism items={this.props.restaurants} lead={this.props.leadRestaurants} />
+      : null
 
     return (
       <Layout {...this.props}>
@@ -157,6 +164,8 @@ class Index extends Component {
         {venue}
         {jobs}
         {schedule}
+        {hotels}
+        {restaurants}
         {sponsorshipCategories}
         {sponsors}
       </Layout>
@@ -178,6 +187,8 @@ Index.propTypes = {
   sponsorshipCategories: PropTypes.array,
   team: PropTypes.array,
   schedule: PropTypes.array,
+  hotels: PropTypes.array,
+  restaurants: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array
 }

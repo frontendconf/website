@@ -6,11 +6,7 @@ import ScheduleItem from './scheduleItem'
 class Schedule extends Component {
   render () {
     return (
-      <section
-        className={
-          this.props.isHome ? 'schedule section--bottom' : 'schedule section'
-        }
-      >
+      <section className='schedule section'>
         <div className='grid'>
           <div className='schedule__legends'>
             <div className='schedule__legend schedule__rusterei'>
@@ -50,8 +46,7 @@ class Schedule extends Component {
 }
 
 Schedule.propTypes = {
-  schedule: PropTypes.array,
-  isHome: PropTypes.bool
+  schedule: PropTypes.array
 }
 
 export default Schedule
