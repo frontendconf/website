@@ -59,9 +59,9 @@
     "logs": "now logs www.frontendconf.ch",
     "logs-dev": "now logs dev.frontendconf.ch",
     "lint": "eslint .",
-    "precommit": "echo $(git diff --name-only --diff-filter=ACM | grep '\\.\\(js\\|scss\\)\\?$' | tr '\n' ' ') | xargs npm run prettier-cmd",
+    "precommit": "npm run lint && echo $(git diff --name-only --diff-filter=ACM | grep '\\.\\(js\\|scss\\)\\?$' | tr '\n' ' ') | xargs npm run prettier-cmd",
     "prettier": "echo \"*.{js,scss}\" \"!(.next)/*.{js,scss}\" | xargs npm run prettier-cmd",
-    "prettier-cmd": "prettier-standard --print-width 100",
+    "prettier-cmd": "prettier-standard",
     "update-dependencies": "npm-check-updates -u -a"
   }
 }
