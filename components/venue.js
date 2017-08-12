@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import LazyLoad from 'react-lazyload'
 
 import InternalLink from './link'
 
@@ -12,7 +13,9 @@ class Venue extends Component {
     return (
       <section className='venue'>
         <div className='venue__container'>
-          <div className='venue__image' />
+          <LazyLoad offset="200">
+            <div className='venue__image' />
+          </LazyLoad>
           <div className='venue__inner'>
             <div className='venue__content'>
               <div className='venue__head'>
