@@ -105,7 +105,7 @@ class Sponsors extends Component {
                               href={item.link}
                               className='sponsors__sponsor-link'
                             >
-                              <LazyLoad offset="200">
+                              <LazyLoad offset={200}>
                                 <img
                                   className='sponsors__logo'
                                   src={item.logo}
@@ -143,7 +143,7 @@ class Sponsors extends Component {
                             className='sponsors-board__sponsor sponsors__link'
                             target='_blank'
                           >
-                            <LazyLoad offset="200">
+                            <LazyLoad offset={200}>
                               <img
                                 className='sponsors__logo'
                                 src={item.logo}

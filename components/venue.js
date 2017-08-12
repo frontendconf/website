@@ -13,7 +13,7 @@ class Venue extends Component {
     return (
       <section className='venue'>
         <div className='venue__container'>
-          <LazyLoad offset="200">
+          <LazyLoad offset={200}>
             <div className='venue__image' />
           </LazyLoad>
           <div className='venue__inner'>

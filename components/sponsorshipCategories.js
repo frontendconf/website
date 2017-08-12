@@ -14,7 +14,7 @@ class SponsorshipCategories extends Component {
 
             {this.props.categories.map((category, i) => {
               const icon = category.icon
-                ? <LazyLoad offset="200">
+                ? <LazyLoad offset={200}>
                   <img
                     className='person__image'
                     src={category.icon}

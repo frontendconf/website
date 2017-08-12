@@ -43,7 +43,7 @@ class Speaker extends Component {
 
               <div className='speaker__profile'>
                 <div className='col-3 speaker__profile-image'>
-                  <LazyLoad offset="200">
+                  <LazyLoad offset={200}>
                     <img
                       className='person__image'
                       src={this.props.photo + '?w=350&h=350&fit=fill'}

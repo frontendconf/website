@@ -6,7 +6,7 @@ import InternalLink from './link'
 
 class Person extends Component {
   render () {
-    const photo = <LazyLoad offset="200">{this.props.detail
+    const photo = <LazyLoad offset={200}>{this.props.detail
       ? <InternalLink {...this.props} classes='person__image-container'>
         <img
           className='person__image'
