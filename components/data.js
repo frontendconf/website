@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Error from 'next/error'
 import contentful from '../lib/contentful'
+import dateFormatter from '../lib/dateFormatter'
 
 function filterByType (item) {
   return item.sys.contentType.sys.id === this
@@ -108,9 +109,9 @@ export default (Component) => {
         const currentPage = currentItem ? Object.assign({}, currentItem.fields) : null
 
         if (currentPageType === 'speakers') {
-          currentPage.talk = items.filter(filterByType, 'talk').find((talk) => {
+          currentPage.talk = (items.filter(filterByType, 'talk').find((talk) => {
             return talk.fields.speaker && currentItem.sys.id === talk.fields.speaker.sys.id
-          })
+          }) || {}).fields
         }
 
         if (currentPage && currentPage.photo) {
@@ -159,7 +160,7 @@ export default (Component) => {
         } : null
 
         // Fallback
-        if (!lead.title && ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1) {
+        if (!(lead && lead.title) && ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1) {
           lead.title = 'Speakers'
         }
 
@@ -206,32 +207,65 @@ export default (Component) => {
             photo: photo,
             order: item.fields.order
           }
-
         }).sort((a, b) => a.order - b.order) : null
 
-				const schedule = currentPage && currentPage.showSchedule ? items.filter(filterByType, 'talk').map((item) => {
-          return {
-            title: item.fields.title,
-            page: 'speakers',
-            abstract: item.fields.abstract,
-            from: item.fields.from,
-						to: item.fields.to,
-						day: new Date(item.fields.from).toLocaleDateString('de', {
-							day: '2-digit',
-				      month: '2-digit'
-				    }).split('/').join(''),
-						room: item.fields.room,
-						speaker: item.fields.speaker,
-						description: item.fields.shortDescription,
-						sortTime: parseInt(new Date(item.fields.from).toLocaleTimeString('de', {
-							hour: '2-digit',
-							minute: '2-digit'
-				    }).split(':'))
-          }
-				}) : null
+        // Set up schedule
+        let schedule = {}
 
-        // }).sort((a, b) => new Date(...a.from.split('/').reverse()) - new Date(...b.from.split('/').reverse())) : null
+        if (currentPage && currentPage.showSchedule) {
+          items.filter(filterByType, 'talk').forEach((item) => {
+            let talk = {
+              title: item.fields.title,
+              page: 'schedule',
+              abstract: item.fields.abstract,
+              from: item.fields.from,
+              to: item.fields.to,
+              day: item.fields.date,
+              fromTime: item.fields.fromTime,
+              toTime: item.fields.toTime,
+              room: item.fields.room,
+              speaker: item.fields.speaker,
+              description: item.fields.shortDescription,
+              sortTime: item.fields.fromTime.split(':').join(''),
+              sortRoom: item.fields.room.charCodeAt(0)
+            }
+            let sortDay = dateFormatter.formatDate(talk.day, 'MMDD')
 
+            // Set up day
+            schedule[sortDay] = schedule[sortDay] || {
+              day: dateFormatter.formatDate(talk.day, 'dddd, D MMM'),
+              slots: {}
+            }
+
+            // Set up slot
+            schedule[sortDay].slots[talk.sortTime] = schedule[sortDay].slots[talk.sortTime] || {
+              slot: {
+                fromTime: talk.fromTime,
+                toTime: talk.toTime,
+                day: talk.day
+              },
+              talks: []
+            }
+
+            // Add talk to slot
+            schedule[sortDay].slots[talk.sortTime].talks.push(talk)
+          })
+        }
+
+        // Sort schedule by day and transform to array
+        schedule = Object.keys(schedule).sort((a, b) => new Date(a).getTime() - new Date(a).getTime()).map((day) => schedule[day]).map((day) => {
+          // Sort slots by time and transform array
+          day.slots = Object.keys(day.slots).sort((a, b) => parseInt(a, 10) - parseInt(b, 10)).map((slot) => {
+            slot = day.slots[slot]
+
+            // Sort talks
+            slot.talks = slot.talks.sort((a, b) => a.sortRoom - b.sortRoom)
+
+            return slot
+          })
+
+          return day
+        })
 
         const workshops = currentPage && currentPage.showWorkshops ? items.filter(filterByType, 'workshop').map((item) => {
           const photo = item.fields.photo ? (item.fields.photo.fields.file.url + '?w=530&h=300&fit=fill') : null
@@ -347,7 +381,7 @@ export default (Component) => {
           workshops,
           venue,
           jobs,
-					schedule,
+          schedule,
           sponsors,
           sponsorshipCategories,
           team,

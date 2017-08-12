@@ -138,7 +138,7 @@ Index.propTypes = {
   sponsors: PropTypes.array,
   sponsorshipCategories: PropTypes.array,
   team: PropTypes.array,
-	schedule: PropTypes.arry,
+	schedule: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array
 }

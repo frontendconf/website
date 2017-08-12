@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import dateFormatter from '../lib/dateFormatter'
 
 import InternalLink from './link'
 
 class News extends Component {
-  formatDate (date) {
-    return new Date(date).toLocaleDateString('de', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
-    })
-  }
   render () {
     return <section className="news section">
       <div className="grid">
@@ -19,7 +13,7 @@ class News extends Component {
             <h2>News</h2>
           </div>
           {this.props.teasers.map((item, i) => {
-            const date = this.formatDate(item.date)
+            const date = dateFormatter.formatDate(item.date, 'D MMM YYYY')
 
             return <div className="col-4" key={i}>
               <h3 className="news__title">

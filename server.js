@@ -42,6 +42,10 @@ app.prepare()
     return res.redirect('https://trello.com/b/jA5Uxk5L/fec17-informationen-deadlines-für-sponsoren-und-partner')
   })
 
+  server.get('/app', (req, res) => {
+    return res.redirect('http://onelink.to/wq2y43')
+  })
+
   server.get('/:page/:detail?', (req, res, next) => {
     if (['favicon.ico', '_webpack', '__webpack_hmr', '_next'].includes(req.params.page)) {
       return next()

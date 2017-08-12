@@ -12,6 +12,11 @@ npm start
 *NOTE*: There is an issue on now.sh where the webpack build throws a SIGSEGV when trying to build the CSS on the server. To temporarily work around this, the deploy steps run a pre-deploy script making sure the CSS is generated locally and uploaded as is.
 
 ```bash
+# now switch to FEC Team
+now switch
+```
+
+```bash
 # Deploy
 npm run deploy
 ```
@@ -37,4 +42,3 @@ npm run logs-dev
  # Prod
 npm run logs
 ```
-
