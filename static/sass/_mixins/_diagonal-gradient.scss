@@ -4,34 +4,42 @@
 // COMPASS IS NOT FULLY CROSS-BROWSER
 // This is built off of the format from http://www.colorzilla.com/gradient-editor/
 
-@mixin diagonal-gradient($color1, $color2, $color1-hover, $color2-hover){
-	position: relative;
-	display: inline-block;
+@mixin diagonal-gradient($color1, $color2, $color1-hover, $color2-hover) {
+  position: relative;
+  display: inline-block;
   z-index: 100;
-	background: $color1;
-  background: linear-gradient(45deg, $color1 0%,$color1 50%,$color2 100%);
-	transition: all .5s;
+  background: $color1;
+  background: linear-gradient(45deg, $color1 0%, $color1 50%, $color2 100%);
+  transition: all .5s;
 
-	&:before {
+  &:before {
     content: '';
     display: block;
     height: 100%;
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     opacity: 0;
     width: 0;
     z-index: -100;
-		background: $color1-hover;
-    background: linear-gradient(45deg, $color1-hover 0%,$color1-hover 50%,$color2-hover 100%);
-		transition: all .5s;
+    background: $color1-hover;
+    background: linear-gradient(
+      45deg,
+      $color1-hover 0%,
+      $color1-hover 50%,
+      $color2-hover 100%
+    );
+    transition: all .5s;
   }
 
-	&:hover, &:active, &:focus {
-		color: $white;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
 
     &:before {
       opacity: 1;
-			width: 100%;
+      width: 100%;
     }
 
     // Skip button animations on touch devices to prevent having to double-tap
@@ -45,5 +53,5 @@
 }
 
 @mixin hover {
-	@include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $red-light-gradient1, $red-light-gradient2);
+  @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $red-light-gradient1, $red-light-gradient2);
 }

@@ -6,27 +6,34 @@ import Person from './person'
 
 class Workshops extends Component {
   render () {
-    return <section className="workshops section">
-      <div className="grid">
-        <div className="grid__inner eq-height">
-          {this.props.isHome ? <div className="col-12">
-            <h2>
-              <InternalLink slug="workshops">Workshops</InternalLink>
-            </h2>
-          </div> : null}
-          {this.props.workshops.map((item, i) => {
-            return <div className="col-6" key={i}>
-              <Person {...item} />
-            </div>
-          })}
+    return (
+      <section className='workshops section'>
+        <div className='grid'>
+          <div className='grid__inner eq-height'>
+            {this.props.isHome
+              ? <div className='col-12'>
+                <h2>
+                  <InternalLink slug='workshops'>Workshops</InternalLink>
+                </h2>
+              </div>
+              : null}
+            {this.props.workshops.map((item, i) => {
+              return (
+                <div className='col-6' key={i}>
+                  <Person {...item} />
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )
   }
 }
 
 Workshops.propTypes = {
-  workshops: PropTypes.array
+  workshops: PropTypes.array,
+  isHome: PropTypes.bool
 }
 
 export default Workshops

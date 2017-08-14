@@ -18,9 +18,9 @@ import Sponsors from '../components/sponsors'
 import SponsorshipCategories from '../components/sponsorshipCategories'
 import Team from '../components/team'
 import Schedule from '../components/schedule'
+import Tourism from '../components/tourism'
 
 class Index extends Component {
-
   constructor (props) {
     super(props)
 
@@ -37,8 +37,13 @@ class Index extends Component {
   }
 
   insertScripts (scripts, checkInsertion) {
-    scripts.forEach((src) => {
-      if (checkInsertion && document.querySelectorAll('[src="' + src + '"]').length) return
+    scripts.forEach(src => {
+      if (
+        checkInsertion &&
+        document.querySelectorAll('[src="' + src + '"]').length
+      ) {
+        return
+      }
 
       const script = document.createElement('script')
       script.src = src
@@ -47,8 +52,13 @@ class Index extends Component {
   }
 
   insertStyles (styles, checkInsertion) {
-    styles.forEach((src) => {
-      if (checkInsertion && document.querySelectorAll('[href="' + src + '"]').length) return
+    styles.forEach(src => {
+      if (
+        checkInsertion &&
+        document.querySelectorAll('[href="' + src + '"]').length
+      ) {
+        return
+      }
 
       const sheet = document.createElement('link')
       sheet.href = src
@@ -82,46 +92,87 @@ class Index extends Component {
       case 'workshops':
         body = <Workshop {...this.props.currentPage} />
         break
-			case 'schedule':
-				body = <Schedule {...this.props.currentPage} />
+      case 'schedule':
+        body = <Schedule {...this.props.currentPage} />
+        break
       default:
-        body = this.props.currentPage && this.props.currentPage.body ? <section className="content section">
-          <div className="grid">
-            <div className="grid__inner">
-              <div className="col-12">
-                <div dangerouslySetInnerHTML={{ __html: this.props.currentPage.body }} />
+        body =
+          this.props.currentPage && this.props.currentPage.body
+            ? <section className='content section'>
+              <div className='grid'>
+                <div className='grid__inner'>
+                  <div className='col-12'>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: this.props.currentPage.body
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </section> : null
+            </section>
+            : null
     }
 
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
     const news = this.props.news ? <News teasers={this.props.news} /> : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
-    const speakers = this.props.speakers ? <Speakers speakers={this.props.speakers} isHome={this.props.currentPage && this.props.currentPage.isHome} /> : null
-    const workshops = this.props.workshops ? <Workshops workshops={this.props.workshops} isHome={this.props.currentPage && this.props.currentPage.isHome} /> : null
+    const speakers = this.props.speakers
+      ? <Speakers
+        speakers={this.props.speakers}
+        isHome={this.props.currentPage && this.props.currentPage.isHome}
+      />
+      : null
+    const workshops = this.props.workshops
+      ? <Workshops
+        workshops={this.props.workshops}
+        isHome={this.props.currentPage && this.props.currentPage.isHome}
+      />
+      : null
     const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
-    const sponsors = this.props.sponsors ? <Sponsors sponsors={this.props.sponsors} /> : null
-    const sponsorshipCategories = this.props.sponsorshipCategories ? <SponsorshipCategories categories={this.props.sponsorshipCategories} /> : null
+    const sponsors = this.props.sponsors
+      ? <Sponsors sponsors={this.props.sponsors} />
+      : null
+    const sponsorshipCategories = this.props.sponsorshipCategories
+      ? <SponsorshipCategories categories={this.props.sponsorshipCategories} />
+      : null
     const team = this.props.team ? <Team team={this.props.team} /> : null
-    const schedule = this.props.schedule ? <Schedule schedule={this.props.schedule} /> : null
+    const schedule = this.props.schedule
+      ? <Schedule schedule={this.props.schedule} />
+      : null
+    const hotels = this.props.hotels
+      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} />
+      : null
+    const restaurants = this.props.restaurants
+      ? <Tourism
+        items={this.props.restaurants}
+        lead={this.props.leadRestaurants}
+      />
+      : null
 
-    return <Layout {...this.props}>
-      {lead}
-      {body}
-      {news}
-      {this.props.currentPage && this.props.currentPage.isHome ? hosts : speakers}
-      {this.props.currentPage && this.props.currentPage.isHome ? speakers : hosts}
-      {workshops}
-      {team}
-      {venue}
-      {jobs}
-			{schedule}
-      {sponsorshipCategories}
-      {sponsors}
-    </Layout>
+    return (
+      <Layout {...this.props}>
+        {lead}
+        {body}
+        {news}
+        {this.props.currentPage && this.props.currentPage.isHome
+          ? hosts
+          : speakers}
+        {this.props.currentPage && this.props.currentPage.isHome
+          ? speakers
+          : hosts}
+        {workshops}
+        {team}
+        {venue}
+        {jobs}
+        {schedule}
+        {hotels}
+        {restaurants}
+        {sponsorshipCategories}
+        {sponsors}
+      </Layout>
+    )
   }
 }
 
@@ -138,7 +189,11 @@ Index.propTypes = {
   sponsors: PropTypes.array,
   sponsorshipCategories: PropTypes.array,
   team: PropTypes.array,
-	schedule: PropTypes.array,
+  schedule: PropTypes.array,
+  leadHotels: PropTypes.string,
+  hotels: PropTypes.array,
+  leadRestaurants: PropTypes.string,
+  restaurants: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array
 }

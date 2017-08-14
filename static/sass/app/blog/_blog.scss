@@ -1,5 +1,4 @@
 .blog {
-
   &__article {
     &-title {
       &-link {
@@ -9,8 +8,7 @@
     &-info {
       @extend .margin-bottom-small;
       &-date,
-      &-tag
-      {
+      &-tag {
         @include gutter();
       }
     }
@@ -20,7 +18,6 @@
       padding-right: gutter(12);
     }
     &-text {
-
     }
     &-image + &-text {
       @include span(4 of 8 inside);
@@ -47,7 +44,6 @@
   margin-right: 0.5rem;
   text-decoration: none;
   @include font-size($middle-font-size);
-
 }
 
 .pagination a.active {

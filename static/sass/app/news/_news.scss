@@ -22,7 +22,7 @@
     @include breakpoint(600px) {
       @include span(6 of 12 inside);
 
-      &:nth-child(2n+2) {
+      &:nth-child(2n + 2) {
         clear: left;
       }
     }
@@ -30,11 +30,11 @@
     @include breakpoint($desktop) {
       @include span(4 of 12 inside);
 
-      &:nth-child(2n+2) {
+      &:nth-child(2n + 2) {
         clear: none;
       }
 
-      &:nth-child(3n+2) {
+      &:nth-child(3n + 2) {
         clear: left;
       }
     }

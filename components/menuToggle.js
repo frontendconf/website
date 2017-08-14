@@ -26,7 +26,15 @@ class MenuToggle extends Component {
   }
 
   render () {
-    return <input type="checkbox" id="right" className="toggle-input show-right" checked={this.state.checked} onChange={this.handleChange} />
+    return (
+      <input
+        type='checkbox'
+        id='right'
+        className='toggle-input show-right'
+        checked={this.state.checked}
+        onChange={this.handleChange}
+      />
+    )
   }
 }
 
@@ -35,4 +43,3 @@ MenuToggle.propTypes = {
 }
 
 export default MenuToggle
-

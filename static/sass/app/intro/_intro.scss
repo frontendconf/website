@@ -1,7 +1,6 @@
 .intro {
   background: url("../images/intro/intro-all.jpg") no-repeat center center; //TODO replace with another image
   background-size: cover;
-  max-height: 26rem;
   padding-bottom: 130px;
 
   @include breakpoint($desktop) {
@@ -10,9 +9,9 @@
 
   &--bg-100 {
     background: url("../images/intro/intro.jpg") no-repeat center center;
-		background-size: cover;
+    background-size: cover;
     height: calc(100vh - 25rem);
-		min-height: 400px;
+    min-height: 400px;
     max-height: 500px;
 
     @include breakpoint($desktop) {
@@ -23,14 +22,18 @@
   color: $white;
   position: relative;
 
-
   &--schedule {
     padding-bottom: 200px;
   }
 
   &--blurred {
     height: 60vh;
-    background: linear-gradient(50deg, rgba(0, 167, 247, 1) 0%, rgba(0, 182, 223, 1) 61.78%, rgba(0, 188, 214, 1) 100%);
+    background: linear-gradient(
+      50deg,
+      rgba(0, 167, 247, 1) 0%,
+      rgba(0, 182, 223, 1) 61.78%,
+      rgba(0, 188, 214, 1) 100%
+    );
   }
 
   &__top-content {
@@ -54,12 +57,12 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-size: 1.6rem;
-		line-height: 1;
+    line-height: 1;
     @include opensanscondensedlight;
 
-		@include breakpoint($tablet) {
-			font-size: 2.2rem;
-		}
+    @include breakpoint($tablet) {
+      font-size: 2.2rem;
+    }
 
     &--regular {
       letter-spacing: inherit;
@@ -83,22 +86,22 @@
     background: rgba(0, 0, 0, 0.4);
     line-height: 1;
 
-		ul {
-			display: flex;
-			list-style: none;
-			padding: 0;
-			margin: 0;
-			overflow: hidden;
+    ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
 
-			li {
-				flex-grow: 1;
-				padding: 0 5px;
+      li {
+        flex-grow: 1;
+        padding: 0 5px;
 
-				@include breakpoint($tablet) {
-					padding: 0 20px;
-				}
-			}
-		}
+        @include breakpoint($tablet) {
+          padding: 0 20px;
+        }
+      }
+    }
   }
 
   &__bottom-left {
@@ -108,58 +111,58 @@
   }
 
   &__bottom-right {
-		float: left;
-		width: 100%;
-		margin-top: 20px;
+    float: left;
+    width: 100%;
+    margin-top: 20px;
 
-		.form__input {
-			width: calc(100% - 150px);
-		}
+    .form__input {
+      width: calc(100% - 150px);
+    }
 
-		.btn {
-			width: 150px;
-		}
+    .btn {
+      width: 150px;
+    }
 
     @include breakpoint($desktop) {
       float: right;
-			width: auto;
-			margin-top: 0;
+      width: auto;
+      margin-top: 0;
     }
   }
 
-	.list {
-		width: 100%;
-		columns: 2;
-		column-gap: 1rem;
-		margin-top: 0;
-		padding-top: 0;
+  .list {
+    width: 100%;
+    columns: 2;
+    column-gap: 1rem;
+    margin-top: 0;
+    padding-top: 0;
 
-		@include breakpoint($tablet) {
-			columns: 3;
-			column-gap: 2rem;
-		}
+    @include breakpoint($tablet) {
+      columns: 3;
+      column-gap: 2rem;
+    }
 
-		@include breakpoint($desktop) {
-			columns: 4;
+    @include breakpoint($desktop) {
+      columns: 4;
 
-			&__threeonly {
-				columns: 3;
-			}
-		}
+      &__threeonly {
+        columns: 3;
+      }
+    }
 
-		a {
-			opacity: .8;
-			color: $white;
-			transition: all .2s ease;
+    a {
+      opacity: .8;
+      color: $white;
+      transition: all .2s ease;
 
-			&:hover {
-				opacity: 1;
-			}
+      &:hover {
+        opacity: 1;
+      }
 
-			&.active {
-				opacity: 1;
-				font-weight: bold;
-			}
-		}
-	}
+      &.active {
+        opacity: 1;
+        font-weight: bold;
+      }
+    }
+  }
 }

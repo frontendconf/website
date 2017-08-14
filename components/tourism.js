@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import InternalLink from './link'
 import Person from './person'
 
-class Hosts extends Component {
+class Tourism extends Component {
   render () {
     return (
-      <section className='hosts section' id='hosts'>
+      <section className='hotels section'>
         <div className='grid'>
           <div className='grid__inner eq-height'>
             <div className='col-12'>
-              <h2>
-                <InternalLink slug='speakers#hosts'>Hosts</InternalLink>
-              </h2>
+              <div dangerouslySetInnerHTML={{ __html: this.props.lead }} />
+              <br />
             </div>
-            {this.props.hosts.map((item, i) => {
+            {this.props.items.map((item, i) => {
               return (
-                <div className='col-6' key={i}>
+                <a href={item.link} className='col-xs-6 col-3' key={i}>
                   <Person {...item} />
-                </div>
+                </a>
               )
             })}
           </div>
@@ -29,8 +27,9 @@ class Hosts extends Component {
   }
 }
 
-Hosts.propTypes = {
-  hosts: PropTypes.array
+Tourism.propTypes = {
+  items: PropTypes.array,
+  lead: PropTypes.string
 }
 
-export default Hosts
+export default Tourism

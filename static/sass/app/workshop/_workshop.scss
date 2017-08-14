@@ -10,11 +10,11 @@
         @include filter(none);
       }
     }
-
   }
 
-  section:not(.intro) &__description { // TODO: Fix "architecture"
-  	margin-top: 1rem;
+  section:not(.intro) &__description {
+    // TODO: Fix "architecture"
+    margin-top: 1rem;
   }
 
   &__image {
@@ -27,7 +27,8 @@
     text-transform: uppercase;
   }
 
-  &__author, &__date {
+  &__author,
+  &__date {
     display: block;
     opacity: 0.7;
     @include font-size($regular-font-size);

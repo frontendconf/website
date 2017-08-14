@@ -6,16 +6,25 @@ class Talk extends Component {
   render () {
     const date = dateFormatter.formatDate(this.props.date)
 
-    return <div className="talk">
-      <div className="grid__inner">
-        <div className="col-8">
-          <p className="talk__at">Talk at FEC17</p>
-          <h2 className="talk__title">{this.props.title}</h2>
-          <h4 className="talk__room">{date} {this.props.fromTime} – {this.props.toTime}, {this.props.room}</h4>
-          <p className="talk__abstract">{this.props.abstract}</p>
+    return (
+      <div className='talk'>
+        <div className='grid__inner'>
+          <div className='col-8'>
+            <p className='talk__at'>Talk at FEC17</p>
+            <h2 className='talk__title'>
+              {this.props.title}
+            </h2>
+            <h4 className='talk__room'>
+              {date} {this.props.fromTime} – {this.props.toTime},{' '}
+              {this.props.room}
+            </h4>
+            <p className='talk__abstract'>
+              {this.props.abstract}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    )
   }
 }
 

@@ -6,31 +6,35 @@ import InternalLink from './link'
 
 class Workshop extends Component {
   render () {
-    const cta = this.props.cta ? <InternalLink {...this.props.cta} classes="btn" /> : null
+    const cta = this.props.cta
+      ? <InternalLink {...this.props.cta} classes='btn' />
+      : null
 
-    return <section className="workshop section">
-      <div className="grid">
-        <div className="grid__inner">
-          <div className="col-8">
-            <h1>
-              {this.props.title}
-            </h1>
+    return (
+      <section className='workshop section'>
+        <div className='grid'>
+          <div className='grid__inner'>
+            <div className='col-8'>
+              <h1>
+                {this.props.title}
+              </h1>
 
-            <h2>
-              {this.props.lead}
-            </h2>
+              <h2>
+                {this.props.lead}
+              </h2>
 
-            <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
-          </div>
+              <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+            </div>
 
-          <div className="col-4">
-            <Person {...this.props.teacher} />
+            <div className='col-4'>
+              <Person {...this.props.teacher} />
 
-            {cta}
+              {cta}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )
   }
 }
 

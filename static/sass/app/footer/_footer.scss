@@ -1,4 +1,3 @@
-
 .partners.section {
   background: $footer-background;
   color: $contributing;
@@ -35,16 +34,16 @@
   }
 
   .navigation_list {
-		@include opensanslight;
+    @include opensanslight;
     @extend .ul-nostyle;
     columns: 2;
     li {
       line-height: 2rem;
       margin: 0 0 0 4rem;
 
-			@include breakpoint($tablet-max) {
-				margin-left: 0;
-			}
+      @include breakpoint($tablet-max) {
+        margin-left: 0;
+      }
 
       a {
         text-transform: uppercase;
@@ -52,40 +51,39 @@
     }
   }
 
-	.list {
-		list-style: none;
+  .list {
+    list-style: none;
     padding-left: 0;
 
-		li {
-			margin-bottom: .5rem;
-		}
-	}
+    li {
+      margin-bottom: .5rem;
+    }
+  }
 
-	.list-inline {
-		@include opensanslight;
-	}
+  .list-inline {
+    @include opensanslight;
+  }
 
   .newsletter {
   }
   .social {
-		$social-size: 40px;
+    $social-size: 40px;
 
     li {
-			width: $social-size;
-			height: $social-size;
-			padding: 0;
+      width: $social-size;
+      height: $social-size;
+      padding: 0;
       margin: 0 0 .5rem .15rem;
 
-			a {
-				width: $social-size;
-				height: $social-size;
-				font-size: $social-size;
-				line-height: $social-size;
-				padding: 0;
-			}
+      a {
+        width: $social-size;
+        height: $social-size;
+        font-size: $social-size;
+        line-height: $social-size;
+        padding: 0;
+      }
     }
   }
-
 }
 
 .partners.section + .footer.section {
@@ -95,23 +93,23 @@
 }
 
 .footer {
-	.btn {
-		@include breakpoint($tablet-max) {
-			padding: 1rem 2rem;
-			height: 48px;
-		}
-	}
+  .btn {
+    @include breakpoint($tablet-max) {
+      padding: 1rem 2rem;
+      height: 48px;
+    }
+  }
 
-	.col-xs-6 {
-		@include breakpoint($tablet-max) {
-			width: 100%;
-		}
-	}
+  .col-xs-6 {
+    @include breakpoint($tablet-max) {
+      width: 100%;
+    }
+  }
 
-	.form__input {
-		@include breakpoint($tablet-max) {
-			width: 100%;
-			margin: 20px 0 10px 0;
-		}
-	}
+  .form__input {
+    @include breakpoint($tablet-max) {
+      width: 100%;
+      margin: 20px 0 10px 0;
+    }
+  }
 }

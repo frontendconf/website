@@ -1,20 +1,22 @@
 @font-face {
-    font-family: 'Mono Social Icons Font';
-    src: url('../fonts/social/MonoSocialIconsFont-1.10.eot');
-    src: url('../fonts/social/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/social/MonoSocialIconsFont-1.10.woff') format('woff'),
-         url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype'),
-         url('../fonts/social/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
-    src: url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Mono Social Icons Font';
+  src: url('../fonts/social/MonoSocialIconsFont-1.10.eot');
+  src: url('../fonts/social/MonoSocialIconsFont-1.10.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/social/MonoSocialIconsFont-1.10.woff') format('woff'),
+    url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+    url('../fonts/social/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont')
+      format('svg');
+  src: url('../fonts/social/MonoSocialIconsFont-1.10.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
   @include opensansregular();
   @include font-size($regular-font-size);
   color: $blue-darker;
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 strong {
@@ -33,13 +35,13 @@ h6 {
 
 h1 {
   @include font-size($font-size-h1);
-  &.intro__title{
+  &.intro__title {
     @include font-size($font-size-h2);
   }
   .home & {
     text-transform: uppercase;
     @include font-size($font-size-h1);
-    .intro__title{
+    .intro__title {
       @include font-size($font-size-h1);
     }
   }
@@ -47,25 +49,25 @@ h1 {
 
 h2 {
   @include font-size($font-size-h2);
-	margin-top: 2rem;
+  margin-top: 2rem;
 
   .home & {
     text-transform: uppercase;
     @include font-size($font-size-h2);
 
     &:not(.intro__title) a:after {
-			font-size: 26px;
-			line-height: 1rem;
+      font-size: 26px;
+      line-height: 1rem;
       content: " \0203A";
       @include opensanscondensedregular;
 
-			@include breakpoint($tablet) {
-				font-size: 40px;
-			}
+      @include breakpoint($tablet) {
+        font-size: 40px;
+      }
 
-			@include breakpoint($desktop) {
-				font-size: 50px;
-			}
+      @include breakpoint($desktop) {
+        font-size: 50px;
+      }
     }
   }
 
@@ -83,7 +85,7 @@ h3 {
 }
 
 section:not(.intro) h3 {
-	margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 h4 {
@@ -99,7 +101,7 @@ p {
 }
 
 section:not(.intro) p {
-	line-height: 1.5em;
+  line-height: 1.5em;
 }
 
 aside {
@@ -128,36 +130,35 @@ a {
       opacity: .7;
     }
   }
-
 }
 
 .btn {
-	@include opensanscondensedbold;
-	line-height: 1rem;
+  @include opensanscondensedbold;
+  line-height: 1rem;
   color: $white;
   text-decoration: none;
   text-transform: uppercase;
   padding: 1rem 2rem;
-	margin-bottom: 10px;
-	text-align: center;
-	width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
   display: inline-block;
   border: none;
 
-	&.small {
-		padding: 0.5rem 0.5rem;
-	}
+  &.small {
+    padding: 0.5rem 0.5rem;
+  }
 
-	@include breakpoint($tablet) {
-		width: auto;
-		margin-bottom: 0;
-	}
+  @include breakpoint($tablet) {
+    width: auto;
+    margin-bottom: 0;
+  }
 
-	&+ .btn {
-		@include breakpoint($tablet) {
-			margin-left: 10px;
-		}
-	}
+  & + .btn {
+    @include breakpoint($tablet) {
+      margin-left: 10px;
+    }
+  }
 
   &.fix-size {
     width: 100%;
@@ -165,15 +166,17 @@ a {
     margin-bottom: 0.01rem;
   }
 
-
   &:hover {
     cursor: pointer;
     color: $white;
   }
 }
 
-.btn, .navigation__link--tickets, .speakers__link, .job-board__job {
-	@include hover;
+.btn,
+.navigation__link--tickets,
+.speakers__link,
+.job-board__job {
+  @include hover;
 }
 
 .center {
@@ -189,7 +192,7 @@ a {
   text-transform: uppercase;
 }
 
-.ul-nostyle{
+.ul-nostyle {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -205,10 +208,10 @@ ul.list-inline li {
   display: inline-block;
   margin: 0 1.5rem 0 0;
   &:first-child {
-    margin-left: 0
+    margin-left: 0;
   }
   &:last-child {
-    margin-right: 0
+    margin-right: 0;
   }
 }
 
@@ -253,7 +256,7 @@ ul.list-inline li {
 }
 
 .separator-line {
-    border-top: 1px solid $silver-light;
-    @extend .margin-top-normal;
-    @extend .padding-top-normal;
+  border-top: 1px solid $silver-light;
+  @extend .margin-top-normal;
+  @extend .padding-top-normal;
 }
