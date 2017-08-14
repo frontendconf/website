@@ -35,7 +35,7 @@ class Lead extends Component {
       </div>
       : null
 
-    const footerContent = this.props.ctas.length
+    const footerContent = this.props.ctas.length || this.props.isHome
       ? <div className='col-12'>
         <div className='intro__bottom-left'>
           {this.props.ctas.map((cta, i) => {
