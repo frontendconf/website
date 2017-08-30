@@ -323,7 +323,7 @@ export default Component => {
 
           // Sort schedule by day and transform to array
           schedule = Object.keys(schedule)
-            .sort((a, b) => new Date(a).getTime() - new Date(a).getTime())
+            .sort((a, b) => a - b)
             .map(day => schedule[day])
             .map(day => {
               // Sort slots by time and transform array
