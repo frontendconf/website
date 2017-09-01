@@ -19,7 +19,7 @@ class ScheduleItem extends Component {
     const photo = this.props.speaker
       ? this.props.speaker.fields.photo.fields.file.url + '?w=60&h=60&fit=fill'
       : null
-    const variant = this.props.isLightningTalks ? 'schedule__item--lightning' : ''
+    const variant = this.props.showAbstractOnMobile ? 'schedule__item--details' : ''
 
     return (
       <div className={`col-xs-12 col-6 schedule__item schedule__${room} ${variant}`}>
@@ -59,7 +59,7 @@ ScheduleItem.propTypes = {
   description: PropTypes.string,
   slug: PropTypes.string,
   speaker: PropTypes.object,
-  isLightningTalks: PropTypes.bool
+  showAbstractOnMobile: PropTypes.bool
 }
 
 export default ScheduleItem

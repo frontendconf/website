@@ -295,7 +295,7 @@ export default Component => {
               description: item.fields.shortDescription,
               sortTime: item.fields.fromTime.split(':').join(''),
               sortRoom: item.fields.room.charCodeAt(0),
-              isLightningTalks: item.fields.lightningTalks
+              showAbstractOnMobile: item.fields.showAbstractOnMobile
             }
             let sortDay = dateFormatter.formatDate(talk.day, 'MMDD')
 
