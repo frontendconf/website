@@ -19,9 +19,10 @@ class ScheduleItem extends Component {
     const photo = this.props.speaker
       ? this.props.speaker.fields.photo.fields.file.url + '?w=60&h=60&fit=fill'
       : null
+    const variant = this.props.isLightningTalks ? 'schedule__item--lightning' : ''
 
     return (
-      <div className={`col-xs-12 col-6 schedule__item schedule__${room}`}>
+      <div className={`col-xs-12 col-6 schedule__item schedule__${room} ${variant}`}>
         <div className='schedule__time'>
           <span className='schedule__from'>
             {this.props.fromTime} –
@@ -40,9 +41,7 @@ class ScheduleItem extends Component {
           <p className='schedule__talk'>
             {desc}
           </p>
-          <p className='schedule__abstract'>
-            {this.props.abstract}
-          </p>
+          <div className='schedule__abstract' dangerouslySetInnerHTML={{ __html: this.props.abstract }} />
         </div>
       </div>
     )
@@ -59,7 +58,8 @@ ScheduleItem.propTypes = {
   room: PropTypes.string,
   description: PropTypes.string,
   slug: PropTypes.string,
-  speaker: PropTypes.object
+  speaker: PropTypes.object,
+  isLightningTalks: PropTypes.bool
 }
 
 export default ScheduleItem

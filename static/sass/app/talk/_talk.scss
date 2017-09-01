@@ -55,7 +55,8 @@
     }
   }
 
-  &__talk {
+  &__talk,
+  &__talk:last-of-type {
     margin-bottom: 10px;
     overflow-y: hidden;
   }
@@ -98,6 +99,10 @@
   &__abstract {
     font-size: .9rem;
     display: none;
+
+    .schedule__item--lightning & {
+      display: block;
+    }
 
     @include breakpoint($tablet) {
       display: block;

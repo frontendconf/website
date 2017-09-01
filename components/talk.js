@@ -18,9 +18,7 @@ class Talk extends Component {
               {date} {this.props.fromTime} – {this.props.toTime},{' '}
               {this.props.room}
             </h4>
-            <p className='talk__abstract'>
-              {this.props.abstract}
-            </p>
+            <div className='talk__abstract' dangerouslySetInnerHTML={{ __html: this.props.abstract }} />
           </div>
         </div>
       </div>
