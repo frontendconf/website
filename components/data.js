@@ -163,7 +163,7 @@ export default Component => {
         const lead = currentPage
           ? {
             title: query.detail
-              ? (menu.find(item => item.isActive) || {}).title
+              ? (menu.find(item => item.isActive) || currentPage).title
               : currentPage.title,
             body: currentPage.lead
               ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />')
