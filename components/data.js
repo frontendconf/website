@@ -9,7 +9,7 @@ function filterByType (item) {
 }
 
 function isActiveItem (slug, query, isMenu) {
-  if (query.page && query.detail && !isMenu) {
+  if (query.page && query.detail && isNaN(query.detail) && !isMenu) {
     return query.detail === slug
   } else if (query.page) {
     return query.page === slug
@@ -131,9 +131,17 @@ export default Component => {
           currentPage.photo = currentPage.photo.fields.file.url
         }
 
-        if (currentPage && currentPage.bodyClass === 'home') {
+        if (currentPage && currentPage.specialPage === 'home') {
           currentPage.isHome = true
         }
+
+        if (currentPage && currentPage.specialPage === 'news') {
+          currentPage.isNews = true
+        }
+
+        const currentPageIndex = isNaN(parseInt(query.detail, 10))
+          ? 1
+          : parseInt(query.detail, 10)
 
         if (currentPage && currentPage.teacher) {
           const teacher = {
@@ -572,6 +580,7 @@ export default Component => {
           leadRestaurants,
           scripts,
           styles,
+          currentPageIndex,
           _raw: items
         }
       })

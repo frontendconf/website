@@ -115,7 +115,13 @@ class Index extends Component {
     }
 
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
-    const news = this.props.news ? <News teasers={this.props.news} /> : null
+    const news = this.props.news
+      ? <News
+        teasers={this.props.news}
+        isNews={this.props.currentPage.isNews}
+        currentPageIndex={this.props.currentPageIndex}
+      />
+      : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
     const speakers = this.props.speakers
       ? <Speakers
@@ -195,7 +201,8 @@ Index.propTypes = {
   leadRestaurants: PropTypes.string,
   restaurants: PropTypes.array,
   scripts: PropTypes.array,
-  styles: PropTypes.array
+  styles: PropTypes.array,
+  currentPageIndex: PropTypes.number
 }
 
 export default Data(Index)
