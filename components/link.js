@@ -18,9 +18,12 @@ class InternalLink extends Component {
       } else {
         href +=
           this.props.page +
-          (this.props.detail ? '&detail=' + this.props.detail : null)
+          (this.props.detail ? '&detail=' + this.props.detail : '') +
+          (this.props.custom ? '&custom=' + this.props.custom : '')
         slug +=
-          this.props.page + (this.props.detail ? '/' + this.props.detail : null)
+          this.props.page +
+          (this.props.detail ? '/' + this.props.detail : '') +
+          (this.props.custom ? '/' + this.props.custom : '')
       }
     }
 
@@ -49,6 +52,7 @@ InternalLink.propTypes = {
   slug: PropTypes.string,
   page: PropTypes.string,
   detail: PropTypes.string,
+  custom: PropTypes.string,
   classes: PropTypes.string,
   children: PropTypes.node
 }

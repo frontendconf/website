@@ -6,11 +6,17 @@ import InternalLink from './link'
 
 class News extends Component {
   render () {
-    const news = this.props.teasers.map((item, i) => {
+    let news = this.props.teasers.map((item) => {
       item.date = dateFormatter.formatDate(item.date, 'D MMM YYYY')
 
       return item
     })
+
+    if (this.props.currentTag) {
+      news = news.filter((item) => {
+        return item.tags.includes(this.props.currentTag)
+      })
+    }
 
     const itemsPerPage = 2
     const pages = news
@@ -24,7 +30,7 @@ class News extends Component {
         <div className='grid'>
           <div className='grid__inner'>
             <div className='col-8'>
-              {pages[this.props.currentPageIndex - 1].map((item, i) => {
+              {pages[this.props.currentPageIndex - 1] ? pages[this.props.currentPageIndex - 1].map((item, i) => {
                 return (
                   <article className='blog__article margin-top-large' key={i}>
                     <h2 className='blog__article-title'>
@@ -52,7 +58,7 @@ class News extends Component {
                     </div>
                   </article>
                 )
-              })}
+              }) : null}
 
               {/* TODO: Add routing */}
               {pages.length > 1
@@ -60,14 +66,16 @@ class News extends Component {
                   {this.props.currentPageIndex > 1
                     ? <InternalLink
                       page='news'
-                      detail={`${this.props.currentPageIndex - 1}`}
+                      detail='page'
+                      custom={`${this.props.currentPageIndex - 1}`}
                       title='«'
                     />
                     : null}
                   {pages.map((item, i) =>
                     <InternalLink
                       page='news'
-                      detail={`${i + 1}`}
+                      detail='page'
+                      custom={`${i + 1}`}
                       title={`${i + 1}`}
                       classes={
                         i === this.props.currentPageIndex - 1
@@ -80,7 +88,8 @@ class News extends Component {
                   {this.props.currentPageIndex < pages.length
                     ? <InternalLink
                       page='news'
-                      detail={`${this.props.currentPageIndex + 1}`}
+                      detail='page'
+                      custom={`${this.props.currentPageIndex + 1}`}
                       title='»'
                     />
                     : null}
@@ -119,7 +128,8 @@ class News extends Component {
 News.propTypes = {
   teasers: PropTypes.array,
   isNews: PropTypes.bool,
-  currentPageIndex: PropTypes.number
+  currentPageIndex: PropTypes.number,
+  currentTag: PropTypes.string
 }
 
 export default News

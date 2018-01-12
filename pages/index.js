@@ -120,6 +120,7 @@ class Index extends Component {
         teasers={this.props.news}
         isNews={this.props.currentPage.isNews}
         currentPageIndex={this.props.currentPageIndex}
+        currentTag={this.props.currentTag}
       />
       : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
@@ -202,7 +203,8 @@ Index.propTypes = {
   restaurants: PropTypes.array,
   scripts: PropTypes.array,
   styles: PropTypes.array,
-  currentPageIndex: PropTypes.number
+  currentPageIndex: PropTypes.number,
+  currentTag: PropTypes.string
 }
 
 export default Data(Index)

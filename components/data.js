@@ -9,7 +9,12 @@ function filterByType (item) {
 }
 
 function isActiveItem (slug, query, isMenu) {
-  if (query.page && query.detail && isNaN(query.detail) && !isMenu) {
+  if (
+    query.page &&
+    query.detail &&
+    !['page', 'tag'].includes(query.detail) &&
+    !isMenu
+  ) {
     return query.detail === slug
   } else if (query.page) {
     return query.page === slug
@@ -139,9 +144,12 @@ export default Component => {
           currentPage.isNews = true
         }
 
-        const currentPageIndex = isNaN(parseInt(query.detail, 10))
-          ? 1
-          : parseInt(query.detail, 10)
+        const currentPageIndex =
+          query.detail === 'page' && !isNaN(parseInt(query.custom, 10))
+            ? parseInt(query.custom, 10)
+            : 1
+
+        const currentTag = query.detail === 'tag' ? query.custom : null
 
         if (currentPage && currentPage.teacher) {
           const teacher = {
@@ -230,7 +238,10 @@ export default Component => {
                   title: item.fields.title,
                   page: 'news',
                   detail: item.fields.slug,
-                  date: item.fields.date
+                  date: item.fields.date,
+                  tags: item.fields.tags ? item.fields.tags.map((tag) => {
+                    return tag.fields.title
+                  }) : []
                 }
               })
               .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -581,6 +592,7 @@ export default Component => {
           scripts,
           styles,
           currentPageIndex,
+          currentTag,
           _raw: items
         }
       })
