@@ -120,7 +120,12 @@ export default Component => {
 
         const currentPageType = query.detail ? query.page : 'page'
         const currentPage = currentItem
-          ? Object.assign({}, currentItem.fields)
+          ? Object.assign(
+            {
+              _id: currentItem.sys.id
+            },
+            currentItem.fields
+          )
           : null
 
         if (currentPageType === 'speakers') {
@@ -142,6 +147,17 @@ export default Component => {
 
         if (currentPage && currentPage.specialPage === 'news') {
           currentPage.isNews = true
+        }
+
+        if (query.detail && query.page === 'news') {
+          currentPage.contentTitle = currentPage.title
+          currentPage.title = 'News'
+          currentPage.isNewsDetail = true
+          currentPage.tags = currentPage.tags
+            ? currentPage.tags.map(tag => {
+              return tag.fields.title
+            })
+            : []
         }
 
         const currentPageIndex =
@@ -211,6 +227,13 @@ export default Component => {
           }
           : null
 
+        // Add tag to title
+        if (query.custom && query.detail === 'tag') {
+          lead.title = `${lead.title}${query.custom
+            ? ` (#${query.custom})`
+            : ''}`
+        }
+
         // Fallback
         if (
           !(lead && lead.title) &&
@@ -230,7 +253,7 @@ export default Component => {
         }
 
         const news =
-          currentPage && currentPage.showNews
+          currentPage && (currentPage.showNews || query.page === 'news')
             ? items
               .filter(filterByType, 'news')
               .map(item => {
@@ -239,9 +262,13 @@ export default Component => {
                   page: 'news',
                   detail: item.fields.slug,
                   date: item.fields.date,
-                  tags: item.fields.tags ? item.fields.tags.map((tag) => {
-                    return tag.fields.title
-                  }) : []
+                  body: item.fields.bodyShortened,
+                  tags: item.fields.tags
+                    ? item.fields.tags.map(tag => {
+                      return tag.fields.title
+                    })
+                    : [],
+                  _id: item.sys.id
                 }
               })
               .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -518,6 +545,20 @@ export default Component => {
               .sort((a, b) => a.order - b.order)
             : null
 
+        const contentTeasers = currentPage.contentTeasers
+          ? currentPage.contentTeasers.map(contentTeaser => {
+            const teaser = items
+              .filter(filterByType, 'teaser')
+              .find(item => item.sys.id === contentTeaser.sys.id).fields
+
+            return {
+              title: teaser.title,
+              body: teaser.body,
+              link: teaser.link ? teaser.link.fields.slug : null
+            }
+          })
+          : []
+
         const leadHotels = config.leadHotels
         const hotels =
           currentPage && currentPage.showHotels
@@ -593,6 +634,7 @@ export default Component => {
           styles,
           currentPageIndex,
           currentTag,
+          contentTeasers,
           _raw: items
         }
       })

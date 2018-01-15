@@ -55,18 +55,22 @@ h2 {
     text-transform: uppercase;
     @include font-size($font-size-h2);
 
-    &:not(.intro__title) a:after {
-      font-size: 26px;
-      line-height: 1rem;
-      content: " \0203A";
-      @include opensanscondensedregular;
+    &:not(.intro__title) a {
+      color: inherit;
 
-      @include breakpoint($tablet) {
-        font-size: 40px;
-      }
+      &::after {
+        font-size: 26px;
+        line-height: 1rem;
+        content: " \0203A";
+        @include opensanscondensedregular;
 
-      @include breakpoint($desktop) {
-        font-size: 50px;
+        @include breakpoint($tablet) {
+          font-size: 40px;
+        }
+
+        @include breakpoint($desktop) {
+          font-size: 50px;
+        }
       }
     }
   }
