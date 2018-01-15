@@ -54,7 +54,7 @@ app
       return res.redirect('http://onelink.to/wq2y43')
     })
 
-    server.get('/:page/:detail?', (req, res, next) => {
+    server.get('/:page/:detail?/:custom?', (req, res, next) => {
       if (
         ['favicon.ico', '_webpack', '__webpack_hmr', '_next'].includes(
           req.params.page

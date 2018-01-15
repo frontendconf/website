@@ -9,7 +9,12 @@ function filterByType (item) {
 }
 
 function isActiveItem (slug, query, isMenu) {
-  if (query.page && query.detail && !isMenu) {
+  if (
+    query.page &&
+    query.detail &&
+    !['page', 'tag'].includes(query.detail) &&
+    !isMenu
+  ) {
     return query.detail === slug
   } else if (query.page) {
     return query.page === slug
@@ -115,7 +120,12 @@ export default Component => {
 
         const currentPageType = query.detail ? query.page : 'page'
         const currentPage = currentItem
-          ? Object.assign({}, currentItem.fields)
+          ? Object.assign(
+            {
+              _id: currentItem.sys.id
+            },
+            currentItem.fields
+          )
           : null
 
         if (currentPageType === 'speakers') {
@@ -131,9 +141,31 @@ export default Component => {
           currentPage.photo = currentPage.photo.fields.file.url
         }
 
-        if (currentPage && currentPage.bodyClass === 'home') {
+        if (currentPage && currentPage.specialPage === 'home') {
           currentPage.isHome = true
         }
+
+        if (currentPage && currentPage.specialPage === 'news') {
+          currentPage.isNews = true
+        }
+
+        if (query.detail && query.page === 'news' && !query.custom) {
+          currentPage.contentTitle = currentPage.title
+          currentPage.title = 'News'
+          currentPage.isNewsDetail = true
+          currentPage.tags = currentPage.tags
+            ? currentPage.tags.map(tag => {
+              return tag.fields.title
+            })
+            : []
+        }
+
+        const currentPageIndex =
+          query.detail === 'page' && !isNaN(parseInt(query.custom, 10))
+            ? parseInt(query.custom, 10)
+            : 1
+
+        const currentTag = query.detail === 'tag' ? query.custom : null
 
         if (currentPage && currentPage.teacher) {
           const teacher = {
@@ -195,6 +227,13 @@ export default Component => {
           }
           : null
 
+        // Add tag to title
+        if (query.custom && query.detail === 'tag') {
+          lead.title = `${lead.title}${query.custom
+            ? ` (#${query.custom})`
+            : ''}`
+        }
+
         // Fallback
         if (
           !(lead && lead.title) &&
@@ -214,7 +253,7 @@ export default Component => {
         }
 
         const news =
-          currentPage && currentPage.showNews
+          currentPage && (currentPage.showNews || query.page === 'news')
             ? items
               .filter(filterByType, 'news')
               .map(item => {
@@ -222,7 +261,14 @@ export default Component => {
                   title: item.fields.title,
                   page: 'news',
                   detail: item.fields.slug,
-                  date: item.fields.date
+                  date: item.fields.date,
+                  body: item.fields.bodyShortened,
+                  tags: item.fields.tags
+                    ? item.fields.tags.map(tag => {
+                      return tag.fields.title
+                    })
+                    : [],
+                  _id: item.sys.id
                 }
               })
               .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -499,6 +545,20 @@ export default Component => {
               .sort((a, b) => a.order - b.order)
             : null
 
+        const contentTeasers = currentPage.contentTeasers
+          ? currentPage.contentTeasers.map(contentTeaser => {
+            const teaser = items
+              .filter(filterByType, 'teaser')
+              .find(item => item.sys.id === contentTeaser.sys.id).fields
+
+            return {
+              title: teaser.title,
+              body: teaser.body,
+              link: teaser.link ? teaser.link.fields.slug : null
+            }
+          })
+          : []
+
         const leadHotels = config.leadHotels
         const hotels =
           currentPage && currentPage.showHotels
@@ -572,6 +632,9 @@ export default Component => {
           leadRestaurants,
           scripts,
           styles,
+          currentPageIndex,
+          currentTag,
+          contentTeasers,
           _raw: items
         }
       })

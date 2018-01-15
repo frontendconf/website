@@ -48,7 +48,7 @@ module.exports = {
     // Use Preact on client
     if (!dev) {
       config.resolve.alias = {
-        'react': 'preact-compat/dist/preact-compat',
+        react: 'preact-compat/dist/preact-compat',
         'react-dom': 'preact-compat/dist/preact-compat'
       }
     }

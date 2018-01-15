@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import ReactGA from 'react-ga'
 import config from '../config'
 
+import dateFormatter from '../lib/dateFormatter'
+
+import InternalLink from '../components/link'
 import Layout from '../components/layout'
 import Data from '../components/data'
 import Lead from '../components/lead'
@@ -19,6 +22,7 @@ import SponsorshipCategories from '../components/sponsorshipCategories'
 import Team from '../components/team'
 import Schedule from '../components/schedule'
 import Tourism from '../components/tourism'
+import Newsletter from '../components/newsletter'
 
 class Index extends Component {
   constructor (props) {
@@ -101,13 +105,55 @@ class Index extends Component {
             ? <section className='content section'>
               <div className='grid'>
                 <div className='grid__inner'>
-                  <div className='col-12'>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: this.props.currentPage.body
-                      }}
-                    />
-                  </div>
+                  {this.props.currentPage.isNewsDetail
+                    ? <div className='col-8'>
+                      <h1 className='blog__article-title-link'>
+                        {this.props.currentPage.contentTitle}
+                      </h1>
+                      <div className='blog__article-info'>
+                        <span className='blog__article-info-date'>
+                          {dateFormatter.formatDate(
+                            this.props.currentPage.date,
+                            'D MMM YYYY'
+                          )}
+                        </span>
+                        {this.props.currentPage.tags.map((tag, ii) => {
+                          return (
+                            <InternalLink
+                              page='news'
+                              detail='tag'
+                              custom={tag}
+                              title={`#${tag}`}
+                              classes='blog__article-info-tag'
+                              key={ii}
+                            />
+                          )
+                        })}
+                      </div>
+
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: this.props.currentPage.body
+                        }}
+                      />
+
+                      <Newsletter isTeaser={true} />
+
+                      {this.props.news
+                        ? <News
+                          teasers={this.props.news}
+                          contentTeasers={this.props.contentTeasers}
+                          detailId={this.props.currentPage._id}
+                        />
+                        : null}
+                    </div>
+                    : <div className='col-12'>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: this.props.currentPage.body
+                        }}
+                      />
+                    </div>}
                 </div>
               </div>
             </section>
@@ -115,7 +161,16 @@ class Index extends Component {
     }
 
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
-    const news = this.props.news ? <News teasers={this.props.news} /> : null
+    const news =
+      this.props.news && !this.props.currentPage.isNewsDetail
+        ? <News
+          teasers={this.props.news}
+          contentTeasers={this.props.contentTeasers}
+          isNews={this.props.currentPage.isNews}
+          currentPageIndex={this.props.currentPageIndex}
+          currentTag={this.props.currentTag}
+        />
+        : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
     const speakers = this.props.speakers
       ? <Speakers
@@ -195,7 +250,10 @@ Index.propTypes = {
   leadRestaurants: PropTypes.string,
   restaurants: PropTypes.array,
   scripts: PropTypes.array,
-  styles: PropTypes.array
+  styles: PropTypes.array,
+  currentPageIndex: PropTypes.number,
+  currentTag: PropTypes.string,
+  contentTeasers: PropTypes.array
 }
 
 export default Data(Index)
