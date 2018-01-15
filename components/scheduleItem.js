@@ -19,10 +19,14 @@ class ScheduleItem extends Component {
     const photo = this.props.speaker
       ? this.props.speaker.fields.photo.fields.file.url + '?w=60&h=60&fit=fill'
       : null
-    const variant = this.props.showAbstractOnMobile ? 'schedule__item--details' : ''
+    const variant = this.props.showAbstractOnMobile
+      ? 'schedule__item--details'
+      : ''
 
     return (
-      <div className={`col-xs-12 col-6 schedule__item schedule__${room} ${variant}`}>
+      <div
+        className={`col-xs-12 col-6 schedule__item schedule__${room} ${variant}`}
+      >
         <div className='schedule__time'>
           <span className='schedule__from'>
             {this.props.fromTime} –
@@ -41,7 +45,10 @@ class ScheduleItem extends Component {
           <p className='schedule__talk'>
             {desc}
           </p>
-          <div className='schedule__abstract' dangerouslySetInnerHTML={{ __html: this.props.abstract }} />
+          <div
+            className='schedule__abstract'
+            dangerouslySetInnerHTML={{ __html: this.props.abstract }}
+          />
         </div>
       </div>
     )

@@ -6,20 +6,23 @@ import InternalLink from './link'
 
 class Person extends Component {
   render () {
-    const photo = <LazyLoad offset={200}>{this.props.detail
-      ? <InternalLink {...this.props} classes='person__image-container'>
-        <img
-          className='person__image'
-          src={this.props.photo}
-          alt={this.props.name}
-        />
-      </InternalLink>
-      : <img
-        className='person__image'
-        src={this.props.photo}
-        alt={this.props.name}
-      />
-    }</LazyLoad>
+    const photo = (
+      <LazyLoad offset={200}>
+        {this.props.detail
+          ? <InternalLink {...this.props} classes='person__image-container'>
+            <img
+              className='person__image'
+              src={this.props.photo}
+              alt={this.props.name}
+            />
+          </InternalLink>
+          : <img
+            className='person__image'
+            src={this.props.photo}
+            alt={this.props.name}
+          />}
+      </LazyLoad>
+    )
 
     const twitter = this.props.twitter
       ? <p className='person__twitter'>
