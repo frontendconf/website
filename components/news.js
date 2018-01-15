@@ -182,6 +182,9 @@ class News extends Component {
               </div>
             )
           })}
+          <div className='pagination padding-top-large'>
+            <InternalLink slug='news' title='» News overview' />
+          </div>
         </section>
         : <section className='news section'>
           <div className='grid'>

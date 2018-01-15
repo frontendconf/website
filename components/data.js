@@ -149,7 +149,7 @@ export default Component => {
           currentPage.isNews = true
         }
 
-        if (query.detail && query.page === 'news') {
+        if (query.detail && query.page === 'news' && !query.custom) {
           currentPage.contentTitle = currentPage.title
           currentPage.title = 'News'
           currentPage.isNewsDetail = true
