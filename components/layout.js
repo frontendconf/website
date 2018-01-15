@@ -17,22 +17,26 @@ const Layout = ({
   footer
 }) => {
   const bodyClass = currentPage ? currentPage.bodyClass : null
-  const metaTitle = currentPage ? currentPage.name || currentPage.title : title
+  const metaTitle = currentPage
+    ? currentPage.name || currentPage.contentTitle || currentPage.title
+    : title
   const metaDescription = currentPage
-    ? currentPage.lead || currentPage.description
+    ? currentPage.lead || currentPage.description || ''
     : 'Zurich, Switzerland'
-  const metaImage = currentPage && currentPage.photo
-    ? currentPage.photo
-    : '/static/images/fec-logo.svg' + config.ASSET_VERSION
-  const metaUrl = url && url.query && url.query.detail
-    ? `http://www.frontendconf.ch/${url.query.page}/${url.query.detail}`
-    : `http://www.frontendconf.ch/${url.query.page}`
+  const metaImage =
+    currentPage && currentPage.photo
+      ? currentPage.photo
+      : '/static/images/fec-logo.svg' + config.ASSET_VERSION
+  const metaUrl =
+    url && url.query && url.query.detail
+      ? `http://www.frontendconf.ch/${url.query.page}/${url.query.detail}`
+      : `http://www.frontendconf.ch/${url.query.page}`
 
   return (
     <div className={bodyClass}>
       <Head>
         <title>
-          { metaTitle }
+          {metaTitle}
         </title>
         <meta name='description' content={metaDescription} />
         <link
@@ -55,18 +59,23 @@ const Layout = ({
         <meta itemProp='image' content={metaImage} />
 
         {/* Twitter meta */}
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDescription} />
+        <meta name='twitter:title' content={metaTitle} />
+        <meta name='twitter:description' content={metaDescription} />
 
         {/* Open Graph Meta */}
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:image" content={metaImage} />
-        <meta property="og:url" content={metaUrl} />
+        <meta property='og:title' content={metaTitle} />
+        <meta property='og:description' content={metaDescription} />
+        <meta property='og:image' content={metaImage} />
+        <meta property='og:url' content={metaUrl} />
 
         {/* Start of HubSpot Embed Code */}
-        <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/1935562.js"></script>
-        {/* End of HubSpot Embed Code */}
+        <script
+          type='text/javascript'
+          id='hs-script-loader'
+          async
+          defer
+          src='//js.hs-scripts.com/1935562.js'
+        />
       </Head>
 
       <Header {...header} />
