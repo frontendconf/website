@@ -522,6 +522,16 @@ export default Component => {
           })
         }
 
+        let sponsorshipTeaser = items
+          .filter(filterByType, 'teaser')
+          .find(
+            item => item.fields.config && item.fields.config.isSponsorshipTeaser
+          )
+
+        if (sponsorshipTeaser) {
+          sponsorshipTeaser = sponsorshipTeaser.fields
+        }
+
         const team =
           currentPage && currentPage.showTeam
             ? items
@@ -625,6 +635,7 @@ export default Component => {
           schedule,
           sponsors,
           sponsorshipCategories,
+          sponsorshipTeaser,
           team,
           hotels,
           leadHotels,

@@ -165,7 +165,7 @@ $susy: (
     display: flex;
     flex-wrap: wrap;
     flex-direction: column; // FF 47-
-    -webkit-flex-direction: row; // iOS safari
+    -webkit-flex-direction: column; // iOS safari
     -ms-flex-direction: column; // IE11
     float: none;
     & > * {

@@ -6,29 +6,31 @@
     margin-top: 30px;
   }
 
+  p {
+    margin-bottom: 0.5em;
+  }
+
   // Select Diamonds according to design hack
   @include breakpoint($tablet) {
-    .col-4:nth-of-type(2) {
-      display: block;
+    .col--diamond {
       width: 100%;
       margin-bottom: 50px;
 
-      .person__image,
-      > h3,
-      > p,
-      > div {
-        float: left;
-        display: block;
+      .sponsorship__teaser {
+        margin-top: 2rem;
+        margin-left: 2rem;
+        flex-basis: 33.333%;
+        flex-shrink: 0;
       }
+    }
 
-      .person__image {
-        margin-right: 30px;
-      }
+    .eq-height > .col--diamond {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
 
-      > h3,
-      > p,
-      > div {
-        width: calc(100% - 300px);
+      & > * {
+        width: auto;
       }
     }
   }

@@ -264,3 +264,28 @@ ul.list-inline li {
   @extend .margin-top-normal;
   @extend .padding-top-normal;
 }
+
+// Teaser
+.teaser {
+  @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+  @include font-size($middle-font-size);
+  display: block;
+  color: $white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  min-width: 16rem;
+
+  strong {
+    @include opensanscondensedbold;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 0.5em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

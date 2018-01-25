@@ -147,7 +147,7 @@ class Index extends Component {
                         />
                         : null}
                     </div>
-                    : <div className='col-12'>
+                    : <div className='col-8'>
                       <div
                         dangerouslySetInnerHTML={{
                           __html: this.props.currentPage.body
@@ -190,7 +190,10 @@ class Index extends Component {
       ? <Sponsors sponsors={this.props.sponsors} />
       : null
     const sponsorshipCategories = this.props.sponsorshipCategories
-      ? <SponsorshipCategories categories={this.props.sponsorshipCategories} />
+      ? <SponsorshipCategories
+        categories={this.props.sponsorshipCategories}
+        teaser={this.props.sponsorshipTeaser}
+      />
       : null
     const team = this.props.team ? <Team team={this.props.team} /> : null
     const schedule = this.props.schedule
@@ -243,6 +246,7 @@ Index.propTypes = {
   jobs: PropTypes.object,
   sponsors: PropTypes.array,
   sponsorshipCategories: PropTypes.array,
+  sponsorshipTeaser: PropTypes.object,
   team: PropTypes.array,
   schedule: PropTypes.array,
   leadHotels: PropTypes.string,
