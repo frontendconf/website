@@ -62,6 +62,19 @@ export default Component => {
           return isActiveItem(item.fields.slug, query)
         })
 
+        if (
+          currentItem &&
+          currentItem.sys.contentType.sys.id === 'redirect' &&
+          currentItem.fields.url &&
+          res
+        ) {
+          res.setHeader('Location', currentItem.fields.url)
+          res.statusCode = 302
+          res.end()
+
+          return {}
+        }
+
         if (!currentItem && res) {
           res.statusCode = 404
 
