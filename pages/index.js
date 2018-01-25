@@ -147,13 +147,38 @@ class Index extends Component {
                         />
                         : null}
                     </div>
-                    : <div className='col-8'>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: this.props.currentPage.body
-                        }}
-                      />
-                    </div>}
+                    : <div>
+                      <div className='col-8'>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: this.props.currentPage.body
+                          }}
+                        />
+                      </div>
+                      <aside className='col-4 margin-top-large'>
+                        {this.props.contentTeasers.map((item, i) => {
+                          return (
+                            <div key={i}>
+                              {item.link
+                                ? <InternalLink
+                                  slug={item.link}
+                                  classes='teaser'
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{ __html: item.body }}
+                                  />
+                                </InternalLink>
+                                : <div className='teaser teaser--static'>
+                                  <span
+                                    dangerouslySetInnerHTML={{ __html: item.body }}
+                                  />
+                                </div>}
+                            </div>
+                          )
+                        })}
+                      </aside>
+                    </div>
+                  }
                 </div>
               </div>
             </section>

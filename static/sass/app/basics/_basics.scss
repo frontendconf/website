@@ -51,6 +51,10 @@ h2 {
   @include font-size($font-size-h2);
   margin-top: 2rem;
 
+  &:first-child {
+    margin-top: 0;
+  }
+
   .home & {
     text-transform: uppercase;
     @include font-size($font-size-h2);
@@ -263,29 +267,4 @@ ul.list-inline li {
   border-top: 1px solid $silver-light;
   @extend .margin-top-normal;
   @extend .padding-top-normal;
-}
-
-// Teaser
-.teaser {
-  @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
-  @include font-size($middle-font-size);
-  display: block;
-  color: $white;
-  text-align: center;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  min-width: 16rem;
-
-  strong {
-    @include opensanscondensedbold;
-    text-transform: uppercase;
-  }
-
-  p {
-    margin-bottom: 0.5em;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 }
