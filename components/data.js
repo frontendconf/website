@@ -498,7 +498,9 @@ export default Component => {
                 const icon = item.fields.icon
                   ? item.fields.icon.fields.file.url + '?w=250&h=150&fit=pad'
                   : null
-                const teaser = item.fields.teaser ? item.fields.teaser.fields : null
+                const teaser = item.fields.teaserOverview ? items.filter(filterByType, 'teaser').find(teaser => {
+                  return teaser.sys.id === item.fields.teaserOverview.sys.id
+                }).fields : null
 
                 return {
                   title: item.fields.title,

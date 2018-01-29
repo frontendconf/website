@@ -223,7 +223,7 @@ class Index extends Component {
     const schedule = this.props.schedule
       ? <Schedule schedule={this.props.schedule} />
       : null
-    const leadAccomodations = this.props.leadAccomodations
+    const leadAccomodations = this.props.currentPage && this.props.currentPage.isVenue && this.props.leadAccomodations
       ? <div className="section section--top">
         <div className="grid">
           <div className="grid__inner">
