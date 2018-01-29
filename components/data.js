@@ -162,6 +162,10 @@ export default Component => {
           currentPage.isNews = true
         }
 
+        if (currentPage && currentPage.specialPage === 'venue') {
+          currentPage.isVenue = true
+        }
+
         if (query.detail && query.page === 'news' && !query.custom) {
           currentPage.contentTitle = currentPage.title
           currentPage.title = 'News'
@@ -440,6 +444,10 @@ export default Component => {
           venue.link = venue.link.fields.slug
         }
 
+        if (venue && config.map) {
+          venue.map = config.map
+        }
+
         const jobsPageOriginal = items
           .filter(filterByType, 'page')
           .find(item => item.fields.showJobsDetailed)
@@ -490,6 +498,7 @@ export default Component => {
                 const icon = item.fields.icon
                   ? item.fields.icon.fields.file.url + '?w=250&h=150&fit=pad'
                   : null
+                const teaser = item.fields.teaser ? item.fields.teaser.fields : null
 
                 return {
                   title: item.fields.title,
@@ -497,7 +506,8 @@ export default Component => {
                   level: item.fields.level,
                   availability: item.fields.availability,
                   body: item.fields.body,
-                  icon
+                  icon,
+                  teaser
                 }
               })
               .sort((a, b) => a.level - b.level)
@@ -533,16 +543,6 @@ export default Component => {
 
             return item
           })
-        }
-
-        let sponsorshipTeaser = items
-          .filter(filterByType, 'teaser')
-          .find(
-            item => item.fields.config && item.fields.config.isSponsorshipTeaser
-          )
-
-        if (sponsorshipTeaser) {
-          sponsorshipTeaser = sponsorshipTeaser.fields
         }
 
         const team =
@@ -582,6 +582,7 @@ export default Component => {
           })
           : []
 
+        const leadAccomodations = config.leadAccomodations
         const leadHotels = config.leadHotels
         const hotels =
           currentPage && currentPage.showHotels
@@ -590,7 +591,7 @@ export default Component => {
               .map(item => {
                 const photo = item.fields.photo
                   ? item.fields.photo.fields.file.url +
-                      '?w=250&h=250&fit=fill'
+                      '?w=250&h=180&fit=fill'
                   : null
 
                 return {
@@ -611,7 +612,7 @@ export default Component => {
               .map(item => {
                 const photo = item.fields.photo
                   ? item.fields.photo.fields.file.url +
-                      '?w=250&h=250&fit=fill'
+                      '?w=250&h=180&fit=fill'
                   : null
 
                 return {
@@ -648,8 +649,8 @@ export default Component => {
           schedule,
           sponsors,
           sponsorshipCategories,
-          sponsorshipTeaser,
           team,
+          leadAccomodations,
           hotels,
           leadHotels,
           restaurants,

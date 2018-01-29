@@ -4,14 +4,6 @@ import LazyLoad from 'react-lazyload'
 
 class SponsorshipCategories extends Component {
   render () {
-    const teaser = this.props.teaser
-      ? <div className='col-4 sponsorship__teaser'>
-        <a className='teaser' href={this.props.teaser.linkExternal}>
-          <div dangerouslySetInnerHTML={{ __html: this.props.teaser.body }} />
-        </a>
-      </div>
-      : null
-
     return (
       <section className='sponsors sponsorship section'>
         <div className='grid'>
@@ -33,6 +25,13 @@ class SponsorshipCategories extends Component {
                     alt={category.title}
                   />
                 </LazyLoad>
+                : null
+              const teaser = category.teaser
+                ? <div className='col-4 sponsorship__teaser'>
+                  <a className='teaser' href={category.teaser.linkExternal}>
+                    <div dangerouslySetInnerHTML={{ __html: category.teaser.body }} />
+                  </a>
+                </div>
                 : null
 
               const availability = category.availability
@@ -64,7 +63,7 @@ class SponsorshipCategories extends Component {
                     <div dangerouslySetInnerHTML={{ __html: category.body }} />
                   </div>
 
-                  {i === 0 ? teaser : null}
+                  {teaser}
                 </div>
               )
             })}
@@ -76,8 +75,7 @@ class SponsorshipCategories extends Component {
 }
 
 SponsorshipCategories.propTypes = {
-  categories: PropTypes.array,
-  teaser: PropTypes.object
+  categories: PropTypes.array
 }
 
 export default SponsorshipCategories

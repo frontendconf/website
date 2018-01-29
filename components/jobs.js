@@ -51,7 +51,7 @@ class Jobs extends Component {
     return (
       <section className='job-board section'>
         <div className='grid'>
-          <div className='grid__inner'>
+          <div className='grid__inner eq-height'>
             {title}
 
             {this.state.items.map((item, i) => {

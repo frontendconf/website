@@ -209,7 +209,7 @@ class Index extends Component {
         isHome={this.props.currentPage && this.props.currentPage.isHome}
       />
       : null
-    const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
+    const venue = this.props.venue ? <Venue {...this.props.venue} isVenue={this.props.currentPage && this.props.currentPage.isVenue} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors
       ? <Sponsors sponsors={this.props.sponsors} />
@@ -217,15 +217,23 @@ class Index extends Component {
     const sponsorshipCategories = this.props.sponsorshipCategories
       ? <SponsorshipCategories
         categories={this.props.sponsorshipCategories}
-        teaser={this.props.sponsorshipTeaser}
       />
       : null
     const team = this.props.team ? <Team team={this.props.team} /> : null
     const schedule = this.props.schedule
       ? <Schedule schedule={this.props.schedule} />
       : null
+    const leadAccomodations = this.props.leadAccomodations
+      ? <div className="section section--top">
+        <div className="grid">
+          <div className="grid__inner">
+            <div className="col-12 margin-top-large" dangerouslySetInnerHTML={{ __html: this.props.leadAccomodations }}></div>
+          </div>
+        </div>
+      </div>
+      : null
     const hotels = this.props.hotels
-      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} />
+      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} isLarge={true} />
       : null
     const restaurants = this.props.restaurants
       ? <Tourism
@@ -250,6 +258,7 @@ class Index extends Component {
         {venue}
         {jobs}
         {schedule}
+        {leadAccomodations}
         {hotels}
         {restaurants}
         {sponsorshipCategories}
@@ -271,9 +280,9 @@ Index.propTypes = {
   jobs: PropTypes.object,
   sponsors: PropTypes.array,
   sponsorshipCategories: PropTypes.array,
-  sponsorshipTeaser: PropTypes.object,
   team: PropTypes.array,
   schedule: PropTypes.array,
+  leadAccomodations: PropTypes.string,
   leadHotels: PropTypes.string,
   hotels: PropTypes.array,
   leadRestaurants: PropTypes.string,
