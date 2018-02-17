@@ -41,7 +41,7 @@ class Tourism extends Component {
 Tourism.propTypes = {
   items: PropTypes.array,
   lead: PropTypes.string,
-  isLarge: PropTypes.boolean
+  isLarge: PropTypes.bool
 }
 
 export default Tourism

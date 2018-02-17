@@ -2,11 +2,11 @@
   "name": "frontendconf-contentful",
   "version": "1.0.0",
   "repository": {
-    "url": "https://git.responsive.ch/responsive/frontendconf-contentful.git",
+    "url": "https://bitbucket.org/frontendconf/fec-website2017-app.git",
     "type": "git"
   },
-  "author": "Thomas Jaggi <thomas@responsive.ch>",
-  "license": "UNLICENSED",
+  "author": "Frontend Conf <info@frontendconf.ch>",
+  "license": "MIT",
   "engines": {
     "node": "7.10.1"
   },
@@ -19,6 +19,7 @@
     "express": "^4.15.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "fecha": "^2.3.1",
+    "feed": "^1.1.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash.clonedeep": "^4.5.0",
     "lru-cache": "^4.1.1",

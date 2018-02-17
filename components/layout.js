@@ -39,6 +39,7 @@ const Layout = ({
           {metaTitle}
         </title>
         <meta name='description' content={metaDescription} />
+        <link rel='alternate' type='application/rss+xml' href='/feed' />
         <link
           href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:300,400,400i,700'
           rel='stylesheet'

@@ -1953,6 +1953,11 @@
       "from": "fecha@>=2.3.1 <3.0.0",
       "resolved": "https://registry.npmjs.org/fecha/-/fecha-2.3.1.tgz"
     },
+    "feed": {
+      "version": "1.1.1",
+      "from": "feed@latest",
+      "resolved": "https://registry.npmjs.org/feed/-/feed-1.1.1.tgz"
+    },
     "figures": {
       "version": "2.0.0",
       "from": "figures@>=2.0.0 <3.0.0",
@@ -9318,6 +9323,11 @@
       "from": "xdg-basedir@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/xdg-basedir/-/xdg-basedir-2.0.0.tgz",
       "dev": true
+    },
+    "xml": {
+      "version": "1.0.1",
+      "from": "xml@>=1.0.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/xml/-/xml-1.0.1.tgz"
     },
     "xss-filters": {
       "version": "1.2.7",

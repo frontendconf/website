@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Error from 'next/error'
 import contentful from '../lib/contentful'
 import dateFormatter from '../lib/dateFormatter'
+import Feed from '../lib/feed'
 
 function filterByType (item) {
   return item.sys.contentType.sys.id === this
@@ -62,6 +63,43 @@ export default Component => {
           return isActiveItem(item.fields.slug, query)
         })
 
+        const news = items
+          .filter(filterByType, 'news')
+          .map(item => {
+            return {
+              title: item.fields.title,
+              page: 'news',
+              detail: item.fields.slug,
+              date: item.fields.date,
+              bodyShortened: item.fields.bodyShortened,
+              body: item.fields.body,
+              tags: item.fields.tags
+                ? item.fields.tags.map(tag => {
+                  return tag.fields.title
+                })
+                : [],
+              _id: item.sys.id
+            }
+          })
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+
+        // Feeds
+        if (query && query.page === 'feed') {
+          const feed = Feed(news)
+
+          res.setHeader('content-type', 'application/rss+xml')
+
+          switch (query.detail) {
+            case 'json':
+              return res.send(feed.json1())
+            case 'atom':
+              return res.send(feed.atom1())
+            default:
+              return res.send(feed.rss2())
+          }
+        }
+
+        // Redirects
         if (
           currentItem &&
           currentItem.sys.contentType.sys.id === 'redirect' &&
@@ -75,6 +113,7 @@ export default Component => {
           return {}
         }
 
+        // 404
         if (!currentItem && res) {
           res.statusCode = 404
 
@@ -269,26 +308,9 @@ export default Component => {
             break
         }
 
-        const news =
+        const showNews =
           currentPage && (currentPage.showNews || query.page === 'news')
-            ? items
-              .filter(filterByType, 'news')
-              .map(item => {
-                return {
-                  title: item.fields.title,
-                  page: 'news',
-                  detail: item.fields.slug,
-                  date: item.fields.date,
-                  body: item.fields.bodyShortened,
-                  tags: item.fields.tags
-                    ? item.fields.tags.map(tag => {
-                      return tag.fields.title
-                    })
-                    : [],
-                  _id: item.sys.id
-                }
-              })
-              .sort((a, b) => new Date(b.date) - new Date(a.date))
+            ? news
             : null
 
         const hosts =
@@ -498,9 +520,13 @@ export default Component => {
                 const icon = item.fields.icon
                   ? item.fields.icon.fields.file.url + '?w=250&h=150&fit=pad'
                   : null
-                const teaser = item.fields.teaserOverview ? items.filter(filterByType, 'teaser').find(teaser => {
-                  return teaser.sys.id === item.fields.teaserOverview.sys.id
-                }).fields : null
+                const teaser = item.fields.teaserOverview
+                  ? items.filter(filterByType, 'teaser').find(teaser => {
+                    return (
+                      teaser.sys.id === item.fields.teaserOverview.sys.id
+                    )
+                  }).fields
+                  : null
 
                 return {
                   title: item.fields.title,
@@ -642,7 +668,7 @@ export default Component => {
           currentPage,
           currentPageType,
           lead,
-          news,
+          news: showNews ? news : null,
           hosts,
           speakers,
           workshops,

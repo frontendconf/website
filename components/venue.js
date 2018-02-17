@@ -40,7 +40,7 @@ Venue.propTypes = {
   photo: PropTypes.object,
   link: PropTypes.string,
   map: PropTypes.string,
-  isVenue: PropTypes.boolean
+  isVenue: PropTypes.bool
 }
 
 export default Venue
