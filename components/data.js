@@ -87,6 +87,8 @@ export default Component => {
         if (query && query.page === 'feed') {
           const feed = Feed(news)
 
+          res.setHeader('content-type', 'application/rss+xml')
+
           switch (query.detail) {
             case 'json':
               return res.send(feed.json1())
