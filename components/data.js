@@ -62,6 +62,19 @@ export default Component => {
           return isActiveItem(item.fields.slug, query)
         })
 
+        if (
+          currentItem &&
+          currentItem.sys.contentType.sys.id === 'redirect' &&
+          currentItem.fields.url &&
+          res
+        ) {
+          res.setHeader('Location', currentItem.fields.url)
+          res.statusCode = 302
+          res.end()
+
+          return {}
+        }
+
         if (!currentItem && res) {
           res.statusCode = 404
 
@@ -147,6 +160,10 @@ export default Component => {
 
         if (currentPage && currentPage.specialPage === 'news') {
           currentPage.isNews = true
+        }
+
+        if (currentPage && currentPage.specialPage === 'venue') {
+          currentPage.isVenue = true
         }
 
         if (query.detail && query.page === 'news' && !query.custom) {
@@ -427,6 +444,10 @@ export default Component => {
           venue.link = venue.link.fields.slug
         }
 
+        if (venue && config.map) {
+          venue.map = config.map
+        }
+
         const jobsPageOriginal = items
           .filter(filterByType, 'page')
           .find(item => item.fields.showJobsDetailed)
@@ -477,6 +498,9 @@ export default Component => {
                 const icon = item.fields.icon
                   ? item.fields.icon.fields.file.url + '?w=250&h=150&fit=pad'
                   : null
+                const teaser = item.fields.teaserOverview ? items.filter(filterByType, 'teaser').find(teaser => {
+                  return teaser.sys.id === item.fields.teaserOverview.sys.id
+                }).fields : null
 
                 return {
                   title: item.fields.title,
@@ -484,7 +508,8 @@ export default Component => {
                   level: item.fields.level,
                   availability: item.fields.availability,
                   body: item.fields.body,
-                  icon
+                  icon,
+                  teaser
                 }
               })
               .sort((a, b) => a.level - b.level)
@@ -559,6 +584,7 @@ export default Component => {
           })
           : []
 
+        const leadAccomodations = config.leadAccomodations
         const leadHotels = config.leadHotels
         const hotels =
           currentPage && currentPage.showHotels
@@ -567,7 +593,7 @@ export default Component => {
               .map(item => {
                 const photo = item.fields.photo
                   ? item.fields.photo.fields.file.url +
-                      '?w=250&h=250&fit=fill'
+                      '?w=250&h=180&fit=fill'
                   : null
 
                 return {
@@ -588,7 +614,7 @@ export default Component => {
               .map(item => {
                 const photo = item.fields.photo
                   ? item.fields.photo.fields.file.url +
-                      '?w=250&h=250&fit=fill'
+                      '?w=250&h=180&fit=fill'
                   : null
 
                 return {
@@ -626,6 +652,7 @@ export default Component => {
           sponsors,
           sponsorshipCategories,
           team,
+          leadAccomodations,
           hotels,
           leadHotels,
           restaurants,

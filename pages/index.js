@@ -147,13 +147,38 @@ class Index extends Component {
                         />
                         : null}
                     </div>
-                    : <div className='col-12'>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: this.props.currentPage.body
-                        }}
-                      />
-                    </div>}
+                    : <div>
+                      <div className='col-8'>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: this.props.currentPage.body
+                          }}
+                        />
+                      </div>
+                      <aside className='col-4 margin-top-large'>
+                        {this.props.contentTeasers.map((item, i) => {
+                          return (
+                            <div key={i}>
+                              {item.link
+                                ? <InternalLink
+                                  slug={item.link}
+                                  classes='teaser'
+                                >
+                                  <span
+                                    dangerouslySetInnerHTML={{ __html: item.body }}
+                                  />
+                                </InternalLink>
+                                : <div className='teaser teaser--static'>
+                                  <span
+                                    dangerouslySetInnerHTML={{ __html: item.body }}
+                                  />
+                                </div>}
+                            </div>
+                          )
+                        })}
+                      </aside>
+                    </div>
+                  }
                 </div>
               </div>
             </section>
@@ -184,20 +209,31 @@ class Index extends Component {
         isHome={this.props.currentPage && this.props.currentPage.isHome}
       />
       : null
-    const venue = this.props.venue ? <Venue {...this.props.venue} /> : null
+    const venue = this.props.venue ? <Venue {...this.props.venue} isVenue={this.props.currentPage && this.props.currentPage.isVenue} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors
       ? <Sponsors sponsors={this.props.sponsors} />
       : null
     const sponsorshipCategories = this.props.sponsorshipCategories
-      ? <SponsorshipCategories categories={this.props.sponsorshipCategories} />
+      ? <SponsorshipCategories
+        categories={this.props.sponsorshipCategories}
+      />
       : null
     const team = this.props.team ? <Team team={this.props.team} /> : null
     const schedule = this.props.schedule
       ? <Schedule schedule={this.props.schedule} />
       : null
+    const leadAccomodations = this.props.currentPage && this.props.currentPage.isVenue && this.props.leadAccomodations
+      ? <div className="section section--top">
+        <div className="grid">
+          <div className="grid__inner">
+            <div className="col-12 margin-top-large" dangerouslySetInnerHTML={{ __html: this.props.leadAccomodations }}></div>
+          </div>
+        </div>
+      </div>
+      : null
     const hotels = this.props.hotels
-      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} />
+      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} isLarge={true} />
       : null
     const restaurants = this.props.restaurants
       ? <Tourism
@@ -222,6 +258,7 @@ class Index extends Component {
         {venue}
         {jobs}
         {schedule}
+        {leadAccomodations}
         {hotels}
         {restaurants}
         {sponsorshipCategories}
@@ -245,6 +282,7 @@ Index.propTypes = {
   sponsorshipCategories: PropTypes.array,
   team: PropTypes.array,
   schedule: PropTypes.array,
+  leadAccomodations: PropTypes.string,
   leadHotels: PropTypes.string,
   hotels: PropTypes.array,
   leadRestaurants: PropTypes.string,

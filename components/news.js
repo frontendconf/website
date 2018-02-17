@@ -131,17 +131,17 @@ class News extends Component {
             <aside className='col-4 margin-top-large'>
               {this.props.contentTeasers.map((item, i) => {
                 return (
-                  <div className='sponsors-board__info' key={i}>
+                  <div key={i}>
                     {item.link
                       ? <InternalLink
                         slug={item.link}
-                        classes='sponsors-board__info-become'
+                        classes='teaser'
                       >
                         <span
                           dangerouslySetInnerHTML={{ __html: item.body }}
                         />
                       </InternalLink>
-                      : <div className='sponsors-board__info-become'>
+                      : <div className='teaser'>
                         <span
                           dangerouslySetInnerHTML={{ __html: item.body }}
                         />

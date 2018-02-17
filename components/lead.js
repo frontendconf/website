@@ -35,20 +35,19 @@ class Lead extends Component {
       </div>
       : null
 
-    const footerContent =
-      this.props.ctas.length || this.props.isHome
-        ? <div className='col-12'>
-          <div className='intro__bottom-left'>
-            {this.props.ctas.map((cta, i) => {
-              return <InternalLink {...cta} classes='btn' key={i} />
-            })}
-          </div>
-
-          <div className='intro__bottom-right'>
-            {this.props.isHome ? <Newsletter /> : null}
-          </div>
+    const footerContent = this.props.isHome
+      ? <div className='col-12'>
+        <div className='intro__bottom-left'>
+          {this.props.ctas.map((cta, i) => {
+            return <InternalLink {...cta} classes='btn' key={i} />
+          })}
         </div>
-        : teaser
+
+        <div className='intro__bottom-right'>
+          {this.props.isHome ? <Newsletter /> : null}
+        </div>
+      </div>
+      : teaser
 
     const footer = footerContent
       ? <div className='intro__bottom-content'>
@@ -71,18 +70,29 @@ class Lead extends Component {
         <div className='intro__top-content'>
           <div className='grid'>
             <div className='grid__inner'>
-              <div className='col-12'>
+              <div className='col-8'>
                 <h1 className='intro__title'>
                   {this.props.title}
                 </h1>
               </div>
               <div
                 className={
-                  this.props.isHome ? 'col-12' : 'col-12 margin-top-large'
+                  this.props.isHome
+                    ? 'col-12'
+                    : this.props.menu.length
+                      ? 'col-12 margin-top-large'
+                      : 'col-8 margin-top-large'
                 }
               >
                 {body}
               </div>
+              {!this.props.isHome && this.props.ctas
+                ? <div className='col-4 margin-top-large right'>
+                  {this.props.ctas.map((cta, i) => {
+                    return <InternalLink {...cta} classes='btn' key={i} />
+                  })}
+                </div>
+                : null}
             </div>
           </div>
         </div>

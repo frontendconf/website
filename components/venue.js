@@ -16,8 +16,8 @@ class Venue extends Component {
           <LazyLoad offset={200}>
             <div className='venue__image' />
           </LazyLoad>
-          <div className='venue__inner'>
-            <div className='venue__content'>
+          <div className={this.props.isVenue && this.props.map ? 'venue__inner venue__inner--map' : 'venue__inner'}>
+            {this.props.isVenue && this.props.map ? <div className="venue__map" dangerouslySetInnerHTML={{ __html: this.props.map }} /> : <div className='venue__content'>
               <div className='venue__head'>
                 <h2>
                   {title}
@@ -26,10 +26,9 @@ class Venue extends Component {
               <div className='venue__venue'>
                 <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
               </div>
-            </div>
+            </div>}
           </div>
         </div>
-        <div className='venue__col-6' />
       </section>
     )
   }
@@ -39,7 +38,9 @@ Venue.propTypes = {
   title: PropTypes.string,
   body: PropTypes.string,
   photo: PropTypes.object,
-  link: PropTypes.string
+  link: PropTypes.string,
+  map: PropTypes.string,
+  isVenue: PropTypes.boolean
 }
 
 export default Venue

@@ -10,7 +10,7 @@ class Sponsors extends Component {
       <section>
         {this.props.sponsors.map((category, i) => {
           const title =
-            i === 0
+            i === 0 && !category.isDetailed
               ? <div className='grid'>
                 <div className='grid__inner'>
                   <div className='col-12'>
@@ -38,7 +38,7 @@ class Sponsors extends Component {
             : null
 
           let sectionClasses = category.isDetailed
-            ? 'sponsors section'
+            ? (i === 0 ? 'sponsors section sponsors--detailed' : 'sponsors section')
             : (() => {
               switch (i) {
                 case 0:

@@ -13,6 +13,10 @@ class SponsorshipCategories extends Component {
             </div>
 
             {this.props.categories.map((category, i) => {
+              if (!category.body) {
+                return null
+              }
+
               const icon = category.icon
                 ? <LazyLoad offset={200}>
                   <img
@@ -22,6 +26,13 @@ class SponsorshipCategories extends Component {
                   />
                 </LazyLoad>
                 : null
+              const teaser = category.teaser
+                ? <div className='col-4 sponsorship__teaser'>
+                  <a className='teaser' href={category.teaser.linkExternal}>
+                    <div dangerouslySetInnerHTML={{ __html: category.teaser.body }} />
+                  </a>
+                </div>
+                : null
 
               const availability = category.availability
                 ? <span>
@@ -30,23 +41,29 @@ class SponsorshipCategories extends Component {
                 : null
 
               return (
-                <div className='col-4' key={i}>
+                <div
+                  className={i === 0 ? 'col--diamond col-4' : 'col-4'}
+                  key={i}
+                >
                   {icon}
 
-                  <h3 className='sponsors__title'>
-                    {category.title}
-                  </h3>
+                  <div>
+                    <h3 className='sponsors__title'>
+                      {category.title}
+                    </h3>
 
-                  <p>
-                    <span>
-                      {category.price}
-                    </span>
-                    {availability}
-                    <br />
-                    <br />
-                  </p>
+                    <p>
+                      <strong>
+                        {category.price}
+                        &nbsp;
+                        {availability}
+                      </strong>
+                    </p>
 
-                  <div dangerouslySetInnerHTML={{ __html: category.body }} />
+                    <div dangerouslySetInnerHTML={{ __html: category.body }} />
+                  </div>
+
+                  {teaser}
                 </div>
               )
             })}
