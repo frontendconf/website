@@ -209,7 +209,7 @@ class Index extends Component {
         isHome={this.props.currentPage && this.props.currentPage.isHome}
       />
       : null
-    const venue = this.props.venue ? <Venue {...this.props.venue} isVenue={this.props.currentPage && this.props.currentPage.isVenue} /> : null
+    const venue = this.props.venue ? <Venue {...this.props.venue} isVenue={!!(this.props.currentPage && this.props.currentPage.isVenue)} /> : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors
       ? <Sponsors sponsors={this.props.sponsors} />
