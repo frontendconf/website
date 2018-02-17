@@ -72,7 +72,9 @@ class News extends Component {
                       </div>
                       <div className='blog__article-text'>
                         <span
-                          dangerouslySetInnerHTML={{ __html: item.body }}
+                          dangerouslySetInnerHTML={{
+                            __html: item.bodyShortened
+                          }}
                         />
                             &ensp;
                         <InternalLink
@@ -133,10 +135,7 @@ class News extends Component {
                 return (
                   <div key={i}>
                     {item.link
-                      ? <InternalLink
-                        slug={item.link}
-                        classes='teaser'
-                      >
+                      ? <InternalLink slug={item.link} classes='teaser'>
                         <span
                           dangerouslySetInnerHTML={{ __html: item.body }}
                         />
