@@ -85,7 +85,7 @@ function renderAndCache (req, res, pagePath, queryParams) {
     .then(html => {
       // console.log(`CACHE MISS: ${key}`)
 
-      if (!skipCache) {
+      if (html && !skipCache) {
         ssrCache.set(key, html)
       }
 
