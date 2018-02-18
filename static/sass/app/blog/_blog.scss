@@ -55,6 +55,16 @@
       color: inherit;
     }
   }
+
+  &__title {
+    @include font-size($font-size-h2);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    &-tag {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
 }
 
 .pagination {

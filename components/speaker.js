@@ -30,7 +30,9 @@ class Speaker extends Component {
         <br />
       </span>
       : null
-    const talk = this.props.talk ? <Talk {...this.props.talk} /> : null
+    const talks = this.props.talks ? this.props.talks.map((talk, i) => {
+      return <Talk {...talk} key={i} />
+    }) : null
 
     return (
       <section className='speaker section'>
@@ -72,7 +74,7 @@ class Speaker extends Component {
             </div>
           </div>
           <div className='margin-top-large' id='talk'>
-            {talk}
+            {talks}
           </div>
           <div className='grid__inner'>
             <div className='col-12'>
@@ -94,7 +96,7 @@ Speaker.propTypes = {
   twitter: PropTypes.string,
   website: PropTypes.string,
   linkedin: PropTypes.string,
-  talk: PropTypes.object,
+  talks: PropTypes.array,
   description: PropTypes.string
 }
 
