@@ -1,10 +1,24 @@
 .intro {
   background: url("../images/intro/intro-all.jpg") no-repeat center center; //TODO replace with another image
   background-size: cover;
-  padding-bottom: 130px;
+  padding-bottom: 0.5rem;
+
+  &--footer {
+    padding-bottom: 7rem;
+  }
+
+  @include breakpoint($tablet) {
+    padding-bottom: 2.5rem;
+
+    &--footer {
+      padding-bottom: 8rem;
+    }
+  }
 
   @include breakpoint($desktop) {
-    min-height: 26rem;
+    &--footer {
+      padding-bottom: 8.8rem;
+    }
   }
 
   &--bg-100 {
@@ -37,12 +51,17 @@
   }
 
   &__top-content {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
+
+    @include breakpoint($tablet) {
+      padding-top: 2.5rem;
+    }
   }
 
   &__title {
     text-transform: uppercase;
     line-height: 1;
+    margin-bottom: 0;
   }
 
   &__teaser {
@@ -96,6 +115,13 @@
       li {
         flex-grow: 1;
         padding: 0 5px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
 
         @include breakpoint($tablet) {
           padding: 0 20px;
@@ -163,6 +189,17 @@
         opacity: 1;
         font-weight: bold;
       }
+    }
+  }
+
+  .right {
+    @include breakpoint($tablet) {
+      margin-top: -0.5rem;
+      margin-bottom: -0.5rem;
+    }
+
+    @include breakpoint($desktop) {
+      margin: 0;
     }
   }
 }

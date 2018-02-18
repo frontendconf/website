@@ -19,13 +19,13 @@ class Lead extends Component {
           )
         })}
       </ul>
-      : <div
+      : (this.props.body ? <div
         className={
           this.props.isHome ? 'intro__content' : 'intro__content--light'
         }
       >
         <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
-      </div>
+      </div> : null)
 
     const teaser = this.props.teaser
       ? <div className='col-12'>
@@ -59,12 +59,18 @@ class Lead extends Component {
       </div>
       : null
 
-    const type = this.props.title ? this.props.title.toLowerCase() : null
+    let modifiers = this.props.title ? [this.props.title.toLowerCase()] : null
+
+    if (footerContent) {
+      modifiers.push('footer')
+    }
+
+    modifiers = modifiers.map(modifier => ` intro--${modifier}`).join('')
 
     return (
       <section
         className={
-          this.props.isHome ? 'intro intro--bg-100' : 'intro intro--' + type
+          this.props.isHome ? 'intro intro--bg-100' : 'intro' + modifiers
         }
       >
         <div className='intro__top-content'>
@@ -75,7 +81,7 @@ class Lead extends Component {
                   {this.props.title}
                 </h1>
               </div>
-              <div
+              {body ? <div
                 className={
                   this.props.isHome
                     ? 'col-12'
@@ -85,7 +91,7 @@ class Lead extends Component {
                 }
               >
                 {body}
-              </div>
+              </div> : null}
               {!this.props.isHome && this.props.ctas
                 ? <div className='col-4 margin-top-large right'>
                   {this.props.ctas.map((cta, i) => {
