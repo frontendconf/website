@@ -38,6 +38,15 @@ class Talk extends Component {
               className='talk__abstract'
               dangerouslySetInnerHTML={{ __html: this.props.abstract }}
             />
+
+            {this.props.video
+              ? <div
+                className='talk__video'
+                dangerouslySetInnerHTML={{
+                  __html: this.props.video
+                }}
+              />
+              : null}
           </div>
         </div>
       </div>
@@ -53,7 +62,8 @@ Talk.propTypes = {
   toTime: PropTypes.string,
   room: PropTypes.string,
   year: PropTypes.string,
-  tags: PropTypes.array
+  tags: PropTypes.array,
+  video: PropTypes.string
 }
 
 export default Talk
