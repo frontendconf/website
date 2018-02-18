@@ -57,7 +57,6 @@ class ScheduleItem extends Component {
 
 ScheduleItem.propTypes = {
   title: PropTypes.string,
-  shortDescription: PropTypes.string,
   abstract: PropTypes.string,
   date: PropTypes.string,
   fromTime: PropTypes.string,

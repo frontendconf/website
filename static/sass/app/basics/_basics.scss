@@ -181,8 +181,10 @@ a {
 }
 
 .btn,
+.teaser:not(.teaser--static),
 .navigation__link--tickets,
 .speakers__link,
+.sponsors-board__info,
 .job-board__job {
   @include hover;
 }

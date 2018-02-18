@@ -4,40 +4,43 @@ import dateFormatter from '../lib/dateFormatter'
 
 import InternalLink from './link'
 
-class News extends Component {
+class Posts extends Component {
   render () {
-    let news = this.props.teasers.map(item => {
+    let items = this.props.items.map(item => {
       item.date = dateFormatter.formatDate(item.date, 'D MMM YYYY')
 
       return item
     })
 
     if (this.props.detailId) {
-      news = news.filter(item => item._id !== this.props.detailId)
+      items = items.filter(item => item._id !== this.props.detailId)
     }
 
-    if (!this.props.isNews) {
-      news = news.slice(0, 3)
+    if (this.props.isHome) {
+      items = items.slice(0, 3)
     }
 
     if (this.props.currentTag) {
-      news = news.filter(item => {
+      items = items.filter(item => {
         return item.tags.includes(this.props.currentTag)
       })
     }
 
     const itemsPerPage = 10
-    const pages = news
+    const pages = items
       .map((e, i) => {
-        return i % itemsPerPage === 0 ? news.slice(i, i + itemsPerPage) : null
+        return i % itemsPerPage === 0 ? items.slice(i, i + itemsPerPage) : null
       })
       .filter(e => e)
 
-    return this.props.isNews
+    return !this.props.isHome
       ? <section className='section'>
         <div className='grid'>
           <div className='grid__inner'>
             <div className='col-8'>
+              {this.props.currentTag ? <h1 className='blog__title'>
+                {this.props.type === 'talks' ? 'Talks' : 'All'} about <span className="blog__title-tag">#{this.props.currentTag}</span>
+              </h1> : null}
               {pages[this.props.currentPageIndex - 1]
                 ? pages[this.props.currentPageIndex - 1].map((item, i) => {
                   return (
@@ -60,7 +63,7 @@ class News extends Component {
                         {item.tags.map((tag, ii) => {
                           return (
                             <InternalLink
-                              page='news'
+                              page={this.props.type}
                               detail='tag'
                               custom={tag}
                               title={`#${tag}`}
@@ -92,7 +95,7 @@ class News extends Component {
                 ? <div className='pagination padding-top-large'>
                   {this.props.currentPageIndex > 1
                     ? <InternalLink
-                      page='news'
+                      page={this.props.type}
                       detail='page'
                       custom={`${this.props.currentPageIndex - 1}`}
                       title='«'
@@ -100,7 +103,7 @@ class News extends Component {
                     : null}
                   {pages.map((item, i) =>
                     <InternalLink
-                      page='news'
+                      page={this.props.type}
                       detail='page'
                       custom={`${i + 1}`}
                       title={`${i + 1}`}
@@ -114,7 +117,7 @@ class News extends Component {
                   )}
                   {this.props.currentPageIndex < pages.length
                     ? <InternalLink
-                      page='news'
+                      page={this.props.type}
                       detail='page'
                       custom={`${this.props.currentPageIndex + 1}`}
                       title='»'
@@ -123,9 +126,9 @@ class News extends Component {
                 </div>
                 : null}
 
-              {this.props.currentTag
+              {this.props.detailId || this.props.currentTag
                 ? <div className='pagination padding-top-large'>
-                  <InternalLink slug='news' title='» News overview' />
+                  <InternalLink slug={this.props.overview || this.props.type} title='» Overview' />
                 </div>
                 : null}
             </div>
@@ -155,7 +158,7 @@ class News extends Component {
       : this.props.detailId
         ? <section className='blog__next-articles'>
           <h2 className='blog__next-articles-title'>Read next</h2>
-          {news.map((item, i) => {
+          {items.map((item, i) => {
             return (
               <div className='blog__article' key={i}>
                 <h3 className='blog__article-title'>
@@ -168,7 +171,7 @@ class News extends Component {
                   {item.tags.map((tag, ii) => {
                     return (
                       <InternalLink
-                        page='news'
+                        page={this.props.type}
                         detail='tag'
                         custom={tag}
                         title={`#${tag}`}
@@ -182,7 +185,7 @@ class News extends Component {
             )
           })}
           <div className='pagination padding-top-large'>
-            <InternalLink slug='news' title='» News overview' />
+            <InternalLink slug={this.props.type} title='» Overview' />
           </div>
         </section>
         : <section className='news section'>
@@ -190,10 +193,10 @@ class News extends Component {
             <div className='grid__inner'>
               <div className='col-12'>
                 <h2>
-                  <InternalLink slug='news' title='News' />
+                  <InternalLink slug={this.props.type} title='News' />
                 </h2>
               </div>
-              {news.map((item, i) => {
+              {items.map((item, i) => {
                 return (
                   <div className='col-4' key={i}>
                     <h3 className='news__title'>
@@ -211,13 +214,15 @@ class News extends Component {
   }
 }
 
-News.propTypes = {
-  teasers: PropTypes.array,
+Posts.propTypes = {
+  type: PropTypes.string,
+  items: PropTypes.array,
   contentTeasers: PropTypes.array,
-  isNews: PropTypes.bool,
+  isHome: PropTypes.bool,
   detailId: PropTypes.string,
   currentPageIndex: PropTypes.number,
-  currentTag: PropTypes.string
+  currentTag: PropTypes.string,
+  overview: PropTypes.string
 }
 
-export default News
+export default Posts

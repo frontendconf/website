@@ -181,12 +181,19 @@ export default Component => {
           : null
 
         if (currentPageType === 'speakers') {
-          currentPage.talk = (items.filter(filterByType, 'talk').find(talk => {
+          const talks = items.filter(filterByType, 'talk').filter(talk => {
             return (
               talk.fields.speaker &&
               currentItem.sys.id === talk.fields.speaker.sys.id
             )
-          }) || {}).fields
+          }).map(talk => {
+            return Object.assign({}, talk.fields, {
+              year: dateFormatter.formatYear(talk.fields.date),
+              tags: talk.fields.tags ? talk.fields.tags.map(tag => tag.fields.title) : []
+            })
+          }).sort((a, b) => a.year - b.year)
+
+          currentPage.talks = talks
         }
 
         if (currentPage && currentPage.photo) {
@@ -205,10 +212,23 @@ export default Component => {
           currentPage.isVenue = true
         }
 
-        if (query.detail && query.page === 'news' && !query.custom) {
-          currentPage.contentTitle = currentPage.title
-          currentPage.title = 'News'
-          currentPage.isNewsDetail = true
+        if (query.detail && ['news', 'talks'].includes(query.page) && !query.custom) {
+          if (query.custom === 'tag') {
+            currentPage.contentTitle = `All about #${query.custom}`
+          } else {
+            currentPage.contentTitle = currentPage.title
+          }
+
+          if (query.page === 'news') {
+            currentPage.title = 'News'
+          } else {
+            currentPage.title = 'Talks'
+
+            currentPage.body = currentPage.abstract
+          }
+
+          currentPage.isPostDetail = true
+
           currentPage.tags = currentPage.tags
             ? currentPage.tags.map(tag => {
               return tag.fields.title
@@ -272,7 +292,7 @@ export default Component => {
               ).fields
               : null,
             menu:
-                query.detail && query.page !== 'news'
+                query.detail && !['tag', 'page'].includes(query.detail) && query.page !== 'news'
                   ? getLeadMenu(
                     items,
                     currentItem.sys.contentType.sys.id,
@@ -282,13 +302,6 @@ export default Component => {
             isHome: currentPage.isHome
           }
           : null
-
-        // Add tag to title
-        if (query.custom && query.detail === 'tag') {
-          lead.title = `${lead.title}${query.custom
-            ? ` (#${query.custom})`
-            : ''}`
-        }
 
         // Fallback
         if (
@@ -452,6 +465,31 @@ export default Component => {
               })
               .sort((a, b) => a.order - b.order)
             : null
+
+        const talks = query.page === 'talks' ? items
+          .filter(filterByType, 'talk')
+          .filter(item => item.fields.speaker)
+          .map(item => {
+            const speaker = items
+              .filter(filterByType, 'speaker')
+              .find(speaker => speaker.sys.id === item.fields.speaker.sys.id)
+
+            return {
+              title: item.fields.title,
+              page: 'speakers',
+              detail: `${speaker.fields.slug}#talk`,
+              date: item.fields.date,
+              bodyShortened: item.fields.shortDescription || item.fields.abstract,
+              body: item.fields.abstract,
+              tags: item.fields.tags
+                ? item.fields.tags.map(tag => {
+                  return tag.fields.title
+                })
+                : [],
+              _id: item.sys.id
+            }
+          })
+          .sort((a, b) => new Date(b.date) - new Date(a.date)) : null
 
         const venue =
           currentPage && currentPage.showVenue && config.venueTeaser
@@ -672,6 +710,7 @@ export default Component => {
           hosts,
           speakers,
           workshops,
+          talks,
           venue,
           jobs,
           schedule,

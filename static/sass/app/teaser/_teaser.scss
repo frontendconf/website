@@ -4,7 +4,7 @@
   margin-bottom: 2rem;
 
   &:not(&--static) {
-    @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+    // @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
     @include font-size($middle-font-size);
     padding: 1.5rem;
     color: $white;

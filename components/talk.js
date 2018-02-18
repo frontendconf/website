@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import dateFormatter from '../lib/dateFormatter'
 
+import InternalLink from './link'
+
 class Talk extends Component {
   render () {
     const date = dateFormatter.formatDate(this.props.date)
@@ -10,7 +12,21 @@ class Talk extends Component {
       <div className='talk'>
         <div className='grid__inner'>
           <div className='col-8'>
-            <p className='talk__at'>Talk at FEC17</p>
+            <p className='talk__at'>
+              Talk at FEC{this.props.year}
+              {this.props.tags.map((tag, ii) => {
+                return (
+                  <InternalLink
+                    page='talks'
+                    detail='tag'
+                    custom={tag}
+                    title={`#${tag}`}
+                    classes='talk__tag'
+                    key={ii}
+                  />
+                )
+              })}
+            </p>
             <h2 className='talk__title'>
               {this.props.title}
             </h2>
@@ -35,7 +51,9 @@ Talk.propTypes = {
   date: PropTypes.string,
   fromTime: PropTypes.string,
   toTime: PropTypes.string,
-  room: PropTypes.string
+  room: PropTypes.string,
+  year: PropTypes.string,
+  tags: PropTypes.array
 }
 
 export default Talk

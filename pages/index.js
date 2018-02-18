@@ -9,7 +9,7 @@ import InternalLink from '../components/link'
 import Layout from '../components/layout'
 import Data from '../components/data'
 import Lead from '../components/lead'
-import News from '../components/news'
+import Posts from '../components/posts'
 import Hosts from '../components/hosts'
 import Speakers from '../components/speakers'
 import Speaker from '../components/speaker'
@@ -105,9 +105,9 @@ class Index extends Component {
             ? <section className='content section'>
               <div className='grid'>
                 <div className='grid__inner'>
-                  {this.props.currentPage.isNewsDetail
+                  {this.props.currentPage.isPostDetail
                     ? <div className='col-8'>
-                      <h1 className='blog__article-title-link'>
+                      <h1 className='blog__article-title'>
                         {this.props.currentPage.contentTitle}
                       </h1>
                       <div className='blog__article-info'>
@@ -140,8 +140,9 @@ class Index extends Component {
                       <Newsletter isTeaser={true} />
 
                       {this.props.news
-                        ? <News
-                          teasers={this.props.news}
+                        ? <Posts
+                          type="news"
+                          items={this.props.news}
                           contentTeasers={this.props.contentTeasers}
                           detailId={this.props.currentPage._id}
                         />
@@ -187,13 +188,26 @@ class Index extends Component {
 
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
     const news =
-      this.props.news && !this.props.currentPage.isNewsDetail
-        ? <News
-          teasers={this.props.news}
+      this.props.news && !this.props.currentPage.isPostDetail
+        ? <Posts
+          type="news"
+          items={this.props.news}
           contentTeasers={this.props.contentTeasers}
-          isNews={this.props.currentPage.isNews}
+          isHome={this.props.currentPage && this.props.currentPage.isHome}
           currentPageIndex={this.props.currentPageIndex}
           currentTag={this.props.currentTag}
+        />
+        : null
+    const talks =
+      this.props.talks && !this.props.currentPage.isPostDetail
+        ? <Posts
+          type="talks"
+          items={this.props.talks}
+          contentTeasers={this.props.contentTeasers}
+          isHome={this.props.currentPage && this.props.currentPage.isHome}
+          currentPageIndex={this.props.currentPageIndex}
+          currentTag={this.props.currentTag}
+          overview="speakers"
         />
         : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
@@ -247,6 +261,7 @@ class Index extends Component {
         {lead}
         {body}
         {news}
+        {talks}
         {this.props.currentPage && this.props.currentPage.isHome
           ? hosts
           : speakers}
@@ -276,6 +291,7 @@ Index.propTypes = {
   hosts: PropTypes.array,
   speakers: PropTypes.array,
   workshops: PropTypes.array,
+  talks: PropTypes.array,
   venue: PropTypes.object,
   jobs: PropTypes.object,
   sponsors: PropTypes.array,

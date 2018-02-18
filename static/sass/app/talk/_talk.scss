@@ -9,6 +9,11 @@
   &__room {
     margin-bottom: 1.5rem;
   }
+
+  &__tag {
+    @include gutter();
+    text-transform: uppercase;
+  }
 }
 
 .schedule {
