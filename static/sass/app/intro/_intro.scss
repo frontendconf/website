@@ -4,20 +4,20 @@
   padding-bottom: 0.5rem;
 
   &--footer {
-    padding-bottom: 7rem;
+    padding-bottom: 6rem;
   }
 
   @include breakpoint($tablet) {
     padding-bottom: 2.5rem;
 
     &--footer {
-      padding-bottom: 8rem;
+      padding-bottom: 7rem;
     }
   }
 
   @include breakpoint($desktop) {
     &--footer {
-      padding-bottom: 8.8rem;
+      padding-bottom: 7.8rem;
     }
   }
 
@@ -97,7 +97,7 @@
   }
 
   &__bottom-content {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     position: absolute;
     left: 0;
     bottom: 0;
