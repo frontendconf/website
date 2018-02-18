@@ -31,7 +31,7 @@
       position: relative;
     }
     &__info {
-      @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+      // @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
       display: block;
       color: $white;
       text-align: center;
