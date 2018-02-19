@@ -6,26 +6,34 @@ import Newsletter from './newsletter'
 
 class Lead extends Component {
   render () {
-    const body = this.props.menu.length
-      ? <ul className='list'>
-        {this.props.menu.map((item, i) => {
-          return (
-            <li key={i}>
-              <InternalLink
-                {...item}
-                classes={item.isActive ? 'active' : null}
-              />
-            </li>
-          )
-        })}
-      </ul>
-      : (this.props.body ? <div
-        className={
-          this.props.isHome ? 'intro__content' : 'intro__content--light'
-        }
-      >
-        <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
-      </div> : null)
+    const body = this.props.body ? <div
+      className={
+        this.props.isHome ? 'intro__content' : 'intro__content--light'
+      }
+    >
+      <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+    </div> : null
+
+    const menu = this.props.menu && this.props.menu.length ? <div className='intro__menu'>
+      <div className='grid'>
+        <div className='grid__inner'>
+          <div className='col-12'>
+            <ul className='list'>
+              {this.props.menu.map((item, i) => {
+                return (
+                  <li key={i}>
+                    <InternalLink
+                      {...item}
+                      classes={item.isActive ? 'active' : null}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> : null
 
     const teaser = this.props.teaser
       ? <div className='col-12'>
@@ -102,6 +110,8 @@ class Lead extends Component {
             </div>
           </div>
         </div>
+
+        {menu}
 
         {footer}
       </section>
