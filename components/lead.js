@@ -6,26 +6,34 @@ import Newsletter from './newsletter'
 
 class Lead extends Component {
   render () {
-    const body = this.props.menu.length
-      ? <ul className='list'>
-        {this.props.menu.map((item, i) => {
-          return (
-            <li key={i}>
-              <InternalLink
-                {...item}
-                classes={item.isActive ? 'active' : null}
-              />
-            </li>
-          )
-        })}
-      </ul>
-      : <div
-        className={
-          this.props.isHome ? 'intro__content' : 'intro__content--light'
-        }
-      >
-        <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+    const body = this.props.body ? <div
+      className={
+        this.props.isHome ? 'intro__content' : 'intro__content--light'
+      }
+    >
+      <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+    </div> : null
+
+    const menu = this.props.menu && this.props.menu.length ? <div className='intro__menu'>
+      <div className='grid'>
+        <div className='grid__inner'>
+          <div className='col-12'>
+            <ul className='list'>
+              {this.props.menu.map((item, i) => {
+                return (
+                  <li key={i}>
+                    <InternalLink
+                      {...item}
+                      classes={item.isActive ? 'active' : null}
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
+    </div> : null
 
     const teaser = this.props.teaser
       ? <div className='col-12'>
@@ -59,12 +67,18 @@ class Lead extends Component {
       </div>
       : null
 
-    const type = this.props.title ? this.props.title.toLowerCase() : null
+    let modifiers = this.props.title ? [this.props.title.toLowerCase()] : null
+
+    if (footerContent) {
+      modifiers.push('footer')
+    }
+
+    modifiers = modifiers.map(modifier => ` intro--${modifier}`).join('')
 
     return (
       <section
         className={
-          this.props.isHome ? 'intro intro--bg-100' : 'intro intro--' + type
+          this.props.isHome ? 'intro intro--bg-100' : 'intro' + modifiers
         }
       >
         <div className='intro__top-content'>
@@ -75,7 +89,7 @@ class Lead extends Component {
                   {this.props.title}
                 </h1>
               </div>
-              <div
+              {body ? <div
                 className={
                   this.props.isHome
                     ? 'col-12'
@@ -85,7 +99,7 @@ class Lead extends Component {
                 }
               >
                 {body}
-              </div>
+              </div> : null}
               {!this.props.isHome && this.props.ctas
                 ? <div className='col-4 margin-top-large right'>
                   {this.props.ctas.map((cta, i) => {
@@ -96,6 +110,8 @@ class Lead extends Component {
             </div>
           </div>
         </div>
+
+        {menu}
 
         {footer}
       </section>
