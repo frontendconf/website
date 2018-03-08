@@ -69,13 +69,27 @@ const Layout = ({
         <meta property='og:image' content={metaImage} />
         <meta property='og:url' content={metaUrl} />
 
-        {/* Start of HubSpot Embed Code */}
+        {/* HubSpot Embed Code */}
         <script
-          type='text/javascript'
-          id='hs-script-loader'
+          src='//js.hs-scripts.com/1935562.js'
           async
           defer
-          src='//js.hs-scripts.com/1935562.js'
+          id='hs-script-loader'
+        />
+
+        {/* Cookie Policy */}
+        <script dangerouslySetInnerHTML={{__html: `
+          var _iub = _iub || [];
+          _iub.csConfiguration = {
+            cookiePolicyId: 28536979,
+            siteId: 1032526,
+            lang: "en"
+          };
+        `}} />
+        <script
+          src="//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js"
+          async
+          defer
         />
       </Head>
 
