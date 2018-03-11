@@ -299,9 +299,9 @@ export default Component => {
             title: query.detail
               ? (menu.find(item => item.isActive) || currentPage).title
               : currentPage.title,
-            body: /* currentPage.lead
+            body: currentPage.lead
               ? currentPage.lead.replace(/(?:\r\n|\r|\n)/g, '<br />')
-              : */ null,
+              : null,
             ctas: currentPage.leadCtas
               ? currentPage.leadCtas.map(item => {
                 const title = item.fields.ctaText || item.fields.title
