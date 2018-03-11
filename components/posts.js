@@ -38,9 +38,14 @@ class Posts extends Component {
         <div className='grid'>
           <div className='grid__inner'>
             <div className='col-8'>
-              {this.props.currentTag ? <h1 className='blog__title'>
-                {this.props.type === 'talks' ? 'Talks' : 'All'} about <span className="blog__title-tag">#{this.props.currentTag}</span>
-              </h1> : null}
+              {this.props.currentTag
+                ? <h1 className='blog__title'>
+                  {this.props.type === 'talks' ? 'Talks' : 'All'} about{' '}
+                  <span className='blog__title-tag'>
+                        #{this.props.currentTag}
+                  </span>
+                </h1>
+                : null}
               {pages[this.props.currentPageIndex - 1]
                 ? pages[this.props.currentPageIndex - 1].map((item, i) => {
                   return (
@@ -128,7 +133,10 @@ class Posts extends Component {
 
               {this.props.detailId || this.props.currentTag
                 ? <div className='pagination padding-top-large'>
-                  <InternalLink slug={this.props.overview || this.props.type} title='» Overview' />
+                  <InternalLink
+                    slug={this.props.overview || this.props.type}
+                    title='» Overview'
+                  />
                 </div>
                 : null}
             </div>

@@ -16,17 +16,30 @@ class Venue extends Component {
           <LazyLoad offset={200}>
             <div className='venue__image' />
           </LazyLoad>
-          <div className={this.props.isVenue && this.props.map ? 'venue__inner venue__inner--map' : 'venue__inner'}>
-            {this.props.isVenue && this.props.map ? <div className="venue__map" dangerouslySetInnerHTML={{ __html: this.props.map }} /> : <div className='venue__content'>
-              <div className='venue__head'>
-                <h2>
-                  {title}
-                </h2>
-              </div>
-              <div className='venue__venue'>
-                <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
-              </div>
-            </div>}
+          <div
+            className={
+              this.props.isVenue && this.props.map
+                ? 'venue__inner venue__inner--map'
+                : 'venue__inner'
+            }
+          >
+            {this.props.isVenue && this.props.map
+              ? <div
+                className='venue__map'
+                dangerouslySetInnerHTML={{ __html: this.props.map }}
+              />
+              : <div className='venue__content'>
+                <div className='venue__head'>
+                  <h2>
+                    {title}
+                  </h2>
+                </div>
+                <div className='venue__venue'>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: this.props.body }}
+                  />
+                </div>
+              </div>}
           </div>
         </div>
       </section>

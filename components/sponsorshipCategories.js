@@ -29,7 +29,11 @@ class SponsorshipCategories extends Component {
               const teaser = category.teaser
                 ? <div className='col-4 sponsorship__teaser'>
                   <a className='teaser' href={category.teaser.linkExternal}>
-                    <div dangerouslySetInnerHTML={{ __html: category.teaser.body }} />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: category.teaser.body
+                      }}
+                    />
                   </a>
                 </div>
                 : null

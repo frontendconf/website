@@ -78,16 +78,20 @@ const Layout = ({
         />
 
         {/* Cookie Policy */}
-        <script dangerouslySetInnerHTML={{__html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           var _iub = _iub || [];
           _iub.csConfiguration = {
             cookiePolicyId: 28536979,
             siteId: 1032526,
             lang: "en"
           };
-        `}} />
+        `
+          }}
+        />
         <script
-          src="//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js"
+          src='//cdn.iubenda.com/cookie_solution/safemode/iubenda_cs.js'
           async
           defer
         />

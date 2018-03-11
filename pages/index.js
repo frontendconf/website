@@ -141,7 +141,7 @@ class Index extends Component {
 
                       {this.props.news
                         ? <Posts
-                          type="news"
+                          type='news'
                           items={this.props.news}
                           contentTeasers={this.props.contentTeasers}
                           detailId={this.props.currentPage._id}
@@ -166,20 +166,23 @@ class Index extends Component {
                                   classes='teaser'
                                 >
                                   <span
-                                    dangerouslySetInnerHTML={{ __html: item.body }}
+                                    dangerouslySetInnerHTML={{
+                                      __html: item.body
+                                    }}
                                   />
                                 </InternalLink>
                                 : <div className='teaser teaser--static'>
                                   <span
-                                    dangerouslySetInnerHTML={{ __html: item.body }}
+                                    dangerouslySetInnerHTML={{
+                                      __html: item.body
+                                    }}
                                   />
                                 </div>}
                             </div>
                           )
                         })}
                       </aside>
-                    </div>
-                  }
+                    </div>}
                 </div>
               </div>
             </section>
@@ -190,7 +193,7 @@ class Index extends Component {
     const news =
       this.props.news && !this.props.currentPage.isPostDetail
         ? <Posts
-          type="news"
+          type='news'
           items={this.props.news}
           contentTeasers={this.props.contentTeasers}
           isHome={this.props.currentPage && this.props.currentPage.isHome}
@@ -201,13 +204,13 @@ class Index extends Component {
     const talks =
       this.props.talks && !this.props.currentPage.isPostDetail
         ? <Posts
-          type="talks"
+          type='talks'
           items={this.props.talks}
           contentTeasers={this.props.contentTeasers}
           isHome={this.props.currentPage && this.props.currentPage.isHome}
           currentPageIndex={this.props.currentPageIndex}
           currentTag={this.props.currentTag}
-          overview="speakers"
+          overview='speakers'
         />
         : null
     const hosts = this.props.hosts ? <Hosts hosts={this.props.hosts} /> : null
@@ -223,31 +226,46 @@ class Index extends Component {
         isHome={this.props.currentPage && this.props.currentPage.isHome}
       />
       : null
-    const venue = this.props.venue ? <Venue {...this.props.venue} isVenue={!!(this.props.currentPage && this.props.currentPage.isVenue)} /> : null
+    const venue = this.props.venue
+      ? <Venue
+        {...this.props.venue}
+        isVenue={!!(this.props.currentPage && this.props.currentPage.isVenue)}
+      />
+      : null
     const jobs = this.props.jobs ? <Jobs {...this.props.jobs} /> : null
     const sponsors = this.props.sponsors
       ? <Sponsors sponsors={this.props.sponsors} />
       : null
     const sponsorshipCategories = this.props.sponsorshipCategories
-      ? <SponsorshipCategories
-        categories={this.props.sponsorshipCategories}
-      />
+      ? <SponsorshipCategories categories={this.props.sponsorshipCategories} />
       : null
     const team = this.props.team ? <Team team={this.props.team} /> : null
     const schedule = this.props.schedule
       ? <Schedule schedule={this.props.schedule} />
       : null
-    const leadAccomodations = this.props.currentPage && this.props.currentPage.isVenue && this.props.leadAccomodations
-      ? <div className="section section--top">
-        <div className="grid">
-          <div className="grid__inner">
-            <div className="col-12 margin-top-large" dangerouslySetInnerHTML={{ __html: this.props.leadAccomodations }}></div>
+    const leadAccomodations =
+      this.props.currentPage &&
+      this.props.currentPage.isVenue &&
+      this.props.leadAccomodations
+        ? <div className='section section--top'>
+          <div className='grid'>
+            <div className='grid__inner'>
+              <div
+                className='col-12 margin-top-large'
+                dangerouslySetInnerHTML={{
+                  __html: this.props.leadAccomodations
+                }}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      : null
+        : null
     const hotels = this.props.hotels
-      ? <Tourism items={this.props.hotels} lead={this.props.leadHotels} isLarge={true} />
+      ? <Tourism
+        items={this.props.hotels}
+        lead={this.props.leadHotels}
+        isLarge={true}
+      />
       : null
     const restaurants = this.props.restaurants
       ? <Tourism

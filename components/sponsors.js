@@ -38,7 +38,9 @@ class Sponsors extends Component {
             : null
 
           let sectionClasses = category.isDetailed
-            ? (i === 0 ? 'sponsors section sponsors--detailed' : 'sponsors section')
+            ? i === 0
+              ? 'sponsors section sponsors--detailed'
+              : 'sponsors section'
             : (() => {
               switch (i) {
                 case 0:
