@@ -9,6 +9,10 @@ function filterByType (item) {
   return item.sys.contentType.sys.id === this
 }
 
+function filterByTag (item) {
+  return !this || (item.tags && item.tags.includes(this))
+}
+
 function isActiveItem (slug, query, isMenu) {
   if (
     query.page &&
@@ -24,22 +28,31 @@ function isActiveItem (slug, query, isMenu) {
   }
 }
 
-function getLeadMenu (items, type, query) {
-  return items.filter(filterByType, type).map(item => {
-    const isActive = isActiveItem(item.fields.slug, query)
-    let title = item.fields.name || item.fields.title
+function getLeadMenu (items, type, query, filterTag) {
+  return items
+    .filter(filterByType, type)
+    .map(item => {
+      const isActive = isActiveItem(item.fields.slug, query)
+      let title = item.fields.name || item.fields.title
 
-    if (type === 'host') {
-      title += ' (Host)'
-    }
+      if (type === 'host') {
+        title += ' (Host)'
+      }
 
-    return {
-      title,
-      page: type + 's',
-      detail: item.fields.slug,
-      isActive
-    }
-  })
+      return {
+        title,
+        page: type + 's',
+        detail: item.fields.slug,
+        isActive,
+        tags: item.fields.tags
+          ? item.fields.tags.map(tag => {
+            return tag.fields.title
+          })
+          : []
+      }
+    })
+    .filter(filterByTag, filterTag)
+    .sort((a, b) => a.order - b.order)
 }
 
 export default Component => {
@@ -62,6 +75,9 @@ export default Component => {
         const currentItem = items.find(item => {
           return isActiveItem(item.fields.slug, query)
         })
+        const filterTag = config.filterTag
+          ? config.filterTag.fields.title
+          : null
 
         const news = items
           .filter(filterByType, 'news')
@@ -181,17 +197,23 @@ export default Component => {
           : null
 
         if (currentPageType === 'speakers') {
-          const talks = items.filter(filterByType, 'talk').filter(talk => {
-            return (
-              talk.fields.speaker &&
-              currentItem.sys.id === talk.fields.speaker.sys.id
-            )
-          }).map(talk => {
-            return Object.assign({}, talk.fields, {
-              year: dateFormatter.formatYear(talk.fields.date),
-              tags: talk.fields.tags ? talk.fields.tags.map(tag => tag.fields.title) : []
+          const talks = items
+            .filter(filterByType, 'talk')
+            .filter(talk => {
+              return (
+                talk.fields.speaker &&
+                currentItem.sys.id === talk.fields.speaker.sys.id
+              )
             })
-          }).sort((a, b) => a.year - b.year)
+            .map(talk => {
+              return Object.assign({}, talk.fields, {
+                year: dateFormatter.formatYear(talk.fields.date),
+                tags: talk.fields.tags
+                  ? talk.fields.tags.map(tag => tag.fields.title)
+                  : []
+              })
+            })
+            .sort((a, b) => a.year - b.year)
 
           currentPage.talks = talks
         }
@@ -212,7 +234,11 @@ export default Component => {
           currentPage.isVenue = true
         }
 
-        if (query.detail && ['news', 'talks'].includes(query.page) && !query.custom) {
+        if (
+          query.detail &&
+          ['news', 'talks'].includes(query.page) &&
+          !query.custom
+        ) {
           if (query.custom === 'tag') {
             currentPage.contentTitle = `All about #${query.custom}`
           } else {
@@ -292,11 +318,14 @@ export default Component => {
               ).fields
               : null,
             menu:
-                query.detail && !['tag', 'page'].includes(query.detail) && query.page !== 'news'
+                query.detail &&
+                !['tag', 'page'].includes(query.detail) &&
+                query.page !== 'news'
                   ? getLeadMenu(
                     items,
                     currentItem.sys.contentType.sys.id,
-                    query
+                    query,
+                    filterTag
                   )
                   : [],
             isHome: currentPage.isHome
@@ -314,10 +343,14 @@ export default Component => {
         // Merge speakers and hosts
         switch (currentItem.sys.contentType.sys.id) {
           case 'host':
-            lead.menu = getLeadMenu(items, 'speaker', query).concat(lead.menu)
+            lead.menu = getLeadMenu(items, 'speaker', query, filterTag).concat(
+              lead.menu
+            )
             break
           case 'speaker':
-            lead.menu = lead.menu.concat(getLeadMenu(items, 'host', query))
+            lead.menu = lead.menu.concat(
+              getLeadMenu(items, 'host', query, filterTag)
+            )
             break
         }
 
@@ -342,9 +375,15 @@ export default Component => {
                   detail: item.fields.slug,
                   description: item.fields.description,
                   photo: photo,
-                  order: item.fields.order
+                  order: item.fields.order,
+                  tags: item.fields.tags
+                    ? item.fields.tags.map(tag => {
+                      return tag.fields.title
+                    })
+                    : []
                 }
               })
+              .filter(filterByTag, filterTag)
               .sort((a, b) => a.order - b.order)
             : null
 
@@ -366,9 +405,15 @@ export default Component => {
                   detail: item.fields.slug,
                   description: item.fields.description,
                   photo: photo,
-                  order: item.fields.order
+                  order: item.fields.order,
+                  tags: item.fields.tags
+                    ? item.fields.tags.map(tag => {
+                      return tag.fields.title
+                    })
+                    : []
                 }
               })
+              .filter(filterByTag, filterTag)
               .sort((a, b) => a.order - b.order)
             : null
 
@@ -460,36 +505,48 @@ export default Component => {
                   workshopGiver: item.fields.teacher.fields.name,
                   description: item.fields.lead,
                   photo: photo,
-                  order: item.fields.order
+                  order: item.fields.order,
+                  tags: item.fields.tags
+                    ? item.fields.tags.map(tag => {
+                      return tag.fields.title
+                    })
+                    : []
                 }
               })
+              .filter(filterByTag, filterTag)
               .sort((a, b) => a.order - b.order)
             : null
 
-        const talks = query.page === 'talks' ? items
-          .filter(filterByType, 'talk')
-          .filter(item => item.fields.speaker)
-          .map(item => {
-            const speaker = items
-              .filter(filterByType, 'speaker')
-              .find(speaker => speaker.sys.id === item.fields.speaker.sys.id)
+        const talks =
+          query.page === 'talks'
+            ? items
+              .filter(filterByType, 'talk')
+              .filter(item => item.fields.speaker)
+              .map(item => {
+                const speaker = items
+                  .filter(filterByType, 'speaker')
+                  .find(
+                    speaker => speaker.sys.id === item.fields.speaker.sys.id
+                  )
 
-            return {
-              title: item.fields.title,
-              page: 'speakers',
-              detail: `${speaker.fields.slug}#talk`,
-              date: item.fields.date,
-              bodyShortened: item.fields.shortDescription || item.fields.abstract,
-              body: item.fields.abstract,
-              tags: item.fields.tags
-                ? item.fields.tags.map(tag => {
-                  return tag.fields.title
-                })
-                : [],
-              _id: item.sys.id
-            }
-          })
-          .sort((a, b) => new Date(b.date) - new Date(a.date)) : null
+                return {
+                  title: item.fields.title,
+                  page: 'speakers',
+                  detail: `${speaker.fields.slug}#talk`,
+                  date: item.fields.date,
+                  bodyShortened:
+                      item.fields.shortDescription || item.fields.abstract,
+                  body: item.fields.abstract,
+                  tags: item.fields.tags
+                    ? item.fields.tags.map(tag => {
+                      return tag.fields.title
+                    })
+                    : [],
+                  _id: item.sys.id
+                }
+              })
+              .sort((a, b) => new Date(b.date) - new Date(a.date))
+            : null
 
         const venue =
           currentPage && currentPage.showVenue && config.venueTeaser
