@@ -85,7 +85,11 @@ const Layout = ({
           _iub.csConfiguration = {
             cookiePolicyId: 28536979,
             siteId: 1032526,
-            lang: "en"
+            lang: "en",
+            banner: {
+              slideDown: false,
+              applyStyles: false
+            }
           };
         `
           }}
