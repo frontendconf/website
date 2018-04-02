@@ -1,0 +1,16 @@
+.newsletter {
+
+  .form {
+    display: flex;
+  }
+
+  .form__input {
+    flex: 1;
+  }
+
+  .btn {
+    background: $black;
+    margin-bottom: 0;
+    width: auto;
+  }
+}

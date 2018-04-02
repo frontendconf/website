@@ -1,5 +1,12 @@
 $breakpoints: (xs: $mobile, sm: $tablet, md: $desktop, lg: $wide);
 
+$xsmall-font-size: (
+  null: (0.7rem, 1.35),
+  sm: 0.7rem,
+  md: 0.7rem,
+  lg: 0.7rem
+);
+
 $small-font-size: (
   null: (0.875rem, 1.35),
   sm: 0.875rem,
@@ -24,10 +31,10 @@ $font-size-h1: (
 );
 
 $font-size-h2: (
-  null: (1.125rem, 1.35),
+  null: (1.5rem, 1.35),
   sm: 1.625rem,
   md: 1.625rem,
   lg: 2.344rem
 );
 
-$font-size-h3: (null: (1rem, 1.35), sm: 1.125rem, md: 1.125rem, lg: 1.6rem);
+$font-size-h3: (null: (1.125rem, 1.35), sm: 1.125rem, md: 1.125rem, lg: 1.6rem);

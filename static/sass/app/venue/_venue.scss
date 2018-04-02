@@ -1,5 +1,5 @@
 .venue {
-  padding: 30px 15px;
+  padding: 30px 15px 40px 15px;
   background: $venue-background;
   color: $white;
 
@@ -40,7 +40,7 @@
     @include breakpoint($tablet-max) {
       display: block;
       height: 480px;
-      margin: -30px -15px 15px -15px;
+      margin: -30px -15px 20px -15px;
     }
   }
 

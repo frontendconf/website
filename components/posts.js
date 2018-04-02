@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import dateFormatter from '../lib/dateFormatter'
 
 import InternalLink from './link'
+import Newsletter from './newsletter'
 
 class Posts extends Component {
   render () {
@@ -17,7 +18,7 @@ class Posts extends Component {
     }
 
     if (this.props.isHome) {
-      items = items.slice(0, 3)
+      items = items.slice(0, 2)
     }
 
     if (this.props.currentTag) {
@@ -216,6 +217,9 @@ class Posts extends Component {
                   </div>
                 )
               })}
+              <div className='col-4'>
+                <Newsletter />
+              </div>
             </div>
           </div>
         </section>

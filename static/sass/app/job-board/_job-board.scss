@@ -23,6 +23,11 @@
 
     &--all {
       position: relative;
+      min-height: 3.75rem;
+    }
+
+    @include breakpoint($tablet-max) {
+      margin-bottom: 0.5rem;
     }
   }
 
@@ -37,6 +42,10 @@
       margin-bottom: 0;
       @include middle(absolute);
     }
+
+    @include breakpoint($tablet-max) {
+      font-size: 1.125rem;
+    }
   }
 
   &__company {
@@ -48,7 +57,7 @@
   &__freshjobs-container {
     text-align: right;
     text-transform: uppercase;
-    @include font-size($small-font-size);
+    @include font-size($xsmall-font-size);
   }
 
   &__freshjobs-link {
@@ -69,5 +78,14 @@
     margin-left: 0.75rem;
     fill: #37474f;
     @include transition(fill 0.4s ease);
+  }
+
+  @include breakpoint($tablet-max) {
+    .col-4 {
+      @include span(12 inside);
+      // TODO: Figure out why this is needed
+      padding-left: 1.38889%;
+      padding-right: 1.38889%;
+    }
   }
 }

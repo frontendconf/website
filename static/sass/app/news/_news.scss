@@ -4,6 +4,10 @@
 
   &__title {
     text-transform: uppercase;
+
+    .home & {
+      margin: 0;
+    }
   }
 
   &__link {
@@ -14,6 +18,11 @@
     font-size: 1rem;
     text-transform: uppercase;
     opacity: 0.7;
+
+    .home & {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
   }
 
   .col-4 {
@@ -37,6 +46,18 @@
       &:nth-child(3n + 2) {
         clear: left;
       }
+    }
+  }
+
+  .newsletter {
+
+  }
+
+  @include breakpoint($tablet-max) {
+    padding: 1.5rem 0;
+
+    .newsletter {
+      margin: 0.5rem 0 1.5rem 0;
     }
   }
 }

@@ -55,6 +55,13 @@
       }
       &-become {
         color: $white;
+
+        strong {
+          text-transform: uppercase;
+          @include font-size($font-size-h3);
+          @include opensanscondensedbold;
+        }
+
         &:focus,
         &:hover {
           color: $white;
@@ -65,6 +72,10 @@
         .sponsors__link {
           position: relative;
         }
+      }
+
+      @include breakpoint($tablet-max) {
+        margin: 0 5px;
       }
     }
     &__info-text {

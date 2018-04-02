@@ -26,9 +26,10 @@
     background-size: cover;
     height: calc(100vh - 25rem);
     min-height: 400px;
-    max-height: 500px;
+    max-height: 450px;
 
     @include breakpoint($desktop) {
+      min-height: 550px;
       max-height: 850px;
     }
   }
@@ -51,10 +52,10 @@
   }
 
   &__top-content {
-    padding-top: 1.5rem;
+    padding-top: 2.5rem;
 
-    @include breakpoint($tablet) {
-      padding-top: 2.5rem;
+    @include breakpoint($tablet-max) {
+      padding-top: 1.25rem;
     }
   }
 
@@ -73,9 +74,9 @@
   }
 
   &__content {
-    letter-spacing: 0.05em;
+    // letter-spacing: 0.05em;
     text-transform: uppercase;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 1;
     @include opensanscondensedlight;
 
@@ -141,33 +142,41 @@
         }
       }
     }
+
+    @include breakpoint($tablet-max) {
+      padding: 0.65rem 0;
+    }
   }
 
   &__bottom-left {
-    @include breakpoint($tablet) {
-      float: left;
-    }
-  }
-
-  &__bottom-right {
-    float: left;
-    width: 100%;
-    margin-top: 20px;
-
-    .form__input {
-      width: calc(100% - 150px);
-    }
+    display: flex;
+    margin: 0 -0.5rem;
 
     .btn {
-      width: 150px;
+      width: auto;
+      margin: 0 0.5rem;
     }
 
-    @include breakpoint($desktop) {
-      float: right;
-      width: auto;
-      margin-top: 0;
+    @include breakpoint($tablet-max) {
+
+      .btn {
+        padding: 1rem;
+        flex-grow: 1;
+      }
     }
   }
+
+  // &__bottom-right {
+  //   float: left;
+  //   width: 100%;
+  //   margin-top: 20px;
+
+  //   @include breakpoint($desktop) {
+  //     float: right;
+  //     width: auto;
+  //     margin-top: 0;
+  //   }
+  // }
 
   .list {
     width: 100%;

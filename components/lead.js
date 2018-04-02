@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import InternalLink from './link'
-import Newsletter from './newsletter'
+// import Newsletter from './newsletter'
 
 class Lead extends Component {
   render () {
@@ -57,9 +57,9 @@ class Lead extends Component {
           })}
         </div>
 
-        <div className='intro__bottom-right'>
+        {/* <div className='intro__bottom-right'>
           {this.props.isHome ? <Newsletter /> : null}
-        </div>
+        </div> */}
       </div>
       : teaser
 

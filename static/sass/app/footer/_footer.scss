@@ -42,7 +42,9 @@
       margin: 0 0 0 4rem;
 
       @include breakpoint($tablet-max) {
+        line-height: 3rem;
         margin-left: 0;
+        text-align: center;
       }
 
       a {
@@ -58,6 +60,22 @@
     li {
       margin-bottom: .5rem;
     }
+
+    @include breakpoint($tablet-max) {
+      display: flex;
+      margin: 0 -5px 25px -5px;
+
+      li {
+        flex: 1;
+        margin: 0 5px;
+        display: flex;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 
   .list-inline {
@@ -65,7 +83,11 @@
   }
 
   .newsletter {
+    @include breakpoint($tablet-max) {
+      margin: 40px 0 20px 0;
+    }
   }
+
   .social {
     $social-size: 40px;
 
@@ -73,7 +95,7 @@
       width: $social-size;
       height: $social-size;
       padding: 0;
-      margin: 0 0 .5rem .15rem;
+      margin: 0 0 10px 10px;
 
       a {
         width: $social-size;
@@ -93,23 +115,10 @@
 }
 
 .footer {
-  .btn {
-    @include breakpoint($tablet-max) {
-      padding: 1rem 2rem;
-      height: 48px;
-    }
-  }
 
   .col-xs-6 {
     @include breakpoint($tablet-max) {
       width: 100%;
-    }
-  }
-
-  .form__input {
-    @include breakpoint($tablet-max) {
-      width: 100%;
-      margin: 20px 0 10px 0;
     }
   }
 }

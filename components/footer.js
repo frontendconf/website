@@ -61,7 +61,7 @@ class Footer extends Component {
             </div>
             <div className='col-12 center margin-top-large'>
               <ul className='list-inline'>
-                <li>2011-2017 Frontend Conference Zürich</li>
+                <li>2011-2018 Frontend Conference Zürich</li>
 
                 {this.props.menuMeta.map((item, i) => {
                   return (

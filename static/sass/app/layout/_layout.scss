@@ -21,7 +21,7 @@ $susy: (
 
 .grid {
   @include container($susy);
-  padding: 0 15px;
+  padding: 0 0.5rem;
 
   @include breakpoint($mobile) {
     @include container(4);
@@ -84,6 +84,8 @@ $susy: (
 }
 
 .col-8 {
+  @include span(12 inside);
+
   @include breakpoint($tablet) {
     @include span(8 inside);
   }
