@@ -83,11 +83,12 @@
 
   &__subtitle {
     text-transform: uppercase;
-    padding-top: 4rem;
+    padding-top: 3rem;
     border-top: 1px solid #e3e8eb;
+    margin-bottom: -3rem;
 
     @include breakpoint($tablet) {
-      margin-bottom: -3.75rem;
+      margin-bottom: -6.5rem;
     }
   }
 }
@@ -95,6 +96,18 @@
 .speaker {
   h1 {
     margin-bottom: 2rem;
+  }
+
+  &__details {
+    @include breakpoint($tablet-max) {
+      display: flex;
+      flex-direction: column;
+
+      .col-8 {
+        order: 1;
+        margin-top: 2rem;
+      }
+    }
   }
 
   &__profile {
@@ -107,11 +120,15 @@
     }
 
     &-text {
-      padding-top: gutter();
-      padding-bottom: gutter();
+      padding: 1rem;
+      @include breakpoint($tablet) {
+        padding-bottom: 3rem;
+      }
     }
+
     &-website {
       @extend .margin-top-normal;
+      word-wrap: break-word;
       a {
         padding-right: 2rem;
         color: $link-bright;
@@ -123,7 +140,10 @@
   }
 
   // Speaker subpage change layout of other speakers
-  + .speakers {
+  + .speakers,
+  + .speakers + .hosts {
+
+    .col-6,
     .col-xs-6 {
       width: 100%;
 
@@ -141,6 +161,8 @@
     }
 
     .person {
+      margin-bottom: 1rem;
+
       &__title {
         font-size: 1.3rem;
         line-height: 1.2;
@@ -154,47 +176,36 @@
       &__caption {
         display: inline-block;
         overflow-y: hidden;
-        width: calc(100% - 60px - 1rem);
+        width: calc(100% - 70px - 1rem);
       }
 
       &__image-container {
         float: left;
         position: relative;
-        top: 6px;
-        width: 60px;
+        top: 0.25rem;
+        width: 70px;
         padding-right: 1rem;
       }
     }
   }
-}
 
-.other_speakers {
-  &_line {
-    border-top: 1px solid $silver;
-    @extend .margin-top-normal;
-    @extend .padding-top-normal;
-  }
+  + .speakers + .hosts {
+    margin-top: -2rem;
+    padding-top: 0;
 
-  .person {
-    margin-bottom: gutter(2);
-
-    &__image {
-      @include span (1 of 3 inside);
-      padding: 0;
-    }
-
-    &__caption {
-      @include span (2 of 3 inside);
-    }
-
-    &__title,
-    &__name {
-      @include font-size($regular-font-size);
-    }
-
-    &__job-title,
-    &__more {
+    .col-12 {
       display: none;
+    }
+
+    @include breakpoint($tablet) {
+      margin-top: -3.75rem;
+    }
+
+    @include breakpoint($tablet-max) {
+      .col-6 {
+        padding-left: gutter();
+        padding-right: gutter();
+      }
     }
   }
 }

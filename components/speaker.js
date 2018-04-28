@@ -44,9 +44,19 @@ class Speaker extends Component {
               <h1>
                 {this.props.name}
               </h1>
+            </div>
+          </div>
+          <div className='grid__inner speaker__details'>
+            <div className='col-8'>
+              <div dangerouslySetInnerHTML={{ __html: this.props.bio }} />
 
+              <div className='margin-top-large' id='talk'>
+                {talks}
+              </div>
+            </div>
+            <div className='col-4'>
               <div className='speaker__profile'>
-                <div className='col-3 speaker__profile-image'>
+                <div className='speaker__profile-image'>
                   <LazyLoad offset={200}>
                     <img
                       className='person__image'
@@ -56,10 +66,8 @@ class Speaker extends Component {
                   </LazyLoad>
                 </div>
 
-                <div className='col-9 speaker__profile-text'>
-                  <p className='speaker__profile-website'>
-                    {this.props.description}
-                  </p>
+                <div className='speaker__profile-text'>
+                  {this.props.description}
 
                   <p className='speaker__profile-website'>
                     {twitter}
@@ -71,16 +79,8 @@ class Speaker extends Component {
             </div>
           </div>
           <div className='grid__inner'>
-            <div className='col-8 margin-top-large speaker__profile-text'>
-              <div dangerouslySetInnerHTML={{ __html: this.props.bio }} />
-            </div>
-          </div>
-          <div className='margin-top-large' id='talk'>
-            {talks}
-          </div>
-          <div className='grid__inner'>
             <div className='col-12'>
-              <h3 className='speakers__subtitle'>More Speakers</h3>
+              <h3 className='speakers__subtitle'>Speakers & Hosts</h3>
             </div>
           </div>
         </div>

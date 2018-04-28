@@ -7,15 +7,16 @@ import InternalLink from './link'
 class Lead extends Component {
   render () {
     // DEV: Currently, the lead text is only visible on home
-    const body = this.props.body && this.props.isHome
-      ? <div
-        className={
-          this.props.isHome ? 'intro__content' : 'intro__content--light'
-        }
-      >
-        <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
-      </div>
-      : null
+    const body =
+      this.props.body && this.props.isHome
+        ? <div
+          className={
+            this.props.isHome ? 'intro__content' : 'intro__content--light'
+          }
+        >
+          <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
+        </div>
+        : null
 
     const menu =
       this.props.menu && this.props.menu.length

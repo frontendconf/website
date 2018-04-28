@@ -360,7 +360,9 @@ export default Component => {
             : null
 
         const hosts =
-          currentPage && currentPage.showSpeakers
+          (currentPage && currentPage.showSpeakers) ||
+          (currentPage && currentPageType === 'speakers') ||
+          (currentPage && currentPageType === 'hosts')
             ? items
               .filter(filterByType, 'host')
               .map(item => {
@@ -436,7 +438,9 @@ export default Component => {
               room: item.fields.room,
               speaker: item.fields.speaker,
               description: item.fields.shortDescription,
-              sortTime: item.fields.fromTime ? item.fields.fromTime.split(':').join('') : null,
+              sortTime: item.fields.fromTime
+                ? item.fields.fromTime.split(':').join('')
+                : null,
               sortRoom: item.fields.room.charCodeAt(0),
               showAbstractOnMobile: item.fields.showAbstractOnMobile
             }

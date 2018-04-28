@@ -10,45 +10,45 @@ class Talk extends Component {
 
     return (
       <div className='talk'>
-        <div className='grid__inner'>
-          <div className='col-8'>
-            <p className='talk__at'>
-              Talk at FEC{this.props.year}
-              {this.props.tags.map((tag, ii) => {
-                return (
-                  <InternalLink
-                    page='talks'
-                    detail='tag'
-                    custom={tag}
-                    title={`#${tag}`}
-                    classes='talk__tag'
-                    key={ii}
-                  />
-                )
-              })}
-            </p>
-            <h2 className='talk__title'>
-              {this.props.title}
-            </h2>
-            <h4 className='talk__room'>
-              {date} {this.props.fromTime} – {this.props.toTime},{' '}
-              {this.props.room}
-            </h4>
-            <div
-              className='talk__abstract'
-              dangerouslySetInnerHTML={{ __html: this.props.abstract }}
-            />
-
-            {this.props.video
-              ? <div
-                className='talk__video'
-                dangerouslySetInnerHTML={{
-                  __html: this.props.video
-                }}
+        <p className='talk__at'>
+          Talk at FEC{this.props.year}
+          {this.props.tags.map((tag, ii) => {
+            return (
+              <InternalLink
+                page='talks'
+                detail='tag'
+                custom={tag}
+                title={`#${tag}`}
+                classes='talk__tag'
+                key={ii}
               />
-              : null}
-          </div>
-        </div>
+            )
+          })}
+        </p>
+        <h2 className='talk__title'>
+          {this.props.title}
+        </h2>
+        <h4 className='talk__room'>
+          {date}
+          {this.props.fromTime}
+          {this.props.fromTime && this.props.toTime ? '–' : null}
+          {this.props.toTime}
+          {date ? ', ' : null}
+          {date ? this.props.room : null}
+        </h4>
+        <div
+          className='talk__abstract'
+          dangerouslySetInnerHTML={{ __html: this.props.abstract }}
+        />
+
+        {this.props.video
+          ? <div
+            className='talk__video'
+            dangerouslySetInnerHTML={{
+              __html: this.props.video
+            }}
+          />
+          : null}
       </div>
     )
   }

@@ -2,6 +2,10 @@
   padding-top: 3.75rem;
   padding-bottom: 3.75rem;
 
+  &__at {
+    padding-bottom: 1.5rem;
+  }
+
   &__title {
     margin-top: 0;
   }
@@ -13,6 +17,13 @@
   &__tag {
     @include gutter();
     text-transform: uppercase;
+  }
+
+  &__abstract {
+    // Shift title
+    h2 {
+      @include font-size($font-size-h3);
+    }
   }
 
   &__video {
