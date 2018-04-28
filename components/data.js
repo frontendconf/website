@@ -436,7 +436,7 @@ export default Component => {
               room: item.fields.room,
               speaker: item.fields.speaker,
               description: item.fields.shortDescription,
-              sortTime: item.fields.fromTime.split(':').join(''),
+              sortTime: item.fields.fromTime ? item.fields.fromTime.split(':').join('') : null,
               sortRoom: item.fields.room.charCodeAt(0),
               showAbstractOnMobile: item.fields.showAbstractOnMobile
             }
