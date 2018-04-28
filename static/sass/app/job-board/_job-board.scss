@@ -13,6 +13,18 @@
     margin-bottom: 0.5rem;
     position: relative;
     height: 100%;
+
+    @include breakpoint($tablet) {
+      min-height: 8.25rem;
+    }
+
+    @include breakpoint($desktop) {
+      min-height: 7.25rem;
+    }
+
+    @include breakpoint($wide) {
+      min-height: 8.25rem;
+    }
   }
 
   &__job-title {
