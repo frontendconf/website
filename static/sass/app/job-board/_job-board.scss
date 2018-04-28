@@ -1,6 +1,10 @@
 .job-board {
   background: $job-board-background;
 
+  h2 {
+    margin-bottom: 1rem;
+  }
+
   &__job {
     background: $white;
     display: block;
@@ -23,8 +27,7 @@
     }
 
     &--all {
-      position: relative;
-      min-height: 3.75rem;
+      min-height: 0;
     }
 
     @include breakpoint($tablet-max) {
@@ -39,9 +42,7 @@
     @include opensanscondensedbold;
 
     &--all {
-      text-align: center;
       margin-bottom: 0;
-      @include middle(absolute);
     }
 
     @include breakpoint($tablet-max) {
