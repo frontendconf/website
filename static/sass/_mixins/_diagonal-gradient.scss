@@ -20,7 +20,7 @@
     top: 0;
     left: 0;
     opacity: 0;
-    width: 0;
+    width: 100%;
     z-index: -100;
     background: $color1-hover;
     background: linear-gradient(
@@ -39,14 +39,12 @@
 
     &:before {
       opacity: 1;
-      width: 100%;
     }
 
     // Skip button animations on touch devices to prevent having to double-tap
     @media (pointer: coarse) {
       &:before {
         opacity: 0;
-        width: 0;
       }
     }
   }
