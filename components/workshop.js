@@ -14,20 +14,21 @@ class Workshop extends Component {
       <section className='workshop section'>
         <div className='grid'>
           <div className='grid__inner'>
-            <div className='col-8'>
+            <div className='col-12'>
               <h1>
                 {this.props.title}
               </h1>
-
-              <h2>
-                {this.props.lead}
-              </h2>
-
+            </div>
+          </div>
+          <div className='grid__inner'>
+            <div className='col-8'>
               <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
             </div>
 
             <div className='col-4'>
-              <Person {...this.props.teacher} />
+              <div className='speaker__profile'>
+                <Person {...this.props.teacher} />
+              </div>
 
               {cta}
             </div>

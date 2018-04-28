@@ -55,6 +55,31 @@
   &__workshop {
     display: block;
   }
+
+  .speaker__profile & {
+    margin-bottom: 1rem;
+
+    &__title {
+      font-size: inherit;
+    }
+
+    &__link {
+      color: inherit;
+    }
+
+    &__name {
+      text-transform: none;
+    }
+
+    &__caption {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    @include breakpoint($tablet) {
+      margin-bottom: 3rem;
+    }
+  }
 }
 
 .speakers {
@@ -105,7 +130,6 @@
 
       .col-8 {
         order: 1;
-        margin-top: 2rem;
       }
     }
   }
@@ -113,6 +137,8 @@
   &__profile {
     background: $silver-light;
     @include clearfix();
+    margin-bottom: 2rem;
+
     [class*=col-] {
       &:first-child {
         padding-left: 0;
