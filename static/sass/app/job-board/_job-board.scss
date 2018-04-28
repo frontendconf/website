@@ -36,6 +36,7 @@
   }
 
   &__freshjobs-container {
+    color: $blue-dark;
     text-align: right;
     text-transform: uppercase;
     @include font-size($xsmall-font-size);
@@ -52,12 +53,11 @@
 
   &__freshjobs-logo {
     display: inline-block;
-    height: 31px;
-    width: 110px;
+    width: 100px;
     position: relative;
     top: 10px;
     margin-left: 0.75rem;
-    fill: #37474f;
+    fill: rgb(0, 107, 149);
     @include transition(fill 0.4s ease);
   }
 
