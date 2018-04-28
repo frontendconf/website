@@ -60,7 +60,7 @@
     "build": "next build",
     "start": "node server.js",
     "deploy": "now --team=frontendconf",
-    "alias": "now alias set",
+    "alias": "now --team=frontendconf alias set",
     "logs": "now logs www.frontendconf.ch",
     "logs-dev": "now logs dev.frontendconf.ch",
     "lint": "eslint .",
