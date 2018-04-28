@@ -4096,9 +4096,9 @@
       "resolved": "https://registry.npmjs.org/normalize-url/-/normalize-url-1.9.1.tgz"
     },
     "now": {
-      "version": "7.3.0",
-      "from": "now@>=7.3.0 <8.0.0",
-      "resolved": "https://registry.npmjs.org/now/-/now-7.3.0.tgz",
+      "version": "11.1.7",
+      "from": "now@latest",
+      "resolved": "https://registry.npmjs.org/now/-/now-11.1.7.tgz",
       "dev": true
     },
     "npm": {
