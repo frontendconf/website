@@ -6,8 +6,9 @@
     display: block;
     color: $blue-dark;
     padding: 1.25rem;
-    margin-bottom: 1.38889%*6;
+    margin-bottom: 1.5rem;
     position: relative;
+    height: 100%;
 
     @include breakpoint($tablet) {
       min-height: 8.25rem;

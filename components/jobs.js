@@ -32,7 +32,9 @@ class Jobs extends Component {
     const title = this.props.isDetailed
       ? null
       : <div className='col-12'>
-        <h2>Jobs</h2>
+        <h2>
+          <InternalLink slug={this.props.page.slug}>Job board</InternalLink>
+        </h2>
       </div>
 
     const showAll = this.props.page
