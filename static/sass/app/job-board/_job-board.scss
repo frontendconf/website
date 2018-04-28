@@ -10,35 +10,14 @@
     display: block;
     color: $blue-dark;
     padding: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     position: relative;
     height: 100%;
-
-    @include breakpoint($tablet) {
-      min-height: 8.25rem;
-    }
-
-    @include breakpoint($desktop) {
-      min-height: 7.25rem;
-    }
-
-    @include breakpoint($wide) {
-      min-height: 8.25rem;
-    }
-
-    &--all {
-      min-height: 0;
-    }
-
-    @include breakpoint($tablet-max) {
-      margin-bottom: 0.5rem;
-    }
   }
 
   &__job-title {
     text-transform: uppercase;
     display: block;
-    margin-bottom: 0.5rem;
     @include opensanscondensedbold;
 
     &--all {
