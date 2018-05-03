@@ -209,7 +209,7 @@ export default Component => {
               return Object.assign({}, talk.fields, {
                 year: dateFormatter.formatYear(talk.fields.date),
                 tags: talk.fields.tags
-                  ? talk.fields.tags.map(tag => tag.fields.title)
+                  ? [] // talk.fields.tags.map(tag => tag.fields.title)
                   : []
               })
             })
