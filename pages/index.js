@@ -85,6 +85,43 @@ class Index extends Component {
     this.sendLocationToGA()
   }
 
+  renderBodyParts (html) {
+    let parts = html.split(/<!--(?:\s*)entries(?:\s*):(?:\s*)(.*?)(?:\s*)-->/gi)
+
+    parts = parts.map((part, i) => {
+      if (i % 2) {
+        let Component
+        let props
+
+        switch (part) {
+          case 'team':
+            Component = Team
+            props = {
+              team: this.props.team
+            }
+            break
+        }
+
+        return Component ? <Component {...props} key={i} /> : null
+      }
+
+      return (
+        <div
+          key={i}
+          dangerouslySetInnerHTML={{
+            __html: part
+          }}
+        />
+      )
+    })
+
+    return (
+      <div>
+        {parts}
+      </div>
+    )
+  }
+
   render () {
     let body
 
@@ -131,11 +168,7 @@ class Index extends Component {
                         })}
                       </div>
 
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: this.props.currentPage.body
-                        }}
-                      />
+                      {this.renderBodyParts(this.props.currentPage.body)}
 
                       <Newsletter isTeaser={true} />
 
@@ -150,11 +183,7 @@ class Index extends Component {
                     </div>
                     : <div>
                       <div className='col-8'>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: this.props.currentPage.body
-                          }}
-                        />
+                        {this.renderBodyParts(this.props.currentPage.body)}
                       </div>
                       <aside className='col-4 margin-top-large'>
                         {this.props.contentTeasers.map((item, i) => {
