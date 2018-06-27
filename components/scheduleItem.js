@@ -36,9 +36,11 @@ class ScheduleItem extends Component {
           </span>
         </div>
         <div className='schedule__details'>
-          <LazyLoad offset={200}>
-            <img className='schedule__photo' src={photo} />
-          </LazyLoad>
+          {photo
+            ? <LazyLoad offset={200}>
+              <img className='schedule__photo' src={photo} />
+            </LazyLoad>
+            : null}
           <h2 className='schedule__title'>
             {title}
           </h2>
@@ -47,7 +49,7 @@ class ScheduleItem extends Component {
           </p>
           <div
             className='schedule__abstract'
-            dangerouslySetInnerHTML={{ __html: this.props.abstract }}
+            dangerouslySetInnerHTML={{ __html: this.props.description }}
           />
         </div>
       </div>
