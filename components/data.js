@@ -682,28 +682,26 @@ export default Component => {
           })
         }
 
-        const team =
-          currentPage && currentPage.showTeam
-            ? items
-              .filter(filterByType, 'team')
-              .map(item => {
-                const photo = item.fields.photo
-                  ? item.fields.photo.fields.file.url +
-                      '?w=250&h=250&fit=fill'
-                  : null
+        const team = currentPage
+          ? items
+            .filter(filterByType, 'team')
+            .map(item => {
+              const photo = item.fields.photo
+                ? item.fields.photo.fields.file.url + '?w=250&h=250&fit=fill'
+                : null
 
-                return {
-                  name: item.fields.name,
-                  description: item.fields.description,
-                  twitter: item.fields.twitter,
-                  photo: photo,
-                  company: item.fields.company,
-                  companyLink: item.fields.companyLink,
-                  order: item.fields.order
-                }
-              })
-              .sort((a, b) => a.order - b.order)
-            : null
+              return {
+                name: item.fields.name,
+                description: item.fields.description,
+                twitter: item.fields.twitter,
+                photo: photo,
+                company: item.fields.company,
+                companyLink: item.fields.companyLink,
+                order: item.fields.order
+              }
+            })
+            .sort((a, b) => a.order - b.order)
+          : null
 
         const contentTeasers = currentPage.contentTeasers
           ? currentPage.contentTeasers.map(contentTeaser => {
