@@ -268,7 +268,10 @@ class Index extends Component {
     const sponsorshipCategories = this.props.sponsorshipCategories
       ? <SponsorshipCategories categories={this.props.sponsorshipCategories} />
       : null
-    const team = this.props.team ? <Team team={this.props.team} /> : null
+    const team =
+      this.props.team && this.props.currentPage.showTeam
+        ? <Team team={this.props.team} />
+        : null
     const schedule = this.props.schedule
       ? <Schedule schedule={this.props.schedule} />
       : null
