@@ -116,6 +116,32 @@
       margin-bottom: -6.5rem;
     }
   }
+
+  // Bleed outside of column if necessary
+  // Dimensions are rather magic but seem to work +/-
+  .col-8 & {
+    padding-bottom: 0;
+
+    .grid {
+      $colWidth: 730;
+      $spacingWidth: 10;
+
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: - ($spacingWidth / $colWidth) * 100%;
+      margin-right: - ($spacingWidth / $colWidth) * 100%;
+      margin-top: 2rem;
+
+      @include breakpoint($tablet) {
+        $colWidth: 716;
+        $spacingWidth: 15;
+        $containerWidth: 1090 + $spacingWidth;
+
+        margin-left: - ($spacingWidth / $colWidth) * 100%;
+        margin-right: - (($containerWidth - $colWidth) / $colWidth) * 100%;
+      }
+    }
+  }
 }
 
 .speaker {
