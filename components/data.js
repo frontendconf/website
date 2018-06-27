@@ -425,49 +425,59 @@ export default Component => {
         if (currentPage && currentPage.showSchedule) {
           schedule = {}
 
-          items.filter(filterByType, 'talk').forEach(item => {
-            let talk = {
-              title: item.fields.title,
-              page: 'schedule',
-              abstract: item.fields.abstract,
-              from: item.fields.from,
-              to: item.fields.to,
-              day: item.fields.date,
-              fromTime: item.fields.fromTime,
-              toTime: item.fields.toTime,
-              room: item.fields.room,
-              speaker: item.fields.speaker,
-              description: item.fields.shortDescription,
-              sortTime: item.fields.fromTime
-                ? item.fields.fromTime.split(':').join('')
-                : null,
-              sortRoom: item.fields.room.charCodeAt(0),
-              showAbstractOnMobile: item.fields.showAbstractOnMobile
-            }
-            let sortDay = dateFormatter.formatDate(talk.day, 'MMDD')
+          items
+            .filter(filterByType, 'talk')
+            .map(item => {
+              return {
+                title: item.fields.title,
+                page: 'schedule',
+                abstract: item.fields.abstract,
+                from: item.fields.from,
+                to: item.fields.to,
+                day: item.fields.date,
+                fromTime: item.fields.fromTime,
+                toTime: item.fields.toTime,
+                room: item.fields.room,
+                speaker: item.fields.speaker,
+                description: item.fields.shortDescription,
+                sortTime: item.fields.fromTime
+                  ? item.fields.fromTime.split(':').join('')
+                  : null,
+                sortRoom: item.fields.room.charCodeAt(0),
+                showAbstractOnMobile: item.fields.showAbstractOnMobile,
+                tags: item.fields.tags
+                  ? item.fields.tags.map(tag => {
+                    return tag.fields.title
+                  })
+                  : []
+              }
+            })
+            .filter(filterByTag, filterTag)
+            .forEach(talk => {
+              let sortDay = dateFormatter.formatDate(talk.day, 'MMDD')
 
-            // Set up day
-            schedule[sortDay] = schedule[sortDay] || {
-              day: dateFormatter.formatDate(talk.day, 'dddd, D MMM'),
-              slots: {}
-            }
-
-            // Set up slot
-            // eslint-disable-next-line
-            schedule[sortDay].slots[talk.sortTime] = schedule[sortDay].slots[
-              talk.sortTime
-            ] || {
-                slot: {
-                  fromTime: talk.fromTime,
-                  toTime: talk.toTime,
-                  day: talk.day
-                },
-                talks: []
+              // Set up day
+              schedule[sortDay] = schedule[sortDay] || {
+                day: dateFormatter.formatDate(talk.day, 'dddd, D MMM'),
+                slots: {}
               }
 
-            // Add talk to slot
-            schedule[sortDay].slots[talk.sortTime].talks.push(talk)
-          })
+              // Set up slot
+              // eslint-disable-next-line
+              schedule[sortDay].slots[talk.sortTime] = schedule[sortDay].slots[
+                talk.sortTime
+              ] || {
+                  slot: {
+                    fromTime: talk.fromTime,
+                    toTime: talk.toTime,
+                    day: talk.day
+                  },
+                  talks: []
+                }
+
+              // Add talk to slot
+              schedule[sortDay].slots[talk.sortTime].talks.push(talk)
+            })
 
           // Sort schedule by day and transform to array
           schedule = Object.keys(schedule)

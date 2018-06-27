@@ -274,3 +274,12 @@ ul.list-inline li {
   @extend .margin-top-normal;
   @extend .padding-top-normal;
 }
+
+.visuallyhidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
