@@ -1,0 +1,37 @@
+.map {
+  &__container {
+    width: 100%;
+    height: 600px;
+
+    @include breakpoint($tablet) {
+      height: 500px;
+    }
+  }
+
+  &__image {
+    height: 50%;
+    background: url("../images/venue.jpg") no-repeat center center;
+    background-size: cover;
+
+    @include breakpoint($tablet) {
+      float: left;
+      width: 50%;
+      height: 100%;
+    }
+  }
+
+  &__map {
+    height: 50%;
+
+    @include breakpoint($tablet) {
+      float: right;
+      width: 50%;
+      height: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

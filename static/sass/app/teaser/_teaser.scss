@@ -1,0 +1,26 @@
+.teaser {
+  display: block;
+  text-align: right;
+  margin-bottom: 2rem;
+
+  &:not(&--static) {
+    // @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+    @include font-size($middle-font-size);
+    padding: 1.5rem;
+    color: $white;
+    text-align: center;
+  }
+
+  strong {
+    @include opensanscondensedbold;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 0.5em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

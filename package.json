@@ -1,0 +1,72 @@
+{
+  "name": "frontendconf-contentful",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://bitbucket.org/frontendconf/fec-website2017-app.git",
+    "type": "git"
+  },
+  "author": "Frontend Conf <info@frontendconf.ch>",
+  "license": "MIT",
+  "engines": {
+    "node": "7.10.1"
+  },
+  "dependencies": {
+    "array-shuffle": "^1.0.1",
+    "autoprefixer": "^7.1.2",
+    "breakpoint-sass": "^2.7.1",
+    "contentful": "^4.6.0",
+    "cssnano": "^3.10.0",
+    "express": "^4.15.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "fecha": "^2.3.1",
+    "feed": "^1.1.1",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.clonedeep": "^4.5.0",
+    "lru-cache": "^4.1.1",
+    "marked": "^0.4.0",
+    "next": "^3.0.3",
+    "node-sass": "^4.5.3",
+    "path-match": "^1.2.4",
+    "postcss-loader": "^2.0.6",
+    "preact": "^8.2.1",
+    "preact-compat": "^3.17.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-ga": "^2.2.0",
+    "react-lazyload": "^2.2.7",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "susy": "^2.2.12",
+    "trunc-html": "^1.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.2.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "now": "^11.1.7",
+    "npm-check-updates": "^2.12.1",
+    "prettier-standard": "^5.1.0"
+  },
+  "now": {
+    "dotenv": true
+  },
+  "scripts": {
+    "build": "next build",
+    "start": "node server.js",
+    "deploy": "now --team=frontendconf",
+    "alias": "now --team=frontendconf alias set",
+    "logs": "now --team=frontendconf logs frontendconf.ch",
+    "logs-dev": "now --team=frontendconf logs dev.frontendconf.ch",
+    "lint": "eslint .",
+    "precommit": "npm run lint && echo $(git diff --name-only --diff-filter=ACM | grep '\\.\\(js\\|scss\\)\\?$' | tr '\n' ' ') | xargs npm run prettier-cmd",
+    "prettier": "echo \"*.{js,scss}\" \"!(.next)/*.{js,scss}\" | xargs npm run prettier-cmd",
+    "prettier-cmd": "prettier-standard",
+    "update-dependencies": "npm-check-updates -u -a"
+  }
+}

@@ -1,0 +1,185 @@
+.sponsors {
+  &-board {
+    // React renders some additional wrapper elements
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      &--detailed {
+        @media (max-width: $tablet) {
+          display: block;
+        }
+      }
+      & + & {
+        margin-top: 2rem;
+      }
+      & & {
+        margin-top: 0;
+      }
+    }
+
+    &__column {
+      display: flex;
+    }
+
+    &__sponsor {
+      display: flex;
+      padding: 1.25rem;
+      .sponsors--bottom & {
+        padding: 0.75rem;
+      }
+      position: relative;
+    }
+    &__info {
+      // @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+      display: block;
+      color: $white;
+      text-align: center;
+      padding: 2.5rem;
+      margin-bottom: 1.38889%*6;
+      position: relative;
+
+      @include breakpoint($tablet) {
+        min-height: 8.25rem;
+        padding: 2rem 1.5rem;
+      }
+
+      @include breakpoint($desktop) {
+        min-height: 12.25rem;
+        padding: 3.5rem 2rem;
+      }
+
+      @include breakpoint($wide) {
+        min-height: 14.25rem;
+        padding: 4rem 2rem;
+      }
+      &-become {
+        color: $white;
+
+        strong {
+          text-transform: uppercase;
+          @include font-size($font-size-h3);
+          @include opensanscondensedbold;
+        }
+
+        &:focus,
+        &:hover {
+          color: $white;
+        }
+      }
+      &:focus,
+      &:hover {
+        .sponsors__link {
+          position: relative;
+        }
+      }
+
+      @include breakpoint($tablet-max) {
+        margin: 0 5px;
+      }
+    }
+    &__info-text {
+      @include opensanslight;
+      display: block;
+      margin-bottom: 1.5rem;
+
+      a {
+        color: $white;
+        @include opensansbold;
+      }
+    }
+    &__info-title {
+      color: $white;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+      @include opensanscondensedbold;
+    }
+    &--all {
+      position: relative;
+    }
+  }
+
+  &--bottom {
+    background: $sponsor-background;
+    [class*=col-] > .sponsors__link {
+      background: $white;
+    }
+
+    & + & {
+      margin-top: -1rem;
+      padding-top: 0;
+
+      @include breakpoint($tablet) {
+        margin-top: -2rem;
+      }
+    }
+  }
+
+  &--detailed {
+    padding: 0;
+    margin-top: -2rem;
+
+    @include breakpoint($tablet) {
+      padding: 0;
+      margin-top: -3.75rem;
+    }
+  }
+
+  &__title {
+    .home & {
+      text-transform: uppercase;
+    }
+
+    &--diamond {
+      color: $diamond;
+    }
+
+    &--platinum {
+      color: $platinum;
+    }
+
+    &--gold {
+      color: $gold;
+    }
+
+    &--silver {
+      color: $silver;
+    }
+
+    &--contributing {
+      color: $contributing;
+    }
+  }
+  &__sponsor {
+    @include font-size($middle-font-size);
+
+    &-name {
+      color: $blue-dark;
+    }
+    &-description {
+    }
+    &-website {
+      @extend .margin-top-normal;
+      a {
+        padding-right: 2rem;
+        color: $link-bright;
+      }
+    }
+    &-line {
+      @extend .separator-line;
+    }
+    &-link {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    align-self: center;
+  }
+}

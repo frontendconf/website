@@ -1,0 +1,37 @@
+.sponsorship {
+  .person__image {
+    width: 250px !important;
+    height: 150px;
+    filter: none;
+    margin-top: 30px;
+  }
+
+  p {
+    margin-bottom: 0.5em;
+  }
+
+  // Select Diamonds according to design hack
+  @include breakpoint($tablet) {
+    .col--diamond {
+      width: 100%;
+      margin-bottom: 50px;
+
+      .sponsorship__teaser {
+        margin-top: 2rem;
+        margin-left: 2rem;
+        flex-basis: 33.333%;
+        flex-shrink: 0;
+      }
+    }
+
+    .eq-height > .col--diamond {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+
+      & > * {
+        width: auto;
+      }
+    }
+  }
+}

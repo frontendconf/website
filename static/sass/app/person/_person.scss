@@ -1,0 +1,263 @@
+.person {
+  margin-bottom: 2rem;
+
+  &__image-container {
+    display: block;
+
+    &:focus,
+    &:hover {
+      .person__image {
+        @include filter(none);
+      }
+    }
+  }
+
+  section:not(.intro) &__title {
+    // TODO: Fix "architecture"
+    margin-top: 1rem;
+  }
+
+  &__image {
+    @include filter(grayscale(100%));
+    @include transition(filter 0.4s ease);
+  }
+
+  &__name {
+    display: block;
+    text-transform: uppercase;
+  }
+
+  &__job-title {
+    display: block;
+    opacity: 0.7;
+    @include font-size($regular-font-size);
+    font-weight: normal;
+    color: $link;
+    a:hover & {
+      color: $link;
+    }
+  }
+
+  &__company,
+  &__twitter {
+    font-size: 1.1rem;
+  }
+
+  &__company a {
+    font-weight: 600;
+    color: $link;
+
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+  &__workshop {
+    display: block;
+  }
+
+  .speaker__profile & {
+    margin-bottom: 1rem;
+
+    &__title {
+      font-size: inherit;
+    }
+
+    &__link {
+      color: inherit;
+    }
+
+    &__name {
+      text-transform: none;
+    }
+
+    &__caption {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    @include breakpoint($tablet) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.speakers {
+  &__link {
+    display: block;
+    background: #cfd8dc;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    height: 0;
+    padding: 50%;
+    // @include transition(background 0.4s ease);
+
+    &:focus,
+    &:hover {
+      // background: $link-hover;
+      color: $white;
+    }
+  }
+
+  &__link-text {
+    text-transform: uppercase;
+    @include opensanscondensedbold();
+    @include middle();
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+    padding-top: 3rem;
+    border-top: 1px solid #e3e8eb;
+    margin-bottom: -3rem;
+
+    @include breakpoint($tablet) {
+      margin-bottom: -6.5rem;
+    }
+  }
+
+  // Bleed outside of column if necessary
+  // Dimensions are rather magic but seem to work +/-
+  .col-8 & {
+    padding-bottom: 0;
+
+    .grid {
+      $colWidth: 730;
+      $spacingWidth: 10;
+
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: - ($spacingWidth / $colWidth) * 100%;
+      margin-right: - ($spacingWidth / $colWidth) * 100%;
+      margin-top: 2rem;
+
+      @include breakpoint($tablet) {
+        $colWidth: 716;
+        $spacingWidth: 15;
+        $containerWidth: 1090 + $spacingWidth;
+
+        margin-left: - ($spacingWidth / $colWidth) * 100%;
+        margin-right: - (($containerWidth - $colWidth) / $colWidth) * 100%;
+      }
+    }
+  }
+}
+
+.speaker {
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  &__details {
+    @include breakpoint($tablet-max) {
+      display: flex;
+      flex-direction: column;
+
+      .col-8 {
+        order: 1;
+      }
+    }
+  }
+
+  &__profile {
+    background: $silver-light;
+    @include clearfix();
+    margin-bottom: 2rem;
+
+    [class*=col-] {
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
+    &-text {
+      padding: 1rem;
+      @include breakpoint($tablet) {
+        padding-bottom: 3rem;
+      }
+    }
+
+    &-website {
+      @extend .margin-top-normal;
+      word-wrap: break-word;
+      a {
+        padding-right: 2rem;
+        color: $link-bright;
+        &:hover {
+          color: $link-hover;
+        }
+      }
+    }
+  }
+
+  // Speaker subpage change layout of other speakers
+  + .speakers,
+  + .speakers + .hosts {
+
+    .col-6,
+    .col-xs-6 {
+      width: 100%;
+
+      @include breakpoint(min-width 600px) {
+        width: 50%;
+      }
+
+      @include breakpoint($tablet) {
+        width: 33%;
+      }
+
+      @include breakpoint($desktop) {
+        width: 25%;
+      }
+    }
+
+    .person {
+      margin-bottom: 1rem;
+
+      &__title {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        margin-top: 0;
+      }
+
+      &__job-title {
+        font-size: 1rem;
+      }
+
+      &__caption {
+        display: inline-block;
+        overflow-y: hidden;
+        width: calc(100% - 70px - 1rem);
+      }
+
+      &__image-container {
+        float: left;
+        position: relative;
+        top: 0.25rem;
+        width: 70px;
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  + .speakers + .hosts {
+    margin-top: -2rem;
+    padding-top: 0;
+
+    .col-12 {
+      display: none;
+    }
+
+    @include breakpoint($tablet) {
+      margin-top: -3.75rem;
+    }
+
+    @include breakpoint($tablet-max) {
+      .col-6 {
+        padding-left: gutter();
+        padding-right: gutter();
+      }
+    }
+  }
+}

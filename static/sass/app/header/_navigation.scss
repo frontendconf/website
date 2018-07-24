@@ -1,0 +1,59 @@
+.navigation {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__element {
+    display: block;
+
+    @include breakpoint($tablet) {
+      display: inline-block;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $black;
+    line-height: 1;
+    padding: 1rem 1rem 1rem 0;
+    display: block;
+    @include transition(color 0.4s ease);
+
+    @include breakpoint(400px) {
+      font-size: 1.6rem;
+    }
+
+    @include breakpoint($tablet) {
+      font-size: inherit;
+      padding: 1rem;
+      display: inline-block;
+    }
+
+    &--active {
+      color: $link-active;
+    }
+
+    &--tickets {
+      display: none;
+
+      @include breakpoint($tablet) {
+        display: inline-block;
+        background: $blue-dark;
+        color: $white;
+      }
+    }
+  }
+}
+
+// temporary to simulate the active status, to remove and use navigation__link--active class
+.blogPage .navigation__link-blog,
+.sponsorsPage .navigation__link-sponsors,
+.venuePage .navigation__link-venue,
+.speakersPage .navigation__link-speakers {
+  color: $link-active;
+}

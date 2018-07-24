@@ -1,0 +1,224 @@
+.talk {
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+
+  &__at {
+    padding-bottom: 1.5rem;
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__room {
+    margin-bottom: 1.5rem;
+  }
+
+  &__tag {
+    @include gutter();
+    text-transform: uppercase;
+  }
+
+  &__abstract {
+    // Shift title
+    h2 {
+      @include font-size($font-size-h3);
+    }
+  }
+
+  &__video {
+    margin-top: 2rem;
+    padding-bottom: 56.25%;
+    height: 0;
+    position: relative;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.schedule {
+  $border-color: #e3e8eb;
+
+  &__header {
+    @include opensanscondensedregular;
+    letter-spacing: 0;
+    display: flex;
+    align-items: flex-end;
+    line-height: 1;
+
+    strong {
+      @include opensanscondensedbold;
+    }
+  }
+
+  &__legends {
+    order: 1;
+    padding-bottom: 0.2rem;
+
+    @include breakpoint($tablet) {
+      padding: 1rem 0;
+    }
+  }
+
+  &__legend {
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include breakpoint($tablet) {
+      display: inline-block;
+      padding-left: 20px;
+    }
+  }
+
+  &__tabs {
+    flex-grow: 1;
+  }
+
+  &__tab {
+    background: none;
+    border: 0;
+    font-family: inherit;
+    padding: 1rem;
+    text-transform: uppercase;
+    color: $blue-dark;
+    line-height: inherit;
+    cursor: pointer;
+
+    &[aria-selected=true] {
+      background: $border-color;
+    }
+  }
+
+  &__tabpanel {
+    border-top: 1px solid $border-color;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__items {
+    clear: both;
+    padding: 16px 0;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__item {
+    vertical-align: top;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    & + & {
+      padding-right: 0;
+
+      .schedule__details {
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid $border-color;
+
+        @include breakpoint($tablet) {
+          padding-top: 0;
+          margin-top: 0;
+          border-top: 0 none;
+        }
+      }
+
+      .schedule__time {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__talk,
+  &__talk:last-of-type {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    overflow-y: hidden;
+  }
+
+  &__time {
+    vertical-align: top;
+    display: inline-block;
+    padding-right: 20px;
+    margin: 0;
+  }
+
+  &__from,
+  &__to {
+    display: block;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  &__to {
+    color: #77909d;
+  }
+
+  &__details {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(100% - 84px);
+  }
+
+  &__photo {
+    float: left;
+    padding-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin: 0;
+
+    &#{&} {
+      margin-top: -5px;
+    }
+  }
+
+  &__abstract {
+    font-size: 1rem;
+    display: none;
+    clear: left;
+
+    .schedule__item--details & {
+      display: block;
+    }
+
+    @include breakpoint($tablet) {
+      display: block;
+    }
+  }
+
+  &__rusterei {
+    .schedule__title,
+    .schedule__title a,
+    &.schedule__legend {
+      color: $blue-dark;
+    }
+  }
+
+  &__folium {
+    .schedule__title,
+    .schedule__title a,
+    &.schedule__legend {
+      color: $blue-light-gradient2;
+    }
+  }
+
+  &__papiersaal {
+    .schedule__title,
+    .schedule__title a,
+    &.schedule__legend {
+      color: $red-light-gradient2;
+    }
+  }
+}

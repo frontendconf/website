@@ -1,0 +1,84 @@
+.job-board {
+  background: $job-board-background;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  &__job {
+    background: $white;
+    display: block;
+    color: $blue-dark;
+    padding: 1.25rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    height: 100%;
+
+    @include breakpoint($tablet) {
+      min-height: 8.25rem;
+    }
+
+    @include breakpoint($desktop) {
+      min-height: 7.25rem;
+    }
+
+    @include breakpoint($wide) {
+      min-height: 8.25rem;
+    }
+  }
+
+  &__job-title {
+    text-transform: uppercase;
+    display: block;
+    @include opensanscondensedbold;
+
+    &--all {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint($tablet-max) {
+      font-size: 1.125rem;
+    }
+  }
+
+  &__company {
+    text-transform: uppercase;
+    opacity: 0.7;
+    @include font-size($small-font-size);
+  }
+
+  &__freshjobs-container {
+    color: $blue-dark;
+    text-align: right;
+    text-transform: uppercase;
+    @include font-size($xsmall-font-size);
+  }
+
+  &__freshjobs-link {
+    &:focus,
+    &:hover {
+      .job-board__freshjobs-logo {
+        fill: $link-hover;
+      }
+    }
+  }
+
+  &__freshjobs-logo {
+    display: inline-block;
+    width: 100px;
+    position: relative;
+    top: 10px;
+    margin-left: 0.75rem;
+    fill: rgb(0, 107, 149);
+    @include transition(fill 0.4s ease);
+  }
+
+  @include breakpoint($tablet-max) {
+    .col-4 {
+      @include span(12 inside);
+      // TODO: Figure out why this is needed
+      padding-left: 1.38889%;
+      padding-right: 1.38889%;
+    }
+  }
+}

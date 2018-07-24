@@ -1,0 +1,124 @@
+.partners.section {
+  background: $footer-background;
+  color: $contributing;
+
+  .partners__title,
+  .sponsors__title {
+    text-transform: uppercase;
+  }
+
+  [class*=col-] > .partners__link,
+  [class*=col-] > .sponsors__link {
+    background: $white;
+    padding: 0.75rem;
+    position: relative;
+  }
+
+  &:last-child {
+    @include breakpoint($tablet) {
+      margin-bottom: -2rem;
+    }
+  }
+}
+
+.footer.section {
+  @include font-size($small-font-size);
+  background: $footer-background;
+  color: $contributing;
+
+  a:not(.btn) {
+    color: $contributing;
+    &:hover {
+      color: $link-hover;
+    }
+  }
+
+  .navigation_list {
+    @include opensanslight;
+    @extend .ul-nostyle;
+    columns: 2;
+    li {
+      line-height: 2rem;
+      margin: 0 0 0 4rem;
+
+      @include breakpoint($tablet-max) {
+        line-height: 3rem;
+        margin-left: 0;
+        text-align: center;
+      }
+
+      a {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .list {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: .5rem;
+    }
+
+    @include breakpoint($tablet-max) {
+      display: flex;
+      margin: 0 -5px 25px -5px;
+
+      li {
+        flex: 1;
+        margin: 0 5px;
+        display: flex;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .list-inline {
+    @include opensanslight;
+  }
+
+  .newsletter {
+    @include breakpoint($tablet-max) {
+      margin: 40px 0 20px 0;
+    }
+  }
+
+  .social {
+    $social-size: 40px;
+
+    li {
+      width: $social-size;
+      height: $social-size;
+      padding: 0;
+      margin: 0 0 10px 10px;
+
+      a {
+        width: $social-size;
+        height: $social-size;
+        font-size: $social-size;
+        line-height: $social-size;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.partners.section + .footer.section {
+  @media (min-width: $tablet) {
+    padding-top: 1rem;
+  }
+}
+
+.footer {
+
+  .col-xs-6 {
+    @include breakpoint($tablet-max) {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,134 @@
+.blog {
+  &__article {
+    margin-bottom: 2rem;
+
+    &-title {
+      &-link {
+        color: inherit;
+      }
+    }
+    &-info {
+      @extend .margin-bottom-small;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      &-date,
+      &-tag {
+        @include gutter();
+        color: inherit;
+      }
+    }
+    &-image {
+      @include span(4 of 8 inside);
+      padding-left: 0;
+      padding-right: gutter(12);
+    }
+    &-text {
+    }
+    &-image + &-text {
+      @include span(4 of 8 inside);
+      padding-left: gutter(12);
+      padding-right: 0;
+    }
+
+    &-more {
+      color: $link-active;
+    }
+  }
+
+  &__next-articles {
+    margin-top: 5rem;
+    &-title {
+      @include font-size($font-size-h3);
+      text-transform: uppercase;
+    }
+    .blog__article-title {
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      font-size: 1em;
+      font-family: inherit;
+    }
+    .blog__article-info {
+      @include font-size($middle-font-size);
+    }
+    .news__link {
+      color: inherit;
+    }
+  }
+
+  &__title {
+    @include font-size($font-size-h2);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    &-tag {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
+}
+
+.pagination {
+  @extend .margin-top-large;
+  @extend .center;
+}
+
+.pagination a {
+  display: inline-block;
+  background-color: $silver-light;
+  color: $blue-darker;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  @include font-size($middle-font-size);
+}
+
+.pagination a.active {
+  background-color: $link-active;
+  color: $white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: $blue-dark;
+  color: $white;
+}
+
+.newsletter {
+  &__text {
+    @include font-size($middle-font-size);
+  }
+
+  &--teaser {
+    @include diagonal-gradient($blue-light-gradient1, $blue-light-gradient2, $blue-light-gradient1, $blue-light-gradient2);
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    margin-top: 5rem;
+    .form {
+      margin-top: 2rem;
+    }
+    .btn {
+      background: $black;
+    }
+
+    @include breakpoint($desktop) {
+      flex-direction: row;
+      align-items: center;
+      .form {
+        flex-shrink: 0;
+        margin-left: 2rem;
+        margin-top: 0;
+      }
+    }
+
+    @include breakpoint($tablet-max) {
+      .form {
+        margin-top: 0;
+      }
+      .form__input {
+        width: 100%;
+        margin: 20px 0 10px 0;
+      }
+    }
+  }
+}
