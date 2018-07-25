@@ -1,4 +1,5 @@
 # Develop
+Required node version: `7.10.1`
 
 Install dependencies using `npm i`
 
