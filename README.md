@@ -1,5 +1,5 @@
 # Develop
-Required node version: `7.10.1`
+Required node version: `6.14.3`
 
 Install dependencies using `npm i`
 
