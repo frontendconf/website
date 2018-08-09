@@ -132,10 +132,6 @@ export default Component => {
         // 404
         if (!currentItem && res) {
           res.statusCode = 404
-
-          return {
-            statusCode: 404
-          }
         }
 
         // Exposed data
@@ -332,26 +328,28 @@ export default Component => {
           }
           : null
 
-        // Fallback
-        if (
-          !(lead && lead.title) &&
-          ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1
-        ) {
-          lead.title = 'Speakers'
-        }
+        if (currentItem) {
+          // Fallback
+          if (
+            !(lead && lead.title) &&
+            ['speaker', 'host'].indexOf(currentItem.sys.contentType.sys.id) !== -1
+          ) {
+            lead.title = 'Speakers'
+          }
 
-        // Merge speakers and hosts
-        switch (currentItem.sys.contentType.sys.id) {
-          case 'host':
-            lead.menu = getLeadMenu(items, 'speaker', query, filterTag).concat(
-              lead.menu
-            )
-            break
-          case 'speaker':
-            lead.menu = lead.menu.concat(
-              getLeadMenu(items, 'host', query, filterTag)
-            )
-            break
+          // Merge speakers and hosts
+          switch (currentItem.sys.contentType.sys.id) {
+            case 'host':
+              lead.menu = getLeadMenu(items, 'speaker', query, filterTag).concat(
+                lead.menu
+              )
+              break
+            case 'speaker':
+              lead.menu = lead.menu.concat(
+                getLeadMenu(items, 'host', query, filterTag)
+              )
+              break
+          }
         }
 
         const showNews =
@@ -703,7 +701,7 @@ export default Component => {
             .sort((a, b) => a.order - b.order)
           : null
 
-        const contentTeasers = currentPage.contentTeasers
+        const contentTeasers = currentPage && currentPage.contentTeasers
           ? currentPage.contentTeasers.map(contentTeaser => {
             const teaser = items
               .filter(filterByType, 'teaser')
