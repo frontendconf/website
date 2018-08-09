@@ -23,6 +23,7 @@ import Team from '../components/team'
 import Schedule from '../components/schedule'
 import Tourism from '../components/tourism'
 import Newsletter from '../components/newsletter'
+import NotFound from '../components/404'
 
 class Index extends Component {
   constructor (props) {
@@ -215,7 +216,7 @@ class Index extends Component {
                 </div>
               </div>
             </section>
-            : null
+            : (this.props.notFound ? <NotFound /> : null)
     }
 
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
@@ -357,7 +358,8 @@ Index.propTypes = {
   styles: PropTypes.array,
   currentPageIndex: PropTypes.number,
   currentTag: PropTypes.string,
-  contentTeasers: PropTypes.array
+  contentTeasers: PropTypes.array,
+  notFound: PropTypes.bool
 }
 
 export default Data(Index)
