@@ -29,26 +29,26 @@ class Jobs extends Component {
   }
 
   render () {
-    const title = this.props.isDetailed
-      ? null
-      : <div className='col-12'>
+    const title = this.props.isDetailed ? null : (
+      <div className='col-12'>
         <h2>
           <InternalLink slug={this.props.page.slug}>Job board</InternalLink>
         </h2>
       </div>
+    )
 
-    const showAll = this.props.page
-      ? <div className='col-4'>
+    const showAll = this.props.page ? (
+      <div className='col-4'>
         <InternalLink
           slug={this.props.page.slug}
           classes='job-board__job job-board__job--all'
         >
           <span className='job-board__job-title job-board__job-title--all'>
-              All jobs
+            All jobs
           </span>
         </InternalLink>
       </div>
-      : null
+    ) : null
 
     return (
       <section className='job-board section'>
@@ -65,12 +65,8 @@ class Jobs extends Component {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <span className='job-board__job-title'>
-                      {item.title}
-                    </span>
-                    <span className='job-board__company'>
-                      {item.company}
-                    </span>
+                    <span className='job-board__job-title'>{item.title}</span>
+                    <span className='job-board__company'>{item.company}</span>
                   </a>
                 </div>
               )

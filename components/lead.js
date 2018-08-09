@@ -8,19 +8,19 @@ class Lead extends Component {
   render () {
     // DEV: Currently, the lead text is only visible on home
     const body =
-      this.props.body && this.props.isHome
-        ? <div
+      this.props.body && this.props.isHome ? (
+        <div
           className={
             this.props.isHome ? 'intro__content' : 'intro__content--light'
           }
         >
           <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
         </div>
-        : null
+      ) : null
 
     const menu =
-      this.props.menu && this.props.menu.length
-        ? <div className='intro__menu'>
+      this.props.menu && this.props.menu.length ? (
+        <div className='intro__menu'>
           <div className='grid'>
             <div className='grid__inner'>
               <div className='col-12'>
@@ -40,18 +40,18 @@ class Lead extends Component {
             </div>
           </div>
         </div>
-        : null
+      ) : null
 
-    const teaser = this.props.teaser
-      ? <div className='col-12'>
+    const teaser = this.props.teaser ? (
+      <div className='col-12'>
         <span className='intro__teaser'>
           <div dangerouslySetInnerHTML={{ __html: this.props.teaser.body }} />
         </span>
       </div>
-      : null
+    ) : null
 
-    const footerContent = this.props.isHome
-      ? <div className='col-12'>
+    const footerContent = this.props.isHome ? (
+      <div className='col-12'>
         <div className='intro__bottom-left'>
           {this.props.ctas.map((cta, i) => {
             return <InternalLink {...cta} classes='btn' key={i} />
@@ -62,17 +62,17 @@ class Lead extends Component {
           {this.props.isHome ? <Newsletter /> : null}
         </div> */}
       </div>
-      : teaser
+    ) : (
+      teaser
+    )
 
-    const footer = footerContent
-      ? <div className='intro__bottom-content'>
+    const footer = footerContent ? (
+      <div className='intro__bottom-content'>
         <div className='grid'>
-          <div className='grid__inner'>
-            {footerContent}
-          </div>
+          <div className='grid__inner'>{footerContent}</div>
         </div>
       </div>
-      : null
+    ) : null
 
     let modifiers = this.props.title ? [this.props.title.toLowerCase()] : null
 
@@ -92,12 +92,10 @@ class Lead extends Component {
           <div className='grid'>
             <div className='grid__inner'>
               <div className='col-8'>
-                <h1 className='intro__title'>
-                  {this.props.title}
-                </h1>
+                <h1 className='intro__title'>{this.props.title}</h1>
               </div>
-              {body
-                ? <div
+              {body ? (
+                <div
                   className={
                     this.props.isHome
                       ? 'col-12'
@@ -108,14 +106,14 @@ class Lead extends Component {
                 >
                   {body}
                 </div>
-                : null}
-              {!this.props.isHome && this.props.ctas
-                ? <div className='col-4 margin-top-large right'>
+              ) : null}
+              {!this.props.isHome && this.props.ctas ? (
+                <div className='col-4 margin-top-large right'>
                   {this.props.ctas.map((cta, i) => {
                     return <InternalLink {...cta} classes='btn' key={i} />
                   })}
                 </div>
-                : null}
+              ) : null}
             </div>
           </div>
         </div>

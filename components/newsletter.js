@@ -5,16 +5,16 @@ class Newsletter extends Component {
   render () {
     return (
       <div
-        className={`newsletter${this.props.isTeaser
-          ? ' newsletter--teaser'
-          : ''}`}
+        className={`newsletter${
+          this.props.isTeaser ? ' newsletter--teaser' : ''
+        }`}
       >
-        {this.props.isTeaser
-          ? <p className='newsletter__text'>
-              Stay tuned with our newsletter and get all the hot stuff directly
-              in your inbox. You know the drill.
+        {this.props.isTeaser ? (
+          <p className='newsletter__text'>
+            Stay tuned with our newsletter and get all the hot stuff directly in
+            your inbox. You know the drill.
           </p>
-          : null}
+        ) : null}
 
         <form
           className='form'

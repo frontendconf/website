@@ -35,9 +35,7 @@ const Layout = ({
   return (
     <div className={bodyClass}>
       <Head>
-        <title>
-          {metaTitle}
-        </title>
+        <title>{metaTitle}</title>
         <meta name='description' content={metaDescription} />
         <link rel='alternate' type='application/rss+xml' href='/feed' />
         <link
