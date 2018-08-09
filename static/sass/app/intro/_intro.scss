@@ -200,6 +200,10 @@
       }
     }
 
+    li {
+      break-inside: avoid;
+    }
+
     a {
       opacity: .8;
       color: $white;
