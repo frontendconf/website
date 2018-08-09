@@ -68,6 +68,7 @@ export default Component => {
       const getData = cachedResponse
         ? Promise.resolve(cachedResponse)
         : contentful.getEntries()
+      let notFound
 
       return getData.then(items => {
         const configs = items.filter(filterByType, 'config')
@@ -132,6 +133,8 @@ export default Component => {
         // 404
         if (!currentItem && res) {
           res.statusCode = 404
+
+          notFound = true
         }
 
         // Exposed data
@@ -794,6 +797,7 @@ export default Component => {
           currentPageIndex,
           currentTag,
           contentTeasers,
+          notFound,
           _raw: items
         }
       })

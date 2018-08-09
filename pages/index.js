@@ -216,7 +216,7 @@ class Index extends Component {
                 </div>
               </div>
             </section>
-            : <NotFound />
+            : (this.props.notFound ? <NotFound /> : null)
     }
 
     const lead = this.props.lead ? <Lead {...this.props.lead} /> : null
@@ -358,7 +358,8 @@ Index.propTypes = {
   styles: PropTypes.array,
   currentPageIndex: PropTypes.number,
   currentTag: PropTypes.string,
-  contentTeasers: PropTypes.array
+  contentTeasers: PropTypes.array,
+  notFound: PropTypes.bool
 }
 
 export default Data(Index)
