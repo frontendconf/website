@@ -31,11 +31,7 @@ class Speaker extends Component {
       </span>
       : null
     const talks = this.props.talks
-      ? this.props.talks.sort((a, b) => {
-        if (a.date > b.date) return -1
-        if (a.date < b.date) return 1
-        return 0
-      }).map((talk, i) => <Talk {...talk} key={i} />)
+      ? this.props.talks.map((talk, i) => <Talk {...talk} key={i} />)
       : null
 
     return (
