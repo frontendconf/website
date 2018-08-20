@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import fecha from 'fecha'
+import dateFormatter from '../lib/dateFormatter'
 
 import ScheduleItem from './scheduleItem'
 
@@ -32,10 +32,10 @@ class Schedule extends Component {
 
   getCurrentTab () {
     // TODO: Remove demo!
-    const currentDay = '2018-08-31' || fecha.format(new Date(), 'YYYY-MM-DD')
+    const currentDay = '2018-08-31' || dateFormatter.formatDate(new Date(), 'YYYY-MM-DD')
     const currentTab = this.props.schedule.find(item => {
-      const date = fecha.parse(item.day, 'dddd, D MMM')
-      const day = fecha.format(date, 'YYYY-MM-DD')
+      const date = dateFormatter.parse(item.day, 'dddd, D MMM')
+      const day = dateFormatter.formatDate(date, 'YYYY-MM-DD')
 
       return day === currentDay
     })
@@ -44,7 +44,7 @@ class Schedule extends Component {
   }
 
   getCurrentSlot (slots) {
-    const currentHour = parseInt(fecha.format(new Date(), 'H'), 10)
+    const currentHour = parseInt(dateFormatter.format(new Date(), 'H'), 10)
     const currentSlot = slots.slice(0).reverse().find(item => {
       const hour = parseInt(item.slot.fromTime, 10)
 
