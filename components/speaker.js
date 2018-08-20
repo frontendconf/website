@@ -31,9 +31,7 @@ class Speaker extends Component {
       </span>
     ) : null
     const talks = this.props.talks
-      ? this.props.talks.map((talk, i) => {
-        return <Talk {...talk} key={i} />
-      })
+      ? this.props.talks.map((talk, i) => <Talk {...talk} key={i} />)
       : null
 
     return (
