@@ -1,12 +1,8 @@
 # Develop
-Required node version: `6.14.3`
 
-Install dependencies using `npm i`
-
-Start application:
-```bash
-npm start
-```
+1. Use Node version specified in `.nvmrc` (ideally using [nvm](https://github.com/creationix/nvm)).
+2. Install dependencies: `npm install`
+3. Start application: `npm start`
 
 # Deploy
 

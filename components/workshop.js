@@ -6,18 +6,16 @@ import InternalLink from './link'
 
 class Workshop extends Component {
   render () {
-    const cta = this.props.cta
-      ? <InternalLink {...this.props.cta} classes='btn' />
-      : null
+    const cta = this.props.cta ? (
+      <InternalLink {...this.props.cta} classes='btn' />
+    ) : null
 
     return (
       <section className='workshop section'>
         <div className='grid'>
           <div className='grid__inner'>
             <div className='col-12'>
-              <h1>
-                {this.props.title}
-              </h1>
+              <h1>{this.props.title}</h1>
             </div>
           </div>
           <div className='grid__inner'>

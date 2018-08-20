@@ -39,9 +39,7 @@ class Tourism extends Component {
                         />
                       </span>
                       <span className='accomodation__caption'>
-                        <h4 className='accomodation__title'>
-                          {item.name}
-                        </h4>
+                        <h4 className='accomodation__title'>{item.name}</h4>
                         <p className='accomodation__description'>
                           {item.description}
                         </p>
