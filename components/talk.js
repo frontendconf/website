@@ -28,6 +28,7 @@ class Talk extends Component {
         <h2 className='talk__title'>{this.props.title}</h2>
         <h4 className='talk__room'>
           {date}
+          {date && this.props.fromTime ? ' ' : null}
           {this.props.fromTime}
           {this.props.fromTime && this.props.toTime ? '–' : null}
           {this.props.toTime}

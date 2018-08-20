@@ -213,8 +213,7 @@ export default Component => {
                   : []
               })
             })
-            .sort((a, b) => a.year - b.year)
-
+            .sort((a, b) => b.year - a.year)
           currentPage.talks = talks
         }
 
