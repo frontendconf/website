@@ -76,9 +76,7 @@ class Schedule extends Component {
                 aria-labelledby={`tab-${i}`}
                 hidden={this.state.selectedTab !== i}
               >
-                <h2 className='visuallyhidden'>
-                  {item.day}
-                </h2>
+                <h2 className='visuallyhidden'>{item.day}</h2>
 
                 {item.slots.map((slot, ii) => {
                   return (

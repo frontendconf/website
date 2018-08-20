@@ -6,9 +6,11 @@ import InternalLink from './link'
 
 class Venue extends Component {
   render () {
-    const title = this.props.link
-      ? <InternalLink slug={this.props.link} title={this.props.title} />
-      : this.props.title
+    const title = this.props.link ? (
+      <InternalLink slug={this.props.link} title={this.props.title} />
+    ) : (
+      this.props.title
+    )
 
     return (
       <section className='venue'>
@@ -23,23 +25,21 @@ class Venue extends Component {
                 : 'venue__inner'
             }
           >
-            {this.props.isVenue && this.props.map
-              ? <div
+            {this.props.isVenue && this.props.map ? (
+              <div
                 className='venue__map'
                 dangerouslySetInnerHTML={{ __html: this.props.map }}
               />
-              : <div className='venue__content'>
+            ) : (
+              <div className='venue__content'>
                 <div className='venue__head'>
-                  <h2>
-                    {title}
-                  </h2>
+                  <h2>{title}</h2>
                 </div>
                 <div className='venue__venue'>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: this.props.body }}
-                  />
+                  <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
                 </div>
-              </div>}
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -10,8 +10,8 @@ class Sponsors extends Component {
       <section>
         {this.props.sponsors.map((category, i) => {
           const title =
-            i === 0 && !category.isDetailed
-              ? <div className='grid'>
+            i === 0 && !category.isDetailed ? (
+              <div className='grid'>
                 <div className='grid__inner'>
                   <div className='col-12'>
                     <h2>
@@ -20,10 +20,10 @@ class Sponsors extends Component {
                   </div>
                 </div>
               </div>
-              : null
+            ) : null
 
-          const teaser = category.teaser
-            ? <div className={category.cssClassTeaser}>
+          const teaser = category.teaser ? (
+            <div className={category.cssClassTeaser}>
               <div className='sponsors-board__info'>
                 <InternalLink
                   {...category.teaser.link.fields}
@@ -35,7 +35,7 @@ class Sponsors extends Component {
                 </InternalLink>
               </div>
             </div>
-            : null
+          ) : null
 
           let sectionClasses = category.isDetailed
             ? i === 0
@@ -79,23 +79,23 @@ class Sponsors extends Component {
                     </div>
 
                     {category.items.map((item, i) => {
-                      const twitter = item.twitter
-                        ? <a href={'https://twitter.com/' + item.twitter}>
+                      const twitter = item.twitter ? (
+                        <a href={'https://twitter.com/' + item.twitter}>
                           {'@' + item.twitter}
                         </a>
-                        : null
+                      ) : null
 
-                      const link = item.link
-                        ? <a href={item.link} className='sponsors__link'>
+                      const link = item.link ? (
+                        <a href={item.link} className='sponsors__link'>
                           {item.link}
                         </a>
-                        : null
+                      ) : null
 
-                      return item.isDetailed
-                        ? <div
+                      return item.isDetailed ? (
+                        <div
                           className={
                             'sponsors-board__wrapper sponsors-board__wrapper--detailed sponsors-board__wrapper--' +
-                              category.cssClass
+                            category.cssClass
                           }
                           key={i}
                         >
@@ -134,7 +134,8 @@ class Sponsors extends Component {
                             </div>
                           </div>
                         </div>
-                        : <div
+                      ) : (
+                        <div
                           className={
                             'sponsors-board__column ' + category.cssClassItems
                           }
@@ -154,6 +155,7 @@ class Sponsors extends Component {
                             </LazyLoad>
                           </a>
                         </div>
+                      )
                     })}
 
                     {teaser}

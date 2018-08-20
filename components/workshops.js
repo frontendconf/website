@@ -10,13 +10,13 @@ class Workshops extends Component {
       <section className='workshops section'>
         <div className='grid'>
           <div className='grid__inner eq-height'>
-            {this.props.isHome
-              ? <div className='col-12'>
+            {this.props.isHome ? (
+              <div className='col-12'>
                 <h2>
                   <InternalLink slug='workshops'>Workshops</InternalLink>
                 </h2>
               </div>
-              : null}
+            ) : null}
             {this.props.workshops.map((item, i) => {
               return (
                 <div className='col-6' key={i}>

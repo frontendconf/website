@@ -6,30 +6,30 @@ import Talk from './talk'
 
 class Speaker extends Component {
   render () {
-    const twitter = this.props.twitter
-      ? <span>
+    const twitter = this.props.twitter ? (
+      <span>
         <a href={'https://twitter.com/' + this.props.twitter} target='_blank'>
           {'@' + this.props.twitter}
         </a>
         <br />
       </span>
-      : null
-    const website = this.props.website
-      ? <span>
+    ) : null
+    const website = this.props.website ? (
+      <span>
         <a href={this.props.website} target='_blank'>
           {this.props.website}
         </a>
         <br />
       </span>
-      : null
-    const linkedin = this.props.linkedin
-      ? <span>
+    ) : null
+    const linkedin = this.props.linkedin ? (
+      <span>
         <a href={this.props.linkedin} target='_blank'>
           {this.props.linkedin}
         </a>
         <br />
       </span>
-      : null
+    ) : null
     const talks = this.props.talks
       ? this.props.talks.map((talk, i) => <Talk {...talk} key={i} />)
       : null
@@ -39,9 +39,7 @@ class Speaker extends Component {
         <div className='grid'>
           <div className='grid__inner'>
             <div className='col-12'>
-              <h1>
-                {this.props.name}
-              </h1>
+              <h1>{this.props.name}</h1>
             </div>
           </div>
           <div className='grid__inner speaker__details'>

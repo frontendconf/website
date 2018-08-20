@@ -466,13 +466,13 @@ export default Component => {
               schedule[sortDay].slots[talk.sortTime] = schedule[sortDay].slots[
                 talk.sortTime
               ] || {
-                  slot: {
-                    fromTime: talk.fromTime,
-                    toTime: talk.toTime,
-                    day: talk.day
-                  },
-                  talks: []
-                }
+                slot: {
+                  fromTime: talk.fromTime,
+                  toTime: talk.toTime,
+                  day: talk.day
+                },
+                talks: []
+              }
 
               // Add talk to slot
               schedule[sortDay].slots[talk.sortTime].talks.push(talk)
