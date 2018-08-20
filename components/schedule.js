@@ -81,14 +81,11 @@ class Schedule extends Component {
         <div className='grid'>
           <div className='schedule__header'>
             <div className='schedule__legends'>
-              <div className='schedule__legend schedule__rusterei'>
-                FL 0 <strong>R&uuml;sterei</strong>
+              <div className='schedule__legend schedule__papiersaal'>
+                FL 2 <strong>Papiersaal</strong>
               </div>
               <div className='schedule__legend schedule__folium'>
                 FL 1 <strong>Folium</strong>
-              </div>
-              <div className='schedule__legend schedule__papiersaal'>
-                FL 2 <strong>Papiersaal</strong>
               </div>
             </div>
 

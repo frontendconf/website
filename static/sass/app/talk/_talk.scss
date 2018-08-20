@@ -59,7 +59,7 @@
 
   &__legends {
     order: 1;
-    padding-bottom: 0.2rem;
+    align-self: center;
 
     @include breakpoint($tablet) {
       padding: 1rem 0;
@@ -139,9 +139,12 @@
 
   &__talk,
   &__talk:last-of-type {
-    font-size: 1rem;
     margin-bottom: 10px;
     overflow-y: hidden;
+
+    @include breakpoint($tablet) {
+      font-size: 1rem;
+    }
   }
 
   &__time {
@@ -175,7 +178,7 @@
   }
 
   &__title {
-    font-size: 1.6rem;
+    @include font-size($font-size-h3);
     text-transform: uppercase;
     margin: 0;
 
@@ -185,7 +188,6 @@
   }
 
   &__abstract {
-    font-size: 1rem;
     display: none;
     clear: left;
 
@@ -195,6 +197,7 @@
 
     @include breakpoint($tablet) {
       display: block;
+      font-size: 1rem;
     }
   }
 
