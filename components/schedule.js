@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import fecha from 'fecha'
 
 import ScheduleItem from './scheduleItem'
 
@@ -29,6 +30,52 @@ class Schedule extends Component {
     )
   }
 
+  getCurrentTab () {
+    // TODO: Remove demo!
+    const currentDay = '2018-08-31' || fecha.format(new Date(), 'YYYY-MM-DD')
+    const currentTab = this.props.schedule.find(item => {
+      const date = fecha.parse(item.day, 'dddd, D MMM')
+      const day = fecha.format(date, 'YYYY-MM-DD')
+
+      return day === currentDay
+    })
+
+    return currentTab
+  }
+
+  getCurrentSlot (slots) {
+    const currentHour = parseInt(fecha.format(new Date(), 'H'), 10)
+    const currentSlot = slots.slice(0).reverse().find(item => {
+      const hour = parseInt(item.slot.fromTime, 10)
+
+      return hour <= currentHour
+    })
+
+    return currentSlot
+  }
+
+  componentDidMount () {
+    const currentTab = this.getCurrentTab()
+
+    if (currentTab) {
+      const currentSlot = this.getCurrentSlot(currentTab.slots)
+
+      // Select current day
+      currentTab.node.click()
+
+      // Scroll to current time
+      if (currentSlot) {
+        setTimeout(() => {
+          currentSlot.node.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+          })
+        }, 1000)
+      }
+    }
+  }
+
   render () {
     return (
       <section className='schedule section'>
@@ -53,7 +100,7 @@ class Schedule extends Component {
                     key={i}
                     className='schedule__tab'
                     role='tab'
-                    ref={`tab-${i}`}
+                    ref={node => (this.props.schedule[i].node = node)} // eslint-disable-line no-return-assign
                     id={`tab-${i}`}
                     aria-selected={this.state.selectedTab === i}
                     aria-controls={`tabpanel-${i}`}
@@ -82,7 +129,11 @@ class Schedule extends Component {
 
                 {item.slots.map((slot, ii) => {
                   return (
-                    <div className='col-12 schedule__items' key={ii}>
+                    <div
+                      className='col-12 schedule__items'
+                      key={ii}
+                      ref={node => (item.slots[ii].node = node)} // eslint-disable-line no-return-assign
+                    >
                       {slot.talks.map((talk, iii) => {
                         return <ScheduleItem {...talk} key={iii} />
                       })}
