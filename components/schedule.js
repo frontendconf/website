@@ -31,8 +31,7 @@ class Schedule extends Component {
   }
 
   getCurrentTab () {
-    // TODO: Remove demo!
-    const currentDay = '2018-08-31' || dateFormatter.formatDate(new Date(), 'YYYY-MM-DD')
+    const currentDay = dateFormatter.formatDate(new Date(), 'YYYY-MM-DD')
     const currentTab = this.props.schedule.find(item => {
       const date = dateFormatter.parse(item.day, 'dddd, D MMM')
       const day = dateFormatter.formatDate(date, 'YYYY-MM-DD')
