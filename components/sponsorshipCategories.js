@@ -17,17 +17,17 @@ class SponsorshipCategories extends Component {
                 return null
               }
 
-              const icon = category.icon
-                ? <LazyLoad offset={200}>
+              const icon = category.icon ? (
+                <LazyLoad offset={200}>
                   <img
                     className='person__image'
                     src={category.icon}
                     alt={category.title}
                   />
                 </LazyLoad>
-                : null
-              const teaser = category.teaser
-                ? <div className='col-4 sponsorship__teaser'>
+              ) : null
+              const teaser = category.teaser ? (
+                <div className='col-4 sponsorship__teaser'>
                   <a className='teaser' href={category.teaser.linkExternal}>
                     <div
                       dangerouslySetInnerHTML={{
@@ -36,13 +36,13 @@ class SponsorshipCategories extends Component {
                     />
                   </a>
                 </div>
-                : null
+              ) : null
 
-              const availability = category.availability
-                ? <span>
-                    / <span>{category.availability}</span>
+              const availability = category.availability ? (
+                <span>
+                  / <span>{category.availability}</span>
                 </span>
-                : null
+              ) : null
 
               return (
                 <div
@@ -52,9 +52,7 @@ class SponsorshipCategories extends Component {
                   {icon}
 
                   <div>
-                    <h3 className='sponsors__title'>
-                      {category.title}
-                    </h3>
+                    <h3 className='sponsors__title'>{category.title}</h3>
 
                     <p>
                       <strong>

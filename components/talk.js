@@ -25,9 +25,7 @@ class Talk extends Component {
             )
           })}
         </p>
-        <h2 className='talk__title'>
-          {this.props.title}
-        </h2>
+        <h2 className='talk__title'>{this.props.title}</h2>
         <h4 className='talk__room'>
           {date}
           {this.props.fromTime}
@@ -41,14 +39,14 @@ class Talk extends Component {
           dangerouslySetInnerHTML={{ __html: this.props.abstract }}
         />
 
-        {this.props.video
-          ? <div
+        {this.props.video ? (
+          <div
             className='talk__video'
             dangerouslySetInnerHTML={{
               __html: this.props.video
             }}
           />
-          : null}
+        ) : null}
       </div>
     )
   }
