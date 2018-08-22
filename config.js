@@ -1,5 +1,5 @@
 module.exports = {
-  ASSET_VERSION: '?v9',
+  ASSET_VERSION: '?v10',
   GA: 'UA-24147044-1',
   CONTENTFUL_SPACE: 'j8md9ikrag2j',
   // Read-only access and therefore not sensitive
