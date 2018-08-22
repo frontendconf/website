@@ -182,4 +182,12 @@
     width: 100%;
     align-self: center;
   }
+
+  &__link {
+    word-wrap: break-word;
+    
+    @media (max-width: $tablet) {
+      display: block;
+    }
+  }
 }

@@ -121,7 +121,7 @@ class Sponsors extends Component {
                               <h3 className='sponsors__sponsor-name'>
                                 {item.title}
                               </h3>
-                              <p
+                              <div
                                 className='sponsors__sponsor-description'
                                 dangerouslySetInnerHTML={{
                                   __html: item.body
