@@ -6,7 +6,7 @@ Some notes:
 - It is based on [`Next.js`](https://github.com/zeit/next.js/) and hosted on [`Now`](http://now.sh/)
 - The content is hosted on [`Contentful`](https://www.contentful.com/)
 - Since this started as a proof-of-concept, the data handling is rather crude: We are grabbing everything there is from Contentful and transform it to what we want to display on the current page. This will not scale very well, so the next step is to add a reasonable data store and fetching mechanism.
-- The styles started within a separate prototype and were merged here as good as possible. However, most of the intentions of the initial CSS structure were probably lost along the way. This will be taken care of as part of the next version.
+- The styles started within a separate prototype and were merged here as good as possible. However, most of the intentions of the initial CSS structure were probably lost along the way. This will be taken care of as part of the next version. Most probably using [`styled components`](https://www.styled-components.com/) or a similar approach.
 
 ## Develop
 
